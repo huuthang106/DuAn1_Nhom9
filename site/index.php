@@ -90,8 +90,8 @@
 						<div class="f-icon">
 							<img src="./content/img/features/f-icon3.png" alt="">
 						</div>
-						<h6>Hỗ trợ 24/7</h6>
-						<p>Miễn phí vận chuyển cho mọi đơn hàng</p>
+						<h6>24/7 Support</h6>
+						<p>Free Shipping on all order</p>
 					</div>
 				</div>
 				<!-- single features -->
