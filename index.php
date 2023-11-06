@@ -82,6 +82,9 @@
 		case 'login':
 			include 'site/login.php';
 			break;
+		case 'register':
+			include 'site/register.php';
+			break;
 		case 'tracking':
 			include 'site/tracking.php';
 			break;

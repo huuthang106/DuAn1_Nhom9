@@ -10,10 +10,10 @@ include("./include/nav.php");
 		<div class="container">
 			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
 				<div class="col-first">
-					<h1>Contact Us</h1>
+					<h1>Liên hệ với chúng tôi</h1>
 					<nav class="d-flex align-items-center">
-						<a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
-						<a href="category.html">Contact</a>
+						<a href="index.html">Trang chủ<span class="lnr lnr-arrow-right"></span></a>
+						<a href="index.php?act=contact">Liên hệ</a>
 					</nav>
 				</div>
 			</div>
@@ -32,18 +32,19 @@ include("./include/nav.php");
 					<div class="contact_info">
 						<div class="info_item">
 							<i class="lnr lnr-home"></i>
-							<h6>California, United States</h6>
-							<p>Santa monica bullevard</p>
+							<h6>Cao đăng FPT Polytechnic Cần Thơ</h6>
+							<p>Đường số 22, Tòa nhà FPT - Cần Thơ</p>
 						</div>
 						<div class="info_item">
 							<i class="lnr lnr-phone-handset"></i>
-							<h6><a href="#">00 (440) 9865 562</a></h6>
-							<p>Mon to Fri 9am to 6 pm</p>
+							<h6><a href="#">190012345</a></h6>
+							<p>Thứ 2: 8h00 - 5h30</p>
+							<p>Thứ 7: 8h00 - 12h00</p>
 						</div>
 						<div class="info_item">
 							<i class="lnr lnr-envelope"></i>
-							<h6><a href="#">support@colorlib.com</a></h6>
-							<p>Send us your query anytime!</p>
+							<h6><a href="#">Duan1nhom9t@gmail.com</a></h6>
+							<p>Gửi cho chúng tôi những vấn đề của bạn bất cứ lúc nào</p>
 						</div>
 					</div>
 				</div>
@@ -51,22 +52,22 @@ include("./include/nav.php");
 					<form class="row contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
 						<div class="col-md-6">
 							<div class="form-group">
-								<input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'">
+								<input type="text" class="form-control" id="name" name="name" placeholder="Nhập tên" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'">
 							</div>
 							<div class="form-group">
-								<input type="email" class="form-control" id="email" name="email" placeholder="Enter email address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'">
+								<input type="email" class="form-control" id="email" name="email" placeholder="Nhập Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'">
 							</div>
 							<div class="form-group">
-								<input type="text" class="form-control" id="subject" name="subject" placeholder="Enter Subject" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Subject'">
+								<input type="text" class="form-control" id="subject" name="subject" placeholder="Nhập Chủ đề" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Subject'">
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
-								<textarea class="form-control" name="message" id="message" rows="1" placeholder="Enter Message" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Message'"></textarea>
+								<textarea class="form-control" name="message" id="message" rows="1" placeholder="Nhập Lời nhắn" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Message'"></textarea>
 							</div>
 						</div>
 						<div class="col-md-12 text-right">
-							<button type="submit" value="submit" class="primary-btn">Send Message</button>
+							<button type="submit" value="submit" class="primary-btn">Gửi</button>
 						</div>
 					</form>
 				</div>
