@@ -5,7 +5,7 @@
 	<!-- Mobile Specific Meta -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<!-- Favicon-->
-	<link rel="shortcut icon" href="img/fav.png">
+	<link rel="shortcut icon" href="./content/img/fav.png">
 	<!-- Author Meta -->
 	<meta name="author" content="CodePixar">
 	<!-- Meta Description -->
@@ -30,6 +30,7 @@
 	<link rel="stylesheet" href="content/css/ion.rangeSlider.skinFlat.css" />
 	<link rel="stylesheet" href="content/css/magnific-popup.css">
 	<link rel="stylesheet" href="content/css/main.css">
+	<link rel="stylesheet" href="content/css/add.css">
 </head>
 
 <body>
@@ -44,6 +45,9 @@
 		case "home":
 			include 'site/index.php';
 			break;
+			case "user":
+				include 'site/user.php';
+				break;
 		case 'blog':
 			include 'site/blog.php';
 			break;
@@ -69,7 +73,7 @@
 			include 'site/login.php';
 			break;
 		case 'tracking':
-			include 'tracking.php';
+			include 'site/tracking.php';
 			break;
 		case 'elements':
 			include 'site/elements.php';
@@ -103,5 +107,11 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
 <script src="./content/js/gmaps.min.js"></script>
 <script src="./content/js/main.js"></script>
+<script>
+    $(document).ready(function () {
+      $('#dataTable').DataTable(); // ID From dataTable 
+      $('#dataTableHover').DataTable(); // ID From dataTable with Hover
+    });
+  </script>
 
 </html>

@@ -1,0 +1,21 @@
+.avarta{
+    width: 40%;
+    margin: 2%;
+    background-color: aqua;
+}
+.avarta img{
+    width: 100%;
+}
+
+
+.row-2{
+    width: 70%;
+    margin-left: 5%;
+}
+.container-1{
+padding: 10px;
+display: flex;
+}
+.main-nav-list button{
+    margin-bottom: 2%;
+}
