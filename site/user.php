@@ -61,10 +61,13 @@
                         <li class="main-nav-list"><a data-toggle="collapse" href="#officeProduct" aria-expanded="false" aria-controls="officeProduct"><span class="lnr lnr-arrow-right"></span>Gmail<span class="number" style="color: black; font-style: italic;">Thangnhpc06404@fpt.edu.vn</span></a></li>
                         <!-- Nút Cập nhật sử dụng Bootstrap -->
                         <li class="main-nav-list" style="margin-bottom: 2%">
+                        <a href="index.php?act=updata">
                             <button class="btn btn-primary">Cập nhật thông tin</button>
+                            </a>
                         </li>
                         <li class="main-nav-list">
-                            <button class="btn btn-primary">Đăng xuất</button>
+                            <a href="index.php?act=logout">
+                            <button class="btn btn-primary">Đăng xuất</button></a>
                         </li>
 
 
@@ -76,6 +79,7 @@
         </div>
         <div class="row-2">
             <!-- Datatables -->
+            
             <div class="col-lg-18">
                 <div class="card mb-4">
                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
