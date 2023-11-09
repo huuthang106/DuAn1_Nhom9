@@ -1,36 +1,35 @@
-
 <body>
 
     <!-- Start Header Area -->
     <header class="header_area sticky-header">
-		<div class="main_menu">
-			<nav class="navbar navbar-expand-lg navbar-light main_box">
-				<div class="container">
-					<!-- Brand and toggle get grouped for better mobile display -->
-					<a class="navbar-brand logo_h" href="index.php?act=home"><img src="./content/img/logo.png" alt=""></a>
-					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<!-- Collect the nav links, forms, and other content for toggling -->
-					<?php
-					include("./include/nav.php");
-					?>
-				</div>
-			</nav>
-		</div>
-		<div class="search_input" id="search_input_box">
-			<div class="container">
-				<form class="d-flex justify-content-between">
-					<input type="text" class="form-control" id="search_input" placeholder="Search Here">
-					<button type="submit" class="btn"></button>
-					<span class="lnr lnr-cross" id="close_search" title="Close Search"></span>
-				</form>
-			</div>
-		</div>
-	</header>
-	<!-- End Header Area -->
+        <div class="main_menu">
+            <nav class="navbar navbar-expand-lg navbar-light main_box">
+                <div class="container">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <a class="navbar-brand logo_h" href="index.php?act=home"><img src="./content/img/logo.png" alt=""></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <?php
+                    include("./include/nav.php");
+                    ?>
+                </div>
+            </nav>
+        </div>
+        <div class="search_input" id="search_input_box">
+            <div class="container">
+                <form class="d-flex justify-content-between">
+                    <input type="text" class="form-control" id="search_input" placeholder="Search Here">
+                    <button type="submit" class="btn"></button>
+                    <span class="lnr lnr-cross" id="close_search" title="Close Search"></span>
+                </form>
+            </div>
+        </div>
+    </header>
+    <!-- End Header Area -->
 
     <!-- Start Banner Area -->
     <section class="banner-area organic-breadcrumb">
@@ -51,8 +50,8 @@
     <!--================Checkout Area =================-->
     <section class="checkout_area section_gap">
         <div class="container">
-            
-           
+
+
             <div class="billing_details">
                 <div class="row">
                     <div class="col-lg-8">
@@ -62,8 +61,8 @@
                                 <input type="text" class="form-control" id="first" name="name">
                                 <span class="placeholder" data-placeholder="Họ và tên"></span>
                             </div>
-                          
-                           
+
+
                             <div class="col-md-6 form-group p_star">
                                 <input type="text" class="form-control" id="number" name="number">
                                 <span class="placeholder" data-placeholder="Số điện thoại"></span>
@@ -72,17 +71,17 @@
                                 <input type="text" class="form-control" id="email" name="compemailany">
                                 <span class="placeholder" data-placeholder="Email "></span>
                             </div>
-                            
+
                             <div class="col-md-12 form-group p_star">
                                 <input type="text" class="form-control" id="add1" name="add1">
                                 <span class="placeholder" data-placeholder="Địa chỉ"></span>
                             </div>
-                            
-                           
-                        
-                         
+
+
+
+
                             <div class="col-md-12 form-group">
-                               
+
                                 <textarea class="form-control" name="message" id="message" rows="1" placeholder="Ghi chú"></textarea>
                             </div>
                         </form>
@@ -97,7 +96,7 @@
                                 <li><a href="#">Táo <span class="middle">x 02</span> <span class="last">$720.00</span></a></li>
                             </ul>
                             <ul class="list list_2">
-                                <li><a href="#">Tạm tính  <span>$2160.00</span></a></li>
+                                <li><a href="#">Tạm tính <span>$2160.00</span></a></li>
                                 <li><a href="#">Giao hàng <span> $50.00</span></a></li>
                                 <li><a href="#">tổng <span>$2210.00</span></a></li>
                             </ul>
@@ -116,9 +115,25 @@
                                     <img src="img/product/card.jpg" alt="">
                                     <div class="check"></div>
                                 </div>
-                                
+
                             </div>
-                           
+                            <div id="popup" class="popup">
+                                <div class="popup-content">
+                                    <!-- Nội dung thông tin thanh toán sẽ hiển thị ở đây -->
+                                    <h4>Vietcombank</h4>
+                                    <h4>06404- NHOMCHIN</h4>
+                                    <p>Tin nhắn chuyển khoảng: <br>
+                                    <span>Thanh toán mã đơn 01</span>
+                                       </p>
+                                    
+                                    <!-- Đặt thêm các phần tử HTML khác theo nhu cầu của bạn -->
+                                   
+
+                                    <h2>Số tiền cần chuyển: $149.99</h2>
+                                    
+                                </div>
+                            </div>
+
                             <a class="primary-btn" href="#">Thanh toán</a>
                         </div>
                     </div>
@@ -130,11 +145,10 @@
 
     <!-- start footer Area -->
     <?php
-	include("./include/footer.php");
-	?>
+    include("./include/footer.php");
+    ?>
     <!-- End footer Area -->
 
 
- 
-</body>
 
+</body>

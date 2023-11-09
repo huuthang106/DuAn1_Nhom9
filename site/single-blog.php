@@ -452,7 +452,7 @@
 
     <!-- start footer Area -->
     <?php
-        include("./site/footer.php");
+        include("./include/footer.php");
     ?>
     <!-- End footer Area -->
 
