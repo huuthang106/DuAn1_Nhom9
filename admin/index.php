@@ -48,18 +48,31 @@
 		case 'bills':
 			include 'bills.php';
 			break;
+		case 'add_products':
+			include 'add_products.php';
+			break;
+		case 'add_blogs':
+			include 'add_blogs.php';
+			break;
 		case "logout":
 			unset($_SESSION['user_id']);
 			header("location: index.php");
 			break;
 	}
 	?>
+	<!-- <a class="scroll-to-top rounded" href="#page-top">
+		<i class="fas fa-angle-up"></i>
+	</a> -->
 <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
   <script src="js/ruang-admin.min.js"></script>
   <script src="vendor/chart.js/Chart.min.js"></script>
   <script src="js/demo/chart-area-demo.js"></script>
+  <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+<!-- Page level custom scripts -->
   <script>
     $(document).ready(function () {
       $('#dataTable').DataTable(); // ID From dataTable 

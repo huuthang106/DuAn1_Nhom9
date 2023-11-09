@@ -9,20 +9,31 @@
         <!-- Container Fluid-->
         <div class="container-fluid" id="container-wrapper">
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Simple Tables</h1>
+            <h1 class="h3 mb-0 text-gray-800">Quản lý loại sản phẩm</h1>
             <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="./">Home</a></li>
-              <li class="breadcrumb-item">Tables</li>
-              <li class="breadcrumb-item active" aria-current="page">Simple Tables</li>
+              <li class="breadcrumb-item"><a href="index.php?act=home">Trang chủ</a></li>
+              <li class="breadcrumb-item">Quản lý</li>
+              <li class="breadcrumb-item active" aria-current="page">Loại sản phẩm</li>
             </ol>
           </div>
-
+          <div>
+          <form action="category.php" method="post">
+              <h5 class="information mt-4">Thêm loại sản phẩm</h5>
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="form-group">
+                  <input required class="form-control" type="text" name="name"  placeholder="Loại sản phẩm"> </div>
+                  </div>
+                </div>                
+              <div class=" d-flex flex-column text-center px-5 mt-3 mb-3"> </div> <button type="submit" class="btn btn-primary btn-block confirm-button">Thêm mới</button>
+           </form> <br>
+          </div>
           <div class="row">
             <div class="col-lg-12 mb-4">
               <!-- Simple Tables -->
               <div class="card">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Simple Tables</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Bảng loại sản phẩm</h6>
                 </div>
                 <div class="table-responsive">
                   <table class="table align-items-center table-flush">

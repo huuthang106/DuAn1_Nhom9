@@ -30,6 +30,8 @@
                         <a class="collapse-item" href="../admin/index.php?act=comments">Quản lý bình luận</a>
                         <a class="collapse-item" href="../admin/index.php?act=bills">Quản lý đơn hàng</a>
                         <a class="collapse-item" href="../admin/index.php?act=blogs">Quản lý bài viết</a>
+                        <a class="collapse-item" href="../admin/index.php?act=add_products">Thêm sản phẩm</a>
+                        <a class="collapse-item" href="../admin/index.php?act=add_blogs">Thêm bài viết</a> 
                     </div>
                 </div>
             </li>
