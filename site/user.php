@@ -1,6 +1,3 @@
-<?php
-$_SESSION['user_id'] = 1;
-?>
 <body>
     <!-- Start Header Area -->
     <header class="header_area sticky-header">
@@ -51,27 +48,27 @@ $_SESSION['user_id'] = 1;
     <div class="container-1">
         <div class="row" style="margin-left: 2%;">
             <div class="col-xl-13 ">
-            <?php
-                    $user = new users();
-                    $user_id = $_SESSION['user_id'];
-                    foreach ($user->get_user_id($user_id) as $key) {
-                        extract($key);
-                        $updata = "index.php?act=updata&user_id=".$user_id;
-                        echo '
+                <?php
+                $user = new users();
+                $user_id = $_SESSION['user_id'];
+                foreach ($user->get_user_id($user_id) as $key) {
+                    extract($key);
+                    $updata = "index.php?act=updata&user_id=" . $user_id;
+                    echo '
                         <div class="sidebar-categories">
                         <div class="head">Thông tin</div>
                         <ul class="main-categories">
                             <li class="main-nav-list"><a data-toggle="collapse" href="#officeProduct" aria-expanded="false" aria-controls="officeProduct">
-                                    <div class="avarta"><img src="../content/img/'.$avarta.'" alt=""></div>
+                                    <div class="avarta"><img src="../content/img/' . $avarta . '" alt=""></div>
                                 </a></li>
     
-                            <li class="main-nav-list"><a data-toggle="collapse" href="#officeProduct" aria-expanded="false" aria-controls="officeProduct"><span class="lnr lnr-arrow-right"></span>Tên<span class="number" style="color: black; font-style: italic;">'.$username.'</span></a></li>
-                            <li class="main-nav-list"><a data-toggle="collapse" href="#officeProduct" aria-expanded="false" aria-controls="officeProduct"><span class="lnr lnr-arrow-right"></span>Địa chỉ<span class="number" style="color: black; font-style: italic;">'.$address.'</span></a></li>
-                            <li class="main-nav-list"><a data-toggle="collapse" href="#officeProduct" aria-expanded="false" aria-controls="officeProduct"><span class="lnr lnr-arrow-right"></span>Điện thoại<span class="number" style="color: black; font-style: italic;">0'.$phone.'</span></a></li>
-                            <li class="main-nav-list"><a data-toggle="collapse" href="#officeProduct" aria-expanded="false" aria-controls="officeProduct"><span class="lnr lnr-arrow-right"></span>Gmail<span class="number" style="color: black; font-style: italic;">'.$email.'</span></a></li>
+                            <li class="main-nav-list"><a data-toggle="collapse" href="#officeProduct" aria-expanded="false" aria-controls="officeProduct"><span class="lnr lnr-arrow-right"></span>Tên<span class="number" style="color: black; font-style: italic;">' . $username . '</span></a></li>
+                            <li class="main-nav-list"><a data-toggle="collapse" href="#officeProduct" aria-expanded="false" aria-controls="officeProduct"><span class="lnr lnr-arrow-right"></span>Địa chỉ<span class="number" style="color: black; font-style: italic;">' . $address . '</span></a></li>
+                            <li class="main-nav-list"><a data-toggle="collapse" href="#officeProduct" aria-expanded="false" aria-controls="officeProduct"><span class="lnr lnr-arrow-right"></span>Điện thoại<span class="number" style="color: black; font-style: italic;">0' . $phone . '</span></a></li>
+                            <li class="main-nav-list"><a data-toggle="collapse" href="#officeProduct" aria-expanded="false" aria-controls="officeProduct"><span class="lnr lnr-arrow-right"></span>Gmail<span class="number" style="color: black; font-style: italic;">' . $email . '</span></a></li>
                             <!-- Nút Cập nhật sử dụng Bootstrap -->
                             <li class="main-nav-list" style="margin-bottom: 2%">
-                            <a href="'.$updata.'">
+                            <a href="' . $updata . '">
                                 <button class="btn btn-primary">Cập nhật thông tin</button>
                                 </a>
                             </li>
@@ -84,17 +81,17 @@ $_SESSION['user_id'] = 1;
                         </ul>
                     </div>
                                 ';
-                    }
+                }
 
-                    ?>
-               
+                ?>
+
 
             </div>
 
         </div>
         <div class="row-2">
             <!-- Datatables -->
-            
+
             <div class="col-lg-18">
                 <div class="card mb-4">
                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -104,113 +101,42 @@ $_SESSION['user_id'] = 1;
                         <table class="table align-items-center table-flush" id="dataTable">
                             <thead class="thead-light">
                                 <tr>
-                                    <th>Name</th>
-                                    <th>Position</th>
-                                    <th>Office</th>
-                                    <th>Age</th>
-                                    <th>Start date</th>
-                                    <th>Salary</th>
+                                    <th>Mã đơn </th>
+                                    <th>Chi tiết</th>
+
                                 </tr>
                             </thead>
                             <tfoot>
                                 <tr>
-                                    <th>Name</th>
-                                    <th>Position</th>
-                                    <th>Office</th>
-                                    <th>Age</th>
-                                    <th>Start date</th>
-                                    <th>Salary</th>
+                                    <th>Mã đơn </th>
+                                    <th>Chi tiết</th>
                                 </tr>
                             </tfoot>
                             <tbody>
-                                <tr>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>Edinburgh</td>
-                                    <td>61</td>
-                                    <td>2011/04/25</td>
-                                    <td>$320,800</td>
-                                </tr>
-                                <tr>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>Edinburgh</td>
-                                    <td>61</td>
-                                    <td>2011/04/25</td>
-                                    <td>$320,800</td>
-                                </tr>
-                                <tr>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>Edinburgh</td>
-                                    <td>61</td>
-                                    <td>2011/04/25</td>
-                                    <td>$320,800</td>
-                                </tr>
-                                <tr>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>Edinburgh</td>
-                                    <td>61</td>
-                                    <td>2011/04/25</td>
-                                    <td>$320,800</td>
-                                </tr>
-                                <tr>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>Edinburgh</td>
-                                    <td>61</td>
-                                    <td>2011/04/25</td>
-                                    <td>$320,800</td>
-                                </tr>
-                                <tr>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>Edinburgh</td>
-                                    <td>61</td>
-                                    <td>2011/04/25</td>
-                                    <td>$320,800</td>
-                                </tr>
-                                <tr>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>Edinburgh</td>
-                                    <td>61</td>
-                                    <td>2011/04/25</td>
-                                    <td>$320,800</td>
-                                </tr>
-                                <tr>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>Edinburgh</td>
-                                    <td>61</td>
-                                    <td>2011/04/25</td>
-                                    <td>$320,800</td>
-                                </tr>
-                                <tr>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>Edinburgh</td>
-                                    <td>61</td>
-                                    <td>2011/04/25</td>
-                                    <td>$320,800</td>
-                                </tr>
-                                <tr>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>Edinburgh</td>
-                                    <td>61</td>
-                                    <td>2011/04/25</td>
-                                    <td>$320,800</td>
-                                </tr>
-                                <tr>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>Edinburgh</td>
-                                    <td>61</td>
-                                    <td>2011/04/25</td>
-                                    <td>$320,800</td>
-                                </tr>
+
+                                <?php
+                                $bill = new bills();
+                                $select = $bill->get_bill_user_id($user_id);
+
+                                if ($select !== false) {
+                                    foreach ($select as $key) {
+                                        // Xử lý dữ liệu ở đây
+                                        extract($key);
+                                    $bill_detail = 'index.php?act=';
+                                    echo '
+                                        <tr>
+                                        <td>' . $bill_id . '</td>
+                                        <td><a href="#">
+                                        <button class="btn btn-primary">Xem</button></a></td>
+                                        
+                                    </tr>
+                                        ';
+                                    }
+                                }
+                                
+                                ?>
+
+
 
                             </tbody>
                         </table>
@@ -221,12 +147,12 @@ $_SESSION['user_id'] = 1;
 
         </div>
     </div>
-  
+
 
     <?php
     include("./include/footer.php");
     ?>
-  
+
 
 
 </body>
