@@ -121,7 +121,7 @@
 								$size = $product['size'];
 								$price = $product['price'];
 								$content = $product['content'];
-
+								$single_product = "index.php?act=single-product&product_id=".$product_id;
 								echo'
 								<div class="col-lg-4 col-md-6">
 								<div class="single-product">
@@ -143,7 +143,7 @@
 												<p class="hover-text">Yêu thích</p>
 											</a>
 											
-											<a href="index.php?act=single-product" class="social-info">
+											<a href="'.$single_product.'" class="social-info">
 												<span class="lnr lnr-move"></span>
 												<p class="hover-text">Chi tiết</p>
 											</a>

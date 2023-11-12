@@ -1,5 +1,3 @@
-
-
 <body>
 
 	<!-- Start Header Area -->
@@ -51,49 +49,58 @@
 	<!-- End Banner Area -->
 
 	<!--================Single Product Area =================-->
-	<div class="product_image_area">
-		<div class="container">
-			<div class="row s_product_inner">
-				<div class="col-lg-6">
-					<div class="s_Product_carousel">
-						<div class="single-prd-item">
-							<img class="img-fluid" src="./content/img/category/s-p1.jpg" alt="">
-						</div>
-						<div class="single-prd-item">
-							<img class="img-fluid" src="./content/img/category/s-p1.jpg" alt="">
-						</div>
-						<div class="single-prd-item">
-							<img class="img-fluid" src="./content/img/category/s-p1.jpg" alt="">
-						</div>
+	<?php
+	if (isset($_GET["product_id"])) {
+		# code...
+
+		$product = new products();
+		$product_id = $_GET['product_id'];
+		foreach ($product->get_product_id($product_id) as $key) {
+			# code...
+			extract($key);
+			echo '<div class="product_image_area">
+			<div class="container">
+				<div class="row s_product_inner">
+					<div class="col-lg-6">
+						
+						
+								<img class="img-fluid" src="./content/img/product/' . $picture . '" alt="">
+							
+							
+						
 					</div>
-				</div>
-				<div class="col-lg-5 offset-lg-1">
-					<div class="s_product_text">
-						<h3>Faded SkyBlu Denim Jeans</h3>
-						<h2>$149.99</h2>
-						<ul class="list">
-							<li><a class="active" href="#"><span>Loại</span> : Giày</a></li>
-							<li><a href="#"><span>Tồn kho</span> : 20</a></li>
-						</ul>
-						<p>Mill Oil là bộ tản nhiệt chứa đầy dầu cải tiến với công nghệ hiện đại nhất. Nếu bạn đang tìm kiếm thứ gì đó có thể làm cho nội thất của bạn trông tuyệt vời, đồng thời mang lại cho bạn cảm giác ấm áp dễ chịu trong mùa đông.</p>
-						<div class="product_count">
-							<label for="qty">Số lượng:</label>
-							<input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:" class="input-text qty">
-							<button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
-							 class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
-							<button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
-							 class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
-						</div>
-						<div class="card_area d-flex align-items-center">
-							<a class="primary-btn" href="#">Thêm vào giỏ hàng</a>
-							<a class="icon_btn" href="#"><i class="lnr lnr lnr-diamond"></i></a>
-							<a class="icon_btn" href="#"><i class="lnr lnr lnr-heart"></i></a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+					<div class="col-lg-5 offset-lg-1">
+						<div class="s_product_text">
+							<h3>'.$name.'</h3>
+							<h2>'.$price.'</h2>
+							<ul class="list">
+								<li><a class="active" href="#"><span>Loại</span> : Giày</a></li>
+								
+							</ul>
+							<p>'.$content.'</p>
+							';
+		}
+	}
+
+	?>
+	<div class="product_count">
+		<label for="qty">Số lượng:</label>
+		<input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:" class="input-text qty">
+		<button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;" class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
+		<button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;" class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
 	</div>
+	<div class="card_area d-flex align-items-center">
+		<a class="primary-btn" href="#">Thêm vào giỏ hàng</a>
+		<a class="icon_btn" href="#"><i class="lnr lnr lnr-diamond"></i></a>
+		<a class="icon_btn" href="#"><i class="lnr lnr lnr-heart"></i></a>
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+
+
 	<!--================End Single Product Area =================-->
 
 	<!--================Product Description Area =================-->
@@ -108,12 +115,10 @@
 					 aria-selected="false">Specification</a>
 				</li> -->
 				<li class="nav-item">
-					<a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact"
-					 aria-selected="false">Bình luận</a>
+					<a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Bình luận</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link active" id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review"
-					 aria-selected="false">Đánh giá</a>
+					<a class="nav-link active" id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review" aria-selected="false">Đánh giá</a>
 				</li>
 			</ul>
 			<div class="tab-content" id="myTabContent">
@@ -221,10 +226,10 @@
 											<a class="reply_btn" href="#">Reply</a>
 										</div>
 									</div>
-									<p>Điều quan trọng là phải tự chăm sóc nỗi đau, 
-										sau đó là sự trưởng thành của bệnh nhân, 
+									<p>Điều quan trọng là phải tự chăm sóc nỗi đau,
+										sau đó là sự trưởng thành của bệnh nhân,
 										nhưng đồng thời cũng sẽ có rất nhiều công việc và nỗi đau. Để đi đến từng chi tiết nhỏ nhất,
-										 không ai nên thực hiện bất kỳ loại công việc nào ngoại trừ việc thu được lợi ích nào đó từ nó.</p>
+										không ai nên thực hiện bất kỳ loại công việc nào ngoại trừ việc thu được lợi ích nào đó từ nó.</p>
 								</div>
 								<div class="review_item reply">
 									<div class="media">
@@ -237,10 +242,10 @@
 											<a class="reply_btn" href="#">Reply</a>
 										</div>
 									</div>
-									<p>Điều quan trọng là phải tự chăm sóc nỗi đau, 
-										sau đó là sự trưởng thành của bệnh nhân, 
+									<p>Điều quan trọng là phải tự chăm sóc nỗi đau,
+										sau đó là sự trưởng thành của bệnh nhân,
 										nhưng đồng thời cũng sẽ có rất nhiều công việc và nỗi đau. Để đi đến từng chi tiết nhỏ nhất,
-										 không ai nên thực hiện bất kỳ loại công việc nào ngoại trừ việc thu được lợi ích nào đó từ nó.</p>
+										không ai nên thực hiện bất kỳ loại công việc nào ngoại trừ việc thu được lợi ích nào đó từ nó.</p>
 								</div>
 								<div class="review_item">
 									<div class="media">
@@ -253,10 +258,10 @@
 											<a class="reply_btn" href="#">Reply</a>
 										</div>
 									</div>
-									<p>Điều quan trọng là phải tự chăm sóc nỗi đau, 
-										sau đó là sự trưởng thành của bệnh nhân, 
+									<p>Điều quan trọng là phải tự chăm sóc nỗi đau,
+										sau đó là sự trưởng thành của bệnh nhân,
 										nhưng đồng thời cũng sẽ có rất nhiều công việc và nỗi đau. Để đi đến từng chi tiết nhỏ nhất,
-										 không ai nên thực hiện bất kỳ loại công việc nào ngoại trừ việc thu được lợi ích nào đó từ nó.</p>
+										không ai nên thực hiện bất kỳ loại công việc nào ngoại trừ việc thu được lợi ích nào đó từ nó.</p>
 								</div>
 							</div>
 						</div>
@@ -307,16 +312,11 @@
 									<div class="rating_list">
 										<h3>Dựa trên 3 đánh giá</h3>
 										<ul class="list">
-											<li><a href="#">5 Sao <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-													 class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
-											<li><a href="#">4 Sao <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-													 class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
-											<li><a href="#">3 Sao <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-													 class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
-											<li><a href="#">2 Sao <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-													 class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
-											<li><a href="#">1 Sao <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-													 class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
+											<li><a href="#">5 Sao <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
+											<li><a href="#">4 Sao <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
+											<li><a href="#">3 Sao <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
+											<li><a href="#">2 Sao <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
+											<li><a href="#">1 Sao <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
 										</ul>
 									</div>
 								</div>
@@ -336,8 +336,8 @@
 											<i class="fa fa-star"></i>
 										</div>
 									</div>
-									<p>Điều quan trọng là phải tự chăm sóc nỗi đau, sau đó là sự trưởng thành của bệnh nhân, 
-										nhưng đồng thời cũng sẽ có rất nhiều công việc và nỗi đau. Để đi đến từng chi tiết nhỏ nhất, 
+									<p>Điều quan trọng là phải tự chăm sóc nỗi đau, sau đó là sự trưởng thành của bệnh nhân,
+										nhưng đồng thời cũng sẽ có rất nhiều công việc và nỗi đau. Để đi đến từng chi tiết nhỏ nhất,
 										không ai nên thực hiện bất kỳ loại công việc nào ngoại trừ việc thu được lợi ích nào đó từ nó.</p>
 								</div>
 								<div class="review_item">
@@ -354,9 +354,9 @@
 											<i class="fa fa-star"></i>
 										</div>
 									</div>
-									<p>Điều quan trọng là phải tự chăm sóc nỗi đau, 
-										sau đó là sự trưởng thành của bệnh nhân, nhưng đồng thời cũng sẽ có rất nhiều công việc và nỗi đau. 
-										Để đi đến từng chi tiết nhỏ nhất, 
+									<p>Điều quan trọng là phải tự chăm sóc nỗi đau,
+										sau đó là sự trưởng thành của bệnh nhân, nhưng đồng thời cũng sẽ có rất nhiều công việc và nỗi đau.
+										Để đi đến từng chi tiết nhỏ nhất,
 										không ai nên thực hiện bất kỳ loại công việc nào ngoại trừ việc thu được lợi ích nào đó từ nó.</p>
 								</div>
 								<div class="review_item">
@@ -373,9 +373,9 @@
 											<i class="fa fa-star"></i>
 										</div>
 									</div>
-									<p>Điều quan trọng là phải tự chăm sóc nỗi đau, 
+									<p>Điều quan trọng là phải tự chăm sóc nỗi đau,
 										sau đó là sự trưởng thành của bệnh nhân,
-										 nhưng đồng thời cũng sẽ có rất nhiều công việc và nỗi đau. Để đi đến từng chi tiết nhỏ nhất, 
+										nhưng đồng thời cũng sẽ có rất nhiều công việc và nỗi đau. Để đi đến từng chi tiết nhỏ nhất,
 										không ai nên thực hiện bất kỳ loại công việc nào ngoại trừ việc thu được lợi ích nào đó từ nó.</p>
 								</div>
 							</div>
@@ -464,7 +464,7 @@
 								</div>
 							</div>
 						</div>
-						
+
 						<div class="col-lg-4 col-md-4 col-sm-6">
 							<div class="single-related-product d-flex">
 								<a href="#"><img src="./content/img/r11.jpg" alt=""></a>
@@ -500,4 +500,3 @@
 
 
 </body>
-
