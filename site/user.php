@@ -1,3 +1,6 @@
+<?php
+$_SESSION['user_id'] = 1;
+?>
 <body>
     <!-- Start Header Area -->
     <header class="header_area sticky-header">
@@ -48,31 +51,43 @@
     <div class="container-1">
         <div class="row" style="margin-left: 2%;">
             <div class="col-xl-13 ">
-                <div class="sidebar-categories">
-                    <div class="head">Thông tin</div>
-                    <ul class="main-categories">
-                        <li class="main-nav-list"><a data-toggle="collapse" href="#officeProduct" aria-expanded="false" aria-controls="officeProduct">
-                                <div class="avarta"><img src="../content/img/i1.jpg" alt=""></div>
-                            </a></li>
+            <?php
+                    $user = new users();
+                    $user_id = $_SESSION['user_id'];
+                    foreach ($user->get_user_id($user_id) as $key) {
+                        extract($key);
+                        $updata = "index.php?act=updata&user_id=".$user_id;
+                        echo '
+                        <div class="sidebar-categories">
+                        <div class="head">Thông tin</div>
+                        <ul class="main-categories">
+                            <li class="main-nav-list"><a data-toggle="collapse" href="#officeProduct" aria-expanded="false" aria-controls="officeProduct">
+                                    <div class="avarta"><img src="../content/img/'.$avarta.'" alt=""></div>
+                                </a></li>
+    
+                            <li class="main-nav-list"><a data-toggle="collapse" href="#officeProduct" aria-expanded="false" aria-controls="officeProduct"><span class="lnr lnr-arrow-right"></span>Tên<span class="number" style="color: black; font-style: italic;">'.$username.'</span></a></li>
+                            <li class="main-nav-list"><a data-toggle="collapse" href="#officeProduct" aria-expanded="false" aria-controls="officeProduct"><span class="lnr lnr-arrow-right"></span>Địa chỉ<span class="number" style="color: black; font-style: italic;">'.$address.'</span></a></li>
+                            <li class="main-nav-list"><a data-toggle="collapse" href="#officeProduct" aria-expanded="false" aria-controls="officeProduct"><span class="lnr lnr-arrow-right"></span>Điện thoại<span class="number" style="color: black; font-style: italic;">0'.$phone.'</span></a></li>
+                            <li class="main-nav-list"><a data-toggle="collapse" href="#officeProduct" aria-expanded="false" aria-controls="officeProduct"><span class="lnr lnr-arrow-right"></span>Gmail<span class="number" style="color: black; font-style: italic;">'.$email.'</span></a></li>
+                            <!-- Nút Cập nhật sử dụng Bootstrap -->
+                            <li class="main-nav-list" style="margin-bottom: 2%">
+                            <a href="'.$updata.'">
+                                <button class="btn btn-primary">Cập nhật thông tin</button>
+                                </a>
+                            </li>
+                            <li class="main-nav-list">
+                                <a href="index.php?act=logout">
+                                <button class="btn btn-primary">Đăng xuất</button></a>
+                            </li>
+    
+    
+                        </ul>
+                    </div>
+                                ';
+                    }
 
-                        <li class="main-nav-list"><a data-toggle="collapse" href="#officeProduct" aria-expanded="false" aria-controls="officeProduct"><span class="lnr lnr-arrow-right"></span>Tên<span class="number" style="color: black; font-style: italic;">Nguyễn Hữu Thắng</span></a></li>
-                        <li class="main-nav-list"><a data-toggle="collapse" href="#officeProduct" aria-expanded="false" aria-controls="officeProduct"><span class="lnr lnr-arrow-right"></span>Địa chỉ<span class="number" style="color: black; font-style: italic;">An Giang</span></a></li>
-                        <li class="main-nav-list"><a data-toggle="collapse" href="#officeProduct" aria-expanded="false" aria-controls="officeProduct"><span class="lnr lnr-arrow-right"></span>Điện thoại<span class="number" style="color: black; font-style: italic;">0384975832</span></a></li>
-                        <li class="main-nav-list"><a data-toggle="collapse" href="#officeProduct" aria-expanded="false" aria-controls="officeProduct"><span class="lnr lnr-arrow-right"></span>Gmail<span class="number" style="color: black; font-style: italic;">Thangnhpc06404@fpt.edu.vn</span></a></li>
-                        <!-- Nút Cập nhật sử dụng Bootstrap -->
-                        <li class="main-nav-list" style="margin-bottom: 2%">
-                        <a href="index.php?act=updata">
-                            <button class="btn btn-primary">Cập nhật thông tin</button>
-                            </a>
-                        </li>
-                        <li class="main-nav-list">
-                            <a href="index.php?act=logout">
-                            <button class="btn btn-primary">Đăng xuất</button></a>
-                        </li>
-
-
-                    </ul>
-                </div>
+                    ?>
+               
 
             </div>
 
