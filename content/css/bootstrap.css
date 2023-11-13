@@ -39,7 +39,9 @@
 *,
 ::after,
 ::before {
-    box-sizing: border-box
+    box-sizing: border-box;
+   
+    
 }
 
 html {
@@ -511,7 +513,7 @@ mark {
 }
 
 .img-fluid {
-    max-width: 100%;
+    width: 100%;
     height: auto
 }
 

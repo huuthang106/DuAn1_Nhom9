@@ -13,6 +13,7 @@
 		.owl-nav {
 			position: absolute;
 			right: 0;
+			display: none;
 			bottom: -200px;
 			@media (max-width: 1920px) {
 				right: -115px;
