@@ -103,6 +103,7 @@
                                 <tr>
                                     <th>Mã đơn </th>
                                     <th>Chi tiết</th>
+                                    <th>Trạng thái</th>
 
                                 </tr>
                             </thead>
@@ -110,6 +111,7 @@
                                 <tr>
                                     <th>Mã đơn </th>
                                     <th>Chi tiết</th>
+                                    <th>Trạng thái</th>
                                 </tr>
                             </tfoot>
                             <tbody>
@@ -128,9 +130,21 @@
                                         <td>' . $bill_id . '</td>
                                         <td><a href="#">
                                         <button class="btn btn-primary">Xem</button></a></td>
-                                        
-                                    </tr>
+                                      
                                         ';
+                                        if ($status == 1) {
+                                            # code...
+                                            echo '
+                                            <td> Chưa duyệt </td>
+                                             </tr>
+                                    ';
+                                        }
+                                        else{
+                                            echo '
+                                            <td> đang vận chuyển </td>
+                                             </tr>
+                                    '; 
+                                        }
                                     }
                                 }
                                 
