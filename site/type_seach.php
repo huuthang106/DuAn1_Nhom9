@@ -1,32 +1,7 @@
-<!-- Start Header Area -->
-<header class="header_area sticky-header">
-		<div class="main_menu">
-			<nav class="navbar navbar-expand-lg navbar-light main_box">
-				<div class="container">
-					<!-- Brand and toggle get grouped for better mobile display -->
-					<a class="navbar-brand logo_h" href="index.php?act=home"><img src="./content/img/logo.png" alt=""></a>
-					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<!-- Collect the nav links, forms, and other content for toggling -->
-					<?php
-					include("./include/nav.php");
-					?>
-				</div>
-			</nav>
-		</div>
-		<div class="search_input" id="search_input_box">
-			<div class="container">
-				<form class="d-flex justify-content-between">
-					<input type="text" class="form-control" id="search_input" placeholder="Search Here">
-					<button type="submit" class="btn"></button>
-					<span class="lnr lnr-cross" id="close_search" title="Close Search"></span>
-				</form>
-			</div>
-		</div>
-	</header>
+<body>
+	<?php
+	include("./include/nav.php");
+	?>
 	<!-- End Header Area -->
 
 	<!-- Start Banner Area -->
@@ -38,7 +13,7 @@
 					<nav class="d-flex align-items-center">
 						<a href="index.html">Trang chủ<span class="lnr lnr-arrow-right"></span></a>
 						<a href="#">sản phẩm</a>
-						
+
 					</nav>
 				</div>
 			</div>
@@ -51,21 +26,21 @@
 				<div class="sidebar-categories">
 					<div class="head">Danh mục</div>
 					<ul class="main-categories">
-					
 
-						
-						
-						
+
+
+
+
 						<li class="main-nav-list"><a data-toggle="collapse" href="#officeProduct" aria-expanded="false" aria-controls="officeProduct"><span class="lnr lnr-arrow-right"></span>Áo<span class="number">(77)</span></a>
 							<ul class="collapse" id="officeProduct" data-toggle="collapse" aria-expanded="false" aria-controls="officeProduct">
 								<li class="main-nav-list child"><a href="#">Áo thun<span class="number">(13)</span></a></li>
 								<li class="main-nav-list child"><a href="#">Quần<span class="number">(09)</span></a></li>
 								<li class="main-nav-list child"><a href="#">Giày<span class="number">(17)</span></a></li>
-								
+
 							</ul>
 						</li>
-						
-						
+
+
 					</ul>
 				</div>
 				<!-- <div class="sidebar-filter mt-50">
@@ -119,13 +94,13 @@
 						<select>
 							<option value="1">Xu hướng</option>
 							<option value="1">Mới nhất</option>
-						
+
 						</select>
 					</div>
 					<div class="sorting mr-auto">
 						<select>
 							<option value="1">10</option>
-							
+
 						</select>
 					</div>
 					<div class="pagination">
@@ -142,8 +117,8 @@
 				<!-- Start Best Seller -->
 				<section class="lattest-product-area pb-40 category-list">
 					<div class="row">
-						
-						
+
+
 						<!-- single product -->
 						<div class="col-lg-4 col-md-6">
 							<div class="single-product">
@@ -164,7 +139,7 @@
 											<span class="lnr lnr-heart"></span>
 											<p class="hover-text">Yêu thích</p>
 										</a>
-										
+
 										<a href="index.php?act=single-product" class="social-info">
 											<span class="lnr lnr-move"></span>
 											<p class="hover-text">Chi tiết</p>
@@ -193,7 +168,7 @@
 											<span class="lnr lnr-heart"></span>
 											<p class="hover-text">Yêu thích</p>
 										</a>
-										
+
 										<a href="index.php?act=single-product" class="social-info">
 											<span class="lnr lnr-move"></span>
 											<p class="hover-text">Chi tiết</p>
@@ -208,9 +183,9 @@
 				<!-- Start Filter Bar -->
 				<div class="filter-bar d-flex flex-wrap align-items-center">
 					<div class="sorting mr-auto">
-					<select>
+						<select>
 							<option value="1">10</option>
-							
+
 						</select>
 					</div>
 					<div class="pagination">
@@ -278,7 +253,7 @@
 								</div>
 							</div>
 						</div>
-						
+
 					</div>
 				</div>
 				<div class="col-lg-3">
@@ -300,7 +275,3 @@
 	<!-- End footer Area -->
 
 	<!-- Modal Quick Product View -->
-	
-
-
-
