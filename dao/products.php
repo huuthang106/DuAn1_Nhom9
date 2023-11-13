@@ -17,7 +17,7 @@
                 return $result;
             }
             else{
-                echo"no data";
+                return false;
             }
         }
         public function products_pagination($page, $items_per_page)
@@ -37,6 +37,30 @@
     
         return array('products' => $result, 'total_products' => $total_products);
     }
+    public function get_product_id($product_id){
+        $db = new connect();
+        $select = 'SELECT * FROM products WHERE product_id=? ';
+        $result = $db->pdo_query($select,$product_id);
+        if($result){
+            return $result;
+
+        }else{
+            return false;
+        }
     }
-    
-?>
+    public function get_nine_product(){
+        $db = new connect();
+        $select = "SELECT * FROM products
+        ORDER BY RAND()
+        LIMIT 9";
+        $result = $db->pdo_query($select);
+        if($result){
+            return $result;
+        }
+        else{
+            return false;
+        }
+        
+    }
+
+    }
