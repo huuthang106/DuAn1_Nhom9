@@ -33,13 +33,16 @@
 	<link rel="stylesheet" href="content/css/main.css">
 	<link href="admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
-	
+
 
 </head>
 
 <body>
 	<?php
 	include("dao/pdo.php");
+	include("dao/bill.php");
+	include("dao/products.php");
+	include("dao/users.php");
 	$action = "home";
 	if (isset($_GET['act']))
 		$action = $_GET['act'];
@@ -57,6 +60,9 @@
 			break;
 		case 'category':
 			include 'site/category.php';
+			break;
+		case 'keyword':
+			include 'site/keyword_search.php';
 			break;
 		case 'single-product':
 			include 'site/single-product.php';
@@ -98,29 +104,29 @@
 		<i class="fas fa-angle-up"></i>
 	</a> -->
 
-</body>
-<script src="content/js/add.js"></script>
-<script src="content/js/vendor/jquery-2.2.4.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-<script src="content/js/vendor/bootstrap.min.js"></script>
-<script src="content/js/jquery.ajaxchimp.min.js"></script>
-<script src="content/js/jquery.nice-select.min.js"></script>
-<script src="content/js/jquery.sticky.js"></script>
-<script src="content/js/nouislider.min.js"></script>
-<script src="content/js/countdown.js"></script>
-<script src="content/js/jquery.magnific-popup.min.js"></script>
-<script src="content/js/owl.carousel.min.js"></script>
+</body><script src="./content/js/vendor/jquery-2.2.4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
+    integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous">
+</script>
+<script src="./content/js/vendor/bootstrap.min.js"></script>
+<script src="./content/js/jquery.ajaxchimp.min.js"></script>
+<script src="./content/js/jquery.nice-select.min.js"></script>
+<script src="./content/js/jquery.sticky.js"></script>
+<script src="./content/js/nouislider.min.js"></script>
+<script src="./content/js/countdown.js"></script>
+<script src="./content/js/jquery.magnific-popup.min.js"></script>
+<script src="./content/js/owl.carousel.min.js"></script>
 <!--gmaps Js-->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
 <script src="./content/js/gmaps.min.js"></script>
-<script src="content/js/main.js"></script>
+<script src="./content/js/main.js"></script>
 
 
-
-<!-- <script src="admin/vendor/jquery/jquery.min.js"></script> -->
-<!-- <script src="admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script> -->
-<!-- <script src="admin/vendor/jquery-easing/jquery.easing.min.js"></script> -->
-<!-- <script src="admin/js/ruang-admin.min.js"></script> -->
+<!-- 
+<script src="admin/vendor/jquery/jquery.min.js"></script>
+<script src="admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="admin/vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="admin/js/ruang-admin.min.js"></script> -->
 <!-- Page level plugins -->
 <script src="admin/vendor/datatables/jquery.dataTables.min.js"></script>
 <script src="admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
@@ -128,59 +134,57 @@
 <!-- Page level custom scripts -->
 <script>
 	$(document).ready(function() {
-    $('#dataTable').DataTable({
-        language: {
-            "sEmptyTable": "Không có dữ liệu trong bảng",
-            "sInfo": "Hiển thị từ _START_ đến _END_ của _TOTAL_ dòng",
-            "sInfoEmpty": "Hiển thị 0 đến 0 của 0 dòng",
-            "sInfoFiltered": "(được lọc từ tổng số _MAX_ dòng)",
-            "sInfoPostFix": "",
-            "sInfoThousands": ",",
-            "sLengthMenu": "Hiển thị _MENU_ dòng",
-            "sLoadingRecords": "Đang tải...",
-            "sProcessing": "Đang xử lý...",
-            "sSearch": "Tìm kiếm:",
-            "sZeroRecords": "Không tìm thấy dòng nào phù hợp",
-            "oPaginate": {
-                "sFirst": "«",
-                "sLast": "»",
-                "sNext": "›",
-                "sPrevious": "‹"
-            },
-            "oAria": {
-                "sSortAscending": ": Sắp xếp tăng dần",
-                "sSortDescending": ": Sắp xếp giảm dần"
-            }
-        }
-    }); // ID From dataTable 
-    $('#dataTableHover').DataTable({
-        language: {
-            "sEmptyTable": "Không có dữ liệu trong bảng",
-            "sInfo": "Hiển thị từ _START_ đến _END_ của _TOTAL_ dòng",
-            "sInfoEmpty": "Hiển thị 0 đến 0 của 0 dòng",
-            "sInfoFiltered": "(được lọc từ tổng số _MAX_ dòng)",
-            "sInfoPostFix": "",
-            "sInfoThousands": ",",
-            "sLengthMenu": "Hiển thị _MENU_ dòng",
-            "sLoadingRecords": "Đang tải...",
-            "sProcessing": "Đang xử lý...",
-            "sSearch": "Tìm kiếm:",
-            "sZeroRecords": "Không tìm thấy dòng nào phù hợp",
-            "oPaginate": {
-                "sFirst": "«",
-                "sLast": "»",
-                "sNext": "›",
-                "sPrevious": "‹"
-            },
-            "oAria": {
-                "sSortAscending": ": Sắp xếp tăng dần",
-                "sSortDescending": ": Sắp xếp giảm dần"
-            }
-        }
-    }); // ID From dataTable with Hover
-});
-
-
+		$('#dataTable').DataTable({
+			language: {
+				"sEmptyTable": "Không có dữ liệu trong bảng",
+				"sInfo": "Hiển thị từ _START_ đến _END_ của _TOTAL_ dòng",
+				"sInfoEmpty": "Hiển thị 0 đến 0 của 0 dòng",
+				"sInfoFiltered": "(được lọc từ tổng số _MAX_ dòng)",
+				"sInfoPostFix": "",
+				"sInfoThousands": ",",
+				"sLengthMenu": "Hiển thị _MENU_ dòng",
+				"sLoadingRecords": "Đang tải...",
+				"sProcessing": "Đang xử lý...",
+				"sSearch": "Tìm kiếm:",
+				"sZeroRecords": "Không tìm thấy dòng nào phù hợp",
+				"oPaginate": {
+					"sFirst": "«",
+					"sLast": "»",
+					"sNext": "›",
+					"sPrevious": "‹"
+				},
+				"oAria": {
+					"sSortAscending": ": Sắp xếp tăng dần",
+					"sSortDescending": ": Sắp xếp giảm dần"
+				}
+			}
+		}); // ID From dataTable 
+		$('#dataTableHover').DataTable({
+			language: {
+				"sEmptyTable": "Không có dữ liệu trong bảng",
+				"sInfo": "Hiển thị từ _START_ đến _END_ của _TOTAL_ dòng",
+				"sInfoEmpty": "Hiển thị 0 đến 0 của 0 dòng",
+				"sInfoFiltered": "(được lọc từ tổng số _MAX_ dòng)",
+				"sInfoPostFix": "",
+				"sInfoThousands": ",",
+				"sLengthMenu": "Hiển thị _MENU_ dòng",
+				"sLoadingRecords": "Đang tải...",
+				"sProcessing": "Đang xử lý...",
+				"sSearch": "Tìm kiếm:",
+				"sZeroRecords": "Không tìm thấy dòng nào phù hợp",
+				"oPaginate": {
+					"sFirst": "«",
+					"sLast": "»",
+					"sNext": "›",
+					"sPrevious": "‹"
+				},
+				"oAria": {
+					"sSortAscending": ": Sắp xếp tăng dần",
+					"sSortDescending": ": Sắp xếp giảm dần"
+				}
+			}
+		}); // ID From dataTable with Hover
+	});
 </script>
 
 
