@@ -1,3 +1,6 @@
+<?php
+     session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,18 +14,21 @@
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
   <link href="css/ruang-admin.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
 <?php
 	include("../dao/pdo.php");
-	$action = "home";
+	include("../dao/users.php");
+	$action = "login";
 	if (isset($_GET['act']))
 		$action = $_GET['act'];
 
 
 	switch ($action) {
-		case "home":
-			include 'home.php';
+		case "login":
+			include 'login.php';
 			break;
 		case 'categories':
 			include 'categories.php';
@@ -63,7 +69,9 @@
 	<!-- <a class="scroll-to-top rounded" href="#page-top">
 		<i class="fas fa-angle-up"></i>
 	</a> -->
+
 <script src="vendor/jquery/jquery.min.js"></script>
+<!-- <script src="js/script.js"></script> -->
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
   <script src="js/ruang-admin.min.js"></script>
