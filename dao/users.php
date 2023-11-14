@@ -34,7 +34,7 @@
         pdo_execute($sql,$username,$password,$email);
     }
     function check_user($username, $password){
-        $sql = "select user_id from users where username= '".$username."' and password='".$password."'";
+        $sql = "select user_id, role from users where username= '".$username."' and password='".$password."'";
         $sp=pdo_query_one($sql);
         return $sp;
     }
