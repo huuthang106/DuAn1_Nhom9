@@ -20,28 +20,29 @@
 
 
         }
-    function user_selectall(){
-        $sql =  "select * from users order by user_id DESC";
-        return pdo_query($sql);
-    }
-    function user_register($username, $password, $email){
-        $sql="insert into users(username, password, email) value(?, ?, ?)";
-        pdo_execute($sql,$username,$password,$email);
-    }
-    // thêm mới loại
-    function user_insert($username, $password, $email){
-        $sql="insert into users(username, password, email) value(?, ?, ?)";
-        pdo_execute($sql,$username,$password,$email);
-    }
-    function check_user($username, $password){
-        $sql = "select user_id, role from users where username= '".$username."' and password='".$password."'";
-        $sp=pdo_query_one($sql);
-        return $sp;
-    }
-    function check_email($email){
-        $sql = "select * from users where email= '".$email."'";
-        $sp=pdo_query_one($sql);
-        return $sp;
-    }
+    
+}
+function user_selectall(){
+    $sql =  "select * from users order by user_id DESC";
+    return pdo_query($sql);
+}
+function user_register($username, $password, $email){
+    $sql="insert into users(username, password, email) value(?, ?, ?)";
+    pdo_execute($sql,$username,$password,$email);
+}
+// thêm mới loại
+function user_insert($username, $password, $email){
+    $sql="insert into users(username, password, email) value(?, ?, ?)";
+    pdo_execute($sql,$username,$password,$email);
+}
+function check_user($username, $password){
+    $sql = "select user_id, role from users where username= '".$username."' and password='".$password."'";
+    $sp=pdo_query_one($sql);
+    return $sp;
+}
+function check_email($email){
+    $sql = "select * from users where email= '".$email."'";
+    $sp=pdo_query_one($sql);
+    return $sp;
 }
 ?>
