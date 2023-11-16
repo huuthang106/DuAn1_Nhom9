@@ -1,10 +1,6 @@
-
-
-
-
 <body class="bg-gradient-login">
-  <!-- Login Content -->
-  <?php
+    <!-- Login Content -->
+    <?php
     $us = user_selectall();
     if(isset($_POST['username'])&&isset($_POST['password'])){ 
        $username=$_POST['username'];
@@ -14,7 +10,7 @@
          if(is_array($checkuser)){
            $_SESSION['user_id']=$checkuser;
            $role = $checkuser['role'];
-           if($role == "0"){
+           if($role == "0" || $role == "2"){
              include 'home.php';
            }else{
              echo ' 
@@ -154,8 +150,7 @@
        ';
     }
   ?>
-  
-  <!-- Login Content -->
-  
-</body>
 
+    <!-- Login Content -->
+
+</body>

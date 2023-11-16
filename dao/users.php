@@ -21,7 +21,7 @@ class users
         }
     }
     public function change_password($user_id, $old_password, $new_password)
-{
+    {
     $db = new connect();
 
     // Lấy mật khẩu hiện tại từ cơ sở dữ liệu
@@ -63,7 +63,8 @@ class users
         echo $current_password_result;
         return false; // Không tìm thấy mật khẩu cho user_id
     }
-}
+    }
+
 
 
 
@@ -88,7 +89,20 @@ function user_insert($username, $password, $email)
 function check_user($username, $password)
 {
     $sql = "select user_id, role from users where username= '" . $username . "' and password='" . $password . "'";
-    $sp = pdo_query_one($sql);
+    $sp = pdo_query_one($sql);}
+    
+// thêm mới 
+function user_insert($username, $password, $email){
+    $sql="insert into users(username, password, email) value(?, ?, ?)";
+    pdo_execute($sql,$username,$password,$email);
+}
+function staff_insert($username, $password, $email, $role, $fullname, $phone){
+    $sql="insert into users(username, password, email, role, fullname, phone) value(?, ?, ?, ?, ?, ?)";
+    pdo_execute($sql,$username,$password,$email, $role, $fullname, $phone);
+}
+function check_user($username, $password){
+    $sql = "select user_id, role from users where username= '".$username."' and password='".$password."'";
+    $sp=pdo_query_one($sql);
     return $sp;
 }
 function check_email($email)
@@ -97,3 +111,9 @@ function check_email($email)
     $sp = pdo_query_one($sql);
     return $sp;
 }
+function staff_delete($user_id){
+    $sql = "delete from users where user_id = '".$user_id."'";
+    $sp=pdo_query_one($sql);
+    return $sp;
+}
+?>

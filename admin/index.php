@@ -68,17 +68,22 @@ session_start();
 		case 'home':
 			include 'home.php';
 			break;
+		case 'change_password':
+			include 'change_password.php';
+			break;
 		case 'add_blogs':
 			include 'add_blogs.php';
 			break;
 		case 'edit_product':
 			include 'edit_product.php';
 			break;
-		case 'change_password':
-			include 'change_password.php';
-			break;
-		case 'bill_detail':
+				case 'bill_detail':
 			include 'bill_detail.php';
+		case '404':
+			include '404.php';
+			break;
+		case 'add_staffs':
+			include 'add_staffs.php';
 			break;
 		case "logout":
 			unset($_SESSION['user_id']);
