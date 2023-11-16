@@ -28,27 +28,27 @@ if (isset($_SESSION['user_id'])) {
                 <div id="collapseBootstrap" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Quản lý</h6> -->
-                        <!-- <a class="collapse-item" href="index.php?act=categories">Quản lý loại sản phẩm</a> -->
-                        <!-- <a class="collapse-item" href="index.php?act=products">Quản lý sản phẩm</a> -->
-                        <!-- <a class="collapse-item" href="index.php?act=clients">Quản lý khách hàng</a> -->
-                        <!-- <a class="collapse-item" href="index.php?act=staffs">Quản lý nhân viên</a> -->
-                        <!-- <a class="collapse-item" href="index.php?act=comments">Quản lý bình luận</a> -->
-                        <!-- <a class="collapse-item" href="index.php?act=bills">Quản lý đơn hàng</a> -->
-                        <!-- <a class="collapse-item" href="index.php?act=blogs">Quản lý bài viết</a> -->
-                        <!-- <a class="collapse-item" href="index.php?act=add_products">Thêm sản phẩm</a> -->
-                        <!-- <a class="collapse-item" href="index.php?act=add_blogs">Thêm bài viết</a> -->
-                    <!-- </div>
+            <!-- <a class="collapse-item" href="index.php?act=categories">Quản lý loại sản phẩm</a> -->
+            <!-- <a class="collapse-item" href="index.php?act=products">Quản lý sản phẩm</a> -->
+            <!-- <a class="collapse-item" href="index.php?act=clients">Quản lý khách hàng</a> -->
+            <!-- <a class="collapse-item" href="index.php?act=staffs">Quản lý nhân viên</a> -->
+            <!-- <a class="collapse-item" href="index.php?act=comments">Quản lý bình luận</a> -->
+            <!-- <a class="collapse-item" href="index.php?act=bills">Quản lý đơn hàng</a> -->
+            <!-- <a class="collapse-item" href="index.php?act=blogs">Quản lý bài viết</a> -->
+            <!-- <a class="collapse-item" href="index.php?act=add_products">Thêm sản phẩm</a> -->
+            <!-- <a class="collapse-item" href="index.php?act=add_blogs">Thêm bài viết</a> -->
+            <!-- </div>
                 </div>
             </li> -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="index.php?act=categories" data-target="#collapseBootstrap">
-                <i class="fa-solid fa-genderless"></i>
+                    <i class="fa-solid fa-genderless"></i>
                     <span>Quản lý loại sản phẩm</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link collapsed" href="index.php?act=products" data-target="#collapseBootstrap">
-                <i class="fas fa-fw fa-shopping-cart"></i>
+                    <i class="fas fa-fw fa-shopping-cart"></i>
                     <span>Quản lý sản phẩm</span>
                 </a>
             </li>
@@ -60,25 +60,25 @@ if (isset($_SESSION['user_id'])) {
             </li>
             <li class="nav-item">
                 <a class="nav-link collapsed" href="index.php?act=staffs" data-target="#collapseBootstrap">
-                <i class="fa-solid fa-clipboard-user"></i>
+                    <i class="fa-solid fa-clipboard-user"></i>
                     <span>Quản lý nhân viên</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link collapsed" href="index.php?act=comments" data-target="#collapseBootstrap">
-                <i class="fa-solid fa-comments"></i>
+                    <i class="fa-solid fa-comments"></i>
                     <span>Quản lý bình luận</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link collapsed" href="index.php?act=bills" data-target="#collapseBootstrap">
-                <i class="fa-solid fa-cart-shopping"></i>
+                    <i class="fa-solid fa-cart-shopping"></i>
                     <span>Quản lý đơn hàng</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link collapsed" href="index.php?act=blogs" data-target="#collapseBootstrap">
-                <i class="fa-solid fa-rss"></i>
+                    <i class="fa-solid fa-rss"></i>
                     <span>Quản lý bài viết</span>
                 </a>
             </li>
@@ -90,7 +90,7 @@ if (isset($_SESSION['user_id'])) {
             </li>
             <li class="nav-item">
                 <a class="nav-link collapsed" href="index.php?act=add_blogs" data-target="#collapseBootstrap">
-                <i class="fas fa-fw fa-blog"></i>
+                    <i class="fas fa-fw fa-blog"></i>
                     <span>Thêm bài viết</span>
                 </a>
             </li>
