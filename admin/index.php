@@ -91,9 +91,9 @@ session_start();
 		case 'bill_detail':
 			include 'bill_detail.php';
 			break;
-		// case '404':
-		// 	include '404.php';
-		// 	break;
+			// case '404':
+			// 	include '404.php';
+			// 	break;
 		case 'add_staffs':
 			include 'add_staffs.php';
 			break;
@@ -130,28 +130,45 @@ session_start();
 		//hiển thị hình ảnh khi được up lên 
 
 		//hiển thị hình ảnh khi được up
-function previewImage(input) {
-    var preview = document.getElementById('imagePreview');
-    var file = input.files[0];
-    var reader = new FileReader();
+		function previewImage(input) {
+			var preview = document.getElementById('imagePreview');
+			var file = input.files[0];
+			var reader = new FileReader();
 
-    reader.onloadend = function () {
-        if (file) {
-            preview.src = reader.result;
-            preview.style.display = 'block'; // Hiển thị hình ảnh khi đã tải lên
-        } else {
-            preview.src = "";
-            // preview.style.display = 'none'; // Ẩn hình ảnh khi không có file
-        }
-    }
+			reader.onloadend = function() {
+				if (file) {
+					preview.src = reader.result;
+					preview.style.display = 'block'; // Hiển thị hình ảnh khi đã tải lên
+				} else {
+					preview.src = "";
+					// preview.style.display = 'none'; // Ẩn hình ảnh khi không có file
+				}
+			}
 
-    if (file) {
-        reader.readAsDataURL(file);
-    } else {
-        preview.src = "";
-        preview.style.display = 'none'; // Ẩn hình ảnh khi không có file
-    }
-}
+			if (file) {
+				reader.readAsDataURL(file);
+			} else {
+				preview.src = "";
+				preview.style.display = 'none'; // Ẩn hình ảnh khi không có file
+			}
+		}
+	</script>
+	<script src="vendor/jquery/jquery.min.js"></script>
+	<!-- <script src="js/script.js"></script> -->
+	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+	<script src="js/ruang-admin.min.js"></script>
+	<script src="vendor/chart.js/Chart.min.js"></script>
+	<script src="js/demo/chart-area-demo.js"></script>
+	<script src="vendor/datatables/jquery.dataTables.min.js"></script>
+	<script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+	<!-- Page level custom scripts -->
+	<script>
+		$(document).ready(function() {
+			$('#dataTable').DataTable(); // ID From dataTable 
+			$('#dataTableHover').DataTable(); // ID From dataTable with Hover
+		});
 	</script>
 </body>
 

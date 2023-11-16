@@ -112,7 +112,7 @@
 </div>
 </div>
 <?php
-  include '../include/footer_admin.php';
-  ?>
+include '../include/footer_admin.php';
+?>
 
 </body>
