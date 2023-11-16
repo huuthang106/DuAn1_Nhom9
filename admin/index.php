@@ -23,6 +23,10 @@ session_start();
 	<?php
 	include("../dao/pdo.php");
 	include("../dao/users.php");
+	include("../dao/categories.php");
+	include("../global.php");
+	include("../dao/products.php");
+	include("../dao/product_categoryes.php");
 	$action = "login";
 	if (isset($_GET['act']))
 		$action = $_GET['act'];
@@ -64,6 +68,9 @@ session_start();
 			break;
 		case 'add_blogs':
 			include 'add_blogs.php';
+			break;
+		case 'edit_product':
+			include 'edit_product.php';
 			break;
 		case "logout":
 			unset($_SESSION['user_id']);

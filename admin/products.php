@@ -2,83 +2,115 @@
 <body id="page-top">
   <div id="wrapper">
     <?php
-      include '../include/header_admin.php';
+        include '../include/header_admin.php';
     ?>
     <!-- Sidebar -->
         <!-- Topbar -->
         <!-- Container Fluid-->
         <div class="container-fluid" id="container-wrapper">
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Quản lý sản phẩm </h1>
+            <h1 class="h3 mb-0 text-gray-800">Quản lý hàng hóa</h1>
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="index.php?act=home">Trang chủ</a></li>
               <li class="breadcrumb-item">Quản lý</li>
-              <li class="breadcrumb-item active" aria-current="page">Sản phẩm</li>
+              <li class="breadcrumb-item active" aria-current="page">Hàng hóa</li>
             </ol>
           </div>
 
+          <!-- Row -->
           <div class="row">
-            <div class="col-lg-12 mb-4">
-              <!-- Simple Tables -->
-              <div class="card">
+            <!-- Datatables -->
+            <div class="col-lg-12">
+              <div class="card mb-4">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Bảng sản phẩm</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Bảng hàng hóa</h6>
                 </div>
-                <div class="table-responsive">
-                  <table class="table align-items-center table-flush">
+                <div class="table-responsive p-3">
+                  <table class="table align-items-center table-flush" id="dataTable">
                     <thead class="thead-light">
                       <tr>
-                        <th>Order ID</th>
-                        <th>Customer</th>
-                        <th>Item</th>
-                        <th>Status</th>
-                        <th>Action</th>
+                        <th>Mã </th>
+                        <th>Tên sản phẩm</th>
+                        <th>Loại</th>
+                        <th>Màu</th>
+                        <th>Size</th>
+                        <th>Giá </th>
+                        <th>Sửa</th>
+                        <th>Xóa</th>
                       </tr>
                     </thead>
+                    <tfoot>
+                      <tr>
+                      <th>Mã </th>
+                        <th>Tên sản phẩm</th>
+                        <th>Loại</th>
+                        <th>Màu</th>
+                        <th>Size</th>
+                        <th>Giá </th>
+                        <th>Sửa</th>
+                        <th>Xóa</th>
+                      </tr>
+                    </tfoot>
                     <tbody>
-                      <tr>
-                        <td><a href="#">RA0449</a></td>
-                        <td>Udin Wayang</td>
-                        <td>Nasi Padang</td>
-                        <td><span class="badge badge-success">Delivered</span></td>
-                        <td><a href="#" class="btn btn-sm btn-primary">Detail</a></td>
-                      </tr>
-                      <tr>
-                        <td><a href="#">RA5324</a></td>
-                        <td>Jaenab Bajigur</td>
-                        <td>Gundam 90' Edition</td>
-                        <td><span class="badge badge-warning">Shipping</span></td>
-                        <td><a href="#" class="btn btn-sm btn-primary">Detail</a></td>
-                      </tr>
-                      <tr>
-                        <td><a href="#">RA8568</a></td>
-                        <td>Rivat Mahesa</td>
-                        <td>Oblong T-Shirt</td>
-                        <td><span class="badge badge-danger">Pending</span></td>
-                        <td><a href="#" class="btn btn-sm btn-primary">Detail</a></td>
-                      </tr>
-                      <tr>
-                        <td><a href="#">RA1453</a></td>
-                        <td>Indri Junanda</td>
-                        <td>Hat Rounded</td>
-                        <td><span class="badge badge-info">Processing</span></td>
-                        <td><a href="#" class="btn btn-sm btn-primary">Detail</a></td>
-                      </tr>
-                      <tr>
-                        <td><a href="#">RA1998</a></td>
-                        <td>Udin Cilok</td>
-                        <td>Baby Powder</td>
-                        <td><span class="badge badge-success">Delivered</span></td>
-                        <td><a href="#" class="btn btn-sm btn-primary">Detail</a></td>
-                      </tr>
+                      <?php
+                        $products = new products();
+                        foreach($products->getProduct()as $key ){
+                          extract($key);
+                          $edit_link= 'index.php?act=edit_product&product_id='.$product_id;
+                          $dell_link = 'index.php?act=products&product_id='.$product_id.'&status=0';
+                          $updata_link ='index.php?act=products&product_id='.$product_id.'&status=1';
+                          if($status==1){
+                          echo '
+                            <tr>
+                              <td>'.$product_id.'</td>
+                              <td>'.$name.'</td>
+                              <td>'.$category_name.'</td>
+                              <td>'.$color.'</td>
+                              <td>'.$size.'</td>
+                              <td>'.$price.'</td>
+                              <td><a href="'.$edit_link.'" class="btn btn-sm btn-primary">Sửa</a></td>
+                              <td><a href="'.$dell_link.'" class="btn btn-sm btn-danger">xóa</a></td>
+                             </tr>
+                          ';
+                          }else{
+                            echo '
+                            <tr>
+                              <td>'.$product_id.'</td>
+                              <td>'.$name.'</td>
+                              <td>'.$category_name.'</td>
+                              <td>'.$color.'</td>
+                              <td>'.$size.'</td>
+                              <td>'.$price.'</td>
+                              <td><a href="'.$edit_link.'" class="btn btn-sm btn-primary">Sửa</a></td>
+                              <td><a href="'. $updata_link.'" class="btn btn-sm btn-success">Hiện</a></td>
+                             </tr>
+                          ';
+                          }
+                        }
+                        if (isset($_GET['product_id'])&& isset($_GET['status'])) {
+                          # code...
+                         
+                          $status = new products();
+                          $status->update_status($_GET['product_id'],$_GET['status']);
+                          
+                          exit;
+
+                        }
+                      ?>
+                    
+                     
                     </tbody>
                   </table>
                 </div>
-                <div class="card-footer"></div>
               </div>
             </div>
+            <!-- DataTable with Hover -->
+          
           </div>
           <!--Row-->
+
+          <!-- Documentation Link -->
+          
 
           <!-- Modal Logout -->
           <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelLogout"
@@ -105,6 +137,7 @@
         </div>
         <!---Container Fluid-->
       </div>
+
       <!-- Footer -->
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
@@ -128,3 +161,4 @@
 
 </body>
 
+</html>
