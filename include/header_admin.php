@@ -66,7 +66,7 @@
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i> Cập nhật tài khoản
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="index.php?act=change_password">
                                     <i class="fas fa-key fa-sm fa-fw mr-2 text-gray-400"></i> Đổi mật khẩu
                                 </a>
                                 <div class="dropdown-divider"></div>

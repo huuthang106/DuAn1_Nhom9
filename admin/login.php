@@ -15,6 +15,7 @@
            $_SESSION['user_id']=$checkuser;
            $role = $checkuser['role'];
            if($role == "0"){
+            $_SESSION['user_id']=$checkuser;
              include 'home.php';
            }else{
              echo ' 

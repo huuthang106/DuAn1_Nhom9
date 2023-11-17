@@ -75,6 +75,9 @@ session_start();
 		case 'edit_product':
 			include 'edit_product.php';
 			break;
+		case 'change_password':
+			include 'change_password.php';
+			break;
 		case "logout":
 			unset($_SESSION['user_id']);
 			header("location: index.php");
