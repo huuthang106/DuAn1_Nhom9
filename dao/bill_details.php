@@ -51,5 +51,24 @@ class bill_details
         return false;
     }
     }
+    public function get_bill_id($bill_id){
+        $db = new connect();
+        $select = "SELECT bd.*,us.username as username, 
+        us.phone as sdt, us.address as address, p.name as name FROM bill_details bd
+        join bills b ON bd.bill_id = b.bill_id 
+        Join users us ON b.user_id = us.user_id
+        join products p ON bd.product_id = p.product_id
+        Where bd.bill_id =?;
+        ";
+        $result = $db->pdo_query($select,$bill_id);
+        if ($result) {
+            return $result;
+
+        }
+        else {
+            return false;
+        }
+    }
+    
 
 }
