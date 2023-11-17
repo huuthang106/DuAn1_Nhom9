@@ -1,14 +1,16 @@
 <?php
-class bill_details{
+class bill_details
+{
     var $billdetail_id = null;
-    var $bill_id=null;
+    var $bill_id = null;
     var $pay = null;
     var $price = null;
     var $day = null;
-    var $quantity=  null;
+    var $quantity =  null;
     var $product_id = null;
     var $total = null;
-    public function avs_bill(){
+    public function avs_bill()
+    {
         $db = new connect();
         $select = "SELECT (AVG(subquery.bill_count) / DAY(LAST_DAY(CURRENT_DATE()))) * 100 as avg_bills_percentage
         FROM (
@@ -25,6 +27,29 @@ class bill_details{
             return false;
         }
     }
-    
+    public function top_product()
+    {
+        $db = new connect();
+        $select = "SELECT 
+        p.name AS TenSP,
+        COUNT(bd.product_id) AS SoLuongMua
+    FROM 
+        bill_details bd
+    JOIN 
+        products p ON bd.product_id = p.product_id
+    GROUP BY 
+        bd.product_id, p.name
+    ORDER BY 
+        SoLuongMua DESC
+    LIMIT 3;
+    ";
+    $result = $db->pdo_query($select);
+    if ($result) {
+        return $result;
+    }
+    else {
+        return false;
+    }
+    }
+
 }
-?>
