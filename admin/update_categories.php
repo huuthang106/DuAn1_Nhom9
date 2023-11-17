@@ -23,7 +23,14 @@
             $category_id = $_POST['category_id'];
             $existingName = array_column(categories_selectall(), 'name');
             $name = $_POST['name'];
-            if(in_array($name, $existingName)){
+            if(empty($name)){
+                echo '
+                <div class="error-message">
+                <i class="fa-solid fa-circle-exclamation"></i> Vui lòng nhập đầy đủ thông tin !!!
+                </div>
+            ';
+            }
+            elseif(in_array($name, $existingName)){
                 echo '
                     <div class="error-message">
                     <i class="fa-solid fa-circle-exclamation"></i> Loại đã tồn tại !!!
@@ -38,8 +45,10 @@
                     </div>
                 ';
             } 
+            
         }
         if(isset($_GET['category_id'])){
+           
             $category_id=$_GET['category_id'];
             $categories_info=categories_getinfo($category_id);
             extract($categories_info);
@@ -52,8 +61,8 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="form-group">
-                                    <div class="input-group"> <input class="form-control" type="text" name="category_id"
-                                            value="<?=$category_id?>" placeholder=""> </div>
+                                    <div class="input-group"> <input readonly class="form-control" type="text"
+                                            name="category_id" value="<?=$category_id?>" placeholder=""> </div>
                                 </div>
                             </div>
                         </div>

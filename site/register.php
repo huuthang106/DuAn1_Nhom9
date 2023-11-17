@@ -37,18 +37,32 @@
 									$password = $_POST['password'];
 									$email = $_POST['email'];
 									if(empty($username)){
-										$error = '<div style="color:#721c24;" class="error">
-													<i class="fa-solid fa-circle-exclamation"></i> Vui lòng nhập tên tài khoản !
-													</div>';
+										$error = '
+                                        <div class="col-md-12 form-group">
+                                        <div style="color:#721c24;" class="error-message">
+                                        <i class="fa-solid fa-circle-exclamation"></i> Vui lòng nhập tên tài khoản !
+                                        </div>
+                                        </div>
+                                        ';
+                                                    
 									}elseif(empty($password)){
-										$error = '<div style="color:#721c24" class="error">
-													<i class="fa-solid fa-circle-exclamation"></i> Vui lòng nhập mật khẩu !
-													</div>';
+										$error = '
+                                        <div class="col-md-12 form-group">
+                                        <div style="color:#721c24;" class="error-message">
+                                        <i class="fa-solid fa-circle-exclamation"></i> Vui lòng nhập mật khẩu !
+                                        </div>
+                                        </div>
+                                        ';
 									}elseif(empty($email)){
-										$error = '<div style="color:#721c24" class="error">
-													<i class="fa-solid fa-circle-exclamation"></i> Vui lòng nhập email !
-													</div>';
+										$error = '
+                                        <div class="col-md-12 form-group">
+                                        <div style="color:#721c24;" class="error-message">
+                                        <i class="fa-solid fa-circle-exclamation"></i> Vui lòng nhập email !
+                                        </div>
+                                        </div>
+                                        ';
 									}
+
 									if(isset($error)){
 										echo $error;
 									}else{
@@ -88,17 +102,20 @@
                             <div class="col-md-12 form-group">
                                 <input required type="text" class="form-control" id="name" name="username"
                                     placeholder="Tên tài khoản" onfocus="this.placeholder = ''"
-                                    onblur="this.placeholder = 'Username'">
+                                    onblur="this.placeholder = 'Username'"
+                                    value="<?php echo isset($_POST['username']) ? $_POST['username'] : ''; ?>">
                             </div>
                             <div class="col-md-12 form-group">
                                 <input required type="password" class="form-control" id="name" name="password"
                                     placeholder="Mật khẩu" onfocus="this.placeholder = ''"
-                                    onblur="this.placeholder = 'Password'">
+                                    onblur="this.placeholder = 'Password'"
+                                    value="<?php echo isset($_POST['password']) ? $_POST['password'] : ''; ?>">
                             </div>
                             <div class="col-md-12 form-group">
                                 <input required type="email" class="form-control" id="name" name="email"
                                     placeholder="Email" onfocus="this.placeholder = ''"
-                                    onblur="this.placeholder = 'Password'">
+                                    onblur="this.placeholder = 'Password'"
+                                    value="<?php echo isset($_POST['email']) ? $_POST['email'] : ''; ?>">
                             </div>
                             <div class="col-md-12 form-group">
                                 <div class="creat_account">
