@@ -44,11 +44,26 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-uppercase mb-1">Sales</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">650</div>
+                                            <div class="text-xs font-weight-bold text-uppercase mb-1">Đơn hàng</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                            <?php $count_bill = new bills();
+                                              
+                                              foreach($count_bill->count_bill()as $key){
+                                                 extract($key);
+                                              echo ''.$bill_count.'';
+                                              }
+                                                 
+                                             ?></div>
                                             <div class="mt-2 mb-0 text-muted text-xs">
-                                                <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 12%</span>
-                                                <span>Since last years</span>
+                                                <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> <?php
+                                                  $avs = new bill_details();
+                                                  foreach ($avs->avs_bill() as $key) {
+                                                      extract($key);
+                                                      $rounding = number_format($avg_bills_percentage, 2);
+                                                      echo ''.$rounding.'%';
+                                                  }
+                                                ?></span>
+                                                <span>Tháng vừa qua</span>
                                             </div>
                                         </div>
                                         <div class="col-auto">
@@ -84,11 +99,23 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-uppercase mb-1">Pending Requests</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                                            <div class="text-xs font-weight-bold text-uppercase mb-1">Bình luận</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php
+                                                $count = new comments();
+                                                foreach($count->count_comments()as $key){
+                                                    extract($key);
+                                                    echo ''.$count_comment_id.'';
+                                                }
+                                            ?></div>
                                             <div class="mt-2 mb-0 text-muted text-xs">
-                                                <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> 1.10%</span>
-                                                <span>Since yesterday</span>
+                                            <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> <?php
+                                                    $AVG = new comments();
+                                                    foreach($AVG->AVG_comment()as $key){
+                                                        extract($key);
+                                                        echo ''.$avg_comments.'';
+                                                    }
+                                                ?></span>
+                                                <span>Tháng vừa qua</span>
                                             </div>
                                         </div>
                                         <div class="col-auto">

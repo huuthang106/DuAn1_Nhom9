@@ -27,6 +27,9 @@ session_start();
 	include("../global.php");
 	include("../dao/products.php");
 	include("../dao/product_categoryes.php");
+	include("../dao/bill.php");
+	include("../dao/bill_details.php");
+	include("../dao/comments.php");
 	$action = "login";
 	if (isset($_GET['act']))
 		$action = $_GET['act'];
