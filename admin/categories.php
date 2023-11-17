@@ -17,25 +17,36 @@
             </div>
 
             <?php
-              if(isset($_POST['name']) && !empty($_POST['name'])){
+              if(isset($_POST['name'])){
                 $name=$_POST['name'];
-                $existingName = array_column(categories_selectall(), 'name');
+                if(empty($_POST['name'])){
+                    $error = '
+                    <div class="error-message">
+                    <i class="fa-solid fa-circle-exclamation"></i> Vui lòng nhập đầy đủ thông tin !
+                    </div><br>
+                    ';
+                }
+                if(isset($error)){
+                    echo $error;
+                }else{
+                    $existingName = array_column(categories_selectall(), 'name');
                     if(in_array($name, $existingName)){
-                        echo '
+                        echo  '
                         <div class="error-message">
                         <i class="fa-solid fa-circle-exclamation"></i> Loại đã tồn tại !!!
                         </div>
                         ';											
                     }else{
+                        echo '
+                        <div class="success-message">
+                        <i class="fa-solid fa-circle-check"></i> Thêm loại thành công !			
+                        </div>
+                        ';
                         categories_insert($name);      
-                    }            
-                }else{
-                  echo '
-                  <div class="error-message">
-                  <i class="fa-solid fa-circle-exclamation"></i> Vui lòng nhập đầy đủ thông tin !
-                  </div><br>
-                  ';
-                }
+                    }     
+                }         
+            }
+                
                 ?>
             <div>
                 <form action="index.php?act=categories" method="post">

@@ -26,6 +26,7 @@ session_start();
 	include("../dao/pdo.php");
 	include("../dao/users.php");
 	include("../dao/categories.php");
+	include("../dao/blogs.php");
 	$action = "login";
 	if (isset($_GET['act']))
 		$action = $_GET['act'];
@@ -52,6 +53,9 @@ session_start();
 			break;
 		case 'blogs':
 			include 'blogs.php';
+			break;
+		case 'update_blogs':
+			include 'update_blogs.php';
 			break;
 		case 'charts':
 			include 'charts.php';
