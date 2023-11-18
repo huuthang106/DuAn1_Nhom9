@@ -159,72 +159,47 @@
                 </div>
                 <!-- Pie Chart -->
                 <div class="col-xl-4 col-lg-5">
-                    <div class="card mb-4">
-                        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                            <h6 class="m-0 font-weight-bold text-primary">Products Sold</h6>
-                            <div class="dropdown no-arrow">
-                                <a class="dropdown-toggle btn btn-primary btn-sm" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Month <i class="fas fa-chevron-down"></i>
+                <div class="card">
+                        <div class="card-header py-4 bg-primary d-flex flex-row align-items-center justify-content-between">
+                            <h6 class="m-0 font-weight-bold text-light">Message From Customer</h6>
+                        </div>
+                        <div>
+                            <div class="customer-message align-items-center">
+                                <a class="font-weight-bold" href="#">
+                                    <div class="text-truncate message-title">Hi there! I am wondering if you can help me with a problem I've been having.</div>
+                                    <div class="small text-gray-500 message-time font-weight-bold">Udin Cilok · 58m</div>
                                 </a>
-                                <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-                                    <div class="dropdown-header">Select Periode</div>
-                                    <a class="dropdown-item" href="#">Today</a>
-                                    <a class="dropdown-item" href="#">Week</a>
-                                    <a class="dropdown-item active" href="#">Month</a>
-                                    <a class="dropdown-item" href="#">This Year</a>
-                                </div>
                             </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="mb-3">
-                                <div class="small text-gray-500">Oblong T-Shirt
-                                    <div class="small float-right"><b>600 of 800 Items</b></div>
-                                </div>
-                                <div class="progress" style="height: 12px;">
-                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
+                            <div class="customer-message align-items-center">
+                                <a href="#">
+                                    <div class="text-truncate message-title">But I must explain to you how all this mistaken idea
+                                    </div>
+                                    <div class="small text-gray-500 message-time">Nana Haminah · 58m</div>
+                                </a>
                             </div>
-                            <div class="mb-3">
-                                <div class="small text-gray-500">Gundam 90'Editions
-                                    <div class="small float-right"><b>500 of 800 Items</b></div>
-                                </div>
-                                <div class="progress" style="height: 12px;">
-                                    <div class="progress-bar bg-success" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
+                            <div class="customer-message align-items-center">
+                                <a class="font-weight-bold" href="#">
+                                    <div class="text-truncate message-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                                    </div>
+                                    <div class="small text-gray-500 message-time font-weight-bold">Jajang Cincau · 25m</div>
+                                </a>
                             </div>
-                            <div class="mb-3">
-                                <div class="small text-gray-500">Rounded Hat
-                                    <div class="small float-right"><b>455 of 800 Items</b></div>
-                                </div>
-                                <div class="progress" style="height: 12px;">
-                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
+                            <div class="customer-message align-items-center">
+                                <a class="font-weight-bold" href="#">
+                                    <div class="text-truncate message-title">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
+                                    </div>
+                                    <div class="small text-gray-500 message-time font-weight-bold">Udin Wayang · 54m</div>
+                                </a>
                             </div>
-                            <div class="mb-3">
-                                <div class="small text-gray-500">Indomie Goreng
-                                    <div class="small float-right"><b>400 of 800 Items</b></div>
-                                </div>
-                                <div class="progress" style="height: 12px;">
-                                    <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
+                            <div class="card-footer text-center">
+                                <a class="m-0 small text-primary card-link" href="#">View More <i class="fas fa-chevron-right"></i></a>
                             </div>
-                            <div class="mb-3">
-                                <div class="small text-gray-500">Remote Control Car Racing
-                                    <div class="small float-right"><b>200 of 800 Items</b></div>
-                                </div>
-                                <div class="progress" style="height: 12px;">
-                                    <div class="progress-bar bg-success" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-footer text-center">
-                            <a class="m-0 small text-primary card-link" href="#">View More <i class="fas fa-chevron-right"></i></a>
                         </div>
                     </div>
                 </div>
                 <!-- Invoice Example -->
-                <div class="col-xl-8 col-lg-7 mb-4">
-                <div class="card mb-4">
+                <div class="col-xl-12 col-lg-7 mb-4">
+                    <div class="card mb-4">
                         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                             <h6 class="m-0 font-weight-bold text-primary">Bảng đơn hàng</h6>
                         </div>
@@ -256,12 +231,12 @@
                                     $get_bill = new bills();
                                     foreach ($get_bill->get_newest_bills() as $key) {
                                         extract($key);
-                                        $khoi_phuc = 'index.php?act=home&bill_id='.$bill_id.'&status=1';
-                                        $duyet_don = 'index.php?act=home&bill_id='.$bill_id.'&status=2';
-                                        $giao_don = 'index.php?act=home&bill_id='.$bill_id.'&status=3';
-                                        $huy_don = 'index.php?act=home&bill_id='.$bill_id.'&status=4';
-                                        $detai_bill='index.php?act=bill_detail&bill_id='.$bill_id;
-                                        
+                                        $khoi_phuc = 'index.php?act=home&bill_id=' . $bill_id . '&status=1';
+                                        $duyet_don = 'index.php?act=home&bill_id=' . $bill_id . '&status=2';
+                                        $giao_don = 'index.php?act=home&bill_id=' . $bill_id . '&status=3';
+                                        $huy_don = 'index.php?act=home&bill_id=' . $bill_id . '&status=4';
+                                        $detai_bill = 'index.php?act=bill_detail&bill_id=' . $bill_id;
+
                                         if ($status == 1) {
 
                                             # code...
@@ -302,7 +277,7 @@
                                             <th><a href="' . $detai_bill . '" class="btn btn-sm btn-primary">Chi tiết</a></th>
                                              </tr>
                                             ';
-                                        } else if( $status == 4) {
+                                        } else if ($status == 4) {
                                             echo '
                                             <tr>
                                             <tr>
@@ -316,17 +291,15 @@
                                              </tr>
                                             ';
                                         }
-
                                     }
-                                    if (isset($_GET['bill_id'])&& isset($_GET['status'])) {
+                                    if (isset($_GET['bill_id']) && isset($_GET['status'])) {
                                         # code...
-                                       
+
                                         $status = new bills();
-                                        $status->update_status_bill_pagehome($_GET['bill_id'],$_GET['status']);
-                                        
+                                        $status->update_status_bill_pagehome($_GET['bill_id'], $_GET['status']);
+
                                         exit;
-              
-                                      }
+                                    }
                                     ?>
 
 
@@ -336,45 +309,7 @@
                     </div>
                 </div>
                 <!-- Message From Customer-->
-                <div class="col-xl-4 col-lg-5 ">
-                    <div class="card">
-                        <div class="card-header py-4 bg-primary d-flex flex-row align-items-center justify-content-between">
-                            <h6 class="m-0 font-weight-bold text-light">Message From Customer</h6>
-                        </div>
-                        <div>
-                            <div class="customer-message align-items-center">
-                                <a class="font-weight-bold" href="#">
-                                    <div class="text-truncate message-title">Hi there! I am wondering if you can help me with a problem I've been having.</div>
-                                    <div class="small text-gray-500 message-time font-weight-bold">Udin Cilok · 58m</div>
-                                </a>
-                            </div>
-                            <div class="customer-message align-items-center">
-                                <a href="#">
-                                    <div class="text-truncate message-title">But I must explain to you how all this mistaken idea
-                                    </div>
-                                    <div class="small text-gray-500 message-time">Nana Haminah · 58m</div>
-                                </a>
-                            </div>
-                            <div class="customer-message align-items-center">
-                                <a class="font-weight-bold" href="#">
-                                    <div class="text-truncate message-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                                    </div>
-                                    <div class="small text-gray-500 message-time font-weight-bold">Jajang Cincau · 25m</div>
-                                </a>
-                            </div>
-                            <div class="customer-message align-items-center">
-                                <a class="font-weight-bold" href="#">
-                                    <div class="text-truncate message-title">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
-                                    </div>
-                                    <div class="small text-gray-500 message-time font-weight-bold">Udin Wayang · 54m</div>
-                                </a>
-                            </div>
-                            <div class="card-footer text-center">
-                                <a class="m-0 small text-primary card-link" href="#">View More <i class="fas fa-chevron-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+              
             </div>
             <!--Row-->
 
@@ -460,41 +395,36 @@
 
     // Tạo biểu đồ cột
     var myChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: labels,
-        datasets: [{
-            label: 'Sản phẩm được mua nhiều nhất',
-            data: dataValues,
-            backgroundColor: [
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-            ],
-            borderColor: [
-                'rgba(75, 192, 192, 1)',
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            y: {
-                beginAtZero: true,
-                stepSize: 1,
-                precision: 0,
-                callback: function(value) {
-                    return Number.isInteger(value) ? value : '';
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Sản phẩm được mua nhiều nhất',
+                data: dataValues,
+                backgroundColor: [
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                ],
+                borderColor: [
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    stepSize: 1,
+                    precision: 0,
+                    callback: function(value) {
+                        return Number.isInteger(value) ? value : '';
+                    }
                 }
             }
         }
-    }
-});
-
-
-
-
-
+    });
 </script>

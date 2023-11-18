@@ -9,7 +9,7 @@
     <li class="nav-item active">
         <a class="nav-link" href="index.php?act=home">
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span></a>
+            <span>Bảng điều khiển</span></a>
     </li>
     <hr class="sidebar-divider">
     <div class="sidebar-heading">
@@ -22,22 +22,22 @@
         </a>
         <div id="collapseBootstrap" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Bootstrap UI</h6>
-                <a class="collapse-item" href="../admin/index.php?act=categories">Quản lý loại sản phẩm</a>
-                <a class="collapse-item" href="../admin/index.php?act=products">Quản lý sản phẩm</a>
-                <a class="collapse-item" href="../admin/index.php?act=clients">Quản lý khách hàng</a>
-                <a class="collapse-item" href="../admin/index.php?act=staffs">Quản lý nhân viên</a>
-                <a class="collapse-item" href="../admin/index.php?act=comments">Quản lý bình luận</a>
-                <a class="collapse-item" href="../admin/index.php?act=bills">Quản lý đơn hàng</a>
-                <a class="collapse-item" href="../admin/index.php?act=blogs">Quản lý bài viết</a>
-                <a class="collapse-item" href="../admin/index.php?act=add_products">Thêm sản phẩm</a>
-                <a class="collapse-item" href="../admin/index.php?act=add_blogs">Thêm bài viết</a>
+                <h6 class="collapse-header">Quản lý</h6>
+                <a class="collapse-item" href="index.php?act=categories">Quản lý loại sản phẩm</a>
+                <a class="collapse-item" href="index.php?act=products">Quản lý sản phẩm</a>
+                <a class="collapse-item" href="index.php?act=clients">Quản lý khách hàng</a>
+                <a class="collapse-item" href="index.php?act=staffs">Quản lý nhân viên</a>
+                <a class="collapse-item" href="index.php?act=comments">Quản lý bình luận</a>
+                <a class="collapse-item" href="index.php?act=bills">Quản lý đơn hàng</a>
+                <a class="collapse-item" href="index.php?act=blogs">Quản lý bài viết</a>
+                <a class="collapse-item" href="index.php?act=add_products">Thêm sản phẩm</a>
+                <a class="collapse-item" href="index.php?act=add_blogs">Thêm bài viết</a>
             </div>
         </div>
     </li>
 
     <hr class="sidebar-divider">
-    <div class="version" id="version-ruangadmin"></div>
+    
 </ul>
 <!-- Sidebar -->
 <div id="content-wrapper" class="d-flex flex-column">
