@@ -36,6 +36,7 @@
 									$username = $_POST['username'];
 									$password = $_POST['password'];
 									$email = $_POST['email'];
+                                    $fullname = $_POST['username'];
 									if(empty($username)){
 										$error = '
                                         <div class="col-md-12 form-group">
@@ -87,7 +88,7 @@
 											</div>
 										';
 										} else {
-											user_register($username, $password, $email);
+											user_register($username, $password, $email, $fullname);
 											echo '
 											<div class="col-md-12 form-group">
 											<div class="success-message">
@@ -95,6 +96,9 @@
 											</div>
 											</div>
 											';
+                                            $_POST['username'] = '';
+                                            $_POST['password'] = '';
+                                            $_POST['email'] = '';
 										}
 									}
 								}
@@ -103,19 +107,18 @@
                                 <input required type="text" class="form-control" id="name" name="username"
                                     placeholder="Tên tài khoản" onfocus="this.placeholder = ''"
                                     onblur="this.placeholder = 'Username'"
-                                    value="<?php echo isset($_POST['username']) ? $_POST['username'] : ''; ?>">
+                                    value="<?php echo $_POST['username'] ?? ''; ?>">
                             </div>
                             <div class="col-md-12 form-group">
                                 <input required type="password" class="form-control" id="name" name="password"
                                     placeholder="Mật khẩu" onfocus="this.placeholder = ''"
                                     onblur="this.placeholder = 'Password'"
-                                    value="<?php echo isset($_POST['password']) ? $_POST['password'] : ''; ?>">
+                                    value="<?php echo $_POST['password'] ?? ''; ?>">
                             </div>
                             <div class="col-md-12 form-group">
                                 <input required type="email" class="form-control" id="name" name="email"
                                     placeholder="Email" onfocus="this.placeholder = ''"
-                                    onblur="this.placeholder = 'Password'"
-                                    value="<?php echo isset($_POST['email']) ? $_POST['email'] : ''; ?>">
+                                    onblur="this.placeholder = 'Password'" value="<?php echo $_POST['email'] ?? ''; ?>">
                             </div>
                             <div class="col-md-12 form-group">
                                 <div class="creat_account">

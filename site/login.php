@@ -4,7 +4,7 @@
     $us = user_selectall();
     if (isset($_POST['username']) && isset($_POST['password'])) {
         $username = $_POST['username'];
-        $password = $_POST['password'];
+        $password = md5($_POST['password']);
         $checkuser = check_user($username, $password);
         if (is_array($checkuser)) {
             $_SESSION['user_id'] = $checkuser;
@@ -69,8 +69,8 @@
         <?php } ?>
     <?php } else {  ?>
         <?php
-                            include("./include/nav.php");
-                            ?>
+        include("./include/nav.php");
+        ?>
         <!-- End Header Area -->
 
         <!-- Start Banner Area -->

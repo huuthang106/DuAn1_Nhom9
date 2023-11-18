@@ -27,6 +27,7 @@ session_start();
 	include("../dao/users.php");
 	include("../dao/categories.php");
 	include("../dao/blogs.php");
+	include("../dao/comments.php");
 	$action = "login";
 	if (isset($_GET['act']))
 		$action = $_GET['act'];

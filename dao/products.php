@@ -13,21 +13,21 @@ class products
     public function getProduct()
     {
         $db = new connect();
-    
+
         // Sử dụng INNER JOIN để kết hợp thông tin từ cả hai bảng
         $select = "SELECT products.*, categories.name AS category_name
                    FROM products
                    INNER JOIN categories ON products.category_id = categories.category_id";
-    
+
         $result = $db->pdo_query($select);
-    
+
         if ($result) {
             return $result;
         } else {
             return false;
         }
     }
-    
+
 
 
     public function products_pagination($page, $items_per_page)
@@ -106,38 +106,38 @@ class products
         $db = new connect();
         $select = 'INSERT INTO products (category_id,name,picture,color,size,price,content) values (?,?,?,?,?,?,?)';
         $result = $db->pdo_execute($select, $category_id, $name, $picture, $color, $size, $price, $content);
-        
+
         if ($result) {
             return $result;
         } else {
-          echo '</br><div style="color:#721c24" class="error-message">
+            echo '</br><div style="color:#721c24" class="error-message">
                                     <i class="fa-solid fa-circle-exclamation"></i> Thêm dữ liệu thất bại !
                                     </div>';
         }
     }
-    public function update_status($product_id, $status){
+    public function update_status($product_id, $status)
+    {
         $db = new connect();
         $select = ' UPDATE  products set status =? where product_id = ?';
         $result = $db->pdo_execute($select, $status, $product_id);
         if ($result) {
             echo '<script>window.location.href = "index.php?act=products";</script>';
             return $result;
-        
-        }   else {
+        } else {
             return false;
         }
     }
-    public function update_product($category_id,$name,$picture,$color,$size,$price,$content,$product_category,$product_id){
+    public function update_product($category_id, $name, $picture, $color, $size, $price, $content, $product_category, $product_id)
+    {
         $db = new connect();
         $select = 'UPDATE products set category_id = ?, name= ?,picture=?, color =?, size=? ,price=?, content=? WHERE product_id = ?';
-        $result = $db->pdo_execute($select, $category_id, $name, $picture, $color, $size,$price,$content,$product_id);
+        $result = $db->pdo_execute($select, $category_id, $name, $picture, $color, $size, $price, $content, $product_id);
         $sql = 'INSERT INTO product_categories (product_id, category_id) VALUES (?,?)';
-        $key = $db->pdo_execute($sql,$product_id, $product_category);
+        $key = $db->pdo_execute($sql, $product_id, $product_category);
         if ($key && $result) {
             echo '<script>window.location.href = "index.php?act=products";</script>';
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }
