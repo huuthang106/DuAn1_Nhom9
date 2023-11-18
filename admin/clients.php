@@ -88,7 +88,7 @@
 
             </div>
             <!---Container Fluid-->
-        </div>
+        </div>  
 
         </div>
         <!---Container Fluid-->
@@ -109,3 +109,4 @@
 
 </body>
 
+</html>

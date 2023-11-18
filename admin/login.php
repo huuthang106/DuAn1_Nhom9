@@ -1,18 +1,18 @@
 <body class="bg-gradient-login">
-    <!-- Login Content -->
-    <?php
-    $us = user_selectall();
-    if(isset($_POST['username'])&&isset($_POST['password'])){ 
-       $username=trim($_POST['username']);
-       $password= trim($_POST['password']);
-       $userInfo = get_user_info_by_username($username);
-       if ($userInfo && password_verify($password, $userInfo['password'])){
-           $_SESSION['user_id']=$userInfo;
-           $role = $userInfo['role'];
-           if($role == "0" || $role == "2"){
-             include 'home.php';
-           }else{
-             echo ' 
+  <!-- Login Content -->
+  <?php
+  $us = user_selectall();
+  if (isset($_POST['username']) && isset($_POST['password'])) {
+    $username = trim($_POST['username']);
+    $password = trim($_POST['password']);
+    $userInfo = get_user_info_by_username($username);
+    if ($userInfo && password_verify($password, $userInfo['password'])) {
+      $_SESSION['user_id'] = $userInfo;
+      $role = $userInfo['role'];
+      if ($role == "0" || $role == "2") {
+        include 'home.php';
+      } else {
+        echo ' 
              <div class="container-login">
              <div class="row justify-content-center">
                <div class="col-xl-6 col-lg-12 col-md-9">
@@ -56,9 +56,9 @@
              </div>
            </div>
              ';
-           }
-         }else{
-           echo ' 
+      }
+    } else {
+      echo ' 
            <div class="container-login">
            <div class="row justify-content-center">
              <div class="col-xl-6 col-lg-12 col-md-9">
@@ -103,9 +103,9 @@
            </div>
          </div>
              ';
-       }
-    }else{
-       echo '
+    }
+  } else {
+    echo '
             <div class="container-login">
             <div class="row justify-content-center">
               <div class="col-xl-6 col-lg-12 col-md-9">
@@ -147,9 +147,9 @@
             </div>
           </div> 
        ';
-    }
+  }
   ?>
 
-    <!-- Login Content -->
+  <!-- Login Content -->
 
 </body>
