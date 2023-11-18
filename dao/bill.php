@@ -48,6 +48,17 @@
                 return false;
             }
         }
+        public function update_status_bill_pagehome( $bill_id, $status ){
+            $db = new connect();
+            $select = "UPDATE bills set status = ? WHERE bill_id = ?";
+            $result = $db->pdo_execute($select,$status ,$bill_id);
+            if ($result) {
+                echo '<script>window.location.href = "index.php?act=home";</script>';
+                return true;
+            }else {
+                return false;
+            }
+        }
 
         public function get_newest_bills() {
             $db = new connect();

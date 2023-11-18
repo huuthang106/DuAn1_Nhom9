@@ -256,10 +256,10 @@
                                     $get_bill = new bills();
                                     foreach ($get_bill->get_newest_bills() as $key) {
                                         extract($key);
-                                        $khoi_phuc = 'index.php?act=bills&bill_id='.$bill_id.'&status=1';
-                                        $duyet_don = 'index.php?act=bills&bill_id='.$bill_id.'&status=2';
-                                        $giao_don = 'index.php?act=bills&bill_id='.$bill_id.'&status=3';
-                                        $huy_don = 'index.php?act=bills&bill_id='.$bill_id.'&status=4';
+                                        $khoi_phuc = 'index.php?act=home&bill_id='.$bill_id.'&status=1';
+                                        $duyet_don = 'index.php?act=home&bill_id='.$bill_id.'&status=2';
+                                        $giao_don = 'index.php?act=home&bill_id='.$bill_id.'&status=3';
+                                        $huy_don = 'index.php?act=home&bill_id='.$bill_id.'&status=4';
                                         $detai_bill='index.php?act=bill_detail&bill_id='.$bill_id;
                                         
                                         if ($status == 1) {
@@ -322,7 +322,7 @@
                                         # code...
                                        
                                         $status = new bills();
-                                        $status->update_status_bill($_GET['bill_id'],$_GET['status']);
+                                        $status->update_status_bill_pagehome($_GET['bill_id'],$_GET['status']);
                                         
                                         exit;
               
