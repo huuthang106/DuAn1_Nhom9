@@ -48,6 +48,24 @@
                 return false;
             }
         }
+
+        public function get_newest_bills() {
+            $db = new connect();
+            $select = "SELECT bills.*, users.username AS customer_name
+                       FROM bills
+                       JOIN users ON bills.user_id = users.user_id
+                       ORDER BY bills.bill_id ASC
+                       LIMIT 5";
+            $result = $db->pdo_query($select);
+        
+            if ($result) {
+                return $result;
+            } else {
+                return false;
+            }
+        }
+        
+        
     }
     
 ?>

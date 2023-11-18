@@ -224,62 +224,115 @@
                 </div>
                 <!-- Invoice Example -->
                 <div class="col-xl-8 col-lg-7 mb-4">
-                    <div class="card">
+                <div class="card mb-4">
                         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                            <h6 class="m-0 font-weight-bold text-primary">Invoice</h6>
-                            <a class="m-0 float-right btn btn-danger btn-sm" href="#">View More <i class="fas fa-chevron-right"></i></a>
+                            <h6 class="m-0 font-weight-bold text-primary">Bảng đơn hàng</h6>
                         </div>
-                        <div class="table-responsive">
-                            <table class="table align-items-center table-flush">
+                        <div class="table-responsive p-3">
+                            <table class="table align-items-center table-flush" id="dataTable">
                                 <thead class="thead-light">
                                     <tr>
-                                        <th>Order ID</th>
-                                        <th>Customer</th>
-                                        <th>Item</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
+                                        <th>Mã đơn</th>
+                                        <th>Tên khách hàng</th>
+                                        <th>Duyệt đơn</th>
+                                        <th>Trạng thái</th>
+                                        <th>Hủy đơn</th>
+                                        <th>Chi tiết</th>
+
                                     </tr>
                                 </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th>Mã đơn</th>
+                                        <th>Tên khách hàng</th>
+                                        <th>Duyệt đơn</th>
+                                        <th>Trạng thái</th>
+                                        <th>Hủy đơn</th>
+                                        <th>Chi tiết</th>
+                                    </tr>
+                                </tfoot>
                                 <tbody>
-                                    <tr>
-                                        <td><a href="#">RA0449</a></td>
-                                        <td>Udin Wayang</td>
-                                        <td>Nasi Padang</td>
-                                        <td><span class="badge badge-success">Delivered</span></td>
-                                        <td><a href="#" class="btn btn-sm btn-primary">Detail</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="#">RA5324</a></td>
-                                        <td>Jaenab Bajigur</td>
-                                        <td>Gundam 90' Edition</td>
-                                        <td><span class="badge badge-warning">Shipping</span></td>
-                                        <td><a href="#" class="btn btn-sm btn-primary">Detail</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="#">RA8568</a></td>
-                                        <td>Rivat Mahesa</td>
-                                        <td>Oblong T-Shirt</td>
-                                        <td><span class="badge badge-danger">Pending</span></td>
-                                        <td><a href="#" class="btn btn-sm btn-primary">Detail</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="#">RA1453</a></td>
-                                        <td>Indri Junanda</td>
-                                        <td>Hat Rounded</td>
-                                        <td><span class="badge badge-info">Processing</span></td>
-                                        <td><a href="#" class="btn btn-sm btn-primary">Detail</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td><a href="#">RA1998</a></td>
-                                        <td>Udin Cilok</td>
-                                        <td>Baby Powder</td>
-                                        <td><span class="badge badge-success">Delivered</span></td>
-                                        <td><a href="#" class="btn btn-sm btn-primary">Detail</a></td>
-                                    </tr>
+                                    <?php
+                                    $get_bill = new bills();
+                                    foreach ($get_bill->get_newest_bills() as $key) {
+                                        extract($key);
+                                        $khoi_phuc = 'index.php?act=bills&bill_id='.$bill_id.'&status=1';
+                                        $duyet_don = 'index.php?act=bills&bill_id='.$bill_id.'&status=2';
+                                        $giao_don = 'index.php?act=bills&bill_id='.$bill_id.'&status=3';
+                                        $huy_don = 'index.php?act=bills&bill_id='.$bill_id.'&status=4';
+                                        $detai_bill='index.php?act=bill_detail&bill_id='.$bill_id;
+                                        
+                                        if ($status == 1) {
+
+                                            # code...
+                                            echo '
+                                                <tr>
+                                                <th>' . $bill_id . '</th>
+                                                <th>' . $customer_name . '</th>
+                                                
+                                                <th><a href="' . $duyet_don . '" class="btn btn-sm btn-danger">Chưa duyệt</a></th>
+                                                <th><a href="" class="btn btn-sm btn-danger">Chưa giao</a></th>
+                                                <th><a href="' . $huy_don . '" class="btn btn-sm btn-danger">Hủy đơn</a></th>
+                                                <th><a href="' . $detai_bill . '" class="btn btn-sm btn-primary">Chi tiết</a></th>
+                                                </tr>
+                                                ';
+                                        } elseif ($status == 2) {
+                                            echo '
+                                                <tr>
+                                                <tr>
+                                                <th>' . $bill_id . '</th>
+                                                <th>' . $customer_name . '</th>
+                                                
+                                                <th><a href="' . $duyet_don . '" class="btn btn-sm btn-success"> Đã duyệt</a></th>
+                                                <th><a href="' . $giao_don . '" class="btn btn-sm btn-danger">Chưa giao</a></th>
+                                                <th><a href="' . $huy_don . '" class="btn btn-sm btn-danger">Hủy đơn</a></th>
+                                                <th><a href="' . $detai_bill . '" class="btn btn-sm btn-primary">Chi tiết</a></th>
+                                            </tr>
+                                                ';
+                                        } elseif ($status == 3) {
+                                            echo '
+                                            <tr>
+                                            <tr>
+                                                <th>' . $bill_id . '</th>
+                                                <th>' . $customer_name . '</th>
+                                                
+                                            <th><a href="#" class="btn btn-sm btn-success">Đã duyệt</a></th>
+                                            <th><a href="' . $giao_don . '" class="btn btn-sm btn-success">Đã giao</a></th>
+                                            <th><a href="' . $huy_don . '" class="btn btn-sm btn-danger">Hủy đơn</a></th>
+                                            <th><a href="' . $detai_bill . '" class="btn btn-sm btn-primary">Chi tiết</a></th>
+                                             </tr>
+                                            ';
+                                        } else if( $status == 4) {
+                                            echo '
+                                            <tr>
+                                            <tr>
+                                                <th>' . $bill_id . '</th>
+                                                <th>' . $customer_name . '</th>
+                                                
+                                            <th><a href="#" class="btn btn-sm btn-danger">Đã Hủy</a></th>
+                                            <th><a href="#" class="btn btn-sm btn-danger">Đã hủy</a></th>
+                                            <th><a href="' . $khoi_phuc . '" class="btn btn-sm btn-danger">Khôi phục</a></th>
+                                            <th><a href="#" class="btn btn-sm btn-danger">Đã Hủy</a></th>
+                                             </tr>
+                                            ';
+                                        }
+
+                                    }
+                                    if (isset($_GET['bill_id'])&& isset($_GET['status'])) {
+                                        # code...
+                                       
+                                        $status = new bills();
+                                        $status->update_status_bill($_GET['bill_id'],$_GET['status']);
+                                        
+                                        exit;
+              
+                                      }
+                                    ?>
+
+
                                 </tbody>
                             </table>
                         </div>
-                        <div class="card-footer"></div>
                     </div>
                 </div>
                 <!-- Message From Customer-->
