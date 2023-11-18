@@ -1,6 +1,6 @@
 <body>
     <!-- Start Header Area -->
-  <?php
+    <?php
     include ("./include/nav.php");
   ?>
     <!-- End Header Area -->
@@ -10,7 +10,7 @@
         <div class="container">
             <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
                 <div class="col-first">
-                    <h1>Tài khoảng</h1>
+                    <h1>Tài khoản</h1>
                     <nav class="d-flex align-items-center">
                         <a href="index.html">Trang chủ<span class="lnr lnr-arrow-right"></span></a>
                         <a href="category.html">Tài khoảng</a>
@@ -26,7 +26,6 @@
                 <?php
                 $user = new users();
                 $user_id = $_SESSION['user_id']['user_id'];
-               
                 foreach ($user->get_user_id($user_id) as $key) {
                     extract($key);
                     $updata = "index.php?act=updata&user_id=" . $user_id;
