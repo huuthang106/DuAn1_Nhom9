@@ -1,6 +1,5 @@
-
 <body>
-    
+
 </body>
 <div id="wrapper">
     <?php
@@ -30,7 +29,7 @@
                         $role = $_POST['role'];
                         $fullname = $_POST['fullname'];
                         $phone = $_POST['phone'];
-                        if (empty($username)||!preg_match('/^[A-Za-z0-9]+$/', $username)) {
+                        if (empty($username) || !preg_match('/^[A-Za-z0-9]+$/', $username)) {
                             $error = '<div class="error-message" style="color:#721c24;">
 													<i class="fa-solid fa-circle-exclamation"></i> Tài khoản không được trống và không được có ký tự đặc biệt !
 													</div>';
@@ -46,7 +45,7 @@
                             $error = '<div class="error-message" style="color:#721c24">
 													<i class="fa-solid fa-circle-exclamation"></i> Vui lòng nhập đầy đủ họ tên !
 													</div>';
-                        } elseif (!preg_match('/^0\d{8,10}$/',  $phone)||empty($phone)) {
+                        } elseif (!preg_match('/^0\d{8,10}$/',  $phone) || empty($phone)) {
                             $error = '<div class="error-message" style="color:#721c24">
 													<i class="fa-solid fa-circle-exclamation"></i> Số điện thoại không hợp lệ !
 													</div>';
@@ -164,7 +163,7 @@
         <!--Row-->
 
         <!-- Modal Logout -->
-        
+
 
     </div>
     <!---Container Fluid-->
@@ -172,7 +171,7 @@
 </div>
 <!-- Footer -->
 <?php
-    include("../include/footer_admin.php");
+include("../include/footer_admin.php");
 ?>
 <!-- Footer -->
-                </body>
+</body>
