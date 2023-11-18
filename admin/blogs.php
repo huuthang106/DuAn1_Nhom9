@@ -2,7 +2,7 @@
     <div id="wrapper">
         <?php
         include '../include/header_admin.php';
-    ?>
+        ?>
         <!-- Sidebar -->
         <!-- Topbar -->
         <!-- Container Fluid-->
@@ -48,25 +48,25 @@
                                 </tfoot>
                                 <tbody>
                                     <?php
-                                    if(isset($_GET['blog_id'])){
-                                      blogs_delete($_GET['blog_id']);
+                                    if (isset($_GET['blog_id'])) {
+                                        blogs_delete($_GET['blog_id']);
                                     }
                                     $blog = blogs_selectall();
-                                    foreach ($blog as $blogs){
+                                    foreach ($blog as $blogs) {
                                         extract($blogs);
-                                        $edit_link= "index.php?act=update_blogs&blog_id=".$blog_id;
-                                        $del_link = "index.php?act=blogs&blog_id=".$blog_id;
+                                        $edit_link = "index.php?act=update_blogs&blog_id=" . $blog_id;
+                                        $del_link = "index.php?act=blogs&blog_id=" . $blog_id;
                                         echo '                     
                                                 <tr>
-                                                    <td>'.$blog_id.'</a></td>
-                                                    <td style="font-weight: bold">'.$title.'</td>
-                                                    <td>'.$day.'</td>
-                                                    <td><a href="'.$edit_link.'" class="btn btn-sm btn-primary">Sửa</a></td>
-                                                    <td><a href="'.$del_link.'" class="btn btn-sm btn-danger">Xóa</a></td>
+                                                    <td>' . $blog_id . '</a></td>
+                                                    <td style="font-weight: bold">' . $title . '</td>
+                                                    <td>' . $day . '</td>
+                                                    <td><a href="' . $edit_link . '" class="btn btn-sm btn-primary">Sửa</a></td>
+                                                    <td><a href="' . $del_link . '" class="btn btn-sm btn-danger">Xóa</a></td>
                                                 </tr>    
                                       ';
-                                        }
-                                  ?>
+                                    }
+                                    ?>
                                 </tbody>
                             </table>
                         </div>
@@ -74,60 +74,24 @@
                 </div>
                 <!-- DataTable with Hover -->
 
-                <!--Row-->
-
-                <!-- Documentation Link -->
-                <div class="row">
-                    <div class="col-lg-12">
-                        <p>DataTables is a third party plugin that is used to generate the demo table below. For more
-                            information
-                            about DataTables, please visit the official <a href="https://datatables.net/"
-                                target="_blank">DataTables
-                                documentation.</a></p>
-                    </div>
-                </div>
-
-                <!-- Modal Logout -->
-                <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog"
-                    aria-labelledby="exampleModalLabelLogout" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabelLogout">Ohh No!</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <p>Are you sure you want to logout?</p>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-outline-primary"
-                                    data-dismiss="modal">Cancel</button>
-                                <a href="login.html" class="btn btn-primary">Logout</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
+            </div>-->
             <!---Container Fluid-->
         </div>
 
         <!-- Footer -->
-        <footer class="sticky-footer bg-white">
-            <div class="container my-auto">
-                <div class="copyright text-center my-auto">
-                    <span>copyright &copy; <script>
-                        document.write(new Date().getFullYear());
-                        </script> - developed by
-                        <b><a href="https://indrijunanda.gitlab.io/" target="_blank">indrijunanda</a></b>
-                    </span>
-                </div>
-            </div>
-        </footer>
+        <?php
+        include '../include/footer_admin.php';
+        ?>
+        <!--<footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>copyright &copy; <script> document.write(new Date().getFullYear()); </script> - developed by
+              <b><a href="https://indrijunanda.gitlab.io/" target="_blank">indrijunanda</a></b>
+            </span>
+          </div>
+        </div>
+      </footer>-->
         <!-- Footer -->
-    </div>
     </div>
 
     <!-- Scroll to top -->

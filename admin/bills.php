@@ -140,7 +140,7 @@
 
 
             <!-- Modal Logout -->
-            <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelLogout" aria-hidden="true">
+           <!-- <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelLogout" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -160,12 +160,15 @@
                 </div>
             </div>
 
-        </div>
+        </div>-->
         <!---Container Fluid-->
     </div>
 
     <!-- Footer -->
-    <footer class="sticky-footer bg-white">
+    <?php
+            include '../include/footer_admin.php';
+        ?>
+    <!--<footer class="sticky-footer bg-white">
         <div class="container my-auto">
             <div class="copyright text-center my-auto">
                 <span>copyright &copy; <script>
@@ -175,7 +178,7 @@
                 </span>
             </div>
         </div>
-    </footer>
+    </footer>-->
     <!-- Footer -->
     </div>
     </div>

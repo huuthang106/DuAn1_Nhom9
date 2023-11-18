@@ -782,7 +782,7 @@
           </div>
 
           <!-- Modal Logout -->
-          <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelLogout"
+       <!--   <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelLogout"
             aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
@@ -803,13 +803,13 @@
             </div>
           </div>
 
-        </div>
+        </div>-->
         <!---Container Fluid--->
       </div>
       <!-- Footer -->
       <?php
-                    include("dao/footer.php");
-                    ?>
+            include '../include/footer_admin.php';
+        ?>
     </div>
   </div>
   <a class="scroll-to-top rounded" href="#page-top">

@@ -93,6 +93,9 @@ session_start();
 			unset($_SESSION['user_id']);
 			header("location: index.php");
 			break;
+		case "update";
+			include 'update.php';
+			break;
 	}
 	?>
     <!-- <a class="scroll-to-top rounded" href="#page-top">

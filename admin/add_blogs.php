@@ -1,6 +1,6 @@
 <div id="wrapper">
     <?php
-      include '../include/header_admin.php';
+    include '../include/header_admin.php';
     ?>
     <!-- Sidebar -->
     <!-- Topbar -->
@@ -11,7 +11,7 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.php?act=home">Trang chủ</a></li>
                 <li class="breadcrumb-item">Quản lý</li>
-                <li class="breadcrumb-item active" aria-current="page">Bài viết</li>
+                <li class="breadcrumb-item active" aria-current="page">Thêm bài viết</li>
             </ol>
         </div>
 
@@ -120,7 +120,10 @@
     <!---Container Fluid-->
 </div>
 <!-- Footer -->
-<footer class="sticky-footer bg-white">
+<?php
+include '../include/footer_admin.php';
+?>
+<!--<footer class="sticky-footer bg-white">
     <div class="container my-auto">
         <div class="copyright text-center my-auto">
             <span>copyright &copy; <script>
@@ -130,7 +133,7 @@
             </span>
         </div>
     </div>
-</footer>
+</footer>-->
 <!-- Footer -->
 </div>
 </div>

@@ -2,17 +2,16 @@
 <html lang="en">
 
 <head>
-
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
   <link href="img/logo/logo.png" rel="icon">
-  <title>RuangAdmin - Popovers</title>
+  <title>RuangAdmin - Alerts</title>
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-  <link href="css/ruang-admin.min.css" rel="stylesheet">
+  <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
+  <link href="css/ruang-admin.css" rel="stylesheet">
 </head>
 
 <body id="page-top">
@@ -35,7 +34,7 @@
       <div class="sidebar-heading">
         Features
       </div>
-      <li class="nav-item active">
+      <li class="nav-item  active">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap"
           aria-expanded="true" aria-controls="collapseBootstrap">
           <i class="far fa-fw fa-window-maximize"></i>
@@ -45,11 +44,11 @@
           data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Bootstrap UI</h6>
-            <a class="collapse-item" href="alerts.html">Alerts</a>
+            <a class="collapse-item  active" href="alerts.html">Alerts</a>
             <a class="collapse-item" href="buttons.html">Buttons</a>
             <a class="collapse-item" href="dropdowns.html">Dropdowns</a>
             <a class="collapse-item" href="modals.html">Modals</a>
-            <a class="collapse-item active" href="popovers.html">Popovers</a>
+            <a class="collapse-item" href="popovers.html">Popovers</a>
             <a class="collapse-item" href="progress-bar.html">Progress Bars</a>
           </div>
         </div>
@@ -310,88 +309,222 @@
         <!-- Container Fluid-->
         <div class="container-fluid" id="container-wrapper">
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Popovers</h1>
+            <h1 class="h3 mb-0 text-gray-800">Alerts</h1>
             <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="./">Home</a></li>
-              <li class="breadcrumb-item" aria-current="page">Bootstrap UI</li>
-              <li class="breadcrumb-item active" aria-current="page">Popovers</li>
+              <li class="breadcrumb-item">
+                <a href="./">Home</a>
+              </li>
+              <li class="breadcrumb-item">Bootstrap UI</li>
+              <li class="breadcrumb-item active" aria-current="page">Alerts</li>
             </ol>
           </div>
-
-          <!-- Row -->
           <div class="row">
+            <!-- Alerts Basic -->
             <div class="col-lg-6">
-              <!-- Popover basic -->
-              <div class="card mb-4">
+              <div class="card shadow-sm mb-4">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Popover Basic</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Alerts Basic</h6>
                 </div>
                 <div class="card-body">
-                  <p>This example basic popover</p>
-                  <button type="button" class="btn btn-primary" data-toggle="popover" title="Popover title"
-                    data-content="And here's some amazing content. It's very engaging. Right?">Click
-                    to toggle popover</button>
+                  <div class="alert alert-primary" role="alert">
+                    A simple primary alert—check it out!
+                  </div>
+                  <div class="alert alert-secondary" role="alert">
+                    A simple secondary alert—check it out!</div>
+                  <div class="alert alert-success" role="alert">
+                    A simple success alert—check it out!
+                  </div>
+                  <div class="alert alert-danger" role="alert">
+                    A simple danger alert—check it out!
+                  </div>
+                  <div class="alert alert-warning" role="alert">
+                    A simple warning alert—check it out!
+                  </div>
+                  <div class="alert alert-info" role="alert">
+                    A simple info alert—check it out!
+                  </div>
+                  <div class="alert alert-light" role="alert">
+                    A simple light alert—check it out!
+                  </div>
+                  <div class="alert alert-dark" role="alert">
+                    A simple dark alert—check it out!
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Alerts with Dismissing -->
+            <div class="col-lg-6">
+              <div class="card mb-4">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">Alerts with Dismissing</h6>
+                </div>
+                <div class="card-body">
+                  <div class="alert alert-primary alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                    A simple primary alert—check it out!
+                  </div>
+                  <div class="alert alert-secondary alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                    A simple secondary alert—check it out!
+                  </div>
+                  <div class="alert alert-success alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                    A simple success alert—check it out!
+                  </div>
+                  <div class="alert alert-danger alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                    A simple danger alert—check it out!
+                  </div>
+                  <div class="alert alert-warning alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                    A simple warning alert—check it out!
+                  </div>
+                  <div class="alert alert-info alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                    A simple info alert—check it out!
+                  </div>
+                  <div class="alert alert-light alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                    A simple light alert—check it out!
+                  </div>
+                  <div class="alert alert-dark alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                    A simple dark alert—check it out!
+                  </div>
                 </div>
               </div>
             </div>
             <div class="col-lg-6">
-              <!-- Dismiss on next click -->
+              <!-- Alerts with Icon -->
               <div class="card mb-4">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Dismiss on next click</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Alert with icon</h6>
                 </div>
                 <div class="card-body">
-                  <p>Use the focus trigger to dismiss popovers on the user’s next click of
-                    <code>&lt;a&gt;</code> different element than the toggle element not
-                    using<code>&lt;button&gt;.</code></p>
-                  <a tabindex="0" class="btn btn-primary" role="button" data-toggle="popover" data-trigger="focus"
-                    title="Dismissible popover"
-                    data-content="And here's some amazing content. It's very engaging. Right?">Dismissiblepopover</a>
+                  <div class="alert alert-success alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h6><i class="fas fa-check"></i><b> Success!</b></h6>
+                    A simple success alert—check it out!
+                  </div>
+                  <div class="alert alert-danger alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h6><i class="fas fa-ban"></i><b> Stop!</b></h6>
+                    A simple danger alert—check it out!
+                  </div>
+                  <div class="alert alert-warning alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h6><i class="fas fa-exclamation-triangle"></i><b> Warning!</b></h6>
+                    A simple warning alert—check it out!
+                  </div>
+                  <div class="alert alert-info alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h6><i class="fas fa-info"></i><b> Information</b></h6>
+                    A simple info alert—check it out!
+                  </div>
+                </div>
+              </div>
+              <!-- Additional Content -->
+              <div class="card mb-4">
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                  <h6 class="m-0 font-weight-bold text-primary">Additional Content</h6>
+                </div>
+                <div class="card-body">
+                  <div class="alert alert-success" role="alert">
+                    <h4 class="alert-heading">Well done!</h4>
+                    <p>
+                      Aww yeah, you successfully read this important alert message. This example
+                      text is going to run a bit longer so that you can see how spacing within an
+                      alert works with this kind of content.
+                    </p>
+                    <hr>
+                    <p class="mb-0">
+                      Whenever you need to, be sure to use margin utilities to keep things nice
+                      and tidy.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
-
-            <div class="col-lg-12">
-              <!-- Four directions -->
+            <div class="col-lg-6">
               <div class="card mb-4">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Four directions</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">Alert with link</h6>
                 </div>
                 <div class="card-body">
-                  <p>Four options are available: top, right, bottom, and left aligned.</p>
-                  <button type="button" class="btn btn-primary mb-1" data-container="body" data-toggle="popover"
-                    data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
-                    Popover on top
-                  </button>
-                  <button type="button" class="btn btn-primary mb-1" data-container="body" data-toggle="popover"
-                    data-placement="right" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
-                    Popover on right
-                  </button>
-                  <button type="button" class="btn btn-primary mb-1" data-container="body" data-toggle="popover"
-                    data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
-                    Popover on bottom
-                  </button>
-                  <button type="button" class="btn btn-primary mb-1" data-container="body" data-toggle="popover"
-                    data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
-                    Popover on left
-                  </button>
+                  <div class="alert alert-primary" role="alert">
+                    A simple primary alert with <a href="#" class="alert-link">an example link</a>. Give it a click if
+                    you like.
+                  </div>
+                  <div class="alert alert-secondary" role="alert">
+                    A simple secondary alert with <a href="#" class="alert-link">an example link</a>. Give it a click if
+                    you like.
+                  </div>
+                  <div class="alert alert-success" role="alert">
+                    A simple success alert with <a href="#" class="alert-link">an example link</a>. Give it a click if
+                    you like.
+                  </div>
+                  <div class="alert alert-danger" role="alert">
+                    A simple danger alert with <a href="#" class="alert-link">an example link</a>. Give it a click if
+                    you like.
+                  </div>
+                  <div class="alert alert-warning" role="alert">
+                    A simple warning alert with <a href="#" class="alert-link">an example link</a>. Give it a click if
+                    you like.
+                  </div>
+                  <div class="alert alert-info" role="alert">
+                    A simple info alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you
+                    like.
+                  </div>
+                  <div class="alert alert-light" role="alert">
+                    A simple light alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you
+                    like.
+                  </div>
+                  <div class="alert alert-dark" role="alert">
+                    A simple dark alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you
+                    like.
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-          <!-- Row-->
-
-          <!-- Documentation Link -->
+          <!-- Row -->
+          <!-- More Documentations Link -->
           <div class="row">
             <div class="col-lg-12 text-center">
-              <p>For more documentations you can visit<a href="https://getbootstrap.com/docs/4.3/components/popovers/"
-                  target="_blank">
-                  bootstrap popovers documentations.</a></p>
+              <p>
+                For more documentations you can visit<a href="https://getbootstrap.com/docs/4.3/components/alerts/"
+                  target="_blank"> bootstrap alert documentations.</a>
+              </p>
             </div>
           </div>
+          <!-- More Documentations Link -->
 
           <!-- Modal Logout -->
-          <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelLogout"
+         <!-- <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelLogout"
             aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
@@ -412,16 +545,20 @@
             </div>
           </div>
 
-        </div>
+        </div>-->
         <!---Container Fluid-->
       </div>
 
       <!-- Footer -->
       <?php
-                    include("dao/footer.php");
+                    
+                    include '../include/footer_admin.php';
+                
                     ?>
+
     </div>
   </div>
+  <!-- Scrollto to top -->
   <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
   </a>
@@ -429,7 +566,6 @@
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
   <script src="js/ruang-admin.min.js"></script>
-
 </body>
 
 </html>
