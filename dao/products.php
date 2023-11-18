@@ -59,6 +59,18 @@ class products
             return false;
         }
     }
+    public function get_product_id_site($product_id)
+    {
+        $db = new connect();
+        $select =  "SELECT * FROM products
+       Where product_id =?";
+        $result = $db->pdo_query($select, $product_id);
+        if ($result) {
+            return $result;
+        } else {
+            return false;
+        }
+    }
     public function get_nine_product()
     {
         $db = new connect();

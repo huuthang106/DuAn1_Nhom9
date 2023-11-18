@@ -28,7 +28,7 @@
 
 		$product = new products();
 		$product_id = $_GET['product_id'];
-		foreach ($product->get_product_id($product_id) as $key) {
+		foreach ($product->get_product_id_site($product_id) as $key) {
 			# code...
 			extract($key);
 			echo '<div class="product_image_area">
@@ -47,7 +47,7 @@
 							<h3>' . $name . '</h3>
 							<h2>' . $price . '</h2>
 							<ul class="list">
-								<li><a class="active" href="#"><span>Loại</span> : Giày</a></li>
+								<li><a class="active" href="#">Loại: Giày</a></li>
 								
 							</ul>
 							<p>' . $content . '</p>
