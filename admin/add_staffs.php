@@ -86,8 +86,14 @@
 											<div class="success-message">
 											<i class="fa-solid fa-circle-check"></i> Đăng ký tài khoản thành công !			
 											</div>
-											
+                                            
 											';
+                                            $_POST['username'] = '';
+                                            $_POST['password'] = '';
+                                            $_POST['email'] = '';
+                                            $_POST['role'] = '';
+                                            $_POST['fullname'] = '';
+                                            $_POST['phone'] = '';
 										}
 									}
 								}
@@ -100,8 +106,7 @@
                             <div class="col-sm-12">
                                 <div class="form-group">
                                     <input class="form-control" type="text" name="username"
-                                        value="<?php echo isset($_POST['username']) ? $_POST['username'] : ''; ?>"
-                                        placeholder="">
+                                        value="<?php echo $_POST['username'] ?? ''; ?>" placeholder="">
                                 </div>
                             </div>
                         </div>
@@ -111,8 +116,7 @@
                             <div class="col-sm-12">
                                 <div class="form-group">
                                     <div class="input-group"> <input class="form-control" type="password"
-                                            name="password"
-                                            value="<?php echo isset($_POST['password']) ? $_POST['password'] : ''; ?>"
+                                            name="password" value="<?php echo $_POST['password'] ?? ''; ?>"
                                             placeholder=""> </div>
                                 </div>
                             </div>
@@ -123,8 +127,7 @@
                             <div class="col-sm-12">
                                 <div class="form-group">
                                     <div class="input-group"> <input class="form-control" type="email" name="email"
-                                            value="<?php echo isset($_POST['email']) ? $_POST['email'] : ''; ?>"
-                                            placeholder=""> </div>
+                                            value="<?php echo $_POST['email'] ?? ''; ?>" placeholder=""> </div>
                                 </div>
                             </div>
                         </div>
@@ -134,8 +137,7 @@
                             <div class="col-sm-12">
                                 <div class="form-group">
                                     <div class="input-group"> <input class="form-control" type="text" name="fullname"
-                                            value="<?php echo isset($_POST['fullname']) ? $_POST['fullname'] : ''; ?>"
-                                            placeholder=""> </div>
+                                            value="<?php echo $_POST['fullname'] ?? ''; ?>" placeholder=""> </div>
                                 </div>
                             </div>
                         </div>
@@ -145,8 +147,7 @@
                             <div class="col-sm-12">
                                 <div class="form-group">
                                     <div class="input-group"> <input class="form-control" type="text" name="phone"
-                                            value="<?php echo isset($_POST['phone']) ? $_POST['phone'] : ''; ?>"
-                                            placeholder=""> </div>
+                                            value="<?php echo $_POST['phone'] ?? ''; ?>" placeholder=""> </div>
                                 </div>
                             </div>
                         </div>

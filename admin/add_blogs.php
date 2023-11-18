@@ -54,6 +54,9 @@
 											<i class="fa-solid fa-circle-check"></i> Thêm bài viết thành công !			
 											</div>
 											';
+                                                                            // Reset giá trị của các trường input
+                                            $_POST['title'] = '';
+                                            $_POST['content'] = '';
 										}
 									}
 								}
@@ -66,8 +69,7 @@
                             <div class="col-sm-12">
                                 <div class="form-group">
                                     <input class="form-control" type="text" name="title"
-                                        value="<?php echo isset($_POST['title']) ? $_POST['title'] : ''; ?>"
-                                        placeholder="">
+                                        value="<?php echo $_POST['title'] ?? ''; ?>" placeholder="">
                                 </div>
                             </div>
                         </div>
@@ -77,8 +79,7 @@
                             <div class="col-sm-12">
                                 <div class="form-group">
                                     <div class="input-group"> <textarea style="height: 200px" class="form-control"
-                                            type="text" name="content"
-                                            value="<?php echo isset($_POST['content']) ? $_POST['content'] : ''; ?>"
+                                            type="text" name="content" value="<?php echo $_POST['content'] ?? ''; ?>"
                                             placeholder=""></textarea> </div>
                                 </div>
                             </div>

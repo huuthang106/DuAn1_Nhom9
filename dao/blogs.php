@@ -3,6 +3,10 @@
         $sql =  "select * from blogs order by blog_id DESC";
         return pdo_query($sql);
     }
+    function blogs_selectalls(){
+        $sql =  "select * from blogs order by blog_id DESC limit 4";
+        return pdo_query($sql);
+    }
     function blogs_delete($blog_id){
         $sql = "delete from blogs where blog_id = '".$blog_id."'";
         $sp=pdo_query_one($sql);

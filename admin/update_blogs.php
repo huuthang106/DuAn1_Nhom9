@@ -113,7 +113,8 @@
                             <div class="col-sm-12">
                                 <div class="form-group">
                                     <div class="input-group"> <textarea style="height: 200px" class="form-control"
-                                            type="text" name="content" value="<?=$content?>" placeholder=""></textarea>
+                                            type="text" name="content" value=""
+                                            placeholder=""><?php echo $content; ?></textarea>
                                     </div>
                                 </div>
                             </div>

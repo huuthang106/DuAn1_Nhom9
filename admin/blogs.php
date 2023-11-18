@@ -26,7 +26,7 @@
                             <h6 class="m-0 font-weight-bold text-primary">Bảng bài viết</h6>
                         </div>
                         <div class="table-responsive p-3">
-                            <a href="index.php?act=add_staffs" class="btn btn-sm btn-success">Thêm bài viết</a><br><br>
+                            <a href="index.php?act=add_blogs" class="btn btn-sm btn-success">Thêm bài viết</a><br><br>
                             <table class="table align-items-center table-flush" id="dataTable">
                                 <thead class="thead-light">
                                     <tr>
