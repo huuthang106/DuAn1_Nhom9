@@ -27,11 +27,11 @@ if (isset($_SESSION['user_id'])) {
                 </a>
                 <div id="collapseBootstrap" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Bootstrap UI</h6>
+                        <h6 class="collapse-header">Quản lý</h6>
                         <a class="collapse-item" href="index.php?act=categories">Quản lý loại sản phẩm</a>
                         <a class="collapse-item" href="index.php?act=products">Quản lý sản phẩm</a>
                         <a class="collapse-item" href="index.php?act=clients">Quản lý khách hàng</a>
-                        <a class="collapse-item" href="index.php?act=staffs">Danh sách nhân viên</a>
+                        <a class="collapse-item" href="index.php?act=staffs">Quản lý nhân viên</a>
                         <a class="collapse-item" href="index.php?act=comments">Quản lý bình luận</a>
                         <a class="collapse-item" href="index.php?act=bills">Quản lý đơn hàng</a>
                         <a class="collapse-item" href="index.php?act=blogs">Quản lý bài viết</a>
@@ -57,16 +57,13 @@ if (isset($_SESSION['user_id'])) {
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <img class="img-profile rounded-circle" src="img/boy.png" style="max-width: 60px">
-                                <?php
-                                $user = new users();
-                                if (isset($_SESSION["user_id"]['user_id'])) {
-                                    foreach ($user->get_user_id($_SESSION['user_id']['user_id']) as $key) {
+                                <span class="ml-2 d-none d-lg-inline text-white small"><?php
+                                    $fullname = new users();
+                                    foreach($fullname ->get_user_id($_SESSION['user_id']['user_id']) as $key){
                                         extract($key);
-                                        echo '<span class="ml-2 d-none d-lg-inline text-white small">' . $fullname . '</span>';
+                                        echo ''.$fullname.'';
                                     }
-                                }
-                                ?>
-
+                                ?></span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="#">
@@ -86,7 +83,6 @@ if (isset($_SESSION['user_id'])) {
                         </li>
                     </ul>
                 </nav>
-            </div>
             <?php
         } else {
             // Thực hiện mã HTML/CSS cho vai trò khác 0
@@ -128,9 +124,9 @@ if (isset($_SESSION['user_id'])) {
                             </div>
                         </div>
                     </li>
-                   
+
                     <hr class="sidebar-divider">
-                    
+
                 </ul>
                 <!-- Sidebar -->
                 <div id="content-wrapper" class="d-flex flex-column">
@@ -145,7 +141,13 @@ if (isset($_SESSION['user_id'])) {
                                 <li class="nav-item dropdown no-arrow">
                                     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <img class="img-profile rounded-circle" src="img/boy.png" style="max-width: 60px">
-                                        <span class="ml-2 d-none d-lg-inline text-white small">Nhóm 9</span>
+                                        <span class="ml-2 d-none d-lg-inline text-white small"><?php
+                                    $fullname = new users();
+                                    foreach($fullname ->get_user_id($_SESSION['user_id']['user_id']) as $key){
+                                        extract($key);
+                                        echo ''.$fullname.'';
+                                    }
+                                ?></span>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                                         <a class="dropdown-item" href="#">

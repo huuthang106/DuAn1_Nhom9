@@ -20,6 +20,17 @@ class users
             return false;
         }
     }
+    public function get_user_id_fullname($user_id)
+    {
+        $db = new connect();
+        $select = "SELECT fullname FROM users where user_id =?";
+        $result = $db->pdo_query($select, $user_id);
+        if ($result) {
+            return $result;
+        } else {
+            return false;
+        }
+    }
     public function change_password($user_id, $old_password, $new_password)
     {
         $db = new connect();
