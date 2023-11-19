@@ -112,7 +112,7 @@ if (isset($_SESSION['user_id'])) {
                         <div id="collapseBootstrap" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
                             <div class="bg-white py-2 collapse-inner rounded">
                                 <h6 class="collapse-header">Quản lý</h6>
-                                <a class="collapse-item" href="index.php?act=categories">Quản lý loại sản phẩm</a>
+                                 <a class="collapse-item" href="index.php?act=categories">Quản lý loại sản phẩm</a>
                                 <a class="collapse-item" href="index.php?act=products">Quản lý sản phẩm</a>
                                 <a class="collapse-item" href="index.php?act=clients">Quản lý khách hàng</a>
                                 <a class="collapse-item" href="index.php?act=staffs">Quản lý nhân viên</a>
@@ -174,5 +174,5 @@ if (isset($_SESSION['user_id'])) {
                     ?>
 
                 <?php
-            }
+             }
                 ?>
