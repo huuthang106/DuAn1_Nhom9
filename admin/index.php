@@ -5,29 +5,35 @@ session_start();
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link href="img/logo/logo.png" rel="icon">
-    <title>RuangAdmin - Dashboard</title>
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <link href="css/ruang-admin.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link href="img/logo/logo.png" rel="icon">
+	<title>RuangAdmin - Dashboard</title>
+	<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+	<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+	<link href="css/ruang-admin.min.css" rel="stylesheet">
+	<link href="css/style.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
-    <?php
+	<?php
 	include("../dao/pdo.php");
 	include("../dao/users.php");
 	include("../dao/categories.php");
 	include("../dao/blogs.php");
 	include("../dao/comments.php");
+	include("../dao/bill_details.php");
+	include("../dao/bill.php");
+	include("../dao/product_categoryes.php");
+	include("../dao/products.php");
+
+
+
 	$action = "login";
 	if (isset($_GET['act']))
 		$action = $_GET['act'];
@@ -82,11 +88,12 @@ session_start();
 		case 'edit_product':
 			include 'edit_product.php';
 			break;
-				case 'bill_detail':
+		case 'bill_detail':
 			include 'bill_detail.php';
-		case '404':
-			include '404.php';
 			break;
+		// case '404':
+		// 	include '404.php';
+		// 	break;
 		case 'add_staffs':
 			include 'add_staffs.php';
 			break;
@@ -99,27 +106,28 @@ session_start();
 			break;
 	}
 	?>
-    <!-- <a class="scroll-to-top rounded" href="#page-top">
+	<!-- <a class="scroll-to-top rounded" href="#page-top">
 		<i class="fas fa-angle-up"></i>
 	</a> -->
 
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <!-- <script src="js/script.js"></script> -->
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-    <script src="js/ruang-admin.min.js"></script>
-    <script src="vendor/chart.js/Chart.min.js"></script>
-    <script src="js/demo/chart-area-demo.js"></script>
-    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+	<script src="vendor/jquery/jquery.min.js"></script>
+	<!-- <script src="js/script.js"></script> -->
+	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+	<script src="js/ruang-admin.min.js"></script>
+	<script src="vendor/chart.js/Chart.min.js"></script>
+	<script src="js/demo/chart-area-demo.js"></script>
+	<script src="vendor/datatables/jquery.dataTables.min.js"></script>
+	<script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
-    <!-- Page level custom scripts -->
-    <script>
-    $(document).ready(function() {
-        $('#dataTable').DataTable(); // ID From dataTable 
-        $('#dataTableHover').DataTable(); // ID From dataTable with Hover
-    });
-    </script>
+
+	<!-- Page level custom scripts -->
+	<script>
+		$(document).ready(function() {
+			$('#dataTable').DataTable(); // ID From dataTable 
+			$('#dataTableHover').DataTable(); // ID From dataTable with Hover
+		});
+	</script>
 </body>
 
 </html>

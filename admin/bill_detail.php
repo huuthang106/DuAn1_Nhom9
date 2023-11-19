@@ -52,38 +52,36 @@
                                 </tfoot>
                                 <tbody>
                                     <?php
-                                        $bill_detail = new bill_details();
-                                        foreach ($bill_detail->get_bill_id($_GET['bill_id']) as $bill) {
-                                            extract($bill);
-                                            echo '
+                                    $bill_detail = new bill_details();
+                                    foreach ($bill_detail->get_bill_id($_GET['bill_id']) as $bill) {
+                                        extract($bill);
+                                        echo '
                                             <tr>
-                                            <td>'.$bill_id.'</td>
+                                            <td>' . $bill_id . '</td>
                                            
                                             ';
-                                            if($pay == 1 ){
-                                                echo '
+                                        if ($pay == 1) {
+                                            echo '
                                                 <td>Thanh toán khi nhận hàng</td>
                                                 ';
-                                            }
-                                            else{
-                                                echo '
+                                        } else {
+                                            echo '
                                                     <td>Chuyển khoảng</td>
                                                 ';
-                                            }
-                                            echo '
+                                        }
+                                        echo '
                                           
-                                            <td>'.$name.'</td>
-                                            <td>'.$quantity.'</td>
-                                            <td>'.$total.'</td>
-                                            <td>'.$sdt.'</td>
-                                            <td>'.$address.'</td>
-                                            <td>'.$day.'</td>
+                                            <td>' . $name . '</td>
+                                            <td>' . $quantity . '</td>
+                                            <td>' . $total . '</td>
+                                            <td>' . $sdt . '</td>
+                                            <td>' . $address . '</td>
+                                            <td>' . $day . '</td>
                                         </tr>
                                             ';
-
-                                        }
+                                    }
                                     ?>
-                                   
+
 
                                 </tbody>
                             </table>
@@ -91,60 +89,23 @@
                     </div>
                 </div>
                 <!-- DataTable with Hover -->
-
-            </div>
-            <!--Row-->
-
-
-
-            <!-- Modal Logout -->
-            <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelLogout" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabelLogout">Ohh No!</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <p>Are you sure you want to logout?</p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancel</button>
-                            <a href="login.html" class="btn btn-primary">Logout</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-        <!---Container Fluid-->
-    </div>
-
-    <!-- Footer -->
-    <footer class="sticky-footer bg-white">
-        <div class="container my-auto">
-            <div class="copyright text-center my-auto">
-                <span>copyright &copy; <script>
-                        document.write(new Date().getFullYear());
-                    </script> - developed by
-                    <b><a href="https://indrijunanda.gitlab.io/" target="_blank">indrijunanda</a></b>
-                </span>
             </div>
         </div>
-    </footer>
-    <!-- Footer -->
-    </div>
-    </div>
 
-    <!-- Scroll to top -->
+
+
+
+    </div>
+    </div>
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
+    <?php
+    include("../include/footer_admin.php")
+    ?>
 
 
+
+    <!-- Scroll to top -->
 
 </body>
-
-</html>

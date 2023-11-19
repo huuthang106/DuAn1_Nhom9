@@ -1,8 +1,8 @@
 <body id="page-top">
     <div id="wrapper">
         <?php
-      include '../include/header_admin.php';
-    ?>
+        include '../include/header_admin.php';
+        ?>
         <!-- Sidebar -->
         <!-- Topbar -->
         <!-- Container Fluid-->
@@ -17,37 +17,37 @@
             </div>
 
             <?php
-              if(isset($_POST['name'])){
-                $name=$_POST['name'];
-                if(empty($_POST['name'])){
+            if (isset($_POST['name'])) {
+                $name = $_POST['name'];
+                if (empty($_POST['name'])) {
                     $error = '
                     <div class="error-message">
                     <i class="fa-solid fa-circle-exclamation"></i> Vui lòng nhập đầy đủ thông tin !
                     </div><br>
                     ';
                 }
-                if(isset($error)){
+                if (isset($error)) {
                     echo $error;
-                }else{
+                } else {
                     $existingName = array_column(categories_selectall(), 'name');
-                    if(in_array($name, $existingName)){
+                    if (in_array($name, $existingName)) {
                         echo  '
                         <div class="error-message">
                         <i class="fa-solid fa-circle-exclamation"></i> Loại đã tồn tại !!!
                         </div>
-                        ';											
-                    }else{
+                        ';
+                    } else {
                         echo '
                         <div class="success-message">
                         <i class="fa-solid fa-circle-check"></i> Thêm loại thành công !			
                         </div>
                         ';
-                        categories_insert($name);      
-                    }     
-                }         
+                        categories_insert($name);
+                    }
+                }
             }
-                
-                ?>
+
+            ?>
             <div>
                 <form action="index.php?act=categories" method="post">
                     <h5 class="information mt-4">Thêm loại sản phẩm</h5><br>
@@ -79,110 +79,62 @@
                                     </tr>
                                 </thead>
                                 <?php
-                                    if(isset($_GET['category_id'])&& isset($_GET['status'])){
-                                      categories_delete($_GET['category_id'],$_GET['status']);
-                                    }
-                                    $category = categories_selectall();
-                                    
-                                    foreach ($category as $categories){
-                                        extract($categories);
-                                        $edit_link= "index.php?act=update_categories&category_id=".$category_id;
-                                        $del_link = "index.php?act=categories&category_id=".$category_id."&status=0";
-                                        $present = "index.php?act=categories&category_id=".$category_id."&status=1";
-                                        if($status == 0){
-                                            echo '
+                                if (isset($_GET['category_id']) && isset($_GET['status'])) {
+                                    categories_delete($_GET['category_id'], $_GET['status']);
+                                }
+                                $category = categories_selectall();
+
+                                foreach ($category as $categories) {
+                                    extract($categories);
+                                    $edit_link = "index.php?act=update_categories&category_id=" . $category_id;
+                                    $del_link = "index.php?act=categories&category_id=" . $category_id . "&status=0";
+                                    $present = "index.php?act=categories&category_id=" . $category_id . "&status=1";
+                                    if ($status == 0) {
+                                        echo '
                                             <tbody>
                                                 <tr>
-                                                    <td>'.$category_id.'</a></td>
-                                                    <td>'.$name.'</td>
-                                                    <td><a href="'.$edit_link.'" class="btn btn-sm btn-primary">Sửa</a> <a href="'.$present.'" class="btn btn-sm btn-success">Bật</a></td>
+                                                    <td>' . $category_id . '</a></td>
+                                                    <td>' . $name . '</td>
+                                                    <td><a href="' . $edit_link . '" class="btn btn-sm btn-primary">Sửa</a> <a href="' . $present . '" class="btn btn-sm btn-success">Bật</a></td>
                                                 </tr>
                                             </tbody>
                                             ';
-                                        }else{
+                                    } else {
                                         echo '                     
                                             <tbody>
                                                 <tr>
-                                                    <td>'.$category_id.'</a></td>
-                                                    <td>'.$name.'</td>
-                                                    <td><a href="'.$edit_link.'" class="btn btn-sm btn-primary">Sửa</a> <a href="'.$del_link.'" class="btn btn-sm btn-danger">Xóa</a></td>
+                                                    <td>' . $category_id . '</a></td>
+                                                    <td>' . $name . '</td>
+                                                    <td><a href="' . $edit_link . '" class="btn btn-sm btn-primary">Sửa</a> <a href="' . $del_link . '" class="btn btn-sm btn-danger">Xóa</a></td>
                                                 </tr>
                                             </tbody>
                                       
                                                     
                                       ';
-                                        }
                                     }
-                                  
-                                  ?>
+                                }
+
+                                ?>
                             </table>
                         </div>
                         <div class="card-footer"></div>
                     </div>
                 </div>
             </div>
-            <!--Row-->
 
-            <!-- Modal Logout -->
-            <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog"
-                aria-labelledby="exampleModalLabelLogout" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabelLogout">Ohh No!</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <p>Are you sure you want to logout?</p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancel</button>
-                            <a href="login.html" class="btn btn-primary">Logout</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>-->
-        <!---Container Fluid-->
-      </div>
-      <!-- Footer -->
-      <?php
-            include '../include/footer_admin.php';
-        ?>
-     <!-- <footer class="sticky-footer bg-white">
-        <div class="container my-auto">
-          <div class="copyright text-center my-auto">
-            <span>copyright &copy; <script> document.write(new Date().getFullYear()); </script> - developed by
-              <b><a href="https://indrijunanda.gitlab.io/" target="_blank">indrijunanda</a></b>
-            </span>
-          </div>
+            <!---Container Fluid-->
         </div>
-      </footer>-->
-      <!-- Footer -->
-    </div>
-    <!-- Footer -->
-    <footer class="sticky-footer bg-white">
-        <div class="container my-auto">
-            <div class="copyright text-center my-auto">
-                <span>copyright &copy; <script>
-                    document.write(new Date().getFullYear());
-                    </script> - developed by
-                    <b><a href="https://indrijunanda.gitlab.io/" target="_blank">indrijunanda</a></b>
-                </span>
-            </div>
-        </div>
-    </footer>
-    <!-- Footer -->
     </div>
     </div>
-
-    <!-- Scroll to top -->
+    </div>
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
+    <?php
+    include '../include/footer_admin.php';
+    ?>
+
+
 
 
 

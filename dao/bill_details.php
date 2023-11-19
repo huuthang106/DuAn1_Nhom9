@@ -43,15 +43,15 @@ class bill_details
         SoLuongMua DESC
     LIMIT 3;
     ";
-    $result = $db->pdo_query($select);
-    if ($result) {
-        return $result;
+        $result = $db->pdo_query($select);
+        if ($result) {
+            return $result;
+        } else {
+            return false;
+        }
     }
-    else {
-        return false;
-    }
-    }
-    public function get_bill_id($bill_id){
+    public function get_bill_id($bill_id)
+    {
         $db = new connect();
         $select = "SELECT bd.*,us.username as username, 
         us.phone as sdt, us.address as address, p.name as name FROM bill_details bd
@@ -60,15 +60,11 @@ class bill_details
         join products p ON bd.product_id = p.product_id
         Where bd.bill_id =?;
         ";
-        $result = $db->pdo_query($select,$bill_id);
+        $result = $db->pdo_query($select, $bill_id);
         if ($result) {
             return $result;
-
-        }
-        else {
+        } else {
             return false;
         }
     }
-    
-
 }

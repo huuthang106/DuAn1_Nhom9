@@ -28,40 +28,35 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <button type="submit" value="submit" name="submit" class="btn btn-primary">Đồng ý</button>
+                                                <button type="submit" value="submit" name="submit" class="btn btn-primary btn-block confirm-button">Đồng ý</button>
                                             </div>
                                             <br>
                                             <?php
-                                         
-                                            if(isset($_POST["submit"])){
+
+                                            if (isset($_POST["submit"])) {
                                                 $user_id = trim($_SESSION["user_id"]['user_id']);
-                                                $old_password =trim( $_POST["password"]);
+                                                $old_password = trim($_POST["password"]);
                                                 $new_password = trim($_POST["new_password"]);
                                                 $confirm_password = trim($_POST["confirm_password"]);
-                                                if (empty( $_POST["password"] || $_POST["new_password"] || $_POST["confirm_password"]  )) {
+                                                if (empty($_POST["password"] || $_POST["new_password"] || $_POST["confirm_password"])) {
                                                     # code...
                                                     echo '
                                                         <div class="error-message">
                                                         <i class="fa-solid fa-circle-exclamation"></i> Không được bỏ trống !
                                                         </div><br>
                                                     ';
-                                                }
-                                                else if ($new_password != $confirm_password) {
+                                                } else if ($new_password != $confirm_password) {
                                                     echo '
                                                     <div class="error-message">
                                                     <i class="fa-solid fa-circle-exclamation"></i> Mật khẩu xác nhận không chính xác !
                                                     </div><br>
                                                     ';
-                                                }
-                                                else {
+                                                } else {
                                                     $change_paswoss = new users();
-                                                    $change_paswoss->change_password($user_id,$old_password,$new_password);
+                                                    $change_paswoss->change_password($user_id, $old_password, $new_password);
                                                     if ($change_paswoss === true) {
-                                                   
-
+                                                    }
                                                 }
-                                            }
-
                                             }
                                             ?>
                                             <hr>
@@ -76,6 +71,11 @@
         </div>
 
     </div>
+    </div>
+    <?php
+    include '../include/footer_admin.php';
+    ?>
+
     <!-- Login Content -->
 
 </body>
