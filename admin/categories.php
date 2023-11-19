@@ -63,22 +63,33 @@
                 </form> <br>
             </div>
             <div class="row">
-                <div class="col-lg-12 mb-4">
-                    <!-- Simple Tables -->
-                    <div class="card">
+                <!-- Datatables -->
+                <div class="col-lg-12">
+                    <div class="card mb-4">
                         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                            <h6 class="m-0 font-weight-bold text-primary">Bảng loại sản phẩm</h6>
+
+                            <h6 class="m-0 font-weight-bold text-primary">Bảng Loại sản phẩm</h6>
                         </div>
-                        <div class="table-responsive">
-                            <table class="table align-items-center table-flush">
+                        <div class="table-responsive p-3">
+                            <table class="table align-items-center table-flush" id="dataTable">
                                 <thead class="thead-light">
                                     <tr>
                                         <th>ID</th>
-                                        <th>Loại sản phẩm</th>
-                                        <th colspan="2">Thao tác</th>
+                                        <th>Loại</th>
+                                        <th>Sửa</th>
+                                        <th>Xóa</th>
                                     </tr>
                                 </thead>
-                                <?php
+                                <tfoot>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Loại</th>
+                                        <th>Sửa</th>
+                                        <th>Xóa</th>
+                                    </tr>
+                                </tfoot>
+                                <tbody>
+                                    <?php
                                 if (isset($_GET['category_id']) && isset($_GET['status'])) {
                                     categories_delete($_GET['category_id'], $_GET['status']);
                                 }
@@ -91,23 +102,25 @@
                                     $present = "index.php?act=categories&category_id=" . $category_id . "&status=1";
                                     if ($status == 0) {
                                         echo '
-                                            <tbody>
+                                            
                                                 <tr>
                                                     <td>' . $category_id . '</a></td>
                                                     <td>' . $name . '</td>
-                                                    <td><a href="' . $edit_link . '" class="btn btn-sm btn-primary">Sửa</a> <a href="' . $present . '" class="btn btn-sm btn-success">Bật</a></td>
+                                                    <td><a href="' . $edit_link . '" class="btn btn-sm btn-primary">Sửa</a></td>
+                                                    <td><a href="' . $present . '" class="btn btn-sm btn-success">Bật</a></td>
                                                 </tr>
-                                            </tbody>
+                                         
                                             ';
                                     } else {
                                         echo '                     
-                                            <tbody>
+                                           
                                                 <tr>
                                                     <td>' . $category_id . '</a></td>
                                                     <td>' . $name . '</td>
-                                                    <td><a href="' . $edit_link . '" class="btn btn-sm btn-primary">Sửa</a> <a href="' . $del_link . '" class="btn btn-sm btn-danger">Xóa</a></td>
+                                                    <td><a href="' . $edit_link . '" class="btn btn-sm btn-primary">Sửa</a></td>
+                                                    <td> <a href="' . $del_link . '" class="btn btn-sm btn-danger">Xóa</a></td>
                                                 </tr>
-                                            </tbody>
+                                         
                                       
                                                     
                                       ';
@@ -115,11 +128,13 @@
                                 }
 
                                 ?>
+                                </tbody>
                             </table>
                         </div>
-                        <div class="card-footer"></div>
                     </div>
                 </div>
+
+
             </div>
 
             <!---Container Fluid-->
