@@ -2,8 +2,8 @@
 
     <!-- Start Header Area -->
     <?php
-include("./include/nav.php");
-?>
+    include("./include/nav.php");
+    ?>
     <!-- End Header Area -->
 
     <!-- Start Banner Area -->
@@ -23,7 +23,7 @@ include("./include/nav.php");
     <!-- End Banner Area -->
 
     <!--================Blog Categorie Area =================-->
-    <section class="blog_categorie_area">
+    <!--  <section class="blog_categorie_area">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4">
@@ -70,7 +70,7 @@ include("./include/nav.php");
                 </div>
             </div>
         </div>
-    </section>
+    </section>-->
     <!--================Blog Categorie Area =================-->
 
     <!--================Blog Area =================-->
@@ -272,76 +272,97 @@ include("./include/nav.php");
                 <div class="col-lg-4">
                     <div class="blog_right_sidebar">
                         <aside class="single_sidebar_widget search_widget">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search Posts"
-                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Posts'">
-                                <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button"><i
-                                            class="lnr lnr-magnifier"></i></button>
-                                </span>
-                            </div><!-- /input-group -->
-                            <div class="br"></div>
-                        </aside>
-                        <aside class="single_sidebar_widget author_widget">
-                            <img class="author_img rounded-circle" src="img/blog/author.png" alt="">
-                            <h4>Charlie thợ cắt tóc</h4>
-                            <p>Người viết blog cao cấp</p>
-                            <div class="social_icon">
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-github"></i></a>
-                                <a href="#"><i class="fa fa-behance"></i></a>
-                            </div>
-                            <p>Chương trình đào tạo có những người ủng hộ và những người gièm pha. Một số người không
-                                hiểu tại sao bạn phải chi tiền cho chương trình đào tạo khi bạn có thể có được. Chương
-                                trình đào tạo có những người ủng hộ và những người gièm pha.</p>
-                            <div class="br"></div>
-                        </aside>
-                        <aside class="single_sidebar_widget popular_post_widget">
-                            <h3 class="widget_title">Bài viết phổ biến</h3>
-                            <div class="media post_item">
-                                <img src="img/blog/popular-post/post1.jpg" alt="post">
-                                <div class="media-body">
-                                    <a href="blog-details.html">
-                                        <h3>Không gian Biên giới cuối cùng</h3>
-                                    </a>
-                                    <p>02 giờ trước</p>
+                            <form method="post">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" name="noidung"
+                                        placeholder="Tìm kiếm bài viết" onfocus="this.placeholder = ''"
+                                        onblur="this.placeholder = 'Tìm kiếm bài viết'">
+                                    <!--    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Tìm kiếm bài viết'"-->
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" type="submit" name="btn"><i
+                                                class="lnr lnr-magnifier"></i></button>
+                                    </span>
+                            </form>
+                    </div>
+                    <div class="br"></div>
+                  
+                        <?php
+                        if (isset($_POST['btn'])) {
+                            $noidung = $_POST['noidung'];
+                        $sql = "SELECT * FROM blogs WHERE title LIKE '%$noidung%'";
+                        $result = pdo_query_one($sql);
+
+                        while ($row = $result) {
+                            ?>
+                            <aside class="single_sidebar_widget author_widget">
+                                <img class="author_img rounded-circle" src="img/blog/author.png" alt="">
+                                <h4>
+                                    <?php echo $row['title']; ?>
+                                </h4>
+                                <div class="social_icon">
+                                    <a href="#"><i class="fa fa-facebook"></i></a>
+                                    <a href="#"><i class="fa fa-twitter"></i></a>
+                                    <a href="#"><i class="fa fa-github"></i></a>
+                                    <a href="#"><i class="fa fa-behance"></i></a>
                                 </div>
+                                <p>
+                                    <?php echo $row['content']; ?>
+                                </p>
+
+                                <div class="br"></div>
+                            </aside>
+                            <?php
+                            return;
+                        }
+                    };
+                    ?>
+                    </aside>
+
+                    <aside class="single_sidebar_widget popular_post_widget">
+                        <h3 class="widget_title">Bài viết phổ biến</h3>
+                        <div class="media post_item">
+                            <img src="img/blog/popular-post/post1.jpg" alt="post">
+                            <div class="media-body">
+                                <a href="blog-details.html">
+                                    <h3>Không gian Biên giới cuối cùng</h3>
+                                </a>
+                                <p>02 giờ trước</p>
                             </div>
-                            <div class="media post_item">
-                                <img src="img/blog/popular-post/post2.jpg" alt="post">
-                                <div class="media-body">
-                                    <a href="blog-details.html">
-                                        <h3>Hubble tuyệt vời</h3>
-                                    </a>
-                                    <p>02 giờ trước</p>
-                                </div>
+                        </div>
+                        <div class="media post_item">
+                            <img src="img/blog/popular-post/post2.jpg" alt="post">
+                            <div class="media-body">
+                                <a href="blog-details.html">
+                                    <h3>Hubble tuyệt vời</h3>
+                                </a>
+                                <p>02 giờ trước</p>
                             </div>
-                            <div class="media post_item">
-                                <img src="img/blog/popular-post/post3.jpg" alt="post">
-                                <div class="media-body">
-                                    <a href="blog-details.html">
-                                        <h3>Thiên văn học hoặc Chiêm tinh học</h3>
-                                    </a>
-                                    <p>03 giờ trước</p>
-                                </div>
+                        </div>
+                        <div class="media post_item">
+                            <img src="img/blog/popular-post/post3.jpg" alt="post">
+                            <div class="media-body">
+                                <a href="blog-details.html">
+                                    <h3>Thiên văn học hoặc Chiêm tinh học</h3>
+                                </a>
+                                <p>03 giờ trước</p>
                             </div>
-                            <div class="media post_item">
-                                <img src="img/blog/popular-post/post4.jpg" alt="post">
-                                <div class="media-body">
-                                    <a href="blog-details.html">
-                                        <h3>Kính thiên văn tiểu hành tinh</h3>
-                                    </a>
-                                    <p>01 giờ trước</p>
-                                </div>
+                        </div>
+                        <div class="media post_item">
+                            <img src="img/blog/popular-post/post4.jpg" alt="post">
+                            <div class="media-body">
+                                <a href="blog-details.html">
+                                    <h3>Kính thiên văn tiểu hành tinh</h3>
+                                </a>
+                                <p>01 giờ trước</p>
                             </div>
-                            <div class="br"></div>
-                        </aside>
-                        <aside class="single_sidebar_widget ads_widget">
-                            <a href="#"><img class="img-fluid" src="img/blog/add.jpg" alt=""></a>
-                            <div class="br"></div>
-                        </aside>
-                        <aside class="single_sidebar_widget post_category_widget">
+                        </div>
+                        <div class="br"></div>
+                    </aside>
+                    <aside class="single_sidebar_widget ads_widget">
+                        <a href="#"><img class="img-fluid" src="img/blog/add.jpg" alt=""></a>
+                        <div class="br"></div>
+                    </aside>
+                    <!-- <aside class="single_sidebar_widget post_category_widget">
                             <h4 class="widget_title">Danh mục bài đăng</h4>
                             <ul class="list cat-list">
                                 <li>
@@ -426,10 +447,10 @@ include("./include/nav.php");
                                 <li><a href="#">Cách sống</a></li>
                                 <li><a href="#">Cuộc phiêu lưu</a></li>
                             </ul>
-                        </aside>
-                    </div>
+                        </aside>-->
                 </div>
             </div>
+        </div>
         </div>
     </section>
     <!--================Blog Area =================-->
