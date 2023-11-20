@@ -130,6 +130,9 @@ session_start();
 		case 'order_status':
 			include 'site/order_status.php';
 			break;
+		case 'updata':
+			include 'site/updatauser.php';
+			break;
 		case "logout":
 			unset($_SESSION['user_id']);
 			header("location: index.php");

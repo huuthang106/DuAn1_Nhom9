@@ -26,7 +26,7 @@
         }
         public function get_bills(){
             $db = new connect();
-            $select = "SELECT bills.*, users.username AS customer_name
+            $select = "SELECT bills.*, users.fullname AS customer_name
             FROM bills
             JOIN users ON bills.user_id = users.user_id;
             "; 
