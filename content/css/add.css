@@ -1,7 +1,7 @@
 .avarta{
     width: 40%;
     margin: 2%;
-    background-color: aqua;
+   
 }
 .avarta img{
     width: 100%;
@@ -31,4 +31,21 @@ display: flex;
 }
 .active-banner-slider .owl-controls .owl-nav {
     display: none;
+}
+#reply{
+    display: none;
+}
+.dell_btn{
+    border: 1px solid #e0e0e0;
+    padding: 0px 28px;
+    display: inline-block;
+    line-height: 32px;
+    border-radius: 16px;
+    font-size: 14px;
+    font-family: "Roboto", sans-serif;
+    color: #222222;
+    position: absolute;
+    right: 100px;
+    top: 14px;
+
 }

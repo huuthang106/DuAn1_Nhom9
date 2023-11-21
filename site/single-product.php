@@ -188,39 +188,94 @@
 					<div class="row">
 						<div class="col-lg-6">
 							<div class="comment_list">
-								<div class="review_item">
-									<div class="media">
-										<div class="d-flex">
-											<img src="./content/img/product/review-1.png" alt="">
+
+								<?php
+								$list_comment = new comments();
+								$comments = $list_comment->get_comment_product_id($_GET['product_id']);
+
+								if ($comments != false && is_array($comments)) {
+									foreach ($comments as $key) {
+										extract($key);
+										$button_dell = 'index.php?act=single-product&product_id=' . $_GET['product_id'] . '&comment_id=' . $comment_id . '';
+
+										echo '
+										  <div class="review_item">
+											  <div class="media">
+												  <div class="d-flex">
+													  <img src="./content/img/product/'.$avarta.'" alt="">
+												  </div>
+												  <div class="media-body">
+													  <h4 comment-id=' . $comment_id . ' user-id=' . $user_id . '>' . $fullname . '</h4>
+													  <h5>' . $day . '</h5>
+													  ';
+														if($_SESSION['user_id']['user_id']==$user_id){
+															echo '
+															
+															<a href= "'.$button_dell.'"class="dell_btn" >X</a>
+															';
+															}
+										echo'
+													<button  class="reply_btn"  onclick="prepareReplyForm(this)">Reply</button>
+													</div>	
+												</div>
+												<p>' . $text . '</p>
+											</div>
+											
+										';			  
+
+										$list_reply_comment = new reply_comment();
+										$reply_comment = $list_reply_comment->get_reply_comment_id($comment_id);
+										
+										if ($reply_comment != false && is_array($reply_comment)) {
+											foreach ($reply_comment as $rl_cmnt) {
+												extract($rl_cmnt);
+												$dell_reply= 'index.php?act=single-product&product_id=' . $_GET['product_id'] . '&reply_id=' . $reply_id . '';
+												echo '
+													<div class="review_item reply">
+														<div class="media">
+															<div class="d-flex">
+																<img src="./content/img/product/' . $avarta . '" alt="">
+															</div>
+															<div class="media-body">
+																<h4 reply-id=' . $reply_id . ' user-id=' . $user_id . '>' . $fullname . '</h4>
+																<h5>' . $day . '</h5>
+															
+													';
+													if($_SESSION['user_id']['user_id']==$user_id){
+														echo '
+														
+														<a href= "'.$dell_reply.'"class="dell_btn">X</a>
+														';
+														}
+
+												echo '
+												<button  data-comment-type="comment_two" class="reply_btn"  onclick="prepareReplyForm_two(this)">Reply</button>
+												</div>
+											</div>
+											<p>' . $content . '</p>
 										</div>
-										<div class="media-body">
-											<h4>Blake Ruiz</h4>
-											<h5>Ngày 12 tháng 2 năm 2018 lúc 05:56 chiều</h5>
-											<a class="reply_btn" href="#">Reply</a>
-										</div>
-									</div>
-									<p>Điều quan trọng là phải tự chăm sóc nỗi đau,
-										sau đó là sự trưởng thành của bệnh nhân,
-										nhưng đồng thời cũng sẽ có rất nhiều công việc và nỗi đau. Để đi đến từng chi tiết nhỏ nhất,
-										không ai nên thực hiện bất kỳ loại công việc nào ngoại trừ việc thu được lợi ích nào đó từ nó.</p>
-								</div>
-								<div class="review_item reply">
-									<div class="media">
-										<div class="d-flex">
-											<img src="./content/img/product/review-2.png" alt="">
-										</div>
-										<div class="media-body">
-											<h4>Blake Ruiz</h4>
-											<h5>Ngày 12 tháng 2 năm 2018 lúc 05:56 chiều</h5>
-											<a class="reply_btn" href="#">Reply</a>
-										</div>
-									</div>
-									<p>Điều quan trọng là phải tự chăm sóc nỗi đau,
-										sau đó là sự trưởng thành của bệnh nhân,
-										nhưng đồng thời cũng sẽ có rất nhiều công việc và nỗi đau. Để đi đến từng chi tiết nhỏ nhất,
-										không ai nên thực hiện bất kỳ loại công việc nào ngoại trừ việc thu được lợi ích nào đó từ nó.</p>
-								</div>
-								<div class="review_item">
+												';
+											}
+										}
+									}
+								} else {
+									echo 'Chưa có bình luận nào';
+								}
+								if(isset($_GET['comment_id'])){
+									
+									$dell_comment = new comments();
+									$dell_comment ->dell_comment($_GET['comment_id'],$_GET['product_id']);
+
+								}elseif (isset($_GET['reply_id'])){
+									$dell_reply = new reply_comment();
+									$dell_reply ->dell_reply($_GET['reply_id'],$_GET['product_id']);
+								}
+
+								?>
+
+
+
+								<!-- <div class="review_item">
 									<div class="media">
 										<div class="d-flex">
 											<img src="./content/img/product/review-3.png" alt="">
@@ -235,39 +290,84 @@
 										sau đó là sự trưởng thành của bệnh nhân,
 										nhưng đồng thời cũng sẽ có rất nhiều công việc và nỗi đau. Để đi đến từng chi tiết nhỏ nhất,
 										không ai nên thực hiện bất kỳ loại công việc nào ngoại trừ việc thu được lợi ích nào đó từ nó.</p>
+								</div> -->
+							</div>
+						</div>
+						<?php
+						if (isset($_SESSION['user_id']['user_id'])) {
+							$fullname_user = new users();
+							foreach ($fullname_user->get_user_id($_SESSION['user_id']['user_id']) as $key) {
+								extract($key);
+								echo '
+										<div class="col-lg-6">
+											<div class="review_box">
+												<h4>Đăng bình luận</h4>
+												
+												<form class="row contact_form" action="index.php?act=single-product&product_id=' . $_GET['product_id'] . '" method="post" id="contactForm" novalidate="novalidate">
+													<div class="col-md-12">
+														<input type="hidden" name="comment_id" id="comment_id">
+														<input type="hidden" name="user-id" id="user-id">
+														<input type="hidden" name="status" id="status">
+														<div class="form-group">
+															<input type="text" class="form-control" id="name" name="name" placeholder="Tên đầy đủ của bạn" value="' . $fullname . '">
+														</div>
+													</div>
+													
+													<div class="col-md-12">
+														<div class="form-group">
+															<textarea class="form-control" name="message" id="message" rows="1" placeholder="Nội dung"></textarea>
+														</div>
+													</div>
+													<div class="col-md-12 text-right">
+													<input type="hidden" id="current_date" name="current_date">
+
+														<button type="submit" value="submit" class="btn primary-btn" name="submit">Gửi ngay</button>
+													</div>
+												</form>
+											</div>
+										</div>
+									';
+							}
+						} else {
+							echo '
+								<div class="col-lg-6">
+									<div class="review_box">
+										<h4>Đăng bình luận</h4>
+										
+										<div class="col-md-12 text-right">
+														<a type="submit" value="submit" href="index.php?act=login" class="btn primary-btn">Đăng nhập</a>
+													</div>
+									</div>
 								</div>
-							</div>
-						</div>
-						<div class="col-lg-6">
-							<div class="review_box">
-								<h4>Đăng bình luận</h4>
-								<form class="row contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
-									<div class="col-md-12">
-										<div class="form-group">
-											<input type="text" class="form-control" id="name" name="name" placeholder="Tên đầy đủ của bạn">
-										</div>
-									</div>
-									<div class="col-md-12">
-										<div class="form-group">
-											<input type="email" class="form-control" id="email" name="email" placeholder="Địa chỉ email">
-										</div>
-									</div>
-									<div class="col-md-12">
-										<div class="form-group">
-											<input type="text" class="form-control" id="number" name="number" placeholder="Số điện thoại">
-										</div>
-									</div>
-									<div class="col-md-12">
-										<div class="form-group">
-											<textarea class="form-control" name="message" id="message" rows="1" placeholder="Nội dung"></textarea>
-										</div>
-									</div>
-									<div class="col-md-12 text-right">
-										<button type="submit" value="submit" class="btn primary-btn">Gửi ngay</button>
-									</div>
-								</form>
-							</div>
-						</div>
+								';
+						}
+						if (isset($_POST['submit'])) {
+							$product_id = $_GET['product_id'];
+							$user_id = $_SESSION['user_id']['user_id'];
+							$message = $_POST['message'];
+							$status = $_POST['status'];
+							$comment_id = $_POST['comment_id'];
+							$product_id = $_GET['product_id'];
+							// Lấy ngày hiện tại
+							date_default_timezone_set('Asia/Ho_Chi_Minh');
+							$day = date('Y-m-d H:i:s');
+							if (isset($_GET['product_id']) && is_numeric($_GET['product_id'])) {
+								
+
+								if ($status == 3) {
+									$reply_comment = new reply_comment();
+									$insert = $reply_comment->insert_reply($comment_id, $message, $day, $user_id, $product_id);
+								} else {
+									$comment = new comments();
+									$insert = $comment->insert_comment($product_id, $user_id, $message, $day);
+								}
+							} else {
+								// Xử lý khi không có product_id hợp lệ
+								echo "Product ID không hợp lệ!";
+							}
+						}
+						?>
+
 					</div>
 				</div>
 				<div class="tab-pane fade show active" id="review" role="tabpanel" aria-labelledby="review-tab">

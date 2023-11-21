@@ -55,6 +55,7 @@ session_start();
 	<!--
 		CSS
 		============================================= -->
+		<link rel="stylesheet" href="content/css/add.css">
 	<link rel="stylesheet" href="content/css/linearicons.css">
 	<link rel="stylesheet" href="content/css/font-awesome.min.css">
 	<link rel="stylesheet" href="content/css/themify-icons.css">
@@ -67,7 +68,9 @@ session_start();
 	<link rel="stylesheet" href="content/css/magnific-popup.css">
 	<link rel="stylesheet" href="content/css/main.css">
 	<link rel="stylesheet" href="content/css/style.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+	
+
 </head>
 
 <body>
@@ -76,6 +79,9 @@ session_start();
 	include("dao/bill.php");
 	include("dao/products.php");
 	include("dao/users.php");
+	include("dao/comments.php");
+	include("dao/reply_comment.php");
+
 	$action = "home";
 	if (isset($_GET['act']))
 		$action = $_GET['act'];
@@ -148,6 +154,7 @@ session_start();
 
 
 </body>
+<script src="content/js/add.js"></script>
 <script src="./content/js/vendor/jquery-2.2.4.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous">
 </script>
