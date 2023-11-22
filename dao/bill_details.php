@@ -67,4 +67,16 @@ class bill_details
             return false;
         }
     }
+    public function insert_bill_details($bill_id,$pay,$price,$day,$quantity,$product_id,$total){
+        $db = new connect();
+        $select= "INSERT INTO bill_details (bill_id, pay, price,day,quantity,product_id,total) values
+         (?,?,?,?,?,?,?) ";
+        $result= $db->pdo_execute($select,$bill_id,$pay,$price,$day,$quantity,$product_id,$total);
+        if($result){
+            echo '<script>window.location.href = "index.php?act=user";</script>';
+            return $result;
+        }else{
+            return false;
+        }
+    }
 }

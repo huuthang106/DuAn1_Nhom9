@@ -8,7 +8,7 @@ session_start();
 	<!-- Mobile Specific Meta -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<!-- Favicon-->
-	<link rel="shortcut icon" href="./content/img/fav.png">
+	<link rel="shortcut icon" href="./content/img/logo..png">
 	<!-- Author Meta -->
 	<meta name="author" content="CodePixar">
 	<!-- Meta Description -->
@@ -18,7 +18,7 @@ session_start();
 	<!-- meta character set -->
 	<meta charset="UTF-8">
 	<!-- Site Title -->
-	<title>Karma Shop</title>
+	<title>Secon hand</title>
 	<!--
 		CSS
 		============================================= -->
@@ -38,24 +38,10 @@ session_start();
 
 
 
-	<!-- Mobile Specific Meta -->
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<!-- Favicon-->
-	<link rel="shortcut icon" href="img/fav.png">
-	<!-- Author Meta -->
-	<meta name="author" content="CodePixar">
-	<!-- Meta Description -->
-	<meta name="description" content="">
-	<!-- Meta Keyword -->
-	<meta name="keywords" content="">
-	<!-- meta character set -->
-	<meta charset="UTF-8">
-	<!-- Site Title -->
-	<title>Karma Shop</title>
 	<!--
 		CSS
 		============================================= -->
-		<link rel="stylesheet" href="content/css/add.css">
+		<!-- <link rel="stylesheet" href="content/css/add.css">
 	<link rel="stylesheet" href="content/css/linearicons.css">
 	<link rel="stylesheet" href="content/css/font-awesome.min.css">
 	<link rel="stylesheet" href="content/css/themify-icons.css">
@@ -66,7 +52,7 @@ session_start();
 	<link rel="stylesheet" href="content/css/ion.rangeSlider.css" />
 	<link rel="stylesheet" href="content/css/ion.rangeSlider.skinFlat.css" />
 	<link rel="stylesheet" href="content/css/magnific-popup.css">
-	<link rel="stylesheet" href="content/css/main.css">
+	<link rel="stylesheet" href="content/css/main.css"> -->
 	<link rel="stylesheet" href="content/css/style.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
 	
@@ -81,6 +67,8 @@ session_start();
 	include("dao/users.php");
 	include("dao/comments.php");
 	include("dao/reply_comment.php");
+	include("dao/cart.php");
+	include("dao/bill_details.php");
 
 	$action = "home";
 	if (isset($_GET['act']))

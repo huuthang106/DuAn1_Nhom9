@@ -49,3 +49,30 @@ display: flex;
     top: 14px;
 
 }
+.btn_bill{
+    width: 100%;
+    color: #fff;
+    border: none;
+    text-decoration: none;
+    display: block;
+    line-height: 38px;
+    text-transform: uppercase;
+    text-align: center;
+    border-radius: 2px;
+    font-weight: 500;
+    cursor: pointer;
+    background: linear-gradient(90deg, #ffba00 0%, #ff6c00 100%);
+    display: block;
+    border-radius: 0px;
+    line-height: 38px;
+    width: 100%;
+    text-transform: uppercase;
+    border: none;
+  
+}
+.btn_bill:hover{
+    background: -webkit-linear-gradient(90deg, #ff6c00 100%, #ffba00 0%);
+  
+    
+   
+}

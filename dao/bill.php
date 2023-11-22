@@ -5,7 +5,9 @@
         var $status = null;
         public function get_bill_user_id($user_id){
             $db = new connect();
-            $select = 'SELECT * FROM bills where user_id =?';
+            $select = 'SELECT * FROM bills where user_id =?
+            ORDER BY  bill_id DESC 
+            ';
             $result = $db->pdo_query($select, $user_id);
             if ($result) {
                 return $result;
@@ -75,8 +77,31 @@
                 return false;
             }
         }
+
         
-        
+        public function insert_bill($user_id){
+         $db = new connect();
+         $select = "INSERT INTO bills (user_id) values (?)";
+         $result = $db->pdo_execute($select,$user_id);
+         if($result){
+            return $result;
+         }
+         else{
+            return false;
+         }
+        }
+        public function new_bill($user_id){
+            $db = new connect();
+            $select = "SELECT bill_id FROM bills WHERE user_id = ?
+            ORDER BY bill_id DESC LIMIT 1";
+            $result = $db->pdo_query_one($select,$user_id);
+            if ($result ) {
+                return  $result['bill_id'];
+            
+            }else { 
+                return false;
+            }
+        }
     }
     
 ?>
