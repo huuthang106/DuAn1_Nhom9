@@ -53,6 +53,7 @@ class carts
 
     public function sum_total_price($user_id)
     {
+        //tính tổng tất cả sản phẩm có trong giỏ hàng với trạng thái = 2
         $db = new connect();
         $select = "SELECT 
         subquery.user_id,
@@ -79,6 +80,7 @@ class carts
     }
     public function getcart_user_id_inser_bill_details($user_id)
     {
+        // lấy tổng tiền của sản phẩm 
         $db = new connect();
         $select = "SELECT 
         carts.*, 
@@ -99,6 +101,7 @@ class carts
     }
     public function dell_cart_user_id($user_id){
         $db= new connect();
+        // tìm đúng user và có trạng thái là 2 sẽ xóa 
         $select ="DELETE FROM carts Where user_id=? and status = 2";
         $result = $db->pdo_execute($select,$user_id);
         if($result){

@@ -69,6 +69,7 @@ session_start();
 	include("dao/reply_comment.php");
 	include("dao/cart.php");
 	include("dao/bill_details.php");
+	include("dao/categories.php");
 
 	$action = "home";
 	if (isset($_GET['act']))
@@ -126,6 +127,12 @@ session_start();
 			break;
 		case 'updata':
 			include 'site/updatauser.php';
+			break;
+		case'category_search':
+			include	'site/category_search.php';
+			break;
+		case 'keyword_pagination':
+			include 'site/keyword_pagination.php';
 			break;
 		case "logout":
 			unset($_SESSION['user_id']);

@@ -5,7 +5,7 @@
         var $status = null ;
         public function get_all_categories(){
             $db = new connect();
-            $select = "SELECT * from categories";
+            $select = "SELECT * from categories WHERE status = 1";
             $result = $db->pdo_query($select);
             if($result){
                 return $result;
@@ -14,7 +14,18 @@
             }
 
         }
-        
+        public function count_categories(){
+            $db= new connect();
+            $select="SELECT COUNT(category_id) AS count_categories FROM categories";
+            $result= $db->pdo_query($select);
+            if ($result) {
+                return $result;
+                # code...
+            }else {
+                # code...
+                return false;
+            }
+        }
     }
 function categories_insert($name){
     $sql="insert into categories(name) value(?)";

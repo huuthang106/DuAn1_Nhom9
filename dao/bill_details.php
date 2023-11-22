@@ -73,7 +73,7 @@ class bill_details
          (?,?,?,?,?,?,?) ";
         $result= $db->pdo_execute($select,$bill_id,$pay,$price,$day,$quantity,$product_id,$total);
         if($result){
-            echo '<script>window.location.href = "index.php?act=user";</script>';
+           
             return $result;
         }else{
             return false;

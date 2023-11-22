@@ -171,8 +171,10 @@
                                 $day = date('Y-m-d H:i:s');
                                 foreach ($cart_items as $key) {
                                     extract($key);
+                                    // bắt dầu thêm dữ liệu vào chi tiết đơn 
                                     $insert_bill_details->insert_bill_details($bill_id, $selector, $price, $day, $quantity, $product_id, $total_price);
                                     $dell_cart = new carts();
+                                    // sau khi thêm thành công sẽ xóa cart
                                     $dell = $dell_cart->dell_cart_user_id($user_id);
                                 }
                             }

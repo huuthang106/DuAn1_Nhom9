@@ -32,12 +32,24 @@ include("./include/nav.php");
 						
 						
 						
-						<li class="main-nav-list"><a data-toggle="collapse" href="#officeProduct" aria-expanded="false" aria-controls="officeProduct"><span class="lnr lnr-arrow-right"></span>Áo<span class="number">(77)</span></a>
+						<li class="main-nav-list"><a data-toggle="collapse" href="#officeProduct" aria-expanded="false" aria-controls="officeProduct">
+							<span class="lnr lnr-arrow-right"></span>Danh mục<span class="number">
+							<?php 
+							$count = new categories(); 
+							$start_count = $count->count_categories();
+							echo ''.$start_count[0]['count_categories'].''
+							// var_dump($start_count);
+							?></span></a>
 							<ul class="collapse" id="officeProduct" data-toggle="collapse" aria-expanded="false" aria-controls="officeProduct">
-								<li class="main-nav-list child"><a href="#">Áo thun<span class="number">(13)</span></a></li>
-								<li class="main-nav-list child"><a href="#">Quần<span class="number">(09)</span></a></li>
-								<li class="main-nav-list child"><a href="#">Giày<span class="number">(17)</span></a></li>
-								
+								<?php
+									$categories= new categories();
+									foreach($categories->get_all_categories() as $key ){
+										extract($key);
+										echo '
+										<li class="main-nav-list child"><a href="index.php?act=category_search&category_id='.$category_id.'">'.$name.'<span class="number"></span></a></li>
+										';
+									}
+								?>
 							</ul>
 						</li>
 						

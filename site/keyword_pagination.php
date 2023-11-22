@@ -94,7 +94,7 @@
 
 						// Lấy số trang hiện tại từ tham số truyền vào hoặc mặc định là trang 1
 						$page = isset($_GET['page']) ? intval($_GET['page']) : 1;
-						$name = isset($_POST['key']) ? $_POST['key'] : '';
+						$name = isset($_GET['timkiem']) ? $_GET['timkiem'] : '';
 						$products = new products();
 						$product_list = $products->seach_product($name, $page, $items_per_page);
 
@@ -172,7 +172,7 @@
 				for ($i = 1; $i <= $total_pages; $i++) {
 					$active_class = ($i == $page) ? 'active' : '';
 					echo '<div class="pagination"' . $active_class . '">';
-					echo '<a href="index.php?act=keyword_pagination&page=' . $i . '&timkiem='.$_POST['key'].'">' . $i . '</a>';
+					echo '<a href="index.php?act=keyword_pagination&page=' . $i . '&timkiem='.$_GET['timkiem'].'">' . $i . '</a>';
 
 					echo '</div>';
 				}
