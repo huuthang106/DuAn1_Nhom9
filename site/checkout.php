@@ -172,6 +172,8 @@
                                 foreach ($cart_items as $key) {
                                     extract($key);
                                     $insert_bill_details->insert_bill_details($bill_id, $selector, $price, $day, $quantity, $product_id, $total_price);
+                                    $dell_cart = new carts();
+                                    $dell = $dell_cart->dell_cart_user_id($user_id);
                                 }
                             }
                             ?>

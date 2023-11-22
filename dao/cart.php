@@ -97,4 +97,16 @@ class carts
         }
 
     }
+    public function dell_cart_user_id($user_id){
+        $db= new connect();
+        $select ="DELETE FROM carts Where user_id=? and status = 2";
+        $result = $db->pdo_execute($select,$user_id);
+        if($result){
+            echo '<script>window.location.href = "index.php?act=user";</script>';
+            return $result;
+
+        }else{
+            return false;
+        }
+    }
 }
