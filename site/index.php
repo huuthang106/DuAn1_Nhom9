@@ -80,8 +80,8 @@
 					<div class="row">
 						<?php
 						$product = new products();
-
-						foreach ($product->get_nine_product() as $key) {
+						
+						foreach ($product->get_nine_product_limit() as $key) {
 							extract($key);
 							$single_product = "index.php?act=single-product&product_id=".$product_id;
 							echo '

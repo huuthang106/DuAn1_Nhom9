@@ -84,6 +84,19 @@ class products
             return false;
         }
     }
+    public function get_nine_product_limit()
+    {
+        $db = new connect();
+        $select = "SELECT * FROM products
+        ORDER BY RAND()
+        LIMIT 6";
+        $result = $db->pdo_query($select);
+        if ($result) {
+            return $result;
+        } else {
+            return false;
+        }
+    }
     public function seach_product($name, $page, $items_per_page)
     {
         $db = new connect();
