@@ -78,35 +78,36 @@
                                 <li><a href="#">Sản phẩm <span>Tổng</span></a></li>
                                 <?php
                                 $your_card = new carts();
-                                $item =$your_card->cart_user_id($_SESSION['user_id']['user_id']);
-                                if($item){
-                                foreach ($item as $key) {
-                                   
-                                    extract($key);
-                                    echo '
+                                $item = $your_card->cart_user_id($_SESSION['user_id']['user_id']);
+                                if ($item) {
+                                    foreach ($item as $key) {
+
+                                        extract($key);
+                                        echo '
                                         <li><a href="#">' . $short_product_name . ' <span class="middle">x ' . $quantity . '</span> <span class="last">' . $total_price . '</span></a></li>
                                         ';
-                                }}
-                                else {
+                                    }
+                                } else {
                                     # code..
                                     echo '
                                         <li><a href="#">Không có sản phẩm </a></li>
                                         ';
                                 }
-                            
-                            
+
+
                                 ?>
 
                             </ul>
                             <ul class="list list_2">
                                 <li><a href="#">Tạm tính <span><?php
                                                                 $sum_total_price = new carts();
-                                                                $item_sum_total_price =$sum_total_price->total_price($_SESSION['user_id']['user_id']);
-                                                                if($item_sum_total_price){
-                                                                foreach ($item_sum_total_price as $key) {
-                                                                    extract($key);  
-                                                                    echo '' . $total_price_all_products . '';
-                                                                }}else{
+                                                                $item_sum_total_price = $sum_total_price->total_price($_SESSION['user_id']['user_id']);
+                                                                if ($item_sum_total_price) {
+                                                                    foreach ($item_sum_total_price as $key) {
+                                                                        extract($key);
+                                                                        echo '' . $total_price_all_products . '';
+                                                                    }
+                                                                } else {
                                                                     echo 'Không có sản phẩm';
                                                                 }
                                                                 ?></span></a></li>
@@ -114,13 +115,13 @@
                                 <li><a href="#">tổng <span>
                                             <?php
                                             $sum_total_price = new carts();
-                                            $item_sum_total_price=$sum_total_price->sum_total_price($_SESSION['user_id']['user_id']) ;
-                                            if($item_sum_total_price){
-                                            foreach ($item_sum_total_price as $key) {
-                                                extract($key);
-                                                echo '' . $total_price_all_products . '';
-                                            }}
-                                            else{
+                                            $item_sum_total_price = $sum_total_price->sum_total_price($_SESSION['user_id']['user_id']);
+                                            if ($item_sum_total_price) {
+                                                foreach ($item_sum_total_price as $key) {
+                                                    extract($key);
+                                                    echo '' . $total_price_all_products . '';
+                                                }
+                                            } else {
                                                 echo ' Không có sản phẩm ';
                                             }
                                             ?>
@@ -158,12 +159,13 @@
 
                                         <h2><?php
                                             $sum_total_price = new carts();
-                                            $item_sum=$sum_total_price->sum_total_price($_SESSION['user_id']['user_id']) ;
-                                            if($item_sum){
-                                            foreach ($item_sum as $key) {
-                                                extract($key);
-                                                echo '' . $total_price_all_products . '';
-                                            }}else{
+                                            $item_sum = $sum_total_price->sum_total_price($_SESSION['user_id']['user_id']);
+                                            if ($item_sum) {
+                                                foreach ($item_sum as $key) {
+                                                    extract($key);
+                                                    echo '' . $total_price_all_products . '';
+                                                }
+                                            } else {
                                                 echo 'chưa có sản phẩm  ';
                                             }
                                             ?></h2>
@@ -174,37 +176,38 @@
                                 <button type="submit" value="submit" name="submit" class="btn_bill">Thanh toán</button>
                             </form>
                             <?php
-                            $user_id=$_SESSION['user_id']['user_id'];
+                            $user_id = $_SESSION['user_id']['user_id'];
                             if (isset($_POST['submit'])) {
                                 //lấy phương thức thanh toán 1 là thanh toán khi nhận hàng
                                 $selector = $_POST['selector'];
                                 //lấy thông tin giỏ hàng 
                                 $cart_user = new carts();
                                 $cart_items = $cart_user->getcart_user_id_inser_bill_details($_SESSION['user_id']['user_id']);
-                         
 
-                                // nhập dữ liệu vào bill
-                                $insert_bill = new bills();
-                                $insert_bill->insert_bill($_SESSION['user_id']['user_id']);
-                                //lấy bill_id vừa được thêm vào
-                                $newbill = new bills();
-                                $bill_id= $newbill->new_bill($user_id);
-                              
+
+
+
                                 // thêm tất cả data ở bên trên vào bill_details
                                 $insert_bill_details = new bill_details();
                                 $day = date('Y-m-d H:i:s');
-                                if($cart_items){
-                                foreach ($cart_items as $key) {
-                                    extract($key);
-                                    // bắt dầu thêm dữ liệu vào chi tiết đơn 
-                                    $insert_bill_details->insert_bill_details($bill_id, $selector, $price, $day, $quantity, $product_id, $total_price);
-                                    $dell_cart = new carts();
-                                    // sau khi thêm thành công sẽ xóa cart
-                                    $dell = $dell_cart->dell_cart_user_id($user_id);
-                                }}else{
+                                if ($cart_items) {
+                                    // nhập dữ liệu vào bill
+                                    $insert_bill = new bills();
+                                    $insert_bill->insert_bill($_SESSION['user_id']['user_id']);
+                                    //lấy bill_id vừa được thêm vào
+                                    $newbill = new bills();
+                                    $bill_id = $newbill->new_bill($user_id);
+                                    foreach ($cart_items as $key) {
+                                        extract($key);
+                                        // bắt dầu thêm dữ liệu vào chi tiết đơn 
+                                        $insert_bill_details->insert_bill_details($bill_id, $selector, $price, $day, $quantity, $product_id, $total_price);
+                                        $dell_cart = new carts();
+                                        // sau khi thêm thành công sẽ xóa cart
+                                        $dell = $dell_cart->dell_cart_user_id($user_id);
+                                    }
+                                } else {
                                     echo 'Không có sản phẩm thanh toán';
                                 }
-                              
                             }
                             ?>
                         </div>
