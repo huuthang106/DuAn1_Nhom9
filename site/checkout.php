@@ -38,22 +38,22 @@
                             echo '
                                     <form class="row contact_form" action="index.php?act=checkout" method="post" novalidate="novalidate">
                                         <div class="col-md-6 form-group p_star">
-                                            <input type="text"  placeholder="Họ và tên "class="form-control" id="first" name="name" value = "' . $fullname . '">
+                                            <input type="text"  placeholder="Họ và tên "class="form-control" id="first" name="fullname" value = "' . $fullname . '">
                                           
                                         </div>
             
             
                                         <div class="col-md-6 form-group p_star">
-                                            <input type="text" class="form-control" id="number" name="number" placeholder="Số điện thoại" value="' . $phone . '">
+                                            <input type="text" class="form-control" id="phone" name="phone" placeholder="Số điện thoại" value="' . $phone . '">
                                           
                                         </div>
                                         <div class="col-md-6 form-group p_star">
-                                            <input type="text" class="form-control" id="email" name="compemailany" placeholder="Email " value = "' . $email . '">
+                                            <input type="text" class="form-control" id="email" name="email" placeholder="Email " value = "' . $email . '">
                                           
                                         </div>
             
                                         <div class="col-md-12 form-group p_star">
-                                            <input type="text" class="form-control" id="add1" name="add1" placeholder="Địa chỉ" value ="' . $address . '">
+                                            <input type="text" class="form-control" id="address" name="address" placeholder="Địa chỉ" value ="' . $address . '">
                                             
                                         </div>
             
@@ -62,10 +62,91 @@
             
                                         <div class="col-md-12 form-group">
             
-                                            <textarea class="form-control" name="message" id="message" rows="1" placeholder="Ghi chú"></textarea>
+                                            <textarea class="form-control" name="note" id="message" rows="1" placeholder="Ghi chú"></textarea>
                                         </div>
-                                        </form>
+                                      
                                 ';
+                        }
+                        ?>
+                        <?php
+
+                        $user_id = $_SESSION['user_id']['user_id'];
+
+                        if (isset($_POST['submit'])) {
+                            if (empty($_POST['fullname']) || empty($_POST['phone']) || empty($_POST['email']) || empty($_POST['address'])) {
+                                echo '
+                                    <div class="col-md-12 form-group">
+                                        <div class="error-message">
+                                            <i class="fa-solid fa-circle-exclamation"></i> Thông tin cá nhân không bỏ trống !
+                                        </div><br>
+                                    </div>
+                                    ';
+                            } 
+                            elseif(!preg_match('/^0\d{8,10}$/', $_POST['phone'])){
+                                echo '
+                                <div class="col-md-12 form-group">
+                                    <div class="error-message">
+                                        <i class="fa-solid fa-circle-exclamation"></i> số điện thoại sai định dạng !
+                                    </div><br>
+                                </div>
+                                ';   
+                            }
+                            elseif(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
+                                echo '
+                                <div class="col-md-12 form-group">
+                                    <div class="error-message">
+                                        <i class="fa-solid fa-circle-exclamation"></i> Email sai định dạng !
+                                    </div><br>
+                                </div>
+                                '; 
+                            }
+                            else {
+                                //lấy phương thức thanh toán 1 là thanh toán khi nhận hàng
+                                $selector = $_POST['selector'];
+                                //lấy thông tin giỏ hàng 
+                                $cart_user = new carts();
+                                $cart_items = $cart_user->getcart_user_id_inser_bill_details($_SESSION['user_id']['user_id']);
+                                // thêm tất cả data ở bên trên vào bill_details
+                                $insert_bill_details = new bill_details();
+                                $day = date('Y-m-d H:i:s');
+                                if ($selector == 1) {
+                                    if ($cart_items) {
+                                        // nhập dữ liệu vào bill
+                                        $insert_bill = new bills();
+                                        $insert_bill->insert_bill($_SESSION['user_id']['user_id']);
+                                        //lấy bill_id vừa được thêm vào
+                                        $newbill = new bills();
+                                        $bill_id = $newbill->new_bill($user_id);
+                                        foreach ($cart_items as $key) {
+                                            extract($key);
+                                            // bắt dầu thêm dữ liệu vào chi tiết đơn 
+                                            $insert_bill_details->insert_bill_details($bill_id, $selector, $price, $day, $quantity, $product_id, $total_price,$_POST['address'],$_POST['phone'],$_POST['note'],$_POST['fullname']);
+                                            $dell_cart = new carts();
+                                            // // sau khi thêm thành công sẽ xóa cart
+                                            $dell = $dell_cart->dell_cart_user_id($user_id);
+                                        }
+                                    } else {
+                                        echo 'Không có sản phẩm thanh toán';
+                                    }
+                                } else {
+                                    if ($cart_items) {
+                                        // nhập dữ liệu vào bill
+                                        $insert_bill = new bills();
+                                        $insert_bill->insert_bill($_SESSION['user_id']['user_id']);
+                                        //lấy bill_id vừa được thêm vào
+                                        $newbill = new bills();
+                                        $bill_id = $newbill->new_bill($user_id);
+                                        foreach ($cart_items as $key) {
+                                            extract($key);
+                                            // bắt dầu thêm dữ liệu vào chi tiết đơn 
+                                            $insert_bill_details->insert_bill_details($bill_id, $selector, $price, $day, $quantity, $product_id, $total_price,$_POST['address'],$_POST['phone'],$_POST['note'],$_POST['fullname']);
+                                           //sau khi chon thanh toán thẻ thì chuyển trang
+                                        }
+                                    } else {
+                                        echo 'Không có sản phẩm thanh toán';
+                                    }
+                                }
+                            }
                         }
                         ?>
 
@@ -73,7 +154,7 @@
                     <div class="col-lg-4">
                         <div class="order_box">
 
-                            <h2>Giỏ hàng của bạn</h2>
+                            <h2>Hoá đơn của bạn</h2>
                             <ul class="list">
                                 <li><a href="#">Sản phẩm <span>Tổng</span></a></li>
                                 <?php
@@ -127,89 +208,27 @@
                                             ?>
                                         </span></a></li>
                             </ul>
-                            <form action="index.php?act=checkout" method="post">
-                                <div class="payment_item">
-                                    <div class="radion_btn">
-                                        <input type="radio" id="f-option5" value="1" name="selector" checked>
-                                        <label for="f-option5">Thanh toán khi nhận hàng</label>
-                                        <div class="check"></div>
-                                    </div>
 
-                                </div>
-                                <div class="payment_item active">
-                                    <div class="radion_btn">
-                                        <input type="radio" id="f-option6" value="2" name="selector">
-                                        <label for="f-option6">Chuyển khoản </label>
-                                        <img src="img/product/card.jpg" alt="">
-                                        <div class="check"></div>
-                                    </div>
-
-                                </div>
-                                <div id="popup" class="popup">
-                                    <div class="popup-content">
-                                        <!-- Nội dung thông tin thanh toán sẽ hiển thị ở đây -->
-                                        <h4>Vietcombank</h4>
-                                        <h4>06404- NHOMCHIN</h4>
-                                        <p>Tin nhắn chuyển khoảng: <br>
-                                            <span>Thanh toán mã đơn 01</span>
-                                        </p>
-
-                                        <!-- Đặt thêm các phần tử HTML khác theo nhu cầu của bạn -->
-
-
-                                        <h2><?php
-                                            $sum_total_price = new carts();
-                                            $item_sum = $sum_total_price->sum_total_price($_SESSION['user_id']['user_id']);
-                                            if ($item_sum) {
-                                                foreach ($item_sum as $key) {
-                                                    extract($key);
-                                                    echo '' . $total_price_all_products . '';
-                                                }
-                                            } else {
-                                                echo 'chưa có sản phẩm  ';
-                                            }
-                                            ?></h2>
-
-                                    </div>
+                            <div class="payment_item">
+                                <div class="radion_btn">
+                                    <input type="radio" id="f-option5" value="1" name="selector" checked>
+                                    <label for="f-option5">Thanh toán khi nhận hàng</label>
+                                    <div class="check"></div>
                                 </div>
 
-                                <button type="submit" value="submit" name="submit" class="btn_bill">Thanh toán</button>
+                            </div>
+                            <div class="payment_item active">
+                                <div class="radion_btn">
+                                    <input type="radio" id="f-option6" value="2" name="selector">
+                                    <label for="f-option6">Chuyển khoản </label>
+                                    <img src="img/product/card.jpg" alt="">
+                                    <div class="check"></div>
+                                </div>
+
+                            </div>
+                            <button type="submit" value="submit" name="submit" class="btn_bill">Thanh toán</button>
                             </form>
-                            <?php
-                            $user_id = $_SESSION['user_id']['user_id'];
-                            if (isset($_POST['submit'])) {
-                                //lấy phương thức thanh toán 1 là thanh toán khi nhận hàng
-                                $selector = $_POST['selector'];
-                                //lấy thông tin giỏ hàng 
-                                $cart_user = new carts();
-                                $cart_items = $cart_user->getcart_user_id_inser_bill_details($_SESSION['user_id']['user_id']);
 
-
-
-
-                                // thêm tất cả data ở bên trên vào bill_details
-                                $insert_bill_details = new bill_details();
-                                $day = date('Y-m-d H:i:s');
-                                if ($cart_items) {
-                                    // nhập dữ liệu vào bill
-                                    $insert_bill = new bills();
-                                    $insert_bill->insert_bill($_SESSION['user_id']['user_id']);
-                                    //lấy bill_id vừa được thêm vào
-                                    $newbill = new bills();
-                                    $bill_id = $newbill->new_bill($user_id);
-                                    foreach ($cart_items as $key) {
-                                        extract($key);
-                                        // bắt dầu thêm dữ liệu vào chi tiết đơn 
-                                        $insert_bill_details->insert_bill_details($bill_id, $selector, $price, $day, $quantity, $product_id, $total_price);
-                                        $dell_cart = new carts();
-                                        // sau khi thêm thành công sẽ xóa cart
-                                        $dell = $dell_cart->dell_cart_user_id($user_id);
-                                    }
-                                } else {
-                                    echo 'Không có sản phẩm thanh toán';
-                                }
-                            }
-                            ?>
                         </div>
                     </div>
                 </div>

@@ -9,6 +9,10 @@ class bill_details
     var $quantity =  null;
     var $product_id = null;
     var $total = null;
+    var $address= null;
+    var $phone = null;
+    var $note = null;
+    var $fullname = null;
     public function avs_bill()
     {
         $db = new connect();
@@ -67,59 +71,64 @@ class bill_details
             return false;
         }
     }
-    public function insert_bill_details($bill_id,$pay,$price,$day,$quantity,$product_id,$total){
+    public function insert_bill_details($bill_id, $pay, $price, $day, $quantity, $product_id, $total,$address,$phone,$note,$fullname)
+    {
         $db = new connect();
-        $select= "INSERT INTO bill_details (bill_id, pay, price,day,quantity,product_id,total) values
-         (?,?,?,?,?,?,?) ";
-        $result= $db->pdo_execute($select,$bill_id,$pay,$price,$day,$quantity,$product_id,$total);
-        if($result){
-           
-            return $result;
-        }else{
+        $select = "INSERT INTO bill_details (bill_id, pay, price,day,quantity,product_id,total,address,phone,note,fullname) values
+         (?,?,?,?,?,?,?,?,?,?,?) ";
+        $result = $db->pdo_execute($select,$bill_id, $pay, $price, $day, $quantity, $product_id, $total,$address,$phone,$note,$fullname);
+        if ($result) {
+            if ($pay == 1) {
+                return $result;
+            }else{
+                echo '<script>window.location.href = "index.php?act=pay";</script>';
+                return $result;
+            }
+        } else {
             return false;
         }
     }
-    public function monthly_revenue(){
+    public function monthly_revenue()
+    {
         $db = new connect();
-        $select ="SELECT SUM(total) AS total_sum
+        $select = "SELECT SUM(total) AS total_sum
         FROM bill_details
         WHERE MONTH(day) = MONTH(CURDATE()) AND YEAR(day) = YEAR(CURDATE()) ";
         $result = $db->pdo_query($select);
-        if($result){
+        if ($result) {
             return $result;
-        }
-        else{
+        } else {
             return false;
         }
     }
-    public function growth(){
+    public function growth()
+    {
         $db = new connect();
-    
+
         // Tính tổng cột total trong tháng hiện tại
         $currentMonthQuery = "SELECT SUM(total) AS total_sum
             FROM bill_details
             WHERE MONTH(day) = MONTH(CURDATE()) AND YEAR(day) = YEAR(CURDATE())";
-    
+
         $currentMonthResult = $db->pdo_query_one($currentMonthQuery);
-    
+
         // Tính tổng cột total trong tháng trước đó
         $lastMonthQuery = "SELECT SUM(total) AS total_sum
             FROM bill_details
             WHERE MONTH(day) = MONTH(CURDATE() - INTERVAL 1 MONTH) AND YEAR(day) = YEAR(CURDATE() - INTERVAL 1 MONTH)";
-    
+
         $lastMonthResult = $db->pdo_query_one($lastMonthQuery);
-    
+
         // Tính tỷ lệ phần trăm tăng trưởng
         $currentMonthSum = isset($currentMonthResult['total_sum']) ? $currentMonthResult['total_sum'] : 0;
         $lastMonthSum = isset($lastMonthResult['total_sum']) ? $lastMonthResult['total_sum'] : 0;
-    
+
         $growthPercentage = 0;
-    
+
         if ($lastMonthSum != 0) {
             $growthPercentage = (($currentMonthSum - $lastMonthSum) / $lastMonthSum) * 100;
         }
-    
+
         return $growthPercentage;
     }
-    
 }

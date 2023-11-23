@@ -55,6 +55,7 @@ session_start();
 	<link rel="stylesheet" href="content/css/main.css"> -->
 	<link rel="stylesheet" href="content/css/style.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
 
 
 </head>
@@ -134,6 +135,9 @@ session_start();
 		case 'keyword_pagination':
 			include 'site/keyword_pagination.php';
 			break;
+		case 'pay':
+			include 'site/pay.php';
+			break;
 		case "logout":
 			unset($_SESSION['user_id']);
 			header("location: index.php");
@@ -175,7 +179,7 @@ session_start();
 <!-- Page level plugins -->
 <script src="admin/vendor/datatables/jquery.dataTables.min.js"></script>
 <script src="admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <!-- Page level custom scripts -->
 <script>
 	$(document).ready(function() {
@@ -232,28 +236,46 @@ session_start();
 	});
 	//hiển thị hình ảnh khi được up
 	function previewImage(input) {
-    var preview = document.getElementById('imagePreview');
-    var file = input.files[0];
-    var reader = new FileReader();
+		var preview = document.getElementById('imagePreview');
+		var file = input.files[0];
+		var reader = new FileReader();
 
-    reader.onloadend = function() {
-        if (file) {
-            preview.src = reader.result;
-            preview.style.display = 'block'; // Hiển thị hình ảnh khi đã tải lên
-        } else {
-            preview.src = "";
-            preview.style.display = 'none'; // Ẩn hình ảnh khi không có file
-        }
+		reader.onloadend = function() {
+			if (file) {
+				preview.src = reader.result;
+				preview.style.display = 'block'; // Hiển thị hình ảnh khi đã tải lên
+			} else {
+				preview.src = "";
+				preview.style.display = 'none'; // Ẩn hình ảnh khi không có file
+			}
+		}
+
+		if (file) {
+			reader.readAsDataURL(file);
+		} else {
+			preview.src = "";
+			preview.style.display = 'none'; // Ẩn hình ảnh khi không có file
+		}
+	}
+	// sao chep thông tin thanh toán 
+	function copyPaymentInfo() {
+        var paymentInfoElement = document.getElementById('payment-info');
+        var tempTextArea = document.createElement('textarea');
+        tempTextArea.value = paymentInfoElement.innerText;
+
+        document.body.appendChild(tempTextArea);
+        tempTextArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(tempTextArea);
+
+        // Sử dụng SweetAlert2 để hiển thị thông báo đẹp hơn
+        Swal.fire({
+            icon: 'success',
+            title: 'Đã sao chép thông tin thanh toán',
+            text: paymentInfoElement.innerText,
+            confirmButtonText: 'OK'
+        });
     }
-
-    if (file) {
-        reader.readAsDataURL(file);
-    } else {
-        preview.src = "";
-        preview.style.display = 'none'; // Ẩn hình ảnh khi không có file
-    }
-}
-
 </script>
 
 
