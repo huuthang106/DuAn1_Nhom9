@@ -23,11 +23,11 @@
                         <div class="card-body">
                             <div class="row align-items-center">
                                 <div class="col mr-2">
-                                    <div class="text-xs font-weight-bold text-uppercase mb-1">Earnings (Monthly)</div>
+                                    <div class="text-xs font-weight-bold text-uppercase mb-1">Doanh thu</div>
                                     <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
                                     <div class="mt-2 mb-0 text-muted text-xs">
                                         <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
-                                        <span>Since last month</span>
+                                        <span>Tháng vừa qua</span>
                                     </div>
                                 </div>
                                 <div class="col-auto">

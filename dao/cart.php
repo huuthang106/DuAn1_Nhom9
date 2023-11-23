@@ -84,7 +84,7 @@ class carts
         $db = new connect();
         $select = "SELECT 
         carts.*, 
-        (carts.quantity * products.price) AS total_price,
+        (carts.quantity * products.price)+20000 AS total_price,
         products.price as price, products.product_id as product_id
 
         FROM carts
