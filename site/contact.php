@@ -28,7 +28,7 @@ include("./include/nav.php");
 			 data-mlat="40.701083" data-mlon="-74.1522848">
 			</div>
 			<div class="row">
-				<div class="col-lg-3">
+				<div class="col-lg-6">
 					<div class="contact_info">
 						<div class="info_item">
 							<i class="lnr lnr-home"></i>
@@ -48,9 +48,12 @@ include("./include/nav.php");
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-9">
-					<form class="row contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
-						<div class="col-md-6">
+
+
+
+				<div class="col-lg-6">
+					<form class="row contact_form" action="site/send.php" method="post" id="contactForm" novalidate="novalidate">
+						<div class="col-md-12">
 							<div class="form-group">
 								<input type="text" class="form-control" id="name" name="name" placeholder="Nhập tên" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'">
 							</div>
@@ -60,14 +63,13 @@ include("./include/nav.php");
 							<div class="form-group">
 								<input type="text" class="form-control" id="subject" name="subject" placeholder="Nhập Chủ đề" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Subject'">
 							</div>
+							
 						</div>
 						<div class="col-md-6">
-							<div class="form-group">
-								<textarea class="form-control" name="message" id="message" rows="1" placeholder="Nhập Lời nhắn" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Message'"></textarea>
-							</div>
+						
 						</div>
 						<div class="col-md-12 text-right">
-							<button type="submit" value="submit" class="primary-btn">Gửi</button>
+							<button type="submit" value="submit" name = "send" class="primary-btn">Gửi</button>
 						</div>
 					</form>
 				</div>
