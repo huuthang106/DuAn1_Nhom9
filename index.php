@@ -74,8 +74,6 @@ session_start();
 	include("dao/categories.php");
 	include("dao/evaluates.php");
     include("dao/blogs.php");
-    include("dao/comments.php");
-    include("dao/bill_details.php");
     include("dao/likes.php");
 	$action = "home";
 	if (isset($_GET['act']))

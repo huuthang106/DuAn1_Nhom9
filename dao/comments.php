@@ -7,6 +7,7 @@ class comments
     var $user_id = null;
     var $text = null;
     var $day = null;
+    var $status = null;
     public function count_comments()
     {
         $db = new connect();
@@ -41,7 +42,8 @@ class comments
             return $result;
         }
     }
-    public function get_comment_product_id($product_id){
+    public function get_comment_product_id($product_id)
+    {
         $db = new connect();
         $select = "SELECT cm.*, us.fullname as fullname, us.avarta as avarta, us.user_id as user_id 
         FROM comments cm
@@ -49,44 +51,45 @@ class comments
         WHERE cm.product_id = ? AND status = 1
         ORDER BY cm.day DESC
         LIMIT 5";
-        $result = $db->pdo_query($select,$product_id);
+        $result = $db->pdo_query($select, $product_id);
         if ($result) {
             # code...
             return $result;
-        }else{
+        } else {
             return false;
         }
-
     }
-    public function insert_comment($product_id,$user_id,$content,$day){
-        $db= new connect;
+    public function insert_comment($product_id, $user_id, $content, $day)
+    {
+        $db = new connect;
         $select = "INSERT INTO comments (product_id,user_id,text,day) VALUES (?,?,?,?)";
-        $result = $db->pdo_execute($select,$product_id,$user_id,$content,$day);
-        if($result){
-            echo '<script>window.location.href = "index.php?act=single-product&product_id='.$product_id .'";</script>';
+        $result = $db->pdo_execute($select, $product_id, $user_id, $content, $day);
+        if ($result) {
+            echo '<script>window.location.href = "index.php?act=single-product&product_id=' . $product_id . '";</script>';
             return $result;
-        }else{
+        } else {
             return false;
         }
     }
-    public function dell_comment($comment_id,$product_id){
+    public function dell_comment($comment_id, $product_id)
+    {
         $db = new connect();
         $select = "UPDATE comments set status = 0 WHERE comment_id = ?";
-        $result = $db->pdo_execute($select,$comment_id);
-        if($result){   
-          echo '<script>window.location.href = "index.php?act=single-product&product_id='.$product_id .'";</script>';
+        $result = $db->pdo_execute($select, $comment_id);
+        if ($result) {
+            echo '<script>window.location.href = "index.php?act=single-product&product_id=' . $product_id . '";</script>';
             return $result;
-        }else{
+        } else {
             return false;
         }
-
     }
 }
-function comments_selectall($blog_id){
+function comments_selectall($blog_id)
+{
     $sql =  "select * from comments where 1";
-    if($blog_id>0) 
-    $sql.="  AND blog_id='".$blog_id."'";
-    $sql.=" order by comment_id DESC";
+    if ($blog_id > 0)
+        $sql .= "  AND blog_id='" . $blog_id . "'";
+    $sql .= " order by comment_id DESC";
     return pdo_query($sql);
 }
 function comment_selectall()
@@ -94,7 +97,8 @@ function comment_selectall()
     $sql =  "select * from comments order by comment_id DESC";
     return pdo_query($sql);
 }
-function comment_insert($user_id, $blog_id, $text, $day, $status){
+function comment_insert($user_id, $blog_id, $text, $day, $status)
+{
     $sql = "insert into comments (user_id, blog_id, text, day, status) VALUES (?, ?, ?, ?, ?)";
     pdo_execute($sql, $user_id, $blog_id, $text, $day, $status);
 }
