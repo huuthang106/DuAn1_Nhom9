@@ -1,3 +1,11 @@
+<style>
+	#imagePreview {
+    width: 100%;
+    max-height: 200px;
+    margin-top: 10px;
+    display: none;
+}
+</style>
 <body>
 	<?php
 	include("./include/nav.php");
@@ -51,8 +59,15 @@
 								<input type="text" class="form-control" id="email" name="email" value="thangnhpc06404@fpt.edu.vn" placeholder="email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'email'">
 							</div>
 							<div class="col-md-12 form-group">
-								<input type="file" class="form-control" id="img" name="img" value="" placeholder="avatar" onfocus="this.placeholder = ''" onblur="this.placeholder = 'avatar'">
+								<input type="file" class="form-control" id="img" name="img" value="" placeholder="avatar" onfocus="this.placeholder = ''" onblur="this.placeholder = 'avatar'" onchange="previewImage(this);">
 							</div>
+
+							<div class="col-md-8 form-group">
+
+								<img id="imagePreview" src="#" alt="Preview">
+
+							</div>
+
 							<div class="col-md-12 form-group">
 								<div class="creat_account">
 									<input type="checkbox" id="f-option2" name="selector">

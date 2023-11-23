@@ -1,3 +1,11 @@
+<style>
+    #imagePreview {
+    width: 100%;
+    max-height: 200px;
+    margin-top: 10px;
+    display: none;
+}
+</style>
 <body id="page-top">
     <div id="wrapper">
         <?php
@@ -36,10 +44,20 @@
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="form-group">
-                                        <div class="input-group"> <input class="form-control" type="file" name="product_picture" value="" placeholder="" required> </div>
+                                        <div class="input-group">
+                                            <input class="form-control" type="file" name="product_picture" onchange="previewImage(this);" required>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    <div class="form-group">
+                                        <img id="imagePreview" src="#" alt="Preview">
+                                    </div>
+                                </div>
+                            </div>
+
 
                             <h6 class="information mt-4">Màu</h6>
                             <div class="row">

@@ -127,6 +127,31 @@ session_start();
 			$('#dataTable').DataTable(); // ID From dataTable 
 			$('#dataTableHover').DataTable(); // ID From dataTable with Hover
 		});
+		//hiển thị hình ảnh khi được up lên 
+
+		//hiển thị hình ảnh khi được up
+function previewImage(input) {
+    var preview = document.getElementById('imagePreview');
+    var file = input.files[0];
+    var reader = new FileReader();
+
+    reader.onloadend = function () {
+        if (file) {
+            preview.src = reader.result;
+            preview.style.display = 'block'; // Hiển thị hình ảnh khi đã tải lên
+        } else {
+            preview.src = "";
+            // preview.style.display = 'none'; // Ẩn hình ảnh khi không có file
+        }
+    }
+
+    if (file) {
+        reader.readAsDataURL(file);
+    } else {
+        preview.src = "";
+        preview.style.display = 'none'; // Ẩn hình ảnh khi không có file
+    }
+}
 	</script>
 </body>
 

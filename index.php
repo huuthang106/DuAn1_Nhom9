@@ -41,7 +41,7 @@ session_start();
 	<!--
 		CSS
 		============================================= -->
-		<!-- <link rel="stylesheet" href="content/css/add.css">
+	<!-- <link rel="stylesheet" href="content/css/add.css">
 	<link rel="stylesheet" href="content/css/linearicons.css">
 	<link rel="stylesheet" href="content/css/font-awesome.min.css">
 	<link rel="stylesheet" href="content/css/themify-icons.css">
@@ -55,7 +55,7 @@ session_start();
 	<link rel="stylesheet" href="content/css/main.css"> -->
 	<link rel="stylesheet" href="content/css/style.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
-	
+
 
 </head>
 
@@ -128,7 +128,7 @@ session_start();
 		case 'updata':
 			include 'site/updatauser.php';
 			break;
-		case'category_search':
+		case 'category_search':
 			include	'site/category_search.php';
 			break;
 		case 'keyword_pagination':
@@ -230,6 +230,30 @@ session_start();
 			}
 		}); // ID From dataTable with Hover
 	});
+	//hiển thị hình ảnh khi được up
+	function previewImage(input) {
+    var preview = document.getElementById('imagePreview');
+    var file = input.files[0];
+    var reader = new FileReader();
+
+    reader.onloadend = function() {
+        if (file) {
+            preview.src = reader.result;
+            preview.style.display = 'block'; // Hiển thị hình ảnh khi đã tải lên
+        } else {
+            preview.src = "";
+            preview.style.display = 'none'; // Ẩn hình ảnh khi không có file
+        }
+    }
+
+    if (file) {
+        reader.readAsDataURL(file);
+    } else {
+        preview.src = "";
+        preview.style.display = 'none'; // Ẩn hình ảnh khi không có file
+    }
+}
+
 </script>
 
 

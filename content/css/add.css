@@ -1,41 +1,49 @@
-.avarta{
+.avarta {
     width: 40%;
     margin: 2%;
-   
+
 }
-.avarta img{
+
+.avarta img {
     width: 100%;
 }
 
 
-.row-2{
+.row-2 {
     width: 75%;
     margin-left: 5%;
 }
-.container-1{
-padding: 10px;
-display: flex;
+
+.container-1 {
+    padding: 10px;
+    display: flex;
 }
-.main-nav-list button{
+
+.main-nav-list button {
     margin-bottom: 2%;
 }
 
-.caterories_footer{
+.caterories_footer {
     color: #777777;
 }
+
 #dataTable_filter {
     display: none;
 }
-.owl-controls{
+
+.owl-controls {
     display: none;
 }
+
 .active-banner-slider .owl-controls .owl-nav {
     display: none;
 }
-#reply{
+
+#reply {
     display: none;
 }
-.dell_btn{
+
+.dell_btn {
     border: 1px solid #e0e0e0;
     padding: 0px 28px;
     display: inline-block;
@@ -49,7 +57,8 @@ display: flex;
     top: 14px;
 
 }
-.btn_bill{
+
+.btn_bill {
     width: 100%;
     color: #fff;
     border: none;
@@ -68,11 +77,12 @@ display: flex;
     width: 100%;
     text-transform: uppercase;
     border: none;
-  
+
 }
-.btn_bill:hover{
+
+.btn_bill:hover {
     background: -webkit-linear-gradient(90deg, #ff6c00 100%, #ffba00 0%);
-  
-    
-   
+
+
+
 }

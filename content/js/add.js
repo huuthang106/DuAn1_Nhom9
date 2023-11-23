@@ -21,7 +21,7 @@ document.getElementById('popup').style.display = 'none';
 //
 
 // Khởi tạo DataTables và ẩn phần dataTable_filter
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Tìm thẻ label trong phần tử có id là 'dataTable' và ẩn nó
     var labelElement = document.querySelector('#dataTable label');
     if (labelElement) {
