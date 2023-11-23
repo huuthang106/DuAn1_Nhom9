@@ -75,6 +75,17 @@ class users
             return false; // Không tìm thấy mật khẩu cho user_id
         }
     }
+    public function count_user(){
+        $db = new connect();
+        $select = "SELECT COUNT(user_id) AS total_users FROM users
+        ";
+        $result = $db->pdo_query($select);
+        if ($result) {
+            return $result;
+        } else {
+            return false;
+        }
+    }
 }
 function user_selectall()
 {

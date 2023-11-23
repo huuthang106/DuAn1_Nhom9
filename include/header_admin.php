@@ -20,25 +20,79 @@ if (isset($_SESSION['user_id'])) {
             <div class="sidebar-heading">
                 Điều hướng
             </div>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap" aria-expanded="true" aria-controls="collapseBootstrap">
                     <i class="far fa-fw fa-window-maximize"></i>
                     <span>Quản lý</span>
                 </a>
                 <div id="collapseBootstrap" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Quản lý</h6>
-                        <a class="collapse-item" href="index.php?act=categories">Quản lý loại sản phẩm</a>
-                        <a class="collapse-item" href="index.php?act=products">Quản lý sản phẩm</a>
-                        <a class="collapse-item" href="index.php?act=clients">Quản lý khách hàng</a>
-                        <a class="collapse-item" href="index.php?act=staffs">Quản lý nhân viên</a>
-                        <a class="collapse-item" href="index.php?act=comments">Quản lý bình luận</a>
-                        <a class="collapse-item" href="index.php?act=bills">Quản lý đơn hàng</a>
-                        <a class="collapse-item" href="index.php?act=blogs">Quản lý bài viết</a>
-                        <a class="collapse-item" href="index.php?act=add_products">Thêm sản phẩm</a>
-                        <a class="collapse-item" href="index.php?act=add_blogs">Thêm bài viết</a>
-                    </div>
+                        <h6 class="collapse-header">Quản lý</h6> -->
+                        <!-- <a class="collapse-item" href="index.php?act=categories">Quản lý loại sản phẩm</a> -->
+                        <!-- <a class="collapse-item" href="index.php?act=products">Quản lý sản phẩm</a> -->
+                        <!-- <a class="collapse-item" href="index.php?act=clients">Quản lý khách hàng</a> -->
+                        <!-- <a class="collapse-item" href="index.php?act=staffs">Quản lý nhân viên</a> -->
+                        <!-- <a class="collapse-item" href="index.php?act=comments">Quản lý bình luận</a> -->
+                        <!-- <a class="collapse-item" href="index.php?act=bills">Quản lý đơn hàng</a> -->
+                        <!-- <a class="collapse-item" href="index.php?act=blogs">Quản lý bài viết</a> -->
+                        <!-- <a class="collapse-item" href="index.php?act=add_products">Thêm sản phẩm</a> -->
+                        <!-- <a class="collapse-item" href="index.php?act=add_blogs">Thêm bài viết</a> -->
+                    <!-- </div>
                 </div>
+            </li> -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="index.php?act=categories" data-target="#collapseBootstrap">
+                <i class="fa-solid fa-genderless"></i>
+                    <span>Quản lý loại sản phẩm</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="index.php?act=products" data-target="#collapseBootstrap">
+                <i class="fas fa-fw fa-shopping-cart"></i>
+                    <span>Quản lý sản phẩm</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="index.php?act=clients" data-target="#collapseBootstrap">
+                    <i class="far fa-fw fa-user"></i>
+                    <span>Quản lý khách hàng</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="index.php?act=staffs" data-target="#collapseBootstrap">
+                <i class="fa-solid fa-clipboard-user"></i>
+                    <span>Quản lý nhân viên</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="index.php?act=comments" data-target="#collapseBootstrap">
+                <i class="fa-solid fa-comments"></i>
+                    <span>Quản lý bình luận</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="index.php?act=bills" data-target="#collapseBootstrap">
+                <i class="fa-solid fa-cart-shopping"></i>
+                    <span>Quản lý đơn hàng</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="index.php?act=blogs" data-target="#collapseBootstrap">
+                <i class="fa-solid fa-rss"></i>
+                    <span>Quản lý bài viết</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="index.php?act=add_products" data-target="#collapseBootstrap">
+                    <i class="far fa-fw fa-window-maximize"></i>
+                    <span>Thêm sản phẩm</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="index.php?act=add_blogs" data-target="#collapseBootstrap">
+                <i class="fas fa-fw fa-blog"></i>
+                    <span>Thêm bài viết</span>
+                </a>
             </li>
 
             <hr class="sidebar-divider">
@@ -58,12 +112,12 @@ if (isset($_SESSION['user_id'])) {
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <img class="img-profile rounded-circle" src="img/boy.png" style="max-width: 60px">
                                 <span class="ml-2 d-none d-lg-inline text-white small"><?php
-                                    $fullname = new users();
-                                    foreach($fullname ->get_user_id($_SESSION['user_id']['user_id']) as $key){
-                                        extract($key);
-                                        echo ''.$fullname.'';
-                                    }
-                                ?></span>
+                                                                                        $fullname = new users();
+                                                                                        foreach ($fullname->get_user_id($_SESSION['user_id']['user_id']) as $key) {
+                                                                                            extract($key);
+                                                                                            echo '' . $fullname . '';
+                                                                                        }
+                                                                                        ?></span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="#">
@@ -112,7 +166,7 @@ if (isset($_SESSION['user_id'])) {
                         <div id="collapseBootstrap" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
                             <div class="bg-white py-2 collapse-inner rounded">
                                 <h6 class="collapse-header">Quản lý</h6>
-                                 <a class="collapse-item" href="index.php?act=categories">Quản lý loại sản phẩm</a>
+                                <a class="collapse-item" href="index.php?act=categories">Quản lý loại sản phẩm</a>
                                 <a class="collapse-item" href="index.php?act=products">Quản lý sản phẩm</a>
                                 <a class="collapse-item" href="index.php?act=clients">Quản lý khách hàng</a>
                                 <a class="collapse-item" href="index.php?act=staffs">Quản lý nhân viên</a>
@@ -142,12 +196,12 @@ if (isset($_SESSION['user_id'])) {
                                     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <img class="img-profile rounded-circle" src="img/boy.png" style="max-width: 60px">
                                         <span class="ml-2 d-none d-lg-inline text-white small"><?php
-                                    $fullname = new users();
-                                    foreach($fullname ->get_user_id($_SESSION['user_id']['user_id']) as $key){
-                                        extract($key);
-                                        echo ''.$fullname.'';
-                                    }
-                                ?></span>
+                                                                                                $fullname = new users();
+                                                                                                foreach ($fullname->get_user_id($_SESSION['user_id']['user_id']) as $key) {
+                                                                                                    extract($key);
+                                                                                                    echo '' . $fullname . '';
+                                                                                                }
+                                                                                                ?></span>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                                         <a class="dropdown-item" href="#">
@@ -174,5 +228,5 @@ if (isset($_SESSION['user_id'])) {
                     ?>
 
                 <?php
-             }
+            }
                 ?>

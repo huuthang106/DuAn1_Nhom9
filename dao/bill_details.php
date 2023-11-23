@@ -79,4 +79,47 @@ class bill_details
             return false;
         }
     }
+    public function monthly_revenue(){
+        $db = new connect();
+        $select ="SELECT SUM(total) AS total_sum
+        FROM bill_details
+        WHERE MONTH(day) = MONTH(CURDATE()) AND YEAR(day) = YEAR(CURDATE()) ";
+        $result = $db->pdo_query($select);
+        if($result){
+            return $result;
+        }
+        else{
+            return false;
+        }
+    }
+    public function growth(){
+        $db = new connect();
+    
+        // Tính tổng cột total trong tháng hiện tại
+        $currentMonthQuery = "SELECT SUM(total) AS total_sum
+            FROM bill_details
+            WHERE MONTH(day) = MONTH(CURDATE()) AND YEAR(day) = YEAR(CURDATE())";
+    
+        $currentMonthResult = $db->pdo_query_one($currentMonthQuery);
+    
+        // Tính tổng cột total trong tháng trước đó
+        $lastMonthQuery = "SELECT SUM(total) AS total_sum
+            FROM bill_details
+            WHERE MONTH(day) = MONTH(CURDATE() - INTERVAL 1 MONTH) AND YEAR(day) = YEAR(CURDATE() - INTERVAL 1 MONTH)";
+    
+        $lastMonthResult = $db->pdo_query_one($lastMonthQuery);
+    
+        // Tính tỷ lệ phần trăm tăng trưởng
+        $currentMonthSum = isset($currentMonthResult['total_sum']) ? $currentMonthResult['total_sum'] : 0;
+        $lastMonthSum = isset($lastMonthResult['total_sum']) ? $lastMonthResult['total_sum'] : 0;
+    
+        $growthPercentage = 0;
+    
+        if ($lastMonthSum != 0) {
+            $growthPercentage = (($currentMonthSum - $lastMonthSum) / $lastMonthSum) * 100;
+        }
+    
+        return $growthPercentage;
+    }
+    
 }

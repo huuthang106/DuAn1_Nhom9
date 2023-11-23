@@ -24,9 +24,26 @@
                             <div class="row align-items-center">
                                 <div class="col mr-2">
                                     <div class="text-xs font-weight-bold text-uppercase mb-1">Doanh thu</div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800"><?php
+                                        $monthly_revenue= new bill_details;
+                                        $item = $monthly_revenue->monthly_revenue();
+                                        if($item){
+                                        
+                                            echo ''.$item[0]['total_sum'].'';
+                                        }
+                                    ?></div>
                                     <div class="mt-2 mb-0 text-muted text-xs">
-                                        <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
+                                        <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> <?php
+                                            $growth = new bill_details();
+                                            $key = $growth->growth();
+                                            if($key){
+                                              
+                                                echo ''.$key.'%';
+                                            }
+                                            else{
+                                                echo 'Đang xử lý';
+                                            }
+                                        ?></span>
                                         <span>Tháng vừa qua</span>
                                     </div>
                                 </div>
@@ -78,8 +95,14 @@
                         <div class="card-body">
                             <div class="row no-gutters align-items-center">
                                 <div class="col mr-2">
-                                    <div class="text-xs font-weight-bold text-uppercase mb-1">New User</div>
-                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">366</div>
+                                    <div class="text-xs font-weight-bold text-uppercase mb-1">Người dùng</div>
+                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?php
+                                        $count_user = new users();
+                                        $key = $count_user->count_user();
+                                        if($key){
+                                            echo ''.$key[0]['total_users'].'';
+                                        }
+                                    ?></div>
                                     <div class="mt-2 mb-0 text-muted text-xs">
                                         <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 20.4%</span>
                                         <span>Since last month</span>
