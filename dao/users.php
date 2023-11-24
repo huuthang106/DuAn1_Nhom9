@@ -200,3 +200,9 @@ function clients_selectall()
     $sql =  "select * from user order by use_id DESC";
     return pdo_query($sql);
 }
+function users_selectall($user_id)
+{
+    $sql = "select * from users where user_id = '" . $user_id . "'";
+    $sp = pdo_query_one($sql);
+    return $sp;
+}

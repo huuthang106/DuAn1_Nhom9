@@ -24,7 +24,8 @@
                         if (isset($_POST['title']) && isset($_POST['content'])) {
                             $title = $_POST['title'];
                             $content = $_POST['content'];
-                            $day = date('d/m/Y');
+                            date_default_timezone_set('Asia/Ho_Chi_Minh');
+                            $day = date('Y-m-d H:i:s');
                             if (empty($title)) {
                                 $error = '<div class="error-message" style="color:#721c24;">
 													<i class="fa-solid fa-circle-exclamation"></i> Vui lòng nhập tiều đề bài viết !

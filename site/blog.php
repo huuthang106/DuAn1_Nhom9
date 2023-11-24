@@ -28,7 +28,7 @@
             <div class="row">
                 <div class="col-lg-4">
                     <div class="categories_post">
-                        <img src="img/blog/cat-post/cat-post-3.jpg" alt="post">
+                        <img src="content/img/blog/cat-post/cat-post-3.jpg" alt="post">
                         <div class="categories_details">
                             <div class="categories_text">
                                 <a href="blog-details.html">
@@ -42,7 +42,7 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="categories_post">
-                        <img src="img/blog/cat-post/cat-post-2.jpg" alt="post">
+                        <img src="content/img/blog/cat-post/cat-post-2.jpg" alt="post">
                         <div class="categories_details">
                             <div class="categories_text">
                                 <a href="blog-details.html">
@@ -56,7 +56,7 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="categories_post">
-                        <img src="img/blog/cat-post/cat-post-1.jpg" alt="post">
+                        <img src="content/img/blog/cat-post/cat-post-1.jpg" alt="post">
                         <div class="categories_details">
                             <div class="categories_text">
                                 <a href="blog-details.html">
@@ -74,176 +74,50 @@
     <!--================Blog Categorie Area =================-->
 
     <!--================Blog Area =================-->
+
     <section class="blog_area">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
                     <div class="blog_left_sidebar">
-                        <article class="row blog_item">
-                            <div class="col-md-3">
-                                <div class="blog_info text-right">
-                                    <div class="post_tag">
-                                        <a href="#">Đồ ăn,</a>
-                                        <a class="active" href="#">Công nghệ,</a>
-                                        <a href="#">Chính trị,</a>
-                                        <a href="#">Cách sống</a>
-                                    </div>
-                                    <ul class="blog_meta list">
-                                        <li><a href="#">Mark wiens<i class="lnr lnr-user"></i></a></li>
-                                        <li><a href="#">Ngày 12 tháng 12 năm 2018<i
-                                                    class="lnr lnr-calendar-full"></i></a></li>
-                                        <li><a href="#">1.2M Lượt xem<i class="lnr lnr-eye"></i></a></li>
-                                        <li><a href="#">06 bình luận<i class="lnr lnr-bubble"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col-md-9">
-                                <div class="blog_post">
-                                    <img src="img/blog/main-blog/m-blog-1.jpg" alt="">
-                                    <div class="blog_details">
-                                        <a href="single-blog.html">
-                                            <h2>Ống nhòm thiên văn Một sự thay thế tuyệt vời</h2>
-                                        </a>
-                                        <p>Chương trình đào tạo MCSE có những người ủng hộ và những người gièm pha. Một
-                                            số người không hiểu tại sao bạn phải chi tiền cho chương trình đào tạo khi
-                                            bạn có thể tự mình lấy tài liệu học MCSE với chi phí rất thấp.</p>
-                                        <a href="single-blog.html" class="white_bg_btn">View More</a>
+                        <?php
+                            
+                            $blog = blogs_selectall();
+                            foreach ($blog as $blogs) {
+                                extract($blogs);
+                                $more_link = "index.php?act=single-blog&blog_id=".$blog_id;
+                                $excerpt = substr($content, 0, 400);
+                                echo '                     
+                                <article class="row blog_item">
+                                <div class="col-md-3">
+                                    <div class="blog_info text-right">
+                                       
+                                        <ul class="blog_meta list">
+                                          
+                                            <li><a href="#">'.$day.'<i
+                                                        class="lnr lnr-calendar-full"></i></a></li>
+                                            <li><a href="#">'.$views_count.' Lượt xem<i class="lnr lnr-eye"></i></a></li>
+                                            <li><a href="#">06 bình luận<i class="lnr lnr-bubble"></i></a></li>
+                                        </ul>
                                     </div>
                                 </div>
-                            </div>
-                        </article>
-                        <article class="row blog_item">
-                            <div class="col-md-3">
-                                <div class="blog_info text-right">
-                                    <div class="post_tag">
-                                        <a href="#">Đồ ăn,</a>
-                                        <a class="active" href="#">Công nghệ,</a>
-                                        <a href="#">Chính trị,</a>
-                                        <a href="#">Cách sống</a>
-                                    </div>
-                                    <ul class="blog_meta list">
-                                        <li><a href="#">Mark wiens<i class="lnr lnr-user"></i></a></li>
-                                        <li><a href="#">Ngày 12 tháng 12 năm 2018<i
-                                                    class="lnr lnr-calendar-full"></i></a></li>
-                                        <li><a href="#">1.2M Lượt xem<i class="lnr lnr-eye"></i></a></li>
-                                        <li><a href="#">06 bình luận<i class="lnr lnr-bubble"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col-md-9">
-                                <div class="blog_post">
-                                    <img src="img/blog/main-blog/m-blog-2.jpg" alt="">
-                                    <div class="blog_details">
-                                        <a href="single-blog.html">
-                                            <h2>Những điều cơ bản khi mua kính thiên văn</h2>
-                                        </a>
-                                        <p>Chương trình đào tạo MCSE có những người ủng hộ và những người gièm pha. Một
-                                            số người không hiểu tại sao bạn phải chi tiền cho chương trình đào tạo khi
-                                            bạn có thể tự mình nhận được tài liệu học MCSE với chi phí rất thấp.</p>
-                                        <a href="single-blog.html" class="white_bg_btn">Xem thêm</a>
+                                <div class="col-md-9">
+                                    <div class="blog_post">
+                                        <img src="img/blog/main-blog/m-blog-1.jpg" alt="">
+                                        <div class="blog_details">
+                                            <a href="'.$more_link.'">
+                                                <h2>'.$title.'</h2>
+                                            </a>
+                                            <p>'.$excerpt.'</p>
+                                            <a href="'.$more_link.'" class="white_bg_btn">Xem thêm</a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </article>
-                        <article class="row blog_item">
-                            <div class="col-md-3">
-                                <div class="blog_info text-right">
-                                    <div class="post_tag">
-                                        <a href="#">Đồ ăn,</a>
-                                        <a class="active" href="#">Công nghệ,</a>
-                                        <a href="#">Chính trị,</a>
-                                        <a href="#">Cách sống</a>
-                                    </div>
-                                    <ul class="blog_meta list">
-                                        <li><a href="#">Mark wiens<i class="lnr lnr-user"></i></a></li>
-                                        <li><a href="#">Ngày 12 tháng 12 năm 2018<i
-                                                    class="lnr lnr-calendar-full"></i></a></li>
-                                        <li><a href="#">1.2M Lượt xem<i class="lnr lnr-eye"></i></a></li>
-                                        <li><a href="#">06 bình luận<i class="lnr lnr-bubble"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col-md-9">
-                                <div class="blog_post">
-                                    <img src="img/blog/main-blog/m-blog-3.jpg" alt="">
-                                    <div class="blog_details">
-                                        <a href="single-blog.html">
-                                            <h2>Thuật ngữ của kính thiên văn</h2>
-                                        </a>
-                                        <p>Chương trình đào tạo MCSE có những người ủng hộ và những người gièm pha. Một
-                                            số người không hiểu tại sao bạn phải chi tiền cho chương trình đào tạo khi
-                                            bạn có thể tự mình lấy tài liệu học MCSE với chi phí rất thấp.</p>
-                                        <a href="single-blog.html" class="white_bg_btn">Xem thêm</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </article>
-                        <article class="row blog_item">
-                            <div class="col-md-3">
-                                <div class="blog_info text-right">
-                                    <div class="post_tag">
-                                        <a href="#">Đồ ăn,</a>
-                                        <a class="active" href="#">Công nghệ,</a>
-                                        <a href="#">Chính trị,</a>
-                                        <a href="#">Cách sống</a>
-                                    </div>
-                                    <ul class="blog_meta list">
-                                        <li><a href="#">Mark wiens<i class="lnr lnr-user"></i></a></li>
-                                        <li><a href="#">Ngày 12 tháng 12 năm 2018<i
-                                                    class="lnr lnr-calendar-full"></i></a></li>
-                                        <li><a href="#">1.2M Lượt xem<i class="lnr lnr-eye"></i></a></li>
-                                        <li><a href="#">06 bình luận<i class="lnr lnr-bubble"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col-md-9">
-                                <div class="blog_post">
-                                    <img src="img/blog/main-blog/m-blog-4.jpg" alt="">
-                                    <div class="blog_details">
-                                        <a href="single-blog.html">
-                                            <h2>Thuật ngữ của kính thiên văn</h2>
-                                        </a>
-                                        <p>Chương trình đào tạo MCSE có những người ủng hộ và những người gièm pha. Một
-                                            số người không hiểu tại sao bạn phải chi tiền cho chương trình đào tạo khi
-                                            bạn có thể tự mình lấy tài liệu học MCSE với chi phí rất thấp.</p>
-                                        <a href="single-blog.html" class="white_bg_btn">Xem thêm</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </article>
-                        <article class="row blog_item">
-                            <div class="col-md-3">
-                                <div class="blog_info text-right">
-                                    <div class="post_tag">
-                                        <a href="#">Đồ ăn,</a>
-                                        <a class="active" href="#">Công nghệ,</a>
-                                        <a href="#">Chính trị,</a>
-                                        <a href="#">Cách sống</a>
-                                    </div>
-                                    <ul class="blog_meta list">
-                                        <li><a href="#">Mark wiens<i class="lnr lnr-user"></i></a></li>
-                                        <li><a href="#">Ngày 12 tháng 12 năm 2018<i
-                                                    class="lnr lnr-calendar-full"></i></a></li>
-                                        <li><a href="#">1.2M Lượt xem<i class="lnr lnr-eye"></i></a></li>
-                                        <li><a href="#">06 bình luận<i class="lnr lnr-bubble"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col-md-9">
-                                <div class="blog_post">
-                                    <img src="img/blog/main-blog/m-blog-5.jpg" alt="">
-                                    <div class="blog_details">
-                                        <a href="single-blog.html">
-                                            <h2>Kính thiên văn 101</h2>
-                                        </a>
-                                        <p>Chương trình đào tạo MCSE có những người ủng hộ và những người gièm pha. Một
-                                            số người không hiểu tại sao bạn phải chi tiền cho chương trình đào tạo khi
-                                            bạn có thể tự mình lấy tài liệu học MCSE với chi phí rất thấp.</p>
-                                        <a href="single-blog.html" class="white_bg_btn">View More</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </article>
+                            </article>
+                                ';
+                            }
+                        ?>
+
                         <nav class="blog-pagination justify-content-center d-flex">
                             <ul class="pagination">
                                 <li class="page-item">
@@ -272,97 +146,57 @@
                 <div class="col-lg-4">
                     <div class="blog_right_sidebar">
                         <aside class="single_sidebar_widget search_widget">
-                            <form method="post">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" name="noidung"
-                                        placeholder="Tìm kiếm bài viết" onfocus="this.placeholder = ''"
-                                        onblur="this.placeholder = 'Tìm kiếm bài viết'">
-                                    <!--    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Tìm kiếm bài viết'"-->
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-default" type="submit" name="btn"><i
-                                                class="lnr lnr-magnifier"></i></button>
-                                    </span>
-                            </form>
-                    </div>
-                    <div class="br"></div>
-                  
-                        <?php
-                        if (isset($_POST['btn'])) {
-                            $noidung = $_POST['noidung'];
-                        $sql = "SELECT * FROM blogs WHERE title LIKE '%$noidung%'";
-                        $result = pdo_query_one($sql);
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search Posts"
+                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Posts'">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button"><i
+                                            class="lnr lnr-magnifier"></i></button>
+                                </span>
+                            </div><!-- /input-group -->
+                            <div class="br"></div>
+                        </aside>
+                        <aside class="single_sidebar_widget author_widget">
+                            <img class="author_img rounded-circle" src="img/blog/author.png" alt="">
+                            <h4>Charlie thợ cắt tóc</h4>
+                            <p>Người viết blog cao cấp</p>
+                            <div class="social_icon">
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-github"></i></a>
+                                <a href="#"><i class="fa fa-behance"></i></a>
+                            </div>
+                            <p>Chương trình đào tạo có những người ủng hộ và những người gièm pha. Một số người không
+                                hiểu tại sao bạn phải chi tiền cho chương trình đào tạo khi bạn có thể có được. Chương
+                                trình đào tạo có những người ủng hộ và những người gièm pha.</p>
+                            <div class="br"></div>
+                        </aside>
+                        <aside class="single_sidebar_widget popular_post_widget">
+                            <h3 class="widget_title">Bài viết phổ biến</h3>
 
-                        while ($row = $result) {
-                            ?>
-                            <aside class="single_sidebar_widget author_widget">
-                                <img class="author_img rounded-circle" src="img/blog/author.png" alt="">
-                                <h4>
-                                    <?php echo $row['title']; ?>
-                                </h4>
-                                <div class="social_icon">
-                                    <a href="#"><i class="fa fa-facebook"></i></a>
-                                    <a href="#"><i class="fa fa-twitter"></i></a>
-                                    <a href="#"><i class="fa fa-github"></i></a>
-                                    <a href="#"><i class="fa fa-behance"></i></a>
-                                </div>
-                                <p>
-                                    <?php echo $row['content']; ?>
-                                </p>
-
-                                <div class="br"></div>
-                            </aside>
                             <?php
-                            return;
-                        }
-                    };
-                    ?>
-                    </aside>
+                                $blog = blogs_selectalls();
+                                foreach ($blog as $blogs) {
+                                    extract($blogs);
+                                    $more_link = "index.php?act=single-blog&blog_id=".$blog_id;
+                                    $excerpt = substr($content, 0, 400);
+                                    echo '
+                                    <div class="media post_item">                     
+                                        <div class="media-body">
+                                            <a href="blog-details.html">
+                                                <h3>'.$title.'</h3>
+                                            </a>
+                                            <p>'.$day.'</p>
+                                        </div>
+                                        </div>
+                                    ';
+                                }
+                            ?>
 
-                    <aside class="single_sidebar_widget popular_post_widget">
-                        <h3 class="widget_title">Bài viết phổ biến</h3>
-                        <div class="media post_item">
-                            <img src="img/blog/popular-post/post1.jpg" alt="post">
-                            <div class="media-body">
-                                <a href="blog-details.html">
-                                    <h3>Không gian Biên giới cuối cùng</h3>
-                                </a>
-                                <p>02 giờ trước</p>
-                            </div>
-                        </div>
-                        <div class="media post_item">
-                            <img src="img/blog/popular-post/post2.jpg" alt="post">
-                            <div class="media-body">
-                                <a href="blog-details.html">
-                                    <h3>Hubble tuyệt vời</h3>
-                                </a>
-                                <p>02 giờ trước</p>
-                            </div>
-                        </div>
-                        <div class="media post_item">
-                            <img src="img/blog/popular-post/post3.jpg" alt="post">
-                            <div class="media-body">
-                                <a href="blog-details.html">
-                                    <h3>Thiên văn học hoặc Chiêm tinh học</h3>
-                                </a>
-                                <p>03 giờ trước</p>
-                            </div>
-                        </div>
-                        <div class="media post_item">
-                            <img src="img/blog/popular-post/post4.jpg" alt="post">
-                            <div class="media-body">
-                                <a href="blog-details.html">
-                                    <h3>Kính thiên văn tiểu hành tinh</h3>
-                                </a>
-                                <p>01 giờ trước</p>
-                            </div>
-                        </div>
-                        <div class="br"></div>
-                    </aside>
-                    <aside class="single_sidebar_widget ads_widget">
-                        <a href="#"><img class="img-fluid" src="img/blog/add.jpg" alt=""></a>
-                        <div class="br"></div>
-                    </aside>
-                    <!-- <aside class="single_sidebar_widget post_category_widget">
+                            <div class="br"></div>
+                        </aside>
+
+                        <aside class="single_sidebar_widget post_category_widget">
                             <h4 class="widget_title">Danh mục bài đăng</h4>
                             <ul class="list cat-list">
                                 <li>

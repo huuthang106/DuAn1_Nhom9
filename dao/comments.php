@@ -82,11 +82,18 @@ class comments
 
     }
 }
-function comments_selectall()
-{
-    $sql =  "select * from comments order by comment_id DESC";
+function comments_selectall($blog_id){
+    $sql =  "select * from comments where 1";
+    if($blog_id>0) 
+    $sql.="  AND blog_id='".$blog_id."'";
+    $sql.=" order by comment_id DESC";
     return pdo_query($sql);
 }
+function comment_insert($user_id, $blog_id, $text, $day, $status){
+    $sql = "insert into comments (user_id, blog_id, text, day, status) VALUES (?, ?, ?, ?, ?)";
+    pdo_execute($sql, $user_id, $blog_id, $text, $day, $status);
+}
+
 function get_product_name($product_id)
 {
     $sql = "select name from products where product_id = ?";

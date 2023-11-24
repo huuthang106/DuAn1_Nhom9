@@ -3,16 +3,20 @@
     include("./include/nav.php");
     ?>
     <!-- End Header Area -->
-
+    <?php
+    if(isset($_GET['blog_id'])){
+        blogs_update_views($_GET['blog_id']);
+    }
+    ?>
     <!-- Start Banner Area -->
     <section class="banner-area organic-breadcrumb">
         <div class="container">
             <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
                 <div class="col-first">
-                    <h1>Blog Page</h1>
+                    <h1>Trang bài viết</h1>
                     <nav class="d-flex align-items-center">
-                        <a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
-                        <a href="category.html">Blog</a>
+                        <a href="index.php?act=home">Trang chủ<span class="lnr lnr-arrow-right"></span></a>
+                        <a href="category.html">Bài viết</a>
                     </nav>
                 </div>
             </div>
@@ -20,251 +24,233 @@
     </section>
     <!-- End Banner Area -->
 
-       <!--================Blog Area =================-->
-       <section class="blog_area single-post-area section_gap">
+    <!--================Blog Area =================-->
+    <section class="blog_area single-post-area section_gap">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 posts-list">
-                    <div class="single-post row">
-                        <div class="col-lg-12">
-                            <div class="feature-img">
-                                <img class="img-fluid" src="img/blog/feature-img1.jpg" alt="">
-                            </div>
-                        </div>
-                        <div class="col-lg-3  col-md-3">
-                            <div class="blog_info text-right">
-                                <div class="post_tag">
-                                    <a href="#">Đồ ăn,</a>
-                                    <a class="active" href="#">Công nghệ,</a>
-                                    <a href="#">Chính trị,</a>
-                                    <a href="#">Cách sống</a>
+                    <?php
+                            $blog = blogs_detail_selectalls($_GET['blog_id']);
+                            foreach ($blog as $blogs) {
+                                extract($blogs);
+                                $next = ($blog_id + 1);
+                                $after =  ($blog_id - 1);
+                                $more_link = "index.php?act=single-blog&blog_id=".$blog_id;
+                                $next_link = "index.php?act=single-blog&blog_id=" .$next ;
+                                $after_link = "index.php?act=single-blog&blog_id=" .$after;
+                                
+                                echo '                     
+                                <div class="single-post row">
+                                <div class="col-lg-12">
+                                    <div class="feature-img">
+                                        <img class="img-fluid" src="/img/blog/feature-img1.jpg" alt="">
+                                    </div>
                                 </div>
-                                <ul class="blog_meta list">
-                                    <li><a href="#">Mark wiens<i class="lnr lnr-user"></i></a></li>
-                                    <li><a href="#">Ngày 12 tháng 12 năm 2018<i class="lnr lnr-calendar-full"></i></a>
-                                    </li>
-                                    <li><a href="#">1,2 triệu lượt xem<i class="lnr lnr-eye"></i></a></li>
-                                    <li><a href="#">06 Bình Luận<i class="lnr lnr-bubble"></i></a></li>
-                                </ul>
-                                <ul class="social-links">
-                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-github"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-behance"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-lg-9 col-md-9 blog_details">
-                            <h2>Ống nhòm thiên văn Một sự thay thế tuyệt vời</h2>
-                            <p class="excert">
-                                Chương trình đào tạo MCSE có những người ủng hộ và những người gièm pha. Một số người
-                                không hiểu tại sao bạn phải chi tiền cho chương trình đào tạo khi bạn có thể tự mình lấy
-                                tài liệu học MCSE với chi phí rất thấp.
-                            </p>
-                            <p>
-                                Chương trình đào tạo có những người ủng hộ và những người gièm pha. Một số người không
-                                hiểu tại sao bạn phải chi tiền cho chương trình đào tạo khi bạn có thể tự mình lấy tài
-                                liệu học MCSE với giá chỉ bằng một phần nhỏ so với giá của trại. Tuy nhiên, ai có đủ
-                                nghị lực để thực sự tham gia khóa đào tạo MCSE tự áp đặt. người có đủ ý chí để thực sự
-                                vượt qua sự tự áp đặt
-                            </p>
-                            <p>
-                                Chương trình đào tạo có những người ủng hộ và những người gièm pha. Một số người không
-                                hiểu tại sao bạn phải chi tiền cho chương trình đào tạo khi bạn có thể tự mình lấy tài
-                                liệu học MCSE với giá chỉ bằng một phần nhỏ so với giá của trại. Tuy nhiên, ai có đủ
-                                nghị lực để thực sự tham gia khóa đào tạo MCSE tự áp đặt. người có đủ ý chí để thực sự
-                                vượt qua sự tự áp đặt
-                            </p>
-                        </div>
-                        <div class="col-lg-12">
-                            <div class="quotes">
-                                Chương trình đào tạo MCSE có những người ủng hộ và những người gièm pha. Một số người
-                                không hiểu tại sao bạn phải chi tiền cho chương trình đào tạo khi bạn có thể tự mình lấy
-                                tài liệu học MCSE với giá chỉ bằng một phần nhỏ so với giá của trại. Tuy nhiên, ai có đủ
-                                nghị lực để thực sự tham gia khóa đào tạo MCSE tự áp đặt.
-                            </div>
-                            <div class="row">
-                                <div class="col-6">
-                                    <img class="img-fluid" src="img/blog/post-img1.jpg" alt="">
+                                <div class="col-lg-3  col-md-3">
+                                    <div class="blog_info text-right">
+                                        
+                                        <ul class="blog_meta list">
+                                            <li><a href="#">'.$day.'<i class="lnr lnr-calendar-full"></i></a>
+                                            </li>
+                                            <li><a href="#">'.$views_count.' lượt xem<i class="lnr lnr-eye"></i></a></li>
+                                            <li><a href="#">06 Bình Luận<i class="lnr lnr-bubble"></i></a></li>
+                                        </ul>
+                                        <ul class="social-links">
+                                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-github"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                                        </ul>
+                                    </div>
                                 </div>
-                                <div class="col-6">
-                                    <img class="img-fluid" src="img/blog/post-img2.jpg" alt="">
-                                </div>
-                                <div class="col-lg-12 mt-25">
-                                    <p>
-                                        Chương trình đào tạo MCSE có những người ủng hộ và những người gièm pha. Một số
-                                        người không hiểu tại sao bạn phải chi tiền cho chương trình đào tạo khi bạn có
-                                        thể tự mình lấy tài liệu học MCSE với giá chỉ bằng một phần nhỏ so với giá của
-                                        trại. Tuy nhiên, ai có ý chí.
-                                    </p>
-                                    <p>
-                                        Chương trình đào tạo MCSE có những người ủng hộ và những người gièm pha. Một số
-                                        người không hiểu tại sao bạn phải chi tiền cho chương trình đào tạo khi bạn có
-                                        thể tự mình lấy tài liệu học MCSE với giá chỉ bằng một phần nhỏ so với giá của
-                                        trại. Tuy nhiên, ai có ý chí.
-                                    </p>
+                                <div class="col-lg-9 col-md-9 blog_details">
+                                    <h2>'.$title.'</h2>
+                                    <p class="excert">'.$content.'</p>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="navigation-area">
-                        <div class="row">
-                            <div
-                                class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
-                                <div class="thumb">
-                                    <a href="#"><img class="img-fluid" src="img/blog/prev.jpg" alt=""></a>
+                            ';
+
+                            $existingBlog = array_column(blogs_selectall(), 'blog_id');
+							if(!in_array($next, $existingBlog)){
+                                    echo '
+                                    <div class="navigation-area">
+                                    <div class="row">
+                                        <div
+                                            class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
+                                            <div class="thumb">
+                                                <a href=""><img class="img-fluid" src="img/blog/prev.jpg" alt=""></a>
+                                            </div>
+                                            <div class="detials">
+                                                <a href="'.$after_link.'">
+                                                    <h4>&#8592; Bài viết trước</h4>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-end align-items-center">
+                                            <div class="detials">
+                                            
+                                            </div>
+                                            <div class="thumb">
+                                                <a href="#"><img class="img-fluid" src="img/blog/next.jpg" alt=""></a>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="arrow">
-                                    <a href="#"><span class="lnr text-white lnr-arrow-left"></span></a>
-                                </div>
-                                <div class="detials">
-                                    <p>Bài đăng trước</p>
-                                    <a href="#">
-                                        <h4>Không gian Biên giới cuối cùng</h4>
-                                    </a>
+                                ';
+                            }elseif($after <= 0){
+                                echo '
+                                <div class="navigation-area">
+                                <div class="row">
+                                    <div
+                                        class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
+                                        <div class="thumb">
+                                            <a href=""><img class="img-fluid" src="img/blog/prev.jpg" alt=""></a>
+                                        </div>
+                                        
+                                        <div class="detials">
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-end align-items-center">
+                                        <div class="detials">
+                                            <a href="'.$next_link.'">
+                                                <h4>Bài viết sau &#8594;</h4>
+                                            </a>
+                                        </div>
+                                        <div class="thumb">
+                                            <a href="#"><img class="img-fluid" src="img/blog/next.jpg" alt=""></a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div
-                                class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-end align-items-center">
-                                <div class="detials">
-                                    <p>Bài tiếp theo</p>
-                                    <a href="#">
-                                        <h4>Kính thiên văn 101</h4>
-                                    </a>
+                                ';
+                            }else{
+                                echo '
+                                    <div class="navigation-area">
+                                    <div class="row">
+                                        <div
+                                            class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
+                                            <div class="thumb">
+                                                <a href=""><img class="img-fluid" src="img/blog/prev.jpg" alt=""></a>
+                                            </div>
+                                            
+                                            <div class="detials">
+                                                <a href="'.$after_link.'">
+                                                    <h4>&#8592; Bài viết trước</h4>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-end align-items-center">
+                                            <div class="detials">
+                                                <a href="'.$next_link.'">
+                                                    <h4>Bài viết sau &#8594;</h4>
+                                                </a>
+                                            </div>
+                                            <div class="thumb">
+                                                <a href="#"><img class="img-fluid" src="img/blog/next.jpg" alt=""></a>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="arrow">
-                                    <a href="#"><span class="lnr text-white lnr-arrow-right"></span></a>
-                                </div>
-                                <div class="thumb">
-                                    <a href="#"><img class="img-fluid" src="img/blog/next.jpg" alt=""></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                                ';
+                                }
+                            }
+                        ?>
+
+
                     <div class="comments-area">
-                        <h4>05 Bình Luận</h4>
-                        <div class="comment-list">
-                            <div class="single-comment justify-content-between d-flex">
-                                <div class="user justify-content-between d-flex">
-                                    <div class="thumb">
-                                        <img src="img/blog/c1.jpg" alt="">
+
+                        <?php   
+                               
+                                $comment = comments_selectall($blog_id);
+                            $count=0;
+                                foreach ($comment as $comments) {
+                                    extract($comments);
+                                    $more_link = "index.php?act=single-blog&blog_id=".$blog_id;
+                                    $user = users_selectall($user_id);
+                                    if($status == 2){
+                                    echo '
+                                    <div class="comment-list">
+                                        <div class="single-comment justify-content-between d-flex">
+                                            <div class="user justify-content-between d-flex">
+                                                <div class="thumb">
+                                                    <img src="img/blog/c5.jpg" alt="">
+                                                </div>
+                                                <div class="desc">
+                                                    <h5><a href="#">'.$user['fullname'].'</a></h5>
+                                                    <p class="date">'.$day.'</p>
+                                                    <p class="comment">
+                                                        '.$text.'
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="reply-btn">
+                                                <a href="" class="btn-reply text-uppercase">hồi đáp</a>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="desc">
-                                        <h5><a href="#">Emilly Blunt</a></h5>
-                                        <p class="date">Ngày 4 tháng 12 năm 2018 lúc 3:12 chiều </p>
-                                        <p class="comment">
-                                            Đừng bao giờ nói lời tạm biệt cho đến khi cái kết đến!
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="reply-btn">
-                                    <a href="" class="btn-reply text-uppercase">hồi đáp</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="comment-list left-padding">
-                            <div class="single-comment justify-content-between d-flex">
-                                <div class="user justify-content-between d-flex">
-                                    <div class="thumb">
-                                        <img src="img/blog/c2.jpg" alt="">
-                                    </div>
-                                    <div class="desc">
-                                        <h5><a href="#">Elsie Cunningham</a></h5>
-                                        <p class="date">Ngày 4 tháng 12 năm 2018 lúc 3:12 chiều </p>
-                                        <p class="comment">
-                                            Đừng bao giờ nói lời tạm biệt cho đến khi cái kết đến!
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="reply-btn">
-                                    <a href="" class="btn-reply text-uppercase">hồi đáp</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="comment-list left-padding">
-                            <div class="single-comment justify-content-between d-flex">
-                                <div class="user justify-content-between d-flex">
-                                    <div class="thumb">
-                                        <img src="img/blog/c3.jpg" alt="">
-                                    </div>
-                                    <div class="desc">
-                                        <h5><a href="#">Annie Stephens</a></h5>
-                                        <p class="date">Ngày 4 tháng 12 năm 2018 lúc 3:12 chiều </p>
-                                        <p class="comment">
-                                            Đừng bao giờ nói lời tạm biệt cho đến khi cái kết đến!
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="reply-btn">
-                                    <a href="" class="btn-reply text-uppercase">hồi đáp</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="comment-list">
-                            <div class="single-comment justify-content-between d-flex">
-                                <div class="user justify-content-between d-flex">
-                                    <div class="thumb">
-                                        <img src="img/blog/c4.jpg" alt="">
-                                    </div>
-                                    <div class="desc">
-                                        <h5><a href="#">Maria Luna</a></h5>
-                                        <p class="date">Ngày 4 tháng 12 năm 2018 lúc 3:12 chiều</p>
-                                        <p class="comment">
-                                            Đừng bao giờ nói lời tạm biệt cho đến khi cái kết đến!
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="reply-btn">
-                                    <a href="" class="btn-reply text-uppercase">hồi đáp</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="comment-list">
-                            <div class="single-comment justify-content-between d-flex">
-                                <div class="user justify-content-between d-flex">
-                                    <div class="thumb">
-                                        <img src="img/blog/c5.jpg" alt="">
-                                    </div>
-                                    <div class="desc">
-                                        <h5><a href="#">Ina Hayes</a></h5>
-                                        <p class="date">Ngày 4 tháng 12 năm 2018 lúc 3:12 chiều </p>
-                                        <p class="comment">
-                                            Đừng bao giờ nói lời tạm biệt cho đến khi cái kết đến!
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="reply-btn">
-                                    <a href="" class="btn-reply text-uppercase">hồi đáp</a>
-                                </div>
-                            </div>
-                        </div>
+                                    ';
+                                    $count++;
+                                }
+                                
+                                }
+                                echo '<h4>' . $count . ' Bình Luận</h4>';
+                                
+                            ?>
+
                     </div>
+                    <?php 
+                    if(isset($_SESSION['user_id'])) {
+                        if(isset($_POST['send']) && isset($_GET['blog_id'])){
+                            $text = $_POST['text'];
+                            $blog_id = $_GET['blog_id'];
+                            $user_id = $_SESSION['user_id']['user_id'];
+                            date_default_timezone_set('Asia/Ho_Chi_Minh');
+                            $day = date('Y-m-d H:i:s');
+                            $status = 2;
+                            if(empty($text)) {
+
+                            }else{
+                            comment_insert($user_id, $blog_id, $text, $day, $status);
+                            echo '
+                            <script>
+                            window.location.href = "index.php?act=single-blog&blog_id='.$blog_id.'";
+                            </script>
+                            ';
+
+                        }
+                    }
+                    ?>
                     <div class="comment-form">
-                        <h4>Để lại một câu trả lời</h4>
-                        <form>
-                            <div class="form-group form-inline">
-                                <div class="form-group col-lg-6 col-md-6 name">
-                                    <input type="text" class="form-control" id="name" placeholder="Enter Name"
-                                        onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Name'">
-                                </div>
-                                <div class="form-group col-lg-6 col-md-6 email">
-                                    <input type="email" class="form-control" id="email"
-                                        placeholder="Enter email address" onfocus="this.placeholder = ''"
-                                        onblur="this.placeholder = 'Enter email address'">
-                                </div>
-                            </div>
+                        <h4>Để lại một ý kiến của bạn</h4>
+                        <form action="index.php?act=single-blog&blog_id=<?php echo $_GET['blog_id']; ?>" method="post">
+                            <input type="hidden" name="status" value="<?=$status?>">
                             <div class="form-group">
-                                <input type="text" class="form-control" id="subject" placeholder="Subject"
-                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Subject'">
-                            </div>
-                            <div class="form-group">
-                                <textarea class="form-control mb-10" rows="5" name="message" placeholder="Messege"
-                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Messege'"
+                                <textarea class="form-control mb-10" rows="5" name="text" placeholder="Nội dung"
                                     required=""></textarea>
                             </div>
-                            <a href="#" class="primary-btn submit_btn">đăng bình luận</a>
+                            <input type="submit" name="send" value="Đăng bình luận" style="border: none"
+                                class="primary-btn submit_btn">
                         </form>
                     </div>
+                    <?php }else{ ?>
+
+                    <div class="comment-form">
+                        <h4>Để lại một ý kiến của bạn</h4>
+                        <form action="index.php?act=single-blog" method="post">
+                            <div class="form-group">
+                                <textarea class="form-control mb-10" rows="5" name="text" placeholder="Nội dung"
+                                    required=""></textarea>
+                            </div>
+                            <a href="index.php?act=login" class="primary-btn submit_btn">đăng bình luận</a>
+                        </form>
+                    </div>
+
+
+                    <?php } ?>
+
                 </div>
                 <div class="col-lg-4">
                     <div class="blog_right_sidebar">
@@ -280,7 +266,7 @@
                             <div class="br"></div>
                         </aside>
                         <aside class="single_sidebar_widget author_widget">
-                            <img class="author_img rounded-circle" src="img/blog/author.png" alt="">
+                            <img class="author_img rounded-circle" src="content/img/blog/author.png" alt="">
                             <h4>Charlie Barber</h4>
                             <p>Người viết blog cao cấp</p>
                             <div class="social_icon">
@@ -295,50 +281,29 @@
                             <div class="br"></div>
                         </aside>
                         <aside class="single_sidebar_widget popular_post_widget">
-                            <h3 class="widget_title">Popular Posts</h3>
-                            <div class="media post_item">
-                                <img src="img/blog/popular-post/post1.jpg" alt="post">
-                                <div class="media-body">
-                                    <a href="blog-details.html">
-                                        <h3>Space The Final Frontier</h3>
-                                    </a>
-                                    <p>02 giờ trước</p>
-                                </div>
-                            </div>
-                            <div class="media post_item">
-                                <img src="img/blog/popular-post/post2.jpg" alt="post">
-                                <div class="media-body">
-                                    <a href="blog-details.html">
-                                        <h3>The Amazing Hubble</h3>
-                                    </a>
-                                    <p>02 giờ trước</p>
-                                </div>
-                            </div>
-                            <div class="media post_item">
-                                <img src="img/blog/popular-post/post3.jpg" alt="post">
-                                <div class="media-body">
-                                    <a href="blog-details.html">
-                                        <h3>Astronomy Or Astrology</h3>
-                                    </a>
-                                    <p>03 giờ trước</p>
-                                </div>
-                            </div>
-                            <div class="media post_item">
-                                <img src="img/blog/popular-post/post4.jpg" alt="post">
-                                <div class="media-body">
-                                    <a href="blog-details.html">
-                                        <h3>Asteroids telescope</h3>
-                                    </a>
-                                    <p>01 giờ trước</p>
-                                </div>
-                            </div>
+                            <h3 class="widget_title">Bài viết mới nhất</h3>
+                            <?php
+                                $blog = blogs_selectalls();
+                                foreach ($blog as $blogs) {
+                                    extract($blogs);
+                                    $more_link = "index.php?act=single-blog&blog_id=".$blog_id;
+                                    $excerpt = substr($content, 0, 400);
+                                    echo '
+                                    <div class="media post_item">                     
+                                        <div class="media-body">
+                                            <a href="'.$more_link.'">
+                                                <h3>'.$title.'</h3>
+                                            </a>
+                                            <p>'.$day.'</p>
+                                        </div>
+                                        </div>
+                                    ';
+                                }
+                            ?>
                             <div class="br"></div>
                         </aside>
-                        <aside class="single_sidebar_widget ads_widget">
-                            <a href="#"><img class="img-fluid" src="img/blog/add.jpg" alt=""></a>
-                            <div class="br"></div>
-                        </aside>
-                      <!--  <aside class="single_sidebar_widget post_category_widget">
+
+                        <!--  <aside class="single_sidebar_widget post_category_widget">
                             <h4 class="widget_title">Danh mục bài đăng</h4>
                             <ul class="list cat-list">
                                 <li>
