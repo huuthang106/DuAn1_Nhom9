@@ -62,7 +62,7 @@
                                 <li><a href="#">Sản phẩm <span>Tổng</span></a></li>
                                 <?php
                                 $your_card = new carts();
-                                $item = $your_card->cart_user_id($_SESSION['user_id']['user_id']);
+                                $item = $your_card->cart_user_id($_SESSION['user_id']);
                                 if ($item) {
                                     foreach ($item as $key) {
 
@@ -85,7 +85,7 @@
                             <ul class="list list_2">
                                 <li><a href="#">Tạm tính <span><?php
                                                                 $sum_total_price = new carts();
-                                                                $item_sum_total_price = $sum_total_price->total_price($_SESSION['user_id']['user_id']);
+                                                                $item_sum_total_price = $sum_total_price->total_price($_SESSION['user_id']);
                                                                 if ($item_sum_total_price) {
                                                                     foreach ($item_sum_total_price as $key) {
                                                                         extract($key);
@@ -99,7 +99,7 @@
                                 <li><a href="#">Số tiền cần chuyển <span>
                                             <?php
                                             $sum_total_price = new carts();
-                                            $item_sum_total_price = $sum_total_price->sum_total_price($_SESSION['user_id']['user_id']);
+                                            $item_sum_total_price = $sum_total_price->sum_total_price($_SESSION['user_id']);
                                             if ($item_sum_total_price) {
                                                 foreach ($item_sum_total_price as $key) {
                                                     extract($key);
@@ -129,7 +129,7 @@
                                 <button type="submit" value="submit" name="submit" class="btn_bill">Thanh toán</button>
                             </form>
                             <?php
-                            $user_id = $_SESSION['user_id']['user_id'];
+                            $user_id = $_SESSION['user_id'];
 
                             if (isset($_POST['submit'])) {
                                 $dell_cart = new carts();

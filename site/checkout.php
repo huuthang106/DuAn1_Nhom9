@@ -33,7 +33,7 @@
                         <h3>Hoán đơn</h3>
                         <?php
                         $profile_user = new users();
-                        foreach ($profile_user->get_user_id($_SESSION['user_id']['user_id']) as $key) {
+                        foreach ($profile_user->get_user_id($_SESSION['user_id']) as $key) {
                             extract($key);
                             echo '
                                     <form class="row contact_form" action="index.php?act=checkout" method="post" novalidate="novalidate">
@@ -70,7 +70,7 @@
                         ?>
                         <?php
 
-                        $user_id = $_SESSION['user_id']['user_id'];
+                        $user_id = $_SESSION['user_id'];
 
                         if (isset($_POST['submit'])) {
                             if (empty($_POST['fullname']) || empty($_POST['phone']) || empty($_POST['email']) || empty($_POST['address'])) {
@@ -105,7 +105,7 @@
                                 $selector = $_POST['selector'];
                                 //lấy thông tin giỏ hàng 
                                 $cart_user = new carts();
-                                $cart_items = $cart_user->getcart_user_id_inser_bill_details($_SESSION['user_id']['user_id']);
+                                $cart_items = $cart_user->getcart_user_id_inser_bill_details($_SESSION['user_id']);
                                 // thêm tất cả data ở bên trên vào bill_details
                                 $insert_bill_details = new bill_details();
                                 $day = date('Y-m-d H:i:s');
@@ -113,7 +113,7 @@
                                     if ($cart_items) {
                                         // nhập dữ liệu vào bill
                                         $insert_bill = new bills();
-                                        $insert_bill->insert_bill($_SESSION['user_id']['user_id']);
+                                        $insert_bill->insert_bill($_SESSION['user_id']);
                                         //lấy bill_id vừa được thêm vào
                                         $newbill = new bills();
                                         $bill_id = $newbill->new_bill($user_id);
@@ -132,7 +132,7 @@
                                     if ($cart_items) {
                                         // nhập dữ liệu vào bill
                                         $insert_bill = new bills();
-                                        $insert_bill->insert_bill($_SESSION['user_id']['user_id']);
+                                        $insert_bill->insert_bill($_SESSION['user_id']);
                                         //lấy bill_id vừa được thêm vào
                                         $newbill = new bills();
                                         $bill_id = $newbill->new_bill($user_id);
@@ -159,7 +159,7 @@
                                 <li><a href="#">Sản phẩm <span>Tổng</span></a></li>
                                 <?php
                                 $your_card = new carts();
-                                $item = $your_card->cart_user_id($_SESSION['user_id']['user_id']);
+                                $item = $your_card->cart_user_id($_SESSION['user_id']);
                                 if ($item) {
                                     foreach ($item as $key) {
 
@@ -182,7 +182,7 @@
                             <ul class="list list_2">
                                 <li><a href="#">Tạm tính <span><?php
                                                                 $sum_total_price = new carts();
-                                                                $item_sum_total_price = $sum_total_price->total_price($_SESSION['user_id']['user_id']);
+                                                                $item_sum_total_price = $sum_total_price->total_price($_SESSION['user_id']);
                                                                 if ($item_sum_total_price) {
                                                                     foreach ($item_sum_total_price as $key) {
                                                                         extract($key);
@@ -196,7 +196,7 @@
                                 <li><a href="#">tổng <span>
                                             <?php
                                             $sum_total_price = new carts();
-                                            $item_sum_total_price = $sum_total_price->sum_total_price($_SESSION['user_id']['user_id']);
+                                            $item_sum_total_price = $sum_total_price->sum_total_price($_SESSION['user_id']);
                                             if ($item_sum_total_price) {
                                                 foreach ($item_sum_total_price as $key) {
                                                     extract($key);

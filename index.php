@@ -35,7 +35,7 @@ session_start();
 	<link rel="stylesheet" href="content/css/magnific-popup.css">
 	<link rel="stylesheet" href="content/css/main.css">
 	<link href="admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-	
+
 
 
 
@@ -260,49 +260,49 @@ session_start();
 	}
 	// sao chep thông tin thanh toán 
 	function copyPaymentInfo() {
-        var paymentInfoElement = document.getElementById('payment-info');
-        var tempTextArea = document.createElement('textarea');
-        tempTextArea.value = paymentInfoElement.innerText;
+		var paymentInfoElement = document.getElementById('payment-info');
+		var tempTextArea = document.createElement('textarea');
+		tempTextArea.value = paymentInfoElement.innerText;
 
-        document.body.appendChild(tempTextArea);
-        tempTextArea.select();
-        document.execCommand('copy');
-        document.body.removeChild(tempTextArea);
+		document.body.appendChild(tempTextArea);
+		tempTextArea.select();
+		document.execCommand('copy');
+		document.body.removeChild(tempTextArea);
 
-        // Sử dụng SweetAlert2 để hiển thị thông báo đẹp hơn
-        Swal.fire({
-            icon: 'success',
-            title: 'Đã sao chép thông tin thanh toán',
-            text: paymentInfoElement.innerText,
-            confirmButtonText: 'OK'
-        });
-    }
+		// Sử dụng SweetAlert2 để hiển thị thông báo đẹp hơn
+		Swal.fire({
+			icon: 'success',
+			title: 'Đã sao chép thông tin thanh toán',
+			text: paymentInfoElement.innerText,
+			confirmButtonText: 'OK'
+		});
+	}
 	// lấy sự kiện click vào sao đánh giá
 	var selectedValue = 0;
 
-  function handleClick(star) {
-    var value = star.getAttribute('data-value');
+	function handleClick(star) {
+		var value = star.getAttribute('data-value');
 
-    // Xóa tất cả các class highlight và selected
-    var stars = document.querySelectorAll('.list button');
-    stars.forEach(function(star) {
-      star.classList.remove('highlight', 'selected');
-    });
+		// Xóa tất cả các class highlight và selected
+		var stars = document.querySelectorAll('.list button');
+		stars.forEach(function(star) {
+			star.classList.remove('highlight', 'selected');
+		});
 
-    // Thêm class highlight cho tất cả các ngôi sao trước giá trị đã chọn
-    for (var i = 1; i <= value; i++) {
-      stars[i - 1].classList.add('highlight');
-    }
+		// Thêm class highlight cho tất cả các ngôi sao trước giá trị đã chọn
+		for (var i = 1; i <= value; i++) {
+			stars[i - 1].classList.add('highlight');
+		}
 
-    // Thêm class selected cho ngôi sao được chọn
-    star.classList.add('selected');
+		// Thêm class selected cho ngôi sao được chọn
+		star.classList.add('selected');
 
-    // Cập nhật giá trị đã chọn
-    selectedValue = value;
+		// Cập nhật giá trị đã chọn
+		selectedValue = value;
 
-    // Gán giá trị vào trường ẩn
-    document.getElementById('starInput').value = selectedValue;
-  }
+		// Gán giá trị vào trường ẩn
+		document.getElementById('starInput').value = selectedValue;
+	}
 </script>
 
 

@@ -30,6 +30,17 @@
             return false;
         }
     }
+    public function dell_evaluate($evaluate_id){
+        $db= new connect();
+        $select= "DELETE FROM evaluates where evaluate_id =?";
+        $result = $db->pdo_execute($select,$evaluate_id);
+        if ($result) {
+            # code...
+            return $result;
+        }else{
+            return false;
+        }
+    }
     
  }
 

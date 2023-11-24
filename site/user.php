@@ -34,9 +34,15 @@
                         <div class="sidebar-categories">
                         <div class="head">Thông tin</div>
                         <ul class="main-categories">
-                            <li class="main-nav-list"><a data-toggle="collapse" href="#officeProduct" aria-expanded="false" aria-controls="officeProduct">
-                                    <div class="avarta"><img src="../content/img/product/' . $avarta . '" alt=""></div>
-                                </a></li>
+                            <li class="main-nav-list"><a data-toggle="collapse" href="#officeProduct" aria-expanded="false" aria-controls="officeProduct">';
+                                 if ($avarta==null) {
+                                    # code...
+                                    echo ' <div class="avarta"><img src="../content/img/product/review-1.png" alt=""></div>';
+                                 } else{
+                            echo '<div class="avarta"><img src="../content/img/product/' . $avarta . '" alt=""></div>';
+                                 }
+                            echo '
+                            </a></li>
     
                             <li class="main-nav-list"><a data-toggle="collapse" href="#officeProduct" aria-expanded="false" aria-controls="officeProduct"><span class="lnr lnr-arrow-right"></span>Tên<span class="number" style="color: black; font-style: italic;">' . $username . '</span></a></li>
                             <li class="main-nav-list"><a data-toggle="collapse" href="#officeProduct" aria-expanded="false" aria-controls="officeProduct"><span class="lnr lnr-arrow-right"></span>Địa chỉ<span class="number" style="color: black; font-style: italic;">' . $address . '</span></a></li>

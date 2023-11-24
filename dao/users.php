@@ -99,6 +99,29 @@ class users
             return false;
         }
     }
+    public function update_user($fullname,$address,$phone,$email,$avarta,$user_id){
+        $db = new connect();
+        $select = "UPDATE users SET fullname =?, address =?, phone =?, email =?, avarta =? WHERE user_id=?";
+        $result = $db ->pdo_execute($select,$fullname,$address,$phone,$email,$avarta,$user_id);
+        if ($result) {
+            # code...
+            echo '<script>window.location.href = "index.php?act=user";</script>';
+            return $result;
+        }else{
+            return false;
+        }
+    }
+    public function get_phone(){
+        $db = new connect();
+        $select ="SELECT phone FROM users";
+        $result = $db->pdo_query($select);
+        if ($result) {
+            # code...
+            return $result;
+        }else{
+            return false;
+        }
+    }
 }
 function user_selectall()
 {

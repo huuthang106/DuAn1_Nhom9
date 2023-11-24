@@ -223,7 +223,7 @@
 													  <h4 comment-id=' . $comment_id . ' user-id=' . $user_id . '>' . $fullname . '</h4>
 													  <h5>' . $day . '</h5>
 													  ';
-										if ($_SESSION['user_id']['user_id'] == $user_id) {
+										if ($_SESSION['user_id'] == $user_id) {
 											echo '
 															
 															<a href= "' . $button_dell . '"class="dell_btn" >X</a>
@@ -256,7 +256,7 @@
 																<h5>' . $day . '</h5>
 															
 													';
-												if ($_SESSION['user_id']['user_id'] == $user_id) {
+												if ($_SESSION['user_id'] == $user_id) {
 													echo '
 														
 														<a href= "' . $dell_reply . '"class="dell_btn">X</a>
@@ -308,9 +308,9 @@
 							</div>
 						</div>
 						<?php
-						if (isset($_SESSION['user_id']['user_id'])) {
+						if (isset($_SESSION['user_id'])) {
 							$fullname_user = new users();
-							foreach ($fullname_user->get_user_id($_SESSION['user_id']['user_id']) as $key) {
+							foreach ($fullname_user->get_user_id($_SESSION['user_id']) as $key) {
 								extract($key);
 								echo '
 										<div class="col-lg-6">
@@ -357,7 +357,7 @@
 						}
 						if (isset($_POST['submit'])) {
 							$product_id = $_GET['product_id'];
-							$user_id = $_SESSION['user_id']['user_id'];
+							$user_id = $_SESSION['user_id'];
 							$message = $_POST['message'];
 							$status = $_POST['status'];
 							$comment_id = $_POST['comment_id'];
@@ -412,8 +412,11 @@
 								<?php
 								$select_evaluates = new Evaluates();
 								$product_id = $_GET['product_id'];
-								foreach ($select_evaluates->get_five_evaluates($product_id) as $key) {
+								$item_evaluates = $select_evaluates->get_five_evaluates($product_id);
+								if($item_evaluates ){
+								foreach ( $item_evaluates  as $key) {
 									extract($key);
+									$dell_evaluates = 'index.php?act=single-product&product_id=' . $_GET['product_id'] . '&evaluates='.$evaluate_id.'';
 									echo '
 										<div class="review_item">
 										<div class="media">
@@ -451,10 +454,15 @@
 											';
 									}
 									echo '</div>
+									<a href= "' . $dell_evaluates . '"class="dell_btn">X</a>
 										</div>
 										<p>' . $content . '</p>
 										</div>
 										';
+								}}
+								if(isset($_GET['evaluates'])){
+									$dell = new Evaluates();
+									$dell_evaluate_id = $dell->dell_evaluate($_GET['evaluates']);
 								}
 								?>
 							</div>
@@ -474,9 +482,9 @@
 
 								<p>Nổi bật</p>
 								<?php
-								if (isset($_SESSION['user_id']['user_id'])) {
+								if (isset($_SESSION['user_id'])) {
 									$fullname_user = new users();
-									foreach ($fullname_user->get_user_id($_SESSION['user_id']['user_id']) as $key) {
+									foreach ($fullname_user->get_user_id($_SESSION['user_id']) as $key) {
 										extract($key);
 										echo '
 								<form class="row contact_form" action="index.php?act=single-product&product_id=' . $_GET['product_id'] . '" method="post" id="contactForm" novalidate="novalidate">';
@@ -509,7 +517,7 @@
 								';
 								}
 								if (isset($_POST['submit_evaluates'])) {
-									if (empty($_SESSION['user_id']['user_id']) || empty($_POST['star'])) {
+									if (empty($_POST['content']) || empty($_POST['star'])) {
 										echo '<div class="col-md-12 form-group">
 								<div class="error-message">
 									<i class="fa-solid fa-circle-exclamation"></i> bạn chưa nhập nội dung đánh  giá !
@@ -518,7 +526,7 @@
 									} else {
 										$star = $_POST['star'];
 										$content = $_POST['content'];
-										$user_id = $_SESSION['user_id']['user_id'];
+										$user_id = $_SESSION['user_id'];
 										$product_id = $_GET['product_id'];
 										$evaluates = new Evaluates();
 										$insert = $evaluates->insert_evaluates($product_id, $user_id, $star, $content);
