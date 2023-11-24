@@ -98,7 +98,7 @@
                                     </div>
                                 </div>
                                 ';
-                            }elseif($after <= 0){
+                            }elseif(!in_array($after, $existingBlog)){
                                 echo '
                                 <div class="navigation-area">
                                 <div class="row">
