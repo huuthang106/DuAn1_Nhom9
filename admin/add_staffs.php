@@ -30,9 +30,9 @@
                         $role = $_POST['role'];
                         $fullname = $_POST['fullname'];
                         $phone = $_POST['phone'];
-                        if (empty($username)) {
+                        if (empty($username)||!preg_match('/^[A-Za-z0-9]+$/', $username)) {
                             $error = '<div class="error-message" style="color:#721c24;">
-													<i class="fa-solid fa-circle-exclamation"></i> Vui lòng nhập tên tài khoản !
+													<i class="fa-solid fa-circle-exclamation"></i> Tài khoản không được trống và không được có ký tự đặc biệt !
 													</div>';
                         } elseif (empty($password)) {
                             $error = '<div class="error-message" style="color:#721c24">
@@ -46,7 +46,7 @@
                             $error = '<div class="error-message" style="color:#721c24">
 													<i class="fa-solid fa-circle-exclamation"></i> Vui lòng nhập đầy đủ họ tên !
 													</div>';
-                        } elseif ((strlen($phone) > 11) || empty($phone)) {
+                        } elseif (!preg_match('/^0\d{8,10}$/',  $phone)||empty($phone)) {
                             $error = '<div class="error-message" style="color:#721c24">
 													<i class="fa-solid fa-circle-exclamation"></i> Số điện thoại không hợp lệ !
 													</div>';
@@ -164,28 +164,11 @@
         <!--Row-->
 
         <!-- Modal Logout -->
-        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelLogout" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabelLogout">Ohh No!</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <p>Are you sure you want to logout?</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancel</button>
-                        <a href="login.html" class="btn btn-primary">Logout</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
 
     </div>
     <!---Container Fluid-->
+</div>
 </div>
 <!-- Footer -->
 <?php

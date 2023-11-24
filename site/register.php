@@ -33,15 +33,15 @@
                             novalidate="novalidate">
                             <?php
 								if(isset($_POST['username']) && isset($_POST['password']) && isset($_POST['email'])){
-									$username = $_POST['username'];
-									$password = $_POST['password'];
-									$email = $_POST['email'];
-                                    $fullname = $_POST['username'];
-									if(empty($username)){
+									$username = trim($_POST['username']);
+									$password = trim($_POST['password']);
+									$email = trim($_POST['email']);
+                                    $fullname = trim($_POST['username']);
+									if(empty($username)||!preg_match('/^[A-Za-z0-9]+$/', $username)){
 										$error = '
                                         <div class="col-md-12 form-group">
                                         <div style="color:#721c24;" class="error-message">
-                                        <i class="fa-solid fa-circle-exclamation"></i> Vui lòng nhập tên tài khoản !
+                                        <i class="fa-solid fa-circle-exclamation"></i>Tài khoản không được trống và không được có ký tự đặc biệt !
                                         </div>
                                         </div>
                                         ';

@@ -25,25 +25,28 @@
                                 <div class="col mr-2">
                                     <div class="text-xs font-weight-bold text-uppercase mb-1">Doanh thu</div>
                                     <div class="h5 mb-0 font-weight-bold text-gray-800"><?php
-                                        $monthly_revenue= new bill_details;
-                                        $item = $monthly_revenue->monthly_revenue();
-                                        if($item){
-                                        
-                                            echo ''.$item[0]['total_sum'].'';
-                                        }
-                                    ?></div>
+                                                                                        $monthly_revenue = new bill_details;
+                                                                                        $item = $monthly_revenue->monthly_revenue();
+                                                                                        if ($item) {
+                                                                                            if($item[0]['total_sum']>0){
+                                                                                            echo '' . $item[0]['total_sum'] . '';
+                                                                                            }
+                                                                                            else{
+                                                                                                echo '0';
+                                                                                            }
+                                                                                        }
+                                                                                        ?></div>
                                     <div class="mt-2 mb-0 text-muted text-xs">
                                         <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> <?php
-                                            $growth = new bill_details();
-                                            $key = $growth->growth();
-                                            if($key){
-                                              
-                                                echo ''.$key.'%';
-                                            }
-                                            else{
-                                                echo 'Đang xử lý';
-                                            }
-                                        ?></span>
+                                                                                                        $growth = new bill_details();
+                                                                                                        $key = $growth->growth();
+                                                                                                        if ($key) {
+
+                                                                                                            echo '' . $key . '%';
+                                                                                                        } else {
+                                                                                                            echo 'Đang xử lý';
+                                                                                                        }
+                                                                                                        ?></span>
                                         <span>Tháng vừa qua</span>
                                     </div>
                                 </div>
@@ -97,12 +100,12 @@
                                 <div class="col mr-2">
                                     <div class="text-xs font-weight-bold text-uppercase mb-1">Người dùng</div>
                                     <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"><?php
-                                        $count_user = new users();
-                                        $key = $count_user->count_user();
-                                        if($key){
-                                            echo ''.$key[0]['total_users'].'';
-                                        }
-                                    ?></div>
+                                                                                                $count_user = new users();
+                                                                                                $key = $count_user->count_user();
+                                                                                                if ($key) {
+                                                                                                    echo '' . $key[0]['total_users'] . '';
+                                                                                                }
+                                                                                                ?></div>
                                     <div class="mt-2 mb-0 text-muted text-xs">
                                         <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 20.4%</span>
                                         <span>Since last month</span>
@@ -240,18 +243,20 @@
                                 <tbody>
                                     <?php
                                     $get_bill = new bills();
-                                    foreach ($get_bill->get_newest_bills() as $key) {
-                                        extract($key);
-                                        $khoi_phuc = 'index.php?act=home&bill_id=' . $bill_id . '&status=1';
-                                        $duyet_don = 'index.php?act=home&bill_id=' . $bill_id . '&status=2';
-                                        $giao_don = 'index.php?act=home&bill_id=' . $bill_id . '&status=3';
-                                        $huy_don = 'index.php?act=home&bill_id=' . $bill_id . '&status=4';
-                                        $detai_bill = 'index.php?act=bill_detail&bill_id=' . $bill_id;
+                                    $item = $get_bill->get_newest_bills();
+                                    if ($item) {
+                                        foreach ($item as $key) {
+                                            extract($key);
+                                            $khoi_phuc = 'index.php?act=home&bill_id=' . $bill_id . '&status=1';
+                                            $duyet_don = 'index.php?act=home&bill_id=' . $bill_id . '&status=2';
+                                            $giao_don = 'index.php?act=home&bill_id=' . $bill_id . '&status=3';
+                                            $huy_don = 'index.php?act=home&bill_id=' . $bill_id . '&status=4';
+                                            $detai_bill = 'index.php?act=bill_detail&bill_id=' . $bill_id;
 
-                                        if ($status == 1) {
+                                            if ($status == 1) {
 
-                                            # code...
-                                            echo '
+                                                # code...
+                                                echo '
                                                 <tr>
                                                 <th>' . $bill_id . '</th>
                                                 <th>' . $customer_name . '</th>
@@ -262,8 +267,8 @@
                                                 <th><a href="' . $detai_bill . '" class="btn btn-sm btn-primary">Chi tiết</a></th>
                                                 </tr>
                                                 ';
-                                        } elseif ($status == 2) {
-                                            echo '
+                                            } elseif ($status == 2) {
+                                                echo '
                                                 <tr>
                                                 <tr>
                                                 <th>' . $bill_id . '</th>
@@ -275,8 +280,8 @@
                                                 <th><a href="' . $detai_bill . '" class="btn btn-sm btn-primary">Chi tiết</a></th>
                                             </tr>
                                                 ';
-                                        } elseif ($status == 3) {
-                                            echo '
+                                            } elseif ($status == 3) {
+                                                echo '
                                             <tr>
                                             <tr>
                                                 <th>' . $bill_id . '</th>
@@ -288,8 +293,8 @@
                                             <th><a href="' . $detai_bill . '" class="btn btn-sm btn-primary">Chi tiết</a></th>
                                              </tr>
                                             ';
-                                        } else if ($status == 4) {
-                                            echo '
+                                            } else if ($status == 4) {
+                                                echo '
                                             <tr>
                                             <tr>
                                                 <th>' . $bill_id . '</th>
@@ -301,15 +306,16 @@
                                             <th><a href="#" class="btn btn-sm btn-danger">Đã Hủy</a></th>
                                              </tr>
                                             ';
+                                            }
                                         }
-                                    }
-                                    if (isset($_GET['bill_id']) && isset($_GET['status'])) {
-                                        # code...
+                                        if (isset($_GET['bill_id']) && isset($_GET['status'])) {
+                                            # code...
 
-                                        $status = new bills();
-                                        $status->update_status_bill_pagehome($_GET['bill_id'], $_GET['status']);
+                                            $status = new bills();
+                                            $status->update_status_bill_pagehome($_GET['bill_id'], $_GET['status']);
 
-                                        exit;
+                                            exit;
+                                        }
                                     }
                                     ?>
 

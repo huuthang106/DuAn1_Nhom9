@@ -2,13 +2,20 @@
     <!-- Start Header Area -->
     <?php
     $us = user_selectall();
-    if (isset($_POST['username']) && isset($_POST['password'])) {
-        $username = $_POST['username'];
-        $password = md5($_POST['password']);
-        $checkuser = check_user($username, $password);
-        if (is_array($checkuser)) {
-            $_SESSION['user_id'] = $checkuser;
-            header('location: index.php');
+    $us = user_selectall();
+
+if (isset($_POST['username']) && isset($_POST['password'])) {
+    $username = trim($_POST['username']);
+    $password = trim($_POST['password']); // Mật khẩu không cần băm ở đây
+
+    // Lấy thông tin người dùng từ cơ sở dữ liệu bằng username
+    $userInfo = get_user_info_by_username($username);
+
+    if ($userInfo && password_verify($password, $userInfo['password'])) {
+        // Mật khẩu hợp lệ
+        $_SESSION['user_id'] = $userInfo['user_id'];
+        header('location: index.php');
+    
     ?>
         <?php } else { ?>
             <?php

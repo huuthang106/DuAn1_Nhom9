@@ -3,12 +3,12 @@
     <?php
     $us = user_selectall();
     if(isset($_POST['username'])&&isset($_POST['password'])){ 
-       $username=$_POST['username'];
-       $password= md5($_POST['password']);
-         $checkuser=check_user($username, $password);
-         if(is_array($checkuser)){
-           $_SESSION['user_id']=$checkuser;
-           $role = $checkuser['role'];
+       $username=trim($_POST['username']);
+       $password= trim($_POST['password']);
+       $userInfo = get_user_info_by_username($username);
+       if ($userInfo && password_verify($password, $userInfo['password'])){
+           $_SESSION['user_id']=$userInfo;
+           $role = $userInfo['role'];
            if($role == "0" || $role == "2"){
              include 'home.php';
            }else{

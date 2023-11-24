@@ -50,7 +50,9 @@
                                 <tbody>
                                     <?php
                                     $get_bill = new bills();
-                                    foreach ($get_bill->get_bills() as $key) {
+                                    $item = $get_bill->get_bills() ;
+                                    if($item){
+                                    foreach ($item as $key) {
                                         extract($key);
                                         $khoi_phuc = 'index.php?act=bills&bill_id='.$bill_id.'&status=1';
                                         $duyet_don = 'index.php?act=bills&bill_id='.$bill_id.'&status=2';
@@ -113,7 +115,8 @@
                                             ';
                                         }
 
-                                    }
+                                    }}
+                                    // update trạng thái duyệt đã duyệt
                                     if (isset($_GET['bill_id'])&& isset($_GET['status'])) {
                                         # code...
                                        
@@ -123,6 +126,7 @@
                                         exit;
               
                                       }
+                                    
                                     ?>
 
 

@@ -45,37 +45,50 @@ class users
             $current_password = $current_password_result[0]['password'];
 
             // Kiểm tra mật khẩu cũ
-            if ($old_password === $current_password) {
+            if (password_verify($old_password, $current_password)) {
+                // Mã hóa mật khẩu mới
+                $hashed_new_password = password_hash($new_password, PASSWORD_DEFAULT);
+
                 // Cập nhật mật khẩu mới vào cơ sở dữ liệu
                 $update_password = "UPDATE users SET password = ? WHERE user_id = ?";
-                $result = $db->pdo_execute($update_password, $new_password, $user_id);
+                $result = $db->pdo_execute($update_password, $hashed_new_password, $user_id);
 
                 if ($result) {
                     echo '
-                                                    </br><div class="success-message">
-                                                    <i class="fa-solid fa-circle-check"></i>Thay đổi mật khẩu thành công
-                                                    </div>
-                                                    ';
+                        </br><div class="success-message">
+                        <i class="fa-solid fa-circle-check"></i>Thay đổi mật khẩu thành công
+                        </div>
+                    ';
                     return true;
                 } else {
-
                     echo '
-                <div class="error-message">
-                <i class="fa-solid fa-circle-exclamation"></i> Mật khẩu cũ không đúng
-                </div><br>
-                ';
+                        <div class="error-message">
+                        <i class="fa-solid fa-circle-exclamation"></i> Lỗi khi cập nhật mật khẩu mới
+                        </div><br>
+                    ';
                     return false;
                 }
             } else {
-                // echo $current_password;
+                echo '
+                    <div class="error-message">
+                    <i class="fa-solid fa-circle-exclamation"></i> Mật khẩu cũ không đúng
+                    </div><br>
+                ';
                 return false; // Mật khẩu cũ không đúng
             }
         } else {
-            echo $current_password_result;
+            echo '
+                <div class="error-message">
+                <i class="fa-solid fa-circle-exclamation"></i> Không tìm thấy mật khẩu cho user_id
+                </div><br>
+            ';
             return false; // Không tìm thấy mật khẩu cho user_id
         }
     }
-    public function count_user(){
+
+
+    public function count_user()
+    {
         $db = new connect();
         $select = "SELECT COUNT(user_id) AS total_users FROM users
         ";
@@ -94,10 +107,16 @@ function user_selectall()
 }
 function user_register($username, $password, $email, $fullname)
 {
-    $hashed_password = md5($password);
-    $sql = "insert into users(username, password, email, fullname) value(?, ?, ?, ?)";
+    // Băm mật khẩu sử dụng password_hash
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+    // Sử dụng prepared statement để tránh tấn công SQL injection
+    $sql = "INSERT INTO users (username, password, email, fullname) VALUES (?, ?, ?, ?)";
+
+    // Thực hiện truy vấn với giá trị đã được băm
     pdo_execute($sql, $username, $hashed_password, $email, $fullname);
 }
+
 // thêm mới loại
 function user_insert($username, $password, $email)
 {
@@ -113,13 +132,26 @@ function user_insert($username, $password, $email)
 // thêm mới 
 function staff_insert($username, $password, $email, $role, $fullname, $phone)
 {
-    $sql = "insert into users(username, password, email, role, fullname, phone) value(?, ?, ?, ?, ?, ?)";
-    pdo_execute($sql, $username, $password, $email, $role, $fullname, $phone);
+    // Băm mật khẩu sử dụng password_hash
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+    // Sử dụng prepared statement để tránh tấn công SQL injection
+    $sql = "INSERT INTO users (username, password, email, role, fullname, phone) VALUES (?, ?, ?, ?, ?, ?)";
+
+    // Thực hiện truy vấn với giá trị đã được băm
+    pdo_execute($sql, $username, $hashed_password, $email, $role, $fullname, $phone);
 }
+
 function check_user($username, $password)
 {
     $sql = "select user_id, role from users where username= '" . $username . "' and password='" . $password . "'";
     $sp = pdo_query_one($sql);
+    return $sp;
+}
+function get_user_info_by_username($username)
+{
+    $sql = "SELECT user_id, role, password FROM users WHERE username = ?";
+    $sp = pdo_query_one($sql, $username);
     return $sp;
 }
 function check_email($email)

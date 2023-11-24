@@ -25,7 +25,8 @@
             <div class="col-xl-13 ">
                 <?php
                 $user = new users();
-                $user_id = $_SESSION['user_id']['user_id'];
+                $user_id = $_SESSION['user_id'];
+  
                 foreach ($user->get_user_id($user_id) as $key) {
                     extract($key);
                     $updata = "index.php?act=updata&user_id=" . $user_id;
