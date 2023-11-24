@@ -1,3 +1,18 @@
+<style>
+	.list button.highlight,
+	.list button.selected {
+		color: #fbd600;
+		background-color: transparent;
+		border: none;
+		cursor: pointer;
+	}
+
+	.star {
+		background-color: #0000;
+		border: none;
+	}
+</style>
+
 <body>
 	<?php
 	include("./include/nav.php");
@@ -202,34 +217,34 @@
 										  <div class="review_item">
 											  <div class="media">
 												  <div class="d-flex">
-													  <img src="./content/img/product/'.$avarta.'" alt="">
+													  <img src="./content/img/product/' . $avarta . '" alt="">
 												  </div>
 												  <div class="media-body">
 													  <h4 comment-id=' . $comment_id . ' user-id=' . $user_id . '>' . $fullname . '</h4>
 													  <h5>' . $day . '</h5>
 													  ';
-														if($_SESSION['user_id']['user_id']==$user_id){
-															echo '
+										if ($_SESSION['user_id']['user_id'] == $user_id) {
+											echo '
 															
-															<a href= "'.$button_dell.'"class="dell_btn" >X</a>
+															<a href= "' . $button_dell . '"class="dell_btn" >X</a>
 															';
-															}
-										echo'
+										}
+										echo '
 													<button  class="reply_btn"  onclick="prepareReplyForm(this)">Reply</button>
 													</div>	
 												</div>
 												<p>' . $text . '</p>
 											</div>
 											
-										';			  
+										';
 
 										$list_reply_comment = new reply_comment();
 										$reply_comment = $list_reply_comment->get_reply_comment_id($comment_id);
-										
+
 										if ($reply_comment != false && is_array($reply_comment)) {
 											foreach ($reply_comment as $rl_cmnt) {
 												extract($rl_cmnt);
-												$dell_reply= 'index.php?act=single-product&product_id=' . $_GET['product_id'] . '&reply_id=' . $reply_id . '';
+												$dell_reply = 'index.php?act=single-product&product_id=' . $_GET['product_id'] . '&reply_id=' . $reply_id . '';
 												echo '
 													<div class="review_item reply">
 														<div class="media">
@@ -241,12 +256,12 @@
 																<h5>' . $day . '</h5>
 															
 													';
-													if($_SESSION['user_id']['user_id']==$user_id){
-														echo '
+												if ($_SESSION['user_id']['user_id'] == $user_id) {
+													echo '
 														
-														<a href= "'.$dell_reply.'"class="dell_btn">X</a>
+														<a href= "' . $dell_reply . '"class="dell_btn">X</a>
 														';
-														}
+												}
 
 												echo '
 												<button  data-comment-type="comment_two" class="reply_btn"  onclick="prepareReplyForm_two(this)">Reply</button>
@@ -261,14 +276,13 @@
 								} else {
 									echo 'Chưa có bình luận nào';
 								}
-								if(isset($_GET['comment_id'])){
-									
-									$dell_comment = new comments();
-									$dell_comment ->dell_comment($_GET['comment_id'],$_GET['product_id']);
+								if (isset($_GET['comment_id'])) {
 
-								}elseif (isset($_GET['reply_id'])){
+									$dell_comment = new comments();
+									$dell_comment->dell_comment($_GET['comment_id'], $_GET['product_id']);
+								} elseif (isset($_GET['reply_id'])) {
 									$dell_reply = new reply_comment();
-									$dell_reply ->dell_reply($_GET['reply_id'],$_GET['product_id']);
+									$dell_reply->dell_reply($_GET['reply_id'], $_GET['product_id']);
 								}
 
 								?>
@@ -352,7 +366,7 @@
 							date_default_timezone_set('Asia/Ho_Chi_Minh');
 							$day = date('Y-m-d H:i:s');
 							if (isset($_GET['product_id']) && is_numeric($_GET['product_id'])) {
-								
+
 
 								if ($status == 3) {
 									$reply_comment = new reply_comment();
@@ -395,101 +409,122 @@
 								</div>
 							</div>
 							<div class="review_list">
-								<div class="review_item">
-									<div class="media">
-										<div class="d-flex">
-											<img src="img/product/review-1.png" alt="">
-										</div>
+								<?php
+								$select_evaluates = new Evaluates();
+								$product_id = $_GET['product_id'];
+								foreach ($select_evaluates->get_five_evaluates($product_id) as $key) {
+									extract($key);
+									echo '
+										<div class="review_item">
+										<div class="media">
+											<div class="d-flex">
+												<img src="./content/img/product/' . $avarta . '" alt="">
+											</div>						
+										';
+									echo '
 										<div class="media-body">
-											<h4>Blake Ruiz</h4>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
+										<h4>' . $fullname . '</h4>
+										';
+									if ($star == 1) {
+										echo '<i class="fa fa-star"></i>';
+									} elseif ($star == 2) {
+										echo '<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+											';
+									} elseif ($star == 3) {
+										echo '<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+											';
+									} elseif ($star == 4) {
+										echo '<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+											';
+									} elseif ($star == 5) {
+										echo '<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+											';
+									}
+									echo '</div>
 										</div>
-									</div>
-									<p>Điều quan trọng là phải tự chăm sóc nỗi đau, sau đó là sự trưởng thành của bệnh nhân,
-										nhưng đồng thời cũng sẽ có rất nhiều công việc và nỗi đau. Để đi đến từng chi tiết nhỏ nhất,
-										không ai nên thực hiện bất kỳ loại công việc nào ngoại trừ việc thu được lợi ích nào đó từ nó.</p>
-								</div>
-								<div class="review_item">
-									<div class="media">
-										<div class="d-flex">
-											<img src="img/product/review-2.png" alt="">
+										<p>' . $content . '</p>
 										</div>
-										<div class="media-body">
-											<h4>Blake Ruiz</h4>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-										</div>
-									</div>
-									<p>Điều quan trọng là phải tự chăm sóc nỗi đau,
-										sau đó là sự trưởng thành của bệnh nhân, nhưng đồng thời cũng sẽ có rất nhiều công việc và nỗi đau.
-										Để đi đến từng chi tiết nhỏ nhất,
-										không ai nên thực hiện bất kỳ loại công việc nào ngoại trừ việc thu được lợi ích nào đó từ nó.</p>
-								</div>
-								<div class="review_item">
-									<div class="media">
-										<div class="d-flex">
-											<img src="img/product/review-3.png" alt="">
-										</div>
-										<div class="media-body">
-											<h4>Blake Ruiz</h4>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-											<i class="fa fa-star"></i>
-										</div>
-									</div>
-									<p>Điều quan trọng là phải tự chăm sóc nỗi đau,
-										sau đó là sự trưởng thành của bệnh nhân,
-										nhưng đồng thời cũng sẽ có rất nhiều công việc và nỗi đau. Để đi đến từng chi tiết nhỏ nhất,
-										không ai nên thực hiện bất kỳ loại công việc nào ngoại trừ việc thu được lợi ích nào đó từ nó.</p>
-								</div>
+										';
+								}
+								?>
 							</div>
 						</div>
 						<div class="col-lg-6">
 							<div class="review_box">
-								<h4>Thêm mêu tả</h4>
+								<h4>Đánh giá</h4>
 								<p>Số sao của bạn:</p>
+
 								<ul class="list">
-									<li><a href="#"><i class="fa fa-star"></i></a></li>
-									<li><a href="#"><i class="fa fa-star"></i></a></li>
-									<li><a href="#"><i class="fa fa-star"></i></a></li>
-									<li><a href="#"><i class="fa fa-star"></i></a></li>
-									<li><a href="#"><i class="fa fa-star"></i></a></li>
+									<li><button class="star" data-value="1" onclick="handleClick(this)"><i class="fa fa-star"></i></button></li>
+									<li><button class="star" data-value="2" onclick="handleClick(this)"><i class="fa fa-star"></i></button></li>
+									<li><button class="star" data-value="3" onclick="handleClick(this)"><i class="fa fa-star"></i></button></li>
+									<li><button class="star" data-value="4" onclick="handleClick(this)"><i class="fa fa-star"></i></button></li>
+									<li><button class="star" data-value="5" onclick="handleClick(this)"><i class="fa fa-star"></i></button></li>
 								</ul>
+
 								<p>Nổi bật</p>
-								<form class="row contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
-									<div class="col-md-12">
-										<div class="form-group">
-											<input type="text" class="form-control" id="name" name="name" placeholder="Tên đầy đủ của bạn" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Tên đầy đủ của bạn'">
+								<?php
+								if (isset($_SESSION['user_id']['user_id'])) {
+									$fullname_user = new users();
+									foreach ($fullname_user->get_user_id($_SESSION['user_id']['user_id']) as $key) {
+										extract($key);
+										echo '
+								<form class="row contact_form" action="index.php?act=single-product&product_id=' . $_GET['product_id'] . '" method="post" id="contactForm" novalidate="novalidate">';
+
+								?>
+										<input type="hidden" name="star" id="starInput" value="">
+										<div class="col-md-12">
+											<div class="form-group">
+												<textarea class="form-control" name="content" id="message" rows="1" placeholder="Đánh giá" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Đánh giá'"></textarea></textarea>
+											</div>
 										</div>
-									</div>
-									<div class="col-md-12">
-										<div class="form-group">
-											<input type="email" class="form-control" id="email" name="email" placeholder="Địa chỉ Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Địa chỉ Email'">
+										<div class="col-md-12 text-right">
+											<button type="submit" value="submit" name="submit_evaluates" class="primary-btn">Gửi ngay</button>
 										</div>
+										</form>
+
+								<?php
+									}
+								} else {
+									echo '
+								<div class="col-lg-6">
+									<div class="review_box">
+										<h4>Đánh giá</h4>
+										
+										<div class="col-md-12 text-right">
+														<a type="submit" value="submit" href="index.php?act=login" class="btn primary-btn">Đăng nhập</a>
+													</div>
 									</div>
-									<div class="col-md-12">
-										<div class="form-group">
-											<input type="text" class="form-control" id="number" name="number" placeholder="Số điện thoại" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Số điện thoại'">
-										</div>
-									</div>
-									<div class="col-md-12">
-										<div class="form-group">
-											<textarea class="form-control" name="message" id="message" rows="1" placeholder="Đánh giá" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Đánh giá'"></textarea></textarea>
-										</div>
-									</div>
-									<div class="col-md-12 text-right">
-										<button type="submit" value="submit" class="primary-btn">Gửi ngay</button>
-									</div>
-								</form>
+								</div>
+								';
+								}
+								if (isset($_POST['submit_evaluates'])) {
+									if (empty($_SESSION['user_id']['user_id']) || empty($_POST['star'])) {
+										echo '<div class="col-md-12 form-group">
+								<div class="error-message">
+									<i class="fa-solid fa-circle-exclamation"></i> bạn chưa nhập nội dung đánh  giá !
+								</div><br>
+							</div>';
+									} else {
+										$star = $_POST['star'];
+										$content = $_POST['content'];
+										$user_id = $_SESSION['user_id']['user_id'];
+										$product_id = $_GET['product_id'];
+										$evaluates = new Evaluates();
+										$insert = $evaluates->insert_evaluates($product_id, $user_id, $star, $content);
+									}
+								}
+								?>
 							</div>
 						</div>
 					</div>

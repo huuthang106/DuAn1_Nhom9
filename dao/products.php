@@ -38,7 +38,7 @@ class products
         $start = ($page - 1) * $items_per_page;
 
         // Truy vấn SQL để lấy danh sách sản phẩm với phân trang
-        $select = "SELECT * FROM products ORDER BY product_id DESC LIMIT $start, $items_per_page";
+        $select = "SELECT * FROM products where status = 1 ORDER BY product_id DESC LIMIT $start, $items_per_page";
         $result = $db->pdo_query($select);
 
         // Đếm tổng số sản phẩm
@@ -74,7 +74,7 @@ class products
     public function get_nine_product()
     {
         $db = new connect();
-        $select = "SELECT * FROM products
+        $select = "SELECT * FROM products where status =1 
         ORDER BY RAND()
         LIMIT 9";
         $result = $db->pdo_query($select);
@@ -92,7 +92,7 @@ class products
         $start = ($page - 1) * $items_per_page;
         $name = '%' . $name . '%';
         // Truy vấn SQL để lấy danh sách sản phẩm với phân trang
-        $select = "SELECT * FROM products Where name like ? ORDER BY product_id DESC LIMIT $start, $items_per_page";
+        $select = "SELECT * FROM products Where name like ? and status = 1 ORDER BY product_id DESC LIMIT $start, $items_per_page";
         $result = $db->pdo_query($select, $name);
 
         // Đếm tổng số sản phẩm
@@ -149,7 +149,7 @@ class products
         $start = ($page - 1) * $items_per_page;
 
         // Truy vấn SQL để lấy danh sách sản phẩm với phân trang
-        $select = "SELECT * FROM products WHERE category_id = ? ORDER BY product_id DESC LIMIT $start, $items_per_page";
+        $select = "SELECT * FROM products WHERE category_id = ? where status =1 ORDER BY product_id DESC LIMIT $start, $items_per_page";
         $result = $db->pdo_query($select,$category_id);
 
         // Đếm tổng số sản phẩm

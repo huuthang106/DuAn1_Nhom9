@@ -48,7 +48,7 @@
                                         <input required type="text" class="form-control" name="username" placeholder="Tên đăng nhập">
                                     </div>
                                     <div class="col-md-12 form-group">
-                                        <input required type="text" class="form-control" name="password" placeholder="Mật khẩu">
+                                        <input required type="password" class="form-control" name="password" placeholder="Mật khẩu">
                                     </div>
                                     <div class="col-md-12 form-group">
                                         <div class="creat_account">
@@ -112,7 +112,7 @@
                                     <input required type="text" class="form-control" name="username" placeholder="Tên tài khoản">
                                 </div>
                                 <div class="col-md-12 form-group">
-                                    <input required type="text" class="form-control" name="password" placeholder="Mật khẩu">
+                                    <input required type="password" class="form-control" name="password" placeholder="Mật khẩu">
                                 </div>
                                 <div class="col-md-12 form-group">
                                     <div class="creat_account">
