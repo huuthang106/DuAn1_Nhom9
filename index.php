@@ -76,6 +76,7 @@ session_start();
     include("dao/blogs.php");
     include("dao/comments.php");
     include("dao/bill_details.php");
+    include("dao/likes.php");
 	$action = "home";
 	if (isset($_GET['act']))
 		$action = $_GET['act'];
@@ -118,6 +119,9 @@ session_start();
 		case 'register':
 			include 'site/register.php';
 			break;
+        case 'favourites':
+            include 'site/favourites.php';
+            break;
 		case 'tracking':
 			include 'site/tracking.php';
 			break;

@@ -75,12 +75,18 @@
 		<label for="qty">Số lượng:</label>
 		<input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:" class="input-text qty">
 		<button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;" class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
-		<button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;" class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
+		<button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;" class="reduced items-count" type="button" name="like"><i class="lnr lnr-chevron-down"></i></button>
 	</div>
 	<div class="card_area d-flex align-items-center">
 		<a class="primary-btn" href="#">Thêm vào giỏ hàng</a>
-		<a class="icon_btn" href="#"><i class="lnr lnr lnr-diamond"></i></a>
-		<a class="icon_btn" href="#"><i class="lnr lnr lnr-heart"></i></a>
+		<?php
+		if (isset($_SESSION['user_id'])) {
+			$like_link = "index.php?act=likes&product_id=" . $product_id;
+			echo '<a class="icon_btn" href="' . $like_link . '"><i class="lnr lnr lnr-heart"></i></a>';
+		} else {
+			echo '<a class="icon_btn" href="index.php?act=login"><i class="lnr lnr lnr-heart"></i></a>';
+		}
+		?>
 	</div>
 	</div>
 	</div>
@@ -413,54 +419,55 @@
 								$select_evaluates = new Evaluates();
 								$product_id = $_GET['product_id'];
 								$item_evaluates = $select_evaluates->get_five_evaluates($product_id);
-								if($item_evaluates ){
-								foreach ( $item_evaluates  as $key) {
-									extract($key);
-									$dell_evaluates = 'index.php?act=single-product&product_id=' . $_GET['product_id'] . '&evaluates='.$evaluate_id.'';
-									echo '
+								if ($item_evaluates) {
+									foreach ($item_evaluates  as $key) {
+										extract($key);
+										$dell_evaluates = 'index.php?act=single-product&product_id=' . $_GET['product_id'] . '&evaluates=' . $evaluate_id . '';
+										echo '
 										<div class="review_item">
 										<div class="media">
 											<div class="d-flex">
 												<img src="./content/img/product/' . $avarta . '" alt="">
 											</div>						
 										';
-									echo '
+										echo '
 										<div class="media-body">
 										<h4>' . $fullname . '</h4>
 										';
-									if ($star == 1) {
-										echo '<i class="fa fa-star"></i>';
-									} elseif ($star == 2) {
-										echo '<i class="fa fa-star"></i>
+										if ($star == 1) {
+											echo '<i class="fa fa-star"></i>';
+										} elseif ($star == 2) {
+											echo '<i class="fa fa-star"></i>
 												<i class="fa fa-star"></i>
 											';
-									} elseif ($star == 3) {
-										echo '<i class="fa fa-star"></i>
-												<i class="fa fa-star"></i>
-												<i class="fa fa-star"></i>
-											';
-									} elseif ($star == 4) {
-										echo '<i class="fa fa-star"></i>
-												<i class="fa fa-star"></i>
+										} elseif ($star == 3) {
+											echo '<i class="fa fa-star"></i>
 												<i class="fa fa-star"></i>
 												<i class="fa fa-star"></i>
 											';
-									} elseif ($star == 5) {
-										echo '<i class="fa fa-star"></i>
-												<i class="fa fa-star"></i>
+										} elseif ($star == 4) {
+											echo '<i class="fa fa-star"></i>
 												<i class="fa fa-star"></i>
 												<i class="fa fa-star"></i>
 												<i class="fa fa-star"></i>
 											';
-									}
-									echo '</div>
+										} elseif ($star == 5) {
+											echo '<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+											';
+										}
+										echo '</div>
 									<a href= "' . $dell_evaluates . '"class="dell_btn">X</a>
 										</div>
 										<p>' . $content . '</p>
 										</div>
 										';
-								}}
-								if(isset($_GET['evaluates'])){
+									}
+								}
+								if (isset($_GET['evaluates'])) {
 									$dell = new Evaluates();
 									$dell_evaluate_id = $dell->dell_evaluate($_GET['evaluates']);
 								}
