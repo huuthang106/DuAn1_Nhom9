@@ -75,6 +75,7 @@ session_start();
 	include("dao/evaluates.php");
     include("dao/blogs.php");
     include("dao/comments.php");
+    include("dao/bill_details.php");
 	$action = "home";
 	if (isset($_GET['act']))
 		$action = $_GET['act'];
@@ -141,6 +142,9 @@ session_start();
 		case 'pay':
 			include 'site/pay.php';
 			break;
+        case 'order_status_detail':
+            include 'site/order_status_detail.php';
+            break;
 		case "logout":
 			unset($_SESSION['user_id']);
 			header("location: index.php");

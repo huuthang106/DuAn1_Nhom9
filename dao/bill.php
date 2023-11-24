@@ -103,5 +103,16 @@
             }
         }
     }
-    
+    function bill_selectall(){
+        $sql =  "select * from bills order by bill_id DESC";
+        return pdo_query($sql);
+    }
+    function bills_selectalls($bill_id){
+        $sql =  "select * from bills where bill_id=?";
+        return pdo_query($sql, $bill_id);
+    }
+    function bills_selectalls_detail($bill_id){
+        $sql =  "select * from bill_details where bill_id=?";
+        return pdo_query($sql, $bill_id);
+    }
 ?>

@@ -184,8 +184,9 @@ function check_email($email)
     $sql = "select * from users where email= '" . $email . "'";
     $sp = pdo_query_one($sql);
     return $sp;
-}   
-function clients_selectall(){
+}
+function clients_selectall()
+{
     $sql =  "select * from user order by use_id DESC";
     return pdo_query($sql);
 }

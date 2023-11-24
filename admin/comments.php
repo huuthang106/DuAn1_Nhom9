@@ -51,7 +51,7 @@
                                     if (isset($_GET['comment_id'])) {
                                         comments_delete($_GET['comment_id']);
                                     }
-                                    $comment = comments_selectall();
+                                    $comment = comment_selectall();
                                     $users = user_selectall();
                                     $blogs = blogs_selectall();
                                     $product = products_selectall();

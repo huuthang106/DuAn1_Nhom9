@@ -89,6 +89,11 @@ function comments_selectall($blog_id){
     $sql.=" order by comment_id DESC";
     return pdo_query($sql);
 }
+function comment_selectall()
+{
+    $sql =  "select * from comments order by comment_id DESC";
+    return pdo_query($sql);
+}
 function comment_insert($user_id, $blog_id, $text, $day, $status){
     $sql = "insert into comments (user_id, blog_id, text, day, status) VALUES (?, ?, ?, ?, ?)";
     pdo_execute($sql, $user_id, $blog_id, $text, $day, $status);

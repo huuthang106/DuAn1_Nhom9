@@ -1,10 +1,8 @@
-
-
 <body>
-<?php
+    <?php
 include("./include/nav.php");
 ?>
-	<!-- End Header Area -->
+    <!-- End Header Area -->
 
     <!-- Start Banner Area -->
     <section class="banner-area organic-breadcrumb">
@@ -26,10 +24,39 @@ include("./include/nav.php");
     <section class="tracking_box_area section_gap">
         <div class="container">
             <div class="tracking_box_inner">
-                <p>Để theo dõi đơn hàng của bạn, vui lòng nhập ID đơn hàng của bạn vào ô bên dưới và nhấn nút "Theo dõi".</p>
-                <form class="row tracking_form" action="#" method="post" novalidate="novalidate">
+                <?php
+                if(isset($_POST['bill_id'])){
+                    $bill_id = $_POST['bill_id'];
+                    if(empty($bill_id)){
+                        $error = '
+                        <div style="color:#721c24;">
+                        <i class="fa-solid fa-circle-exclamation"></i> Vui lòng nhập mã đơn hàng !
+                        </div><br>
+                    ';    
+                    }
+                    if(isset($error)){
+                        echo $error;
+
+                    }else{
+                    $existingBill = array_column(bill_selectall(), 'bill_id');
+                    if(in_array($bill_id,$existingBill)){
+                        echo '<script>window.location.href = "index.php?act=order_status&bill_id=' . $bill_id . '";</script>';
+                    }else{
+                        echo'
+                            <div style="color:#721c24;">
+                            <i class="fa-solid fa-circle-exclamation"></i> Mã đơn hàng không tồn tại !
+                            </div><br>
+                        ';    
+                    }
+                }
+                }
+                ?>
+                <p>Để theo dõi đơn hàng của bạn, vui lòng nhập ID đơn hàng của bạn vào ô bên dưới và nhấn nút "Theo
+                    dõi".</p>
+                <form class="row tracking_form" action="index.php?act=tracking" method="post" novalidate="novalidate">
                     <div class="col-md-12 form-group">
-                        <input type="text" class="form-control" id="order" name="order" placeholder="Mã đơn hàng" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Mã đơn hàng'">
+                        <input type="text" class="form-control" id="order" name="bill_id" placeholder="Mã đơn hàng"
+                            onfocus="this.placeholder = ''" onblur="this.placeholder = 'Mã đơn hàng'">
                     </div>
                     <div class="col-md-12 form-group">
                         <button type="submit" value="submit" class="primary-btn">Theo dõi</button>

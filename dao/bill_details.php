@@ -9,7 +9,7 @@ class bill_details
     var $quantity =  null;
     var $product_id = null;
     var $total = null;
-    var $address= null;
+    var $address = null;
     var $phone = null;
     var $note = null;
     var $fullname = null;
@@ -71,16 +71,16 @@ class bill_details
             return false;
         }
     }
-    public function insert_bill_details($bill_id, $pay, $price, $day, $quantity, $product_id, $total,$address,$phone,$note,$fullname)
+    public function insert_bill_details($bill_id, $pay, $price, $day, $quantity, $product_id, $total, $address, $phone, $note, $fullname)
     {
         $db = new connect();
         $select = "INSERT INTO bill_details (bill_id, pay, price,day,quantity,product_id,total,address,phone,note,fullname) values
          (?,?,?,?,?,?,?,?,?,?,?) ";
-        $result = $db->pdo_execute($select,$bill_id, $pay, $price, $day, $quantity, $product_id, $total,$address,$phone,$note,$fullname);
+        $result = $db->pdo_execute($select, $bill_id, $pay, $price, $day, $quantity, $product_id, $total, $address, $phone, $note, $fullname);
         if ($result) {
             if ($pay == 1) {
                 return $result;
-            }else{
+            } else {
                 echo '<script>window.location.href = "index.php?act=pay";</script>';
                 return $result;
             }
