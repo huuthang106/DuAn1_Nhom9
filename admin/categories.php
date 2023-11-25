@@ -80,94 +80,16 @@
                                         <th>Xóa</th>
                                     </tr>
                                 </thead>
-                                <?php
-                                if (isset($_GET['category_id']) && isset($_GET['status'])) {
-                                    categories_delete($_GET['category_id'], $_GET['status']);
-                                }
-                                $category = categories_selectall();
-
-                                foreach ($category as $categories) {
-                                    extract($categories);
-                                    $edit_link = "index.php?act=update_categories&category_id=" . $category_id;
-                                    $del_link = "index.php?act=categories&category_id=" . $category_id . "&status=0";
-                                    $present = "index.php?act=categories&category_id=" . $category_id . "&status=1";
-                                    if ($status == 0) {
-                                        echo '
-                                            <tbody>
-                                                <tr>
-                                                    <td>' . $category_id . '</a></td>
-                                                    <td>' . $name . '</td>
-                                                    <td><a href="' . $edit_link . '" class="btn btn-sm btn-primary">Sửa</a> <a href="' . $present . '" class="btn btn-sm btn-success">Bật</a></td>
-                                                </tr>
-                                            </tbody>
-                                            ';
-                                    } else {
-                                        echo '                     
-                                            <tbody>
-                                                <tr>
-                                                    <td>' . $category_id . '</a></td>
-                                                    <td>' . $name . '</td>
-                                                    <td><a href="' . $edit_link . '" class="btn btn-sm btn-primary">Sửa</a> <a href="' . $del_link . '" class="btn btn-sm btn-danger">Xóa</a></td>
-                                                </tr>
-                                            </tbody>
-                                      
-                                                    
-                                      ';
-                                    }
-                                }
-
-                                ?>
-                            </table>
-                        </div>
-                        <div class="card-footer"></div>
-                    </div>
-                </div>
-            </div>
-            <!--Row-->
-
-            <!-- Modal Logout -->
-            <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelLogout" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabelLogout">Ohh No!</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <p>Are you sure you want to logout?</p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancel</button>
-                            <a href="login.html" class="btn btn-primary">Logout</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <h6 class="m-0 font-weight-bold text-primary">Bảng Loại sản phẩm</h6>
-        </div>
-        <div class="table-responsive p-3">
-            <table class="table align-items-center table-flush" id="dataTable">
-                <thead class="thead-light">
-                    <tr>
-                        <th>ID</th>
-                        <th>Loại</th>
-                        <th>Sửa</th>
-                        <th>Xóa</th>
-                    </tr>
-                </thead>
-                <tfoot>
-                    <tr>
-                        <th>ID</th>
-                        <th>Loại</th>
-                        <th>Sửa</th>
-                        <th>Xóa</th>
-                    </tr>
-                </tfoot>
-                <tbody>
-                    <?php
+                                <tfoot>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Loại</th>
+                                        <th>Sửa</th>
+                                        <th>Xóa</th>
+                                    </tr>
+                                </tfoot>
+                                <tbody>
+                                    <?php
                     if (isset($_GET['category_id']) && isset($_GET['status'])) {
                         categories_delete($_GET['category_id'], $_GET['status']);
                     }
@@ -206,9 +128,38 @@
                     }
 
                     ?>
-                </tbody>
-            </table>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="card-footer"></div>
+                    </div>
+                </div>
+            </div>
+            <!--Row-->
+
+            <!-- Modal Logout -->
+            <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalLabelLogout" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabelLogout">Ohh No!</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Are you sure you want to logout?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancel</button>
+                            <a href="login.html" class="btn btn-primary">Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+
     </div>
     </div>
 

@@ -154,7 +154,7 @@ class products
             return false;
         }
     }
-    public function products_pagination_caterory($page, $items_per_page,$category_id)
+    public function products_pagination_caterory($page, $items_per_page, $category_id)
     {
         $db = new connect();
 
@@ -162,13 +162,14 @@ class products
         $start = ($page - 1) * $items_per_page;
 
         // Truy vấn SQL để lấy danh sách sản phẩm với phân trang
-        $select = "SELECT * FROM products WHERE category_id = ? where status =1 ORDER BY product_id DESC LIMIT $start, $items_per_page";
-        $result = $db->pdo_query($select,$category_id);
+        $select = "SELECT * FROM products WHERE category_id = ? AND status = 1 ORDER BY product_id DESC LIMIT $start, $items_per_page";
+        $result = $db->pdo_query($select, $category_id);
 
         // Đếm tổng số sản phẩm
-        $count_query = "SELECT COUNT(*) as total FROM products";
-        $total_products = $db->pdo_query($count_query);
+        $count_query = "SELECT COUNT(*) as total FROM products WHERE category_id = ? AND status = 1";
+        $total_products = $db->pdo_query($count_query, $category_id);
 
         return array('products' => $result, 'total_products' => $total_products);
     }
 }
+?>

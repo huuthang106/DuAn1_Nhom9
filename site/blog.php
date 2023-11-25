@@ -171,7 +171,7 @@
                             <div class="br"></div>
                         </aside>
                         <aside class="single_sidebar_widget author_widget">
-                            <img class="author_img rounded-circle" src="img/blog/author.png" alt="">
+                            <img class="author_img rounded-circle" src="content/img/blog/author.png" alt="">
                             <h4>Charlie thợ cắt tóc</h4>
                             <p>Người viết blog cao cấp</p>
                             <div class="social_icon">

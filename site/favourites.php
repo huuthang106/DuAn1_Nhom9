@@ -2,8 +2,8 @@
 
     <!-- Start Header Area -->
     <?php
-					include("./include/nav.php");
-					?>
+    include("./include/nav.php");
+    ?>
     <!-- End Header Area -->
 
     <!-- start banner Area -->
@@ -104,32 +104,32 @@
             <div class="row">
                 <div class="col-lg-9">
                     <div class="row">
-                        <?php   
-                       
-                                if (isset($_GET['product_id'])) {
-                                    $product_id = $_GET['product_id'];
-				                    $user_id = $_SESSION['user_id'];
-                                    favourite_insert($user_id, $product_id);
-                                }
-                                if(isset($_GET['favourite_id'])){
-                                    favourite_delete($_GET['favourite_id']);
-                                }
-                                $favourite = favourite_selectalls();
-                                foreach ($favourite as $favourites) {
-                                    extract($favourites);
-                                   
-                                    $single_product = "index.php?act=single-product&favourite_id=".$favourite_id."&product_id=".$product_id;
-                                    $del_like = "index.php?act=favourites&favourite_id=".$favourite_id;
-                                    $product = favourite_selectall_products($product_id);
-                                    $format=number_format($product[0]['price']);
-                                    echo '
+                        <?php
+
+                        if (isset($_GET['product_id'])) {
+                            $product_id = $_GET['product_id'];
+                            $user_id = $_SESSION['user_id'];
+                            favourite_insert($user_id, $product_id);
+                        }
+                        if (isset($_GET['favourite_id'])) {
+                            favourite_delete($_GET['favourite_id']);
+                        }
+                        $favourite = favourite_selectalls();
+                        foreach ($favourite as $favourites) {
+                            extract($favourites);
+
+                            $single_product = "index.php?act=single-product&favourite_id=" . $favourite_id . "&product_id=" . $product_id;
+                            $del_like = "index.php?act=favourites&favourite_id=" . $favourite_id;
+                            $product = favourite_selectall_products($product_id);
+                            $format = number_format($product[0]['price']);
+                            echo '
                                     <div class="col-lg-4 col-md-6">
                                         <div class="single-product">
-                                            <img class="img-fluid" src="./content/img/product/'.$product[0]['picture'].'" alt="">
+                                            <img class="img-fluid" src="./content/img/product/' . $product[0]['picture'] . '" alt="">
                                             <div class="product-details">
-                                                <h6>'.$product[0]['name'].'</h6>
+                                                <h6>' . $product[0]['name'] . '</h6>
                                                 <div class="price">
-                                                    <h6>'.$format.'VNĐ</h6>
+                                                    <h6>' . $format . ' VNĐ</h6>
                                                     
                                                 </div>
                                                 <div class="prd-bottom">
@@ -138,12 +138,12 @@
                                                         <span class="ti-bag"></span>
                                                         <p class="hover-text">Thêm vào giỏ hàng</p>
                                                     </a>
-                                                    <a href="'.$del_like.'" class="social-info">
+                                                    <a href="' . $del_like . '" class="social-info">
                                                         <span class="lnr lnr-trash"></span>
                                                         <p class="hover-text">Xóa</p>
                                                     </a>
                                                     
-                                                    <a href="'.$single_product.'" class="social-info">
+                                                    <a href="' . $single_product . '" class="social-info">
                                                         <span class="lnr lnr-move"></span>
                                                         <p class="hover-text">Chi tiết</p>
                                                     </a>
@@ -152,9 +152,9 @@
                                         </div>
                                     </div>
                                     ';
-                                }
-                            
-						?>
+                        }
+
+                        ?>
 
 
                     </div>
@@ -163,7 +163,7 @@
                     <div class="ctg-right">
                         <a href="#" target="_blank">
                             <img class="img-fluid d-block mx-auto" src="./content/img/category/c5.jpg" alt="">
-                        </a>
+                        </a>s
                     </div>
                 </div>
             </div>
@@ -173,7 +173,7 @@
 
     <!-- start footer Area -->
     <?php
-	include("./include/footer.php");
-	?>
+    include("./include/footer.php");
+    ?>
 
 </body>

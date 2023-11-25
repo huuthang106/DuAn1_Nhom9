@@ -32,7 +32,8 @@
 
 
 
-                        <li class="main-nav-list"><a data-toggle="collapse" href="#officeProduct" aria-expanded="false" aria-controls="officeProduct">
+                        <li class="main-nav-list"><a data-toggle="collapse" href="#officeProduct" aria-expanded="false"
+                                aria-controls="officeProduct">
                                 <span class="lnr lnr-arrow-right"></span>Danh mục<span class="number">
                                     <?php
                                     $count = new categories();
@@ -40,7 +41,8 @@
                                     echo '' . $start_count[0]['count_categories'] . ''
                                     // var_dump($start_count);
                                     ?></span></a>
-                            <ul class="collapse" id="officeProduct" data-toggle="collapse" aria-expanded="false" aria-controls="officeProduct">
+                            <ul class="collapse" id="officeProduct" data-toggle="collapse" aria-expanded="false"
+                                aria-controls="officeProduct">
                                 <?php
                                 $categories = new categories();
                                 foreach ($categories->get_all_categories() as $key) {
@@ -206,7 +208,8 @@
                 <div class="col-lg-6 text-center">
                     <div class="section-title">
                         <h1>Ưu đãi trong tuần</h1>
-                        <p>Những ưu đãi này chắc chắn sẽ mang đến trải nghiệm tuyệt vời để cho khách hàng có thể sở hữu</p>
+                        <p>Những ưu đãi này chắc chắn sẽ mang đến trải nghiệm tuyệt vời để cho khách hàng có thể sở hữu
+                        </p>
                     </div>
                 </div>
             </div>

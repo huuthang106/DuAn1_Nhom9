@@ -206,7 +206,7 @@
                         if(isset($_POST['send']) && isset($_GET['blog_id'])){
                             $text = $_POST['text'];
                             $blog_id = $_GET['blog_id'];
-                            $user_id = $_SESSION['user_id']['user_id'];
+                            $user_id = $_SESSION['user_id'];
                             date_default_timezone_set('Asia/Ho_Chi_Minh');
                             $day = date('Y-m-d H:i:s');
                             $status = 2;
