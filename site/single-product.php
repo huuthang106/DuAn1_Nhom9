@@ -1,43 +1,43 @@
 <style>
-	.list button.highlight,
-	.list button.selected {
-		color: #fbd600;
-		background-color: transparent;
-		border: none;
-		cursor: pointer;
-	}
+.list button.highlight,
+.list button.selected {
+    color: #fbd600;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
 
-	.star {
-		background-color: #0000;
-		border: none;
-	}
+.star {
+    background-color: #0000;
+    border: none;
+}
 </style>
 
 <body>
-	<?php
+    <?php
 	include("./include/nav.php");
 	?>
-	<!-- End Header Area -->
+    <!-- End Header Area -->
 
-	<!-- Start Banner Area -->
-	<section class="banner-area organic-breadcrumb">
-		<div class="container">
-			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
-				<div class="col-first">
-					<h1>Chi tiết sản phẩm</h1>
-					<nav class="d-flex align-items-center">
-						<a href="index.php?act=home">Trang chủ<span class="lnr lnr-arrow-right"></span></a>
-						<a href="index.php?act=category">Sản Phẩm<span class="lnr lnr-arrow-right"></span></a>
-						<a href="">Chi tiết sản phẩm</a>
-					</nav>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- End Banner Area -->
+    <!-- Start Banner Area -->
+    <section class="banner-area organic-breadcrumb">
+        <div class="container">
+            <div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+                <div class="col-first">
+                    <h1>Chi tiết sản phẩm</h1>
+                    <nav class="d-flex align-items-center">
+                        <a href="index.php?act=home">Trang chủ<span class="lnr lnr-arrow-right"></span></a>
+                        <a href="index.php?act=category">Sản Phẩm<span class="lnr lnr-arrow-right"></span></a>
+                        <a href="">Chi tiết sản phẩm</a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Banner Area -->
 
-	<!--================Single Product Area =================-->
-	<?php
+    <!--================Single Product Area =================-->
+    <?php
 	if (isset($_GET["product_id"])) {
 		# code...
 	
@@ -68,54 +68,58 @@
 	}
 
 	?>
-	<div class="product_count">
-		<label for="qty">Số lượng:</label>
-		<input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:" class="input-text qty">
-		<button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;" class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
-		<button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;" class="reduced items-count" type="button" name="like"><i class="lnr lnr-chevron-down"></i></button>
-	</div>
-	<div class="card_area d-flex align-items-center">
-		<a class="primary-btn" href="#">Thêm vào giỏ hàng</a>
-		<?php
+    <div class="product_count">
+        <label for="qty">Số lượng:</label>
+        <input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:" class="input-text qty">
+        <button
+            onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
+            class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
+        <button
+            onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
+            class="reduced items-count" type="button" name="like"><i class="lnr lnr-chevron-down"></i></button>
+    </div>
+    <div class="card_area d-flex align-items-center">
+        <a class="primary-btn" href="#">Thêm vào giỏ hàng</a>
+        <?php
 		if (isset($_SESSION['user_id'])) {
-			$like_link = "index.php?act=likes&product_id=" . $product_id;
-			echo '<a class="icon_btn" href="' . $like_link . '"><i class="lnr lnr lnr-heart"></i></a>';
+			$favourite_link = "index.php?act=favourites&product_id=" . $product_id;
+			echo '<a class="icon_btn" href="' . $favourite_link . '"><i class="lnr lnr lnr-heart"></i></a>';
 		} else {
 			echo '<a class="icon_btn" href="index.php?act=login"><i class="lnr lnr lnr-heart"></i></a>';
 		}
 		?>
-	</div>
-	</div>
-	</div>
-	</div>
-	</div>
-	</div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
 
 
-	<!--================End Single Product Area =================-->
+    <!--================End Single Product Area =================-->
 
-	<!--================Product Description Area =================-->
-	<section class="product_description_area">
-		<div class="container">
-			<ul class="nav nav-tabs" id="myTab" role="tablist">
-				<!-- <li class="nav-item">
+    <!--================Product Description Area =================-->
+    <section class="product_description_area">
+        <div class="container">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <!-- <li class="nav-item">
 					<a class="nav-link" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Description</a>
 				</li> -->
-				<!-- <li class="nav-item">
+                <!-- <li class="nav-item">
 					<a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
 					 aria-selected="false">Specification</a>
 				</li> -->
-				<li class="nav-item">
-					<a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab"
-						aria-controls="contact" aria-selected="false">Bình luận</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link active" id="review-tab" data-toggle="tab" href="#review" role="tab"
-						aria-controls="review" aria-selected="false">Đánh giá</a>
-				</li>
-			</ul>
-			<div class="tab-content" id="myTabContent">
-				<!-- <div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
+                <li class="nav-item">
+                    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab"
+                        aria-controls="contact" aria-selected="false">Bình luận</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" id="review-tab" data-toggle="tab" href="#review" role="tab"
+                        aria-controls="review" aria-selected="false">Đánh giá</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <!-- <div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
 					<p>Beryl Cook is one of Britain’s most talented and amusing artists .Beryl’s pictures feature women of all shapes
 						and sizes enjoying themselves .Born between the two world wars, Beryl Cook eventually left Kendrick School in
 						Reading at the age of 15, where she went to secretarial school and then into an insurance office. After moving to
@@ -132,8 +136,8 @@
 						more than one would suddenly need to learn how to adjust all the cooking practices utilized before into a
 						streamlined plan of cooking that is more efficient for one person creating less</p>
 				</div> -->
-				<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-					<!-- <div class="table-responsive">
+                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                    <!-- <div class="table-responsive">
 						<table class="table">
 							<tbody>
 								<tr>
@@ -203,13 +207,13 @@
 							</tbody>
 						</table>
 					</div> -->
-				</div>
-				<div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-					<div class="row">
-						<div class="col-lg-6">
-							<div class="comment_list">
+                </div>
+                <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="comment_list">
 
-								<?php
+                                <?php
 								$list_comment = new comments();
 								$comments = $list_comment->get_comment_product_id($_GET['product_id']);
 
@@ -294,7 +298,7 @@
 
 
 
-								<!-- <div class="review_item">
+                                <!-- <div class="review_item">
 									<div class="media">
 										<div class="d-flex">
 											<img src="./content/img/product/review-3.png" alt="">
@@ -310,9 +314,9 @@
 										nhưng đồng thời cũng sẽ có rất nhiều công việc và nỗi đau. Để đi đến từng chi tiết nhỏ nhất,
 										không ai nên thực hiện bất kỳ loại công việc nào ngoại trừ việc thu được lợi ích nào đó từ nó.</p>
 								</div> -->
-							</div>
-						</div>
-						<?php
+                            </div>
+                        </div>
+                        <?php
 						if (isset($_SESSION['user_id'])) {
 							$fullname_user = new users();
 							foreach ($fullname_user->get_user_id($_SESSION['user_id']) as $key) {
@@ -387,44 +391,44 @@
 						}
 						?>
 
-					</div>
-				</div>
-				<div class="tab-pane fade show active" id="review" role="tabpanel" aria-labelledby="review-tab">
-					<div class="row">
-						<div class="col-lg-6">
-							<div class="row total_rate">
-								<div class="col-6">
-									<div class="box_total">
-										<h5>Đánh giá</h5>
-										<h4>4.0</h4>
-										<h6>(03 đánh giá)</h6>
-									</div>
-								</div>
-								<div class="col-6">
-									<div class="rating_list">
-										<h3>Dựa trên 3 đánh giá</h3>
-										<ul class="list">
-											<li><a href="#">5 Sao <i class="fa fa-star"></i><i class="fa fa-star"></i><i
-														class="fa fa-star"></i><i class="fa fa-star"></i><i
-														class="fa fa-star"></i> 01</a></li>
-											<li><a href="#">4 Sao <i class="fa fa-star"></i><i class="fa fa-star"></i><i
-														class="fa fa-star"></i><i class="fa fa-star"></i><i
-														class="fa fa-star"></i> 01</a></li>
-											<li><a href="#">3 Sao <i class="fa fa-star"></i><i class="fa fa-star"></i><i
-														class="fa fa-star"></i><i class="fa fa-star"></i><i
-														class="fa fa-star"></i> 01</a></li>
-											<li><a href="#">2 Sao <i class="fa fa-star"></i><i class="fa fa-star"></i><i
-														class="fa fa-star"></i><i class="fa fa-star"></i><i
-														class="fa fa-star"></i> 01</a></li>
-											<li><a href="#">1 Sao <i class="fa fa-star"></i><i class="fa fa-star"></i><i
-														class="fa fa-star"></i><i class="fa fa-star"></i><i
-														class="fa fa-star"></i> 01</a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-							<div class="review_list">
-								<?php
+                    </div>
+                </div>
+                <div class="tab-pane fade show active" id="review" role="tabpanel" aria-labelledby="review-tab">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="row total_rate">
+                                <div class="col-6">
+                                    <div class="box_total">
+                                        <h5>Đánh giá</h5>
+                                        <h4>4.0</h4>
+                                        <h6>(03 đánh giá)</h6>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="rating_list">
+                                        <h3>Dựa trên 3 đánh giá</h3>
+                                        <ul class="list">
+                                            <li><a href="#">5 Sao <i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                                        class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                                        class="fa fa-star"></i> 01</a></li>
+                                            <li><a href="#">4 Sao <i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                                        class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                                        class="fa fa-star"></i> 01</a></li>
+                                            <li><a href="#">3 Sao <i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                                        class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                                        class="fa fa-star"></i> 01</a></li>
+                                            <li><a href="#">2 Sao <i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                                        class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                                        class="fa fa-star"></i> 01</a></li>
+                                            <li><a href="#">1 Sao <i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                                        class="fa fa-star"></i><i class="fa fa-star"></i><i
+                                                        class="fa fa-star"></i> 01</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="review_list">
+                                <?php
 								$select_evaluates = new Evaluates();
 								$product_id = $_GET['product_id'];
 								$item_evaluates = $select_evaluates->get_five_evaluates($product_id);
@@ -481,23 +485,28 @@
 									$dell_evaluate_id = $dell->dell_evaluate($_GET['evaluates']);
 								}
 								?>
-							</div>
-						</div>
-						<div class="col-lg-6">
-							<div class="review_box">
-								<h4>Đánh giá</h4>
-								<p>Số sao của bạn:</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="review_box">
+                                <h4>Đánh giá</h4>
+                                <p>Số sao của bạn:</p>
 
-								<ul class="list">
-									<li><button class="star" data-value="1" onclick="handleClick(this)"><i class="fa fa-star"></i></button></li>
-									<li><button class="star" data-value="2" onclick="handleClick(this)"><i class="fa fa-star"></i></button></li>
-									<li><button class="star" data-value="3" onclick="handleClick(this)"><i class="fa fa-star"></i></button></li>
-									<li><button class="star" data-value="4" onclick="handleClick(this)"><i class="fa fa-star"></i></button></li>
-									<li><button class="star" data-value="5" onclick="handleClick(this)"><i class="fa fa-star"></i></button></li>
-								</ul>
+                                <ul class="list">
+                                    <li><button class="star" data-value="1" onclick="handleClick(this)"><i
+                                                class="fa fa-star"></i></button></li>
+                                    <li><button class="star" data-value="2" onclick="handleClick(this)"><i
+                                                class="fa fa-star"></i></button></li>
+                                    <li><button class="star" data-value="3" onclick="handleClick(this)"><i
+                                                class="fa fa-star"></i></button></li>
+                                    <li><button class="star" data-value="4" onclick="handleClick(this)"><i
+                                                class="fa fa-star"></i></button></li>
+                                    <li><button class="star" data-value="5" onclick="handleClick(this)"><i
+                                                class="fa fa-star"></i></button></li>
+                                </ul>
 
-								<p>Nổi bật</p>
-								<?php
+                                <p>Nổi bật</p>
+                                <?php
 								if (isset($_SESSION['user_id'])) {
 									$fullname_user = new users();
 									foreach ($fullname_user->get_user_id($_SESSION['user_id']) as $key) {
@@ -506,18 +515,21 @@
 								<form class="row contact_form" action="index.php?act=single-product&product_id=' . $_GET['product_id'] . '" method="post" id="contactForm" novalidate="novalidate">';
 
 								?>
-										<input type="hidden" name="star" id="starInput" value="">
-										<div class="col-md-12">
-											<div class="form-group">
-												<textarea class="form-control" name="content" id="message" rows="1" placeholder="Đánh giá" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Đánh giá'"></textarea></textarea>
-											</div>
-										</div>
-										<div class="col-md-12 text-right">
-											<button type="submit" value="submit" name="submit_evaluates" class="primary-btn">Gửi ngay</button>
-										</div>
-										</form>
+                                <input type="hidden" name="star" id="starInput" value="">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <textarea class="form-control" name="content" id="message" rows="1"
+                                            placeholder="Đánh giá" onfocus="this.placeholder = ''"
+                                            onblur="this.placeholder = 'Đánh giá'"></textarea></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 text-right">
+                                    <button type="submit" value="submit" name="submit_evaluates" class="primary-btn">Gửi
+                                        ngay</button>
+                                </div>
+                                </form>
 
-								<?php
+                                <?php
 									}
 								} else {
 									echo '
@@ -549,85 +561,85 @@
 									}
 								}
 								?>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!--================End Product Description Area =================-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--================End Product Description Area =================-->
 
-	<!-- Start related-product Area -->
-	<section class="related-product-area section_gap_bottom">
-		<div class="container">
-			<div class="row justify-content-center">
-				<div class="col-lg-6 text-center">
-					<div class="section-title">
-						<h1>Sản phẩm liên quan</h1>
-						<p>Có thể bạn sẽ quan tâm </p>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-lg-9">
-					<div class="row">
-						<div class="col-lg-4 col-md-4 col-sm-6 mb-20">
-							<div class="single-related-product d-flex">
-								<a href="#"><img src="./content/img/r1.jpg" alt=""></a>
-								<div class="desc">
-									<a href="#" class="title">Black lace Heels</a>
-									<div class="price">
-										<h6>$189.00</h6>
-										<h6 class="l-through">$210.00</h6>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-4 col-sm-6 mb-20">
-							<div class="single-related-product d-flex">
-								<a href="#"><img src="./content/img/r2.jpg" alt=""></a>
-								<div class="desc">
-									<a href="#" class="title">Black lace Heels</a>
-									<div class="price">
-										<h6>$189.00</h6>
-										<h6 class="l-through">$210.00</h6>
-									</div>
-								</div>
-							</div>
-						</div>
+    <!-- Start related-product Area -->
+    <section class="related-product-area section_gap_bottom">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6 text-center">
+                    <div class="section-title">
+                        <h1>Sản phẩm liên quan</h1>
+                        <p>Có thể bạn sẽ quan tâm </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-9">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-6 mb-20">
+                            <div class="single-related-product d-flex">
+                                <a href="#"><img src="./content/img/r1.jpg" alt=""></a>
+                                <div class="desc">
+                                    <a href="#" class="title">Black lace Heels</a>
+                                    <div class="price">
+                                        <h6>$189.00</h6>
+                                        <h6 class="l-through">$210.00</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-6 mb-20">
+                            <div class="single-related-product d-flex">
+                                <a href="#"><img src="./content/img/r2.jpg" alt=""></a>
+                                <div class="desc">
+                                    <a href="#" class="title">Black lace Heels</a>
+                                    <div class="price">
+                                        <h6>$189.00</h6>
+                                        <h6 class="l-through">$210.00</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-						<div class="col-lg-4 col-md-4 col-sm-6">
-							<div class="single-related-product d-flex">
-								<a href="#"><img src="./content/img/r11.jpg" alt=""></a>
-								<div class="desc">
-									<a href="#" class="title">Black lace Heels</a>
-									<div class="price">
-										<h6>$189.00</h6>
-										<h6 class="l-through">$210.00</h6>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3">
-					<div class="ctg-right">
-						<a href="#" target="_blank">
-							<img class="img-fluid d-block mx-auto" src="img/category/c5.jpg" alt="">
-						</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- End related-product Area -->
+                        <div class="col-lg-4 col-md-4 col-sm-6">
+                            <div class="single-related-product d-flex">
+                                <a href="#"><img src="./content/img/r11.jpg" alt=""></a>
+                                <div class="desc">
+                                    <a href="#" class="title">Black lace Heels</a>
+                                    <div class="price">
+                                        <h6>$189.00</h6>
+                                        <h6 class="l-through">$210.00</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="ctg-right">
+                        <a href="#" target="_blank">
+                            <img class="img-fluid d-block mx-auto" src="img/category/c5.jpg" alt="">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End related-product Area -->
 
-	<!-- start footer Area -->
-	<?php
+    <!-- start footer Area -->
+    <?php
 	include("./include/footer.php");
 	?>
-	<!-- End footer Area -->
+    <!-- End footer Area -->
 
 
 
