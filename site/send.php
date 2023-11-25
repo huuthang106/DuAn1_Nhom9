@@ -33,7 +33,7 @@ try {
   echo "
   <script>
   alert ( 'Gửi mail thành công');
-  document.location.href ='index.php?act=contact';
+  document.location.href ='../index.php?act=contact';
   </script>
   ";
 } catch (Exception $e) {
