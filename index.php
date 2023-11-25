@@ -75,6 +75,7 @@ session_start();
 	include("dao/evaluates.php");
     include("dao/blogs.php");
     include("dao/likes.php");
+	include("global.php");
 	$action = "home";
 	if (isset($_GET['act']))
 		$action = $_GET['act'];
@@ -160,7 +161,7 @@ session_start();
 		<i class="fas fa-angle-up"></i>
 	</a> -->
 
-
+	<script src="https://uhchat.net/code.php?f=3dca0b"></script>
 </body>
 <script src="content/js/add.js"></script>
 <script src="./content/js/vendor/jquery-2.2.4.min.js"></script>

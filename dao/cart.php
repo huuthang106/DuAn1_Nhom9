@@ -112,4 +112,18 @@ class carts
             return false;
         }
     }
+
+    public function dell_cart_user_id_no_next_page($user_id){
+        $db= new connect();
+        // tìm đúng user và có trạng thái là 2 sẽ xóa 
+        $select ="DELETE FROM carts Where user_id=? and status = 2";
+        $result = $db->pdo_execute($select,$user_id);
+        if($result){
+          
+            return $result;
+
+        }else{
+            return false;
+        }
+    }
 }

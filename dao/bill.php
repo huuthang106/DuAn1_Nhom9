@@ -102,6 +102,18 @@
                 return false;
             }
         }
+
+        public function approve_the_transfer_application($bill_id ){
+            $db = new connect();
+            $select = "UPDATE bills set status = 2 WHERE bill_id = ?";
+            $result = $db->pdo_execute($select ,$bill_id);
+            if ($result) {
+                echo '<script>window.location.href = "index.php?act=user";</script>';
+                return $result;
+            }else {
+                return false;
+            }
+        }
     }
     function bill_selectall(){
         $sql =  "select * from bills order by bill_id DESC";

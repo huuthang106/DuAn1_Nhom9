@@ -81,26 +81,23 @@
                                         </div><br>
                                     </div>
                                     ';
-                            } 
-                            elseif(!preg_match('/^0\d{8,10}$/', $_POST['phone'])){
+                            } elseif (!preg_match('/^0\d{8,10}$/', $_POST['phone'])) {
                                 echo '
                                 <div class="col-md-12 form-group">
                                     <div class="error-message">
                                         <i class="fa-solid fa-circle-exclamation"></i> số điện thoại sai định dạng !
                                     </div><br>
                                 </div>
-                                ';   
-                            }
-                            elseif(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){
+                                ';
+                            } elseif (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
                                 echo '
                                 <div class="col-md-12 form-group">
                                     <div class="error-message">
                                         <i class="fa-solid fa-circle-exclamation"></i> Email sai định dạng !
                                     </div><br>
                                 </div>
-                                '; 
-                            }
-                            else {
+                                ';
+                            } else {
                                 //lấy phương thức thanh toán 1 là thanh toán khi nhận hàng
                                 $selector = $_POST['selector'];
                                 //lấy thông tin giỏ hàng 
@@ -120,7 +117,7 @@
                                         foreach ($cart_items as $key) {
                                             extract($key);
                                             // bắt dầu thêm dữ liệu vào chi tiết đơn 
-                                            $insert_bill_details->insert_bill_details($bill_id, $selector, $price, $day, $quantity, $product_id, $total_price,$_POST['address'],$_POST['phone'],$_POST['note'],$_POST['fullname']);
+                                            $insert_bill_details->insert_bill_details($bill_id, $selector, $price, $day, $quantity, $product_id, $total_price, $_POST['address'], $_POST['phone'], $_POST['note'], $_POST['fullname']);
                                             $dell_cart = new carts();
                                             // // sau khi thêm thành công sẽ xóa cart
                                             $dell = $dell_cart->dell_cart_user_id($user_id);
@@ -130,21 +127,23 @@
                                     }
                                 } else {
                                     if ($cart_items) {
-                                        // nhập dữ liệu vào bill
-                                        $insert_bill = new bills();
-                                        $insert_bill->insert_bill($_SESSION['user_id']);
-                                        //lấy bill_id vừa được thêm vào
-                                        $newbill = new bills();
-                                        $bill_id = $newbill->new_bill($user_id);
-                                        foreach ($cart_items as $key) {
-                                            extract($key);
-                                            // bắt dầu thêm dữ liệu vào chi tiết đơn 
-                                            $insert_bill_details->insert_bill_details($bill_id, $selector, $price, $day, $quantity, $product_id, $total_price,$_POST['address'],$_POST['phone'],$_POST['note'],$_POST['fullname']);
-                                           //sau khi chon thanh toán thẻ thì chuyển trang
-                                        }
+                                    // nhập dữ liệu vào bill
+                                    $insert_bill = new bills();
+                                    $insert_bill->insert_bill($_SESSION['user_id']);
+                                    //lấy bill_id vừa được thêm vào
+                                    $newbill = new bills();
+                                    $bill_id = $newbill->new_bill($user_id);
+                                    foreach ($cart_items as $key) {
+                                        extract($key);
+                                        // bắt dầu thêm dữ liệu vào chi tiết đơn 
+                                        $insert_bill_details->insert_bill_details($bill_id, $selector, $price, $day, $quantity, $product_id, $total_price,$_POST['address'],$_POST['phone'],$_POST['note'],$_POST['fullname']);
+                                       //sau khi chon thanh toán thẻ thì chuyển trang
+                                    }
                                     } else {
                                         echo 'Không có sản phẩm thanh toán';
                                     }
+                                    echo '<script>window.location.href = "index.php?act=pay";</script>';
+                                    
                                 }
                             }
                         }
@@ -185,26 +184,32 @@
                                                                 $item_sum_total_price = $sum_total_price->total_price($_SESSION['user_id']);
                                                                 if ($item_sum_total_price) {
                                                                     foreach ($item_sum_total_price as $key) {
+
                                                                         extract($key);
+                                                                   
                                                                         echo '' . $total_price_all_products . '';
                                                                     }
                                                                 } else {
                                                                     echo 'Không có sản phẩm';
                                                                 }
                                                                 ?></span></a></li>
-                                <li><a href="#">Giao hàng <span> 20000</span></a></li>
+                                <li><a href="#">Giao hàng <span> 20000 VNĐ</span></a></li>
                                 <li><a href="#">tổng <span>
                                             <?php
                                             $sum_total_price = new carts();
                                             $item_sum_total_price = $sum_total_price->sum_total_price($_SESSION['user_id']);
+                                        
                                             if ($item_sum_total_price) {
                                                 foreach ($item_sum_total_price as $key) {
                                                     extract($key);
-                                                    echo '' . $total_price_all_products . '';
+                                                    
+                                                    echo '' . $total_price_all_products. '';
                                                 }
+                                                
                                             } else {
                                                 echo ' Không có sản phẩm ';
                                             }
+                                           
                                             ?>
                                         </span></a></li>
                             </ul>
@@ -226,8 +231,10 @@
                                 </div>
 
                             </div>
+                           
                             <button type="submit" value="submit" name="submit" class="btn_bill">Thanh toán</button>
                             </form>
+                            
 
                         </div>
                     </div>

@@ -1,8 +1,10 @@
 <body>
     <!-- Start Header Area -->
     <?php
-    include ("./include/nav.php");
-  ?>
+    include("./include/nav.php");
+
+    ?>
+
     <!-- End Header Area -->
 
     <!-- start banner Area -->
@@ -26,7 +28,7 @@
                 <?php
                 $user = new users();
                 $user_id = $_SESSION['user_id'];
-  
+
                 foreach ($user->get_user_id($user_id) as $key) {
                     extract($key);
                     $updata = "index.php?act=updata&user_id=" . $user_id;
@@ -35,15 +37,15 @@
                         <div class="head">Thông tin</div>
                         <ul class="main-categories">
                             <li class="main-nav-list"><a data-toggle="collapse" href="#officeProduct" aria-expanded="false" aria-controls="officeProduct">';
-                                 if ($avarta==null) {
-                                    # code...
-                                    echo ' <div class="avarta"><img src="../content/img/product/review-1.png" alt=""></div>';
-                                 } else{
-                            echo '<div class="avarta"><img src="../content/img/product/' . $avarta . '" alt=""></div>';
-                                 }
-                            echo '
+                    if ($avarta == null) {
+                        # code...
+                        echo ' <div class="avarta"><img src="../content/img/product/review-1.png" alt=""></div>';
+                    } else {
+                        echo '<div class="avarta"><img src="../content/img/product/' . $avarta . '" alt=""></div>';
+                    }
+                    echo '
                             </a></li>
-    
+                            <li class="main-nav-list"><a data-toggle="collapse" href="#officeProduct" aria-expanded="false" aria-controls="officeProduct"><span class="lnr lnr-arrow-right"></span>ID<span class="number" style="color: black; font-style: italic;">' . $user_id . '</span></a></li>
                             <li class="main-nav-list"><a data-toggle="collapse" href="#officeProduct" aria-expanded="false" aria-controls="officeProduct"><span class="lnr lnr-arrow-right"></span>Tên<span class="number" style="color: black; font-style: italic;">' . $username . '</span></a></li>
                             <li class="main-nav-list"><a data-toggle="collapse" href="#officeProduct" aria-expanded="false" aria-controls="officeProduct"><span class="lnr lnr-arrow-right"></span>Địa chỉ<span class="number" style="color: black; font-style: italic;">' . $address . '</span></a></li>
                             <li class="main-nav-list"><a data-toggle="collapse" href="#officeProduct" aria-expanded="false" aria-controls="officeProduct"><span class="lnr lnr-arrow-right"></span>Điện thoại<span class="number" style="color: black; font-style: italic;">0' . $phone . '</span></a></li>
@@ -120,12 +122,28 @@
                                             <td> Chưa duyệt </td>
                                              </tr>
                                     ';
-                                        } else {
+                                        } elseif ($status == 2) {
                                             echo '
-                                            <td> đang vận chuyển </td>
+                                            <td> Đã duyệt </td>
                                              </tr>
+                                             
                                     ';
                                         }
+                                        elseif ($status == 3) {
+                                            echo '
+                                            <td> Đã dao </td>
+                                             </tr>
+                                             
+                                    ';
+                                        }
+                                        elseif ($status == 4) {
+                                            echo '
+                                            <td> Đã hủy </td>
+                                             </tr>
+                                             
+                                    ';
+                                        }
+                                        
                                     }
                                 }
 
@@ -146,6 +164,15 @@
 
     <?php
     include("./include/footer.php");
+    if (isset($_GET['vnp_BankCode'])) {
+        $dell_cart = new carts();
+        $dell = $dell_cart->dell_cart_user_id_no_next_page($user_id);
+        $new_bill = new bills();
+        $item_new_bill = $new_bill->new_bill($_SESSION['user_id']);
+        $new_bill = new bills();
+        $approve_the_transfer_application = new bills();
+        $key = $approve_the_transfer_application->approve_the_transfer_application($item_new_bill);
+    }
     ?>
 
 

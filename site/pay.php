@@ -1,3 +1,6 @@
+<?php
+ob_start();
+?>
 <style>
     .QR {
         max-width: 95%;
@@ -78,7 +81,7 @@
                                         ';
                                 }
 
-
+                             
                                 ?>
 
                             </ul>
@@ -100,6 +103,8 @@
                                             <?php
                                             $sum_total_price = new carts();
                                             $item_sum_total_price = $sum_total_price->sum_total_price($_SESSION['user_id']);
+                                           
+                                            // var_dump($item_sum_total_price);
                                             if ($item_sum_total_price) {
                                                 foreach ($item_sum_total_price as $key) {
                                                     extract($key);
@@ -110,30 +115,23 @@
                                             }
                                             ?>
                                         </span></a></li>
-                                <div class="nav nav-tabs">
-                                    <img class="QR" src="../content/img/product/QR_thanh_toan1.jpg" alt="">
-                                </div>
+                                
 
                             </ul>
                                         </br>
-                            <h2 id="payment-info">Thông tin thanh toán: <span>Thanh toán hóa đơn <?php
-                             $newbill = new bills();
-                             $bill_id = $newbill->new_bill($user_id);
-                            echo $bill_id; ?></span></h2> 
-                            <ul class="list">
-                            <button class="btn_bill" onclick="copyPaymentInfo()">Sao chép thông tin đơn</button>
-                            </ul>
-                            <br>
+                           
                             
                             <form action="index.php?act=pay" method="post">
-                                <button type="submit" value="submit" name="submit" class="btn_bill">Thanh toán</button>
+                                <button type="submit" value="submit" name="redirect" class="btn_bill">Thanh toán</button>
                             </form>
                             <?php
                             $user_id = $_SESSION['user_id'];
 
-                            if (isset($_POST['submit'])) {
-                                $dell_cart = new carts();
-                                $dell = $dell_cart->dell_cart_user_id($user_id);
+                            if (isset($_POST['redirect'])) {
+                                // $dell_cart = new carts();
+                                // $dell = $dell_cart->dell_cart_user_id($user_id);
+                                thanh_toan();
+
                             }
                             ?>
                         </div>
@@ -147,6 +145,7 @@
     <!-- start footer Area -->
     <?php
     include("./include/footer.php");
+    ob_end_flush();
     ?>
     <!-- End footer Area -->
 

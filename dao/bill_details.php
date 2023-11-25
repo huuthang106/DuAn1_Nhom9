@@ -58,7 +58,7 @@ class bill_details
     {
         $db = new connect();
         $select = "SELECT bd.*,us.username as username, 
-        us.phone as sdt, us.address as address, p.name as name FROM bill_details bd
+        bd.phone as sdt, bd.address as address, p.name as name FROM bill_details bd
         join bills b ON bd.bill_id = b.bill_id 
         Join users us ON b.user_id = us.user_id
         join products p ON bd.product_id = p.product_id
@@ -81,7 +81,7 @@ class bill_details
             if ($pay == 1) {
                 return $result;
             } else {
-                echo '<script>window.location.href = "index.php?act=pay";</script>';
+                // echo '<script>window.location.href = "index.php?act=pay";</script>';
                 return $result;
             }
         } else {
@@ -131,4 +131,5 @@ class bill_details
 
         return $growthPercentage;
     }
+    
 }
