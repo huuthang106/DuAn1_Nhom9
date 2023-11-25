@@ -40,30 +40,27 @@
 	<?php
 	if (isset($_GET["product_id"])) {
 		# code...
-
+	
 		$product = new products();
 		$product_id = $_GET['product_id'];
 		foreach ($product->get_product_id_site($product_id) as $key) {
 			# code...
+	
 			extract($key);
+			$format = number_format($price, 3, ',', '');
 			echo '<div class="product_image_area">
 			<div class="container">
 				<div class="row s_product_inner">
 					<div class="col-lg-6">
 						
-						
 								<img class="img-fluid" src="./content/img/product/' . $picture . '" alt="">
-							
-							
-						
 					</div>
 					<div class="col-lg-5 offset-lg-1">
 						<div class="s_product_text">
 							<h3>' . $name . '</h3>
-							<h2>' . $price . '</h2>
+							<h2>' . $format .' vnđ</h2>
 							<ul class="list">
-								<li><a class="active" href="#">Loại: Giày</a></li>
-								
+								<li><a class="active" href="#">Loại: Giày</a></li>							
 							</ul>
 							<p>' . $content . '</p>
 							';
@@ -109,10 +106,12 @@
 					 aria-selected="false">Specification</a>
 				</li> -->
 				<li class="nav-item">
-					<a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Bình luận</a>
+					<a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab"
+						aria-controls="contact" aria-selected="false">Bình luận</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link active" id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review" aria-selected="false">Đánh giá</a>
+					<a class="nav-link active" id="review-tab" data-toggle="tab" href="#review" role="tab"
+						aria-controls="review" aria-selected="false">Đánh giá</a>
 				</li>
 			</ul>
 			<div class="tab-content" id="myTabContent">
@@ -405,11 +404,21 @@
 									<div class="rating_list">
 										<h3>Dựa trên 3 đánh giá</h3>
 										<ul class="list">
-											<li><a href="#">5 Sao <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
-											<li><a href="#">4 Sao <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
-											<li><a href="#">3 Sao <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
-											<li><a href="#">2 Sao <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
-											<li><a href="#">1 Sao <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
+											<li><a href="#">5 Sao <i class="fa fa-star"></i><i class="fa fa-star"></i><i
+														class="fa fa-star"></i><i class="fa fa-star"></i><i
+														class="fa fa-star"></i> 01</a></li>
+											<li><a href="#">4 Sao <i class="fa fa-star"></i><i class="fa fa-star"></i><i
+														class="fa fa-star"></i><i class="fa fa-star"></i><i
+														class="fa fa-star"></i> 01</a></li>
+											<li><a href="#">3 Sao <i class="fa fa-star"></i><i class="fa fa-star"></i><i
+														class="fa fa-star"></i><i class="fa fa-star"></i><i
+														class="fa fa-star"></i> 01</a></li>
+											<li><a href="#">2 Sao <i class="fa fa-star"></i><i class="fa fa-star"></i><i
+														class="fa fa-star"></i><i class="fa fa-star"></i><i
+														class="fa fa-star"></i> 01</a></li>
+											<li><a href="#">1 Sao <i class="fa fa-star"></i><i class="fa fa-star"></i><i
+														class="fa fa-star"></i><i class="fa fa-star"></i><i
+														class="fa fa-star"></i> 01</a></li>
 										</ul>
 									</div>
 								</div>

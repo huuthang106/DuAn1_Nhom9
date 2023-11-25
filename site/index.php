@@ -83,6 +83,7 @@
 						
 						foreach ($product->get_nine_product_limit() as $key) {
 							extract($key);
+							$format=number_format($price,3,',','');
 							$single_product = "index.php?act=single-product&product_id=".$product_id;
 							echo '
 							<div class="col-lg-4 col-md-6">
@@ -91,7 +92,7 @@
 								<div class="product-details">
 									<h6>'.$name.'</h6>
 									<div class="price">
-										<h6>'.$price.'</h6>
+										<h6>'.$format.' vnđ</h6>
 										
 									</div>
 									<div class="prd-bottom">
@@ -265,7 +266,7 @@
 								<div class="product-details">
 									<h6>'.$name.'</h6>
 									<div class="price">
-										<h6>'.$price.'</h6>
+										<h6>'.$format.' vnđ</h6>
 										
 									</div>
 									<div class="prd-bottom">

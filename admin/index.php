@@ -33,6 +33,7 @@ session_start();
 	include("../dao/bill.php");
 	include("../dao/product_categoryes.php");
 	include("../dao/products.php");
+	include("../global.php");
 
 
 
