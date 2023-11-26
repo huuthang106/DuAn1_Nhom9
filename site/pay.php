@@ -101,14 +101,17 @@ ob_start();
                                 <li><a href="#">Giao hàng <span> 20000</span></a></li>
                                 <li><a href="#">Số tiền cần chuyển <span>
                                             <?php
-                                            $sum_total_price = new carts();
-                                            $item_sum_total_price = $sum_total_price->sum_total_price($_SESSION['user_id']);
-                                           
-                                            // var_dump($item_sum_total_price);
-                                            if ($item_sum_total_price) {
-                                                foreach ($item_sum_total_price as $key) {
+                                            $newbill = new bills();
+                                            $bill_id = $newbill->new_bill($_SESSION['user_id']);
+                                            $total = new bill_details();
+                                            $item_sale =  $total->get_new_bill_detai($bill_id);      
+                                            // var_dump($item_sale); 
+                                            echo $item_sale[0]['total'];                
+                                            // var_dump($item_sale);
+                                            if ($item_sale) {
+                                                foreach ($item_sale as $key) {
                                                     extract($key);
-                                                    echo '' . $total_price_all_products . '';
+                                                    echo '' . $total . '';
                                                 }
                                             } else {
                                                 echo ' Không có sản phẩm ';
@@ -128,8 +131,8 @@ ob_start();
                             $user_id = $_SESSION['user_id'];
 
                             if (isset($_POST['redirect'])) {
-                                // $dell_cart = new carts();
-                                // $dell = $dell_cart->dell_cart_user_id($user_id);
+                                $dell_cart = new carts();
+                                $dell = $dell_cart->dell_cart_user_id($user_id);
                                 thanh_toan();
 
                             }

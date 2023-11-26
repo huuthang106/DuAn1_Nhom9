@@ -75,11 +75,7 @@
 
                                 </td>
                                 <td>
-                                    <div class="cupon_text d-flex align-items-center">
-                                        <input type="text" placeholder="Mã giảm giá">
-                                        <a class="primary-btn" href="#">Áp dụng</a>
-                                        <a class="gray_btn" href="#">Đóng</a>
-                                    </div>
+                                   
                                 </td>
                             </tr>
                             <tr>

@@ -94,6 +94,13 @@ if (isset($_SESSION['user_id'])) {
                     <span>Thêm bài viết</span>
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="index.php?act=vochers" data-target="#collapseBootstrap">
+                <i class="fa-solid fa-tag"></i>
+                    <span>Mã giảm giá</span>
+                </a>
+            </li>
+
 
             <hr class="sidebar-divider">
 
@@ -175,6 +182,7 @@ if (isset($_SESSION['user_id'])) {
                                 <a class="collapse-item" href="index.php?act=blogs">Quản lý bài viết</a>
                                 <a class="collapse-item" href="index.php?act=add_products">Thêm sản phẩm</a>
                                 <a class="collapse-item" href="index.php?act=add_blogs">Thêm bài viết</a>
+                                <!-- <a class="collapse-item" href="index.php?act=vochers">Mã giảm giá</a> -->
                             </div>
                         </div>
                     </li>

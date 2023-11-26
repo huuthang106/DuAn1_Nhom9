@@ -76,6 +76,7 @@ session_start();
     include("dao/blogs.php");
     include("dao/likes.php");
 	include("global.php");
+	include("dao/vochers.php");
 	$action = "home";
 	if (isset($_GET['act']))
 		$action = $_GET['act'];

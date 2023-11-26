@@ -13,6 +13,8 @@ class bill_details
     var $phone = null;
     var $note = null;
     var $fullname = null;
+    var $total_vocher = null;
+    var $vocher_id = null;
     public function avs_bill()
     {
         $db = new connect();
@@ -71,12 +73,12 @@ class bill_details
             return false;
         }
     }
-    public function insert_bill_details($bill_id, $pay, $price, $day, $quantity, $product_id, $total, $address, $phone, $note, $fullname)
+    public function insert_bill_details($bill_id, $pay, $price, $day, $quantity, $product_id, $total, $address, $phone, $note, $fullname,$vocher_id)
     {
         $db = new connect();
-        $select = "INSERT INTO bill_details (bill_id, pay, price,day,quantity,product_id,total,address,phone,note,fullname) values
-         (?,?,?,?,?,?,?,?,?,?,?) ";
-        $result = $db->pdo_execute($select, $bill_id, $pay, $price, $day, $quantity, $product_id, $total, $address, $phone, $note, $fullname);
+        $select = "INSERT INTO bill_details (bill_id, pay, price,day,quantity,product_id,total,address,phone,note,fullname,vocher_id) values
+         (?,?,?,?,?,?,?,?,?,?,?,?) ";
+        $result = $db->pdo_execute($select, $bill_id, $pay, $price, $day, $quantity, $product_id, $total, $address, $phone, $note, $fullname,$vocher_id);
         if ($result) {
             if ($pay == 1) {
                 return $result;
@@ -130,6 +132,16 @@ class bill_details
         }
 
         return $growthPercentage;
+    }
+    public function get_new_bill_detai($bill_id){
+        $db = new connect();
+        $select ="SELECT total FROM bill_details WHERE bill_id=?";
+        $result = $db->pdo_query($select,$bill_id);
+        if($result){
+            return $result;
+        }else{
+            return false;
+        }
     }
     
 }

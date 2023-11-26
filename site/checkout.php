@@ -64,10 +64,30 @@
             
                                             <textarea class="form-control" name="note" id="message" rows="1" placeholder="Ghi chú"></textarea>
                                         </div>
+                                        
                                       
                                 ';
+                            echo '
+                        
+                        <div class="col-md-12 form-group">
+                        <select class="form-control" id="vochers" name="vochers">
+                        <option value="">Mã giảm giá</option>';
+                            $vocher = new vochers();
+                            $item_vocher = $vocher->get_vochers();
+                            if ($item_vocher) {
+                                foreach ($item_vocher as $key) {
+                                    extract($key);
+                                    echo '    <option value="' . $vocher_id . '">' . $name . '</option>
+                                </select>
+                                </div>';
+                                }
+                            }
                         }
+
+
+
                         ?>
+
                         <?php
 
                         $user_id = $_SESSION['user_id'];
@@ -100,6 +120,8 @@
                             } else {
                                 //lấy phương thức thanh toán 1 là thanh toán khi nhận hàng
                                 $selector = $_POST['selector'];
+                                $vocher_id = $_POST['vochers'];
+
                                 //lấy thông tin giỏ hàng 
                                 $cart_user = new carts();
                                 $cart_items = $cart_user->getcart_user_id_inser_bill_details($_SESSION['user_id']);
@@ -116,11 +138,29 @@
                                         $bill_id = $newbill->new_bill($user_id);
                                         foreach ($cart_items as $key) {
                                             extract($key);
-                                            // bắt dầu thêm dữ liệu vào chi tiết đơn 
-                                            $insert_bill_details->insert_bill_details($bill_id, $selector, $price, $day, $quantity, $product_id, $total_price, $_POST['address'], $_POST['phone'], $_POST['note'], $_POST['fullname']);
-                                            $dell_cart = new carts();
-                                            // // sau khi thêm thành công sẽ xóa cart
-                                            $dell = $dell_cart->dell_cart_user_id($user_id);
+                                            if ($vocher_id > 0) {
+                                                $sale = new vochers();
+                                                $item_sale = $sale->get_sale_vocher($vocher_id);
+                                                // Chuyển đổi chuỗi thành số
+                                                $total_price = (float) $total_price;
+                                                $item_sale_amount = (float) $item_sale[0]['sale'];
+
+                                                // Kiểm tra giá trị
+                                                // var_dump($total_price, $item_sale_amount);
+
+                                                // Thực hiện phép trừ
+                                                $total_sale = $total_price - $item_sale_amount;
+                                                // bắt dầu thêm dữ liệu vào chi tiết đơn 
+                                                $insert_bill_details->insert_bill_details($bill_id, $selector, $price, $day, $quantity, $product_id, $total_sale, $_POST['address'], $_POST['phone'], $_POST['note'], $_POST['fullname'], $vocher_id);
+                                                $dell_cart = new carts();
+                                                // // sau khi thêm thành công sẽ xóa cart
+                                                $dell = $dell_cart->dell_cart_user_id($user_id);
+                                            } else {
+                                                $insert_bill_details->insert_bill_details($bill_id, $selector, $price, $day, $quantity, $product_id, $total_price, $_POST['address'], $_POST['phone'], $_POST['note'], $_POST['fullname'], $vocher_id);
+                                                $dell_cart = new carts();
+                                                // // sau khi thêm thành công sẽ xóa cart
+                                                $dell = $dell_cart->dell_cart_user_id($user_id);
+                                            }
                                         }
                                     } else {
                                         echo '
@@ -141,9 +181,36 @@
                                         $bill_id = $newbill->new_bill($user_id);
                                         foreach ($cart_items as $key) {
                                             extract($key);
-                                            // bắt dầu thêm dữ liệu vào chi tiết đơn 
-                                            $insert_bill_details->insert_bill_details($bill_id, $selector, $price, $day, $quantity, $product_id, $total_price, $_POST['address'], $_POST['phone'], $_POST['note'], $_POST['fullname']);
-                                            //sau khi chon thanh toán thẻ thì chuyển trang
+                                            if ($vocher_id > 0) {
+                                                $sale = new vochers();
+                                                $item_sale = $sale->get_sale_vocher($vocher_id);
+                                                // Chuyển đổi chuỗi thành số
+                                                $total_price = (float) $total_price;
+                                                $item_sale_amount = (float) $item_sale[0]['sale'];
+
+                                                // Kiểm tra giá trị
+                                                // var_dump($total_price, $item_sale_amount);
+
+                                                // Thực hiện phép trừ
+                                                $total_sale = $total_price - $item_sale_amount;
+
+                                                // Hiển thị kết quả
+                                                // var_dump($total_sale);
+
+
+                                                // bắt dầu thêm dữ liệu vào chi tiết đơn 
+                                                // bắt dầu thêm dữ liệu vào chi tiết đơn 
+                                                $insert_bill_details->insert_bill_details($bill_id, $selector, $price, $day, $quantity, $product_id, $total_sale, $_POST['address'], $_POST['phone'], $_POST['note'], $_POST['fullname'], $vocher_id);
+                                                // //sau khi chon thanh toán thẻ thì chuyển trang
+                                                // $dell_cart = new carts();
+                                                // // sau khi thêm thành công sẽ xóa cart
+                                                // $dell = $dell_cart->dell_cart_user_id($user_id);
+                                            } else {
+                                                $insert_bill_details->insert_bill_details($bill_id, $selector, $price, $day, $quantity, $product_id, $total_price, $_POST['address'], $_POST['phone'], $_POST['note'], $_POST['fullname'], $vocher_id);
+                                                // $dell_cart = new carts();
+                                                // // // sau khi thêm thành công sẽ xóa cart
+                                                // $dell = $dell_cart->dell_cart_user_id($user_id);
+                                            }
                                         }
                                     } else {
                                         echo '
