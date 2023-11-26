@@ -110,6 +110,14 @@ session_start();
 			break;
 		case "update";
 			include 'update.php';
+		case "info_admin";
+			include 'info_admin.php';
+			break;
+			case "modals";
+			include 'modals.php';
+			break;
+			case "update";
+			include 'update_admin.php';
 			break;
 	}
 	?>

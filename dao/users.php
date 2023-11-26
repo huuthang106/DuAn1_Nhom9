@@ -112,6 +112,19 @@ class users
             return false;
         }
     }
+    public function update_users($fullname, $address, $phone, $email, $avarta, $user_id)
+    {
+        $db = new connect();
+        $select = "UPDATE users SET fullname =?, address =?, phone =?, email =?, avarta =? WHERE user_id=?";
+        $result = $db->pdo_execute($select, $fullname, $address, $phone, $email, $avarta, $user_id);
+        if ($result) {
+            # code...
+            echo '<script>window.location.href = "index.php?act=update";</script>';
+            return $result;
+        } else {
+            return false;
+        }
+    }
     public function get_phone()
     {
         $db = new connect();

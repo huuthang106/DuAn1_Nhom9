@@ -127,10 +127,10 @@ if (isset($_SESSION['user_id'])) {
                                                                                         ?></span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="index.php?act=info_admin">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Thông tin tài khoản
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="index.php?act=update">
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i> Cập nhật tài khoản
                                 </a>
                                 <a class="dropdown-item" href="index.php?act=change_password">
@@ -232,7 +232,7 @@ if (isset($_SESSION['user_id'])) {
                     <?php
                 }
             } else {
-                include 'index.php?act=404';
+               // include 'index.php?act=404';
                     ?>
 
                 <?php
