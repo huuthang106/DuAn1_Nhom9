@@ -1,8 +1,13 @@
 <?php
-    function blogs_selectall(){
-        $sql =  "select * from blogs order by blog_id DESC";
-        return pdo_query($sql);
-    }
+   function blogs_selectall($page = 1, $perPage = 10) {
+    // Tính toán offset để truy vấn cơ sở dữ liệu
+    $start = ($page - 1) * $perPage;
+
+    // Truy vấn cơ sở dữ liệu
+    $sql = "SELECT * FROM blogs ORDER BY blog_id DESC LIMIT $start, $perPage";
+    return pdo_query($sql);
+}
+    
     function blogs_selectalls(){
         $sql =  "select * from blogs order by blog_id DESC limit 4";
         return pdo_query($sql);

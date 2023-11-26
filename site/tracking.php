@@ -51,7 +51,7 @@ include("./include/nav.php");
                 }
                 }
                 ?>
-                <p>Để theo dõi đơn hàng của bạn, vui lòng nhập ID đơn hàng của bạn vào ô bên dưới và nhấn nút "Theo
+                <p>Để theo dõi đơn hàng của bạn, vui lòng nhập mã đơn hàng của bạn vào ô bên dưới và nhấn nút "Theo
                     dõi".</p>
                 <form class="row tracking_form" action="index.php?act=tracking" method="post" novalidate="novalidate">
                     <div class="col-md-12 form-group">

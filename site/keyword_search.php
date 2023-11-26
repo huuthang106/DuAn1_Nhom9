@@ -60,30 +60,19 @@
 			</div>
 			<div class="col-xl-9 col-lg-8 col-md-7">
 				<!-- Start Filter Bar -->
-				<div class="filter-bar d-flex flex-wrap align-items-center">
-					<div class="sorting">
-						<select>
-							<option value="1">Xu hướng</option>
-							<option value="1">Mới nhất</option>
-
-						</select>
-					</div>
+				<?php
+				
+				// Hiển thị phân trang
+				echo '<div class="filter-bar d-flex flex-wrap align-items-center">
 					<div class="sorting mr-auto">
-						<select>
+					<select>
 							<option value="1">10</option>
-
+							
 						</select>
-					</div>
-					<div class="pagination">
-						<a href="#" class="prev-arrow"><i class="fa fa-long-arrow-left" aria-hidden="true"></i></a>
-						<a href="#" class="active">1</a>
-						<a href="#">2</a>
-						<a href="#">3</a>
-						<a href="#" class="dot-dot"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
-						<a href="#">6</a>
-						<a href="#" class="next-arrow"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
-					</div>
-				</div>
+					</div>';
+				
+				echo '</div>';
+				?>
 				<!-- End Filter Bar -->
 				<!-- Start Best Seller -->
 				<section class="lattest-product-area pb-40 category-list">
@@ -109,6 +98,7 @@
 								$size = $product['size'];
 								$price = $product['price'];
 								$content = $product['content'];
+								$format=number_format($price);
 								$single_product = "index.php?act=single-product&product_id=" . $product_id;
 
 								echo '
@@ -118,7 +108,7 @@
                 <div class="product-details">
                     <h6>' . $name . '</h6>
                     <div class="price">
-                        <h6>' . $price . '</h6>
+                        <h6>' . $format . '</h6>
                     </div>
                     <div class="prd-bottom">
                         <a href="" class="social-info">

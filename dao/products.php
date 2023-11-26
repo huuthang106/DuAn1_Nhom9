@@ -28,8 +28,8 @@ class products
         }
     }
 
-
-
+ 
+    
     public function products_pagination($page, $items_per_page)
     {
         $db = new connect();
@@ -87,7 +87,7 @@ class products
     public function get_nine_product_limit()
     {
         $db = new connect();
-        $select = "SELECT * FROM products
+        $select = "SELECT * FROM products where status =1
         ORDER BY RAND()
         LIMIT 6";
         $result = $db->pdo_query($select);

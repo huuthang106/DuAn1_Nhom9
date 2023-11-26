@@ -121,7 +121,7 @@
                                     $single_product = "index.php?act=single-product&favourite_id=".$favourite_id."&product_id=".$product_id;
                                     $del_like = "index.php?act=favourites&favourite_id=".$favourite_id;
                                     $product = favourite_selectall_products($product_id);
-                                    $format=number_format($product[0]['price'],3,',','');
+                                    $format=number_format($product[0]['price']);
                                     echo '
                                     <div class="col-lg-4 col-md-6">
                                         <div class="single-product">
@@ -129,7 +129,7 @@
                                             <div class="product-details">
                                                 <h6>'.$product[0]['name'].'</h6>
                                                 <div class="price">
-                                                    <h6>'.$format.'</h6>
+                                                    <h6>'.$format.'VNĐ</h6>
                                                     
                                                 </div>
                                                 <div class="prd-bottom">

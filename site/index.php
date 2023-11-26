@@ -27,8 +27,8 @@
                         <div class="f-icon">
                             <img src="./content/img/features/f-icon1.png" alt="">
                         </div>
-                        <h6>Giao hàng miễn phí</h6>
-                        <p>Miễn phí vận chuyển cho mọi đơn hàng</p>
+                        <h6>Giao hàng nhanh </h6>
+                        <p>Giao hàng hỏa tốc đến khách hàng</p>
                     </div>
                 </div>
                 <!-- single features -->
@@ -38,7 +38,7 @@
                             <img src="./content/img/features/f-icon2.png" alt="">
                         </div>
                         <h6>Chính sách hoàn trả</h6>
-                        <p>Miễn phí vận chuyển cho mọi đơn hàng</p>
+                        <p>Hỗ trợ đổi trả trong 7 ngày</p>
                     </div>
                 </div>
                 <!-- single features -->
@@ -48,7 +48,7 @@
                             <img src="./content/img/features/f-icon3.png" alt="">
                         </div>
                         <h6>Hỗ trợ 24/7</h6>
-                        <p>Free Shipping on all order</p>
+                        <p>Nhân viên hỗ trợ tận tâm</p>
                     </div>
                 </div>
                 <!-- single features -->
@@ -57,8 +57,8 @@
                         <div class="f-icon">
                             <img src="./content/img/features/f-icon4.png" alt="">
                         </div>
-                        <h6>Thanh toán an toàn</h6>
-                        <p>Miễn phí vận chuyển cho mọi đơn hàng</p>
+                        <h6>Thanh toán nhanh </h6>
+                        <p>Không phức tạp  </p>
                     </div>
                 </div>
             </div>
@@ -84,7 +84,7 @@
 						
 						foreach ($product->get_nine_product_limit() as $key) {
 							extract($key);
-							$format=number_format($price,3,',','');
+							$format=number_format($price);
                             $favourite_link = "index.php?act=favourites&product_id=" . $product_id;
 							$single_product = "index.php?act=single-product&product_id=".$product_id;
 							echo '
@@ -123,7 +123,7 @@
 						
                             foreach ($product->get_nine_product_limit() as $key) {
                                 extract($key);
-                                $format=number_format($price,3,',','');
+                                $format=number_format($price);
                                 $favourite_link = "index.php?act=favourites&product_id=" . $product_id;
                                 $single_product = "index.php?act=single-product&product_id=".$product_id;
                                 echo '
@@ -299,6 +299,7 @@
 
 						foreach ($product->get_nine_product() as $key) {
 							extract($key);
+                            $format=number_format($price);
 							$like_link = "index.php?act=favourites&product_id=" . $product_id;
 							$single_product = "index.php?act=single-product&product_id=".$product_id;
 							echo '
@@ -308,7 +309,7 @@
 								<div class="product-details">
 									<h6>'.$name.'</h6>
 									<div class="price">
-										<h6>'.$format.' vnđ</h6>
+										<h6>'.$format.' VNĐ</h6>
 										
 									</div>
 									<div class="prd-bottom">
@@ -337,6 +338,7 @@
 
 						foreach ($product->get_nine_product() as $key) {
 							extract($key);
+                            $format=number_format($price);
 							$like_link = "index.php?act=likes&product_id=" . $product_id;
 							$single_product = "index.php?act=single-product&product_id=".$product_id;
 							echo '
@@ -346,7 +348,7 @@
 								<div class="product-details">
 									<h6>'.$name.'</h6>
 									<div class="price">
-										<h6>'.$price.'</h6>
+										<h6>'.$format. 'VNĐ</h6>
 										
 									</div>
 									<div class="prd-bottom">

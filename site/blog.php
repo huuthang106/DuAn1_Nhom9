@@ -81,22 +81,23 @@
                 <div class="col-lg-8">
                     <div class="blog_left_sidebar">
                         <?php
-                            
-                            $blog = blogs_selectall();
-                            foreach ($blog as $blogs) {
-                                extract($blogs);
-                                $more_link = "index.php?act=single-blog&blog_id=".$blog_id;
-                                $excerpt = substr($content, 0, 400);
-                                echo '                     
+                        $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
+                        $postsPerPage = 5;
+                        $blog = blogs_selectall($currentPage, $postsPerPage);
+                        foreach ($blog as $blogs) {
+                            extract($blogs);
+                            $more_link = "index.php?act=single-blog&blog_id=" . $blog_id;
+                            $excerpt = substr($content, 0, 400);
+                            echo '                     
                                 <article class="row blog_item">
                                 <div class="col-md-3">
                                     <div class="blog_info text-right">
                                        
                                         <ul class="blog_meta list">
                                           
-                                            <li><a href="#">'.$day.'<i
+                                            <li><a href="#">' . $day . '<i
                                                         class="lnr lnr-calendar-full"></i></a></li>
-                                            <li><a href="#">'.$views_count.' Lượt xem<i class="lnr lnr-eye"></i></a></li>
+                                            <li><a href="#">' . $views_count . ' Lượt xem<i class="lnr lnr-eye"></i></a></li>
                                             <li><a href="#">06 bình luận<i class="lnr lnr-bubble"></i></a></li>
                                         </ul>
                                     </div>
@@ -105,20 +106,35 @@
                                     <div class="blog_post">
                                         <img src="img/blog/main-blog/m-blog-1.jpg" alt="">
                                         <div class="blog_details">
-                                            <a href="'.$more_link.'">
-                                                <h2>'.$title.'</h2>
+                                            <a href="' . $more_link . '">
+                                                <h2>' . $title . '</h2>
                                             </a>
-                                            <p>'.$excerpt.'</p>
-                                            <a href="'.$more_link.'" class="white_bg_btn">Xem thêm</a>
+                                            <p>' . $excerpt . '</p>
+                                            <a href="' . $more_link . '" class="white_bg_btn">Xem thêm</a>
                                         </div>
                                     </div>
                                 </div>
                             </article>
                                 ';
-                            }
+                        }
                         ?>
 
-                        <nav class="blog-pagination justify-content-center d-flex">
+                        <?php
+                        // Sử dụng hàm và hiển thị kết quả
+
+                        foreach ($blogs as $blog) {
+                            // Hiển thị thông tin bài viết
+                        }
+
+                        // Hiển thị HTML phân trang
+                        echo '<nav class="blog-pagination justify-content-center d-flex"><ul class="pagination">';
+                        for ($i = 1; $i <= ceil(count(blogs_selectall()) / $postsPerPage); $i++) {
+                            echo '<li class="page-item ' . ($i == $currentPage ? 'active' : '') . '"><a href="index.php?act=blog&page=' . $i . '" class="page-link">' . $i . '</a></li>';
+                        }
+                        echo '</ul></nav>';
+
+                        ?>
+                        <!-- <nav class="blog-pagination justify-content-center d-flex">
                             <ul class="pagination">
                                 <li class="page-item">
                                     <a href="#" class="page-link" aria-label="Previous">
@@ -140,18 +156,16 @@
                                     </a>
                                 </li>
                             </ul>
-                        </nav>
+                        </nav> -->
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="blog_right_sidebar">
                         <aside class="single_sidebar_widget search_widget">
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search Posts"
-                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Posts'">
+                                <input type="text" class="form-control" placeholder="Search Posts" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Posts'">
                                 <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button"><i
-                                            class="lnr lnr-magnifier"></i></button>
+                                    <button class="btn btn-default" type="button"><i class="lnr lnr-magnifier"></i></button>
                                 </span>
                             </div><!-- /input-group -->
                             <div class="br"></div>
@@ -175,22 +189,22 @@
                             <h3 class="widget_title">Bài viết phổ biến</h3>
 
                             <?php
-                                $blog = blogs_selectalls();
-                                foreach ($blog as $blogs) {
-                                    extract($blogs);
-                                    $more_link = "index.php?act=single-blog&blog_id=".$blog_id;
-                                    $excerpt = substr($content, 0, 400);
-                                    echo '
+                            $blog = blogs_selectalls();
+                            foreach ($blog as $blogs) {
+                                extract($blogs);
+                                $more_link = "index.php?act=single-blog&blog_id=" . $blog_id;
+                                $excerpt = substr($content, 0, 400);
+                                echo '
                                     <div class="media post_item">                     
                                         <div class="media-body">
                                             <a href="blog-details.html">
-                                                <h3>'.$title.'</h3>
+                                                <h3>' . $title . '</h3>
                                             </a>
-                                            <p>'.$day.'</p>
+                                            <p>' . $day . '</p>
                                         </div>
                                         </div>
                                     ';
-                                }
+                            }
                             ?>
 
                             <div class="br"></div>
@@ -256,9 +270,7 @@
                                         <div class="input-group-text"><i class="fa fa-envelope" aria-hidden="true"></i>
                                         </div>
                                     </div>
-                                    <input type="text" class="form-control" id="inlineFormInputGroup"
-                                        placeholder="Enter email" onfocus="this.placeholder = ''"
-                                        onblur="this.placeholder = 'Enter email'">
+                                    <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Enter email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email'">
                                 </div>
                                 <a href="#" class="bbtns">Đăng ký</a>
                             </div>
@@ -282,9 +294,9 @@
                                 <li><a href="#">Cuộc phiêu lưu</a></li>
                             </ul>
                         </aside>-->
+                    </div>
                 </div>
             </div>
-        </div>
         </div>
     </section>
     <!--================Blog Area =================-->

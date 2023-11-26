@@ -160,8 +160,8 @@ session_start();
 	<!-- <a class="scroll-to-top rounded" href="#page-top">
 		<i class="fas fa-angle-up"></i>
 	</a> -->
-
-	<script src="https://uhchat.net/code.php?f=3dca0b"></script>
+<!-- 
+	<script src="https://uhchat.net/code.php?f=3dca0b"></script> -->
 </body>
 <script src="content/js/add.js"></script>
 <script src="./content/js/vendor/jquery-2.2.4.min.js"></script>

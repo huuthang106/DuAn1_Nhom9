@@ -50,18 +50,15 @@
                                 <tbody>
                                     <?php
                                     $get_bill = new bills();
-                                    $item = $get_bill->get_bills() ;
-                                    if($item){
-                                    foreach ($item as $key) {
+                                    foreach ($get_bill->get_bills() as $key) {
                                         extract($key);
-                                        $khoi_phuc = 'index.php?act=bills&bill_id='.$bill_id.'&status=1';
-                                        $duyet_don = 'index.php?act=bills&bill_id='.$bill_id.'&status=2';
-                                        $giao_don = 'index.php?act=bills&bill_id='.$bill_id.'&status=3';
-                                        $huy_don = 'index.php?act=bills&bill_id='.$bill_id.'&status=4';
-                                        $detai_bill='index.php?act=bill_detail&bill_id='.$bill_id;
-                                        
-                                        if ($status == 1) {
+                                        $khoi_phuc = 'index.php?act=bills&bill_id=' . $bill_id . '&status=1';
+                                        $duyet_don = 'index.php?act=bills&bill_id=' . $bill_id . '&status=2';
+                                        $giao_don = 'index.php?act=bills&bill_id=' . $bill_id . '&status=3';
+                                        $huy_don = 'index.php?act=bills&bill_id=' . $bill_id . '&status=4';
+                                        $detai_bill = 'index.php?act=bill_detail&bill_id=' . $bill_id;
 
+                                        if ($status == 1) {
                                             # code...
                                             echo '
                                                 <tr>
@@ -76,20 +73,20 @@
                                                 ';
                                         } elseif ($status == 2) {
                                             echo '
-                                                <tr>
-                                                <tr>
-                                                <th>' . $bill_id . '</th>
-                                                <th>' . $customer_name . '</th>
-                                                
-                                                <th><a href="' . $duyet_don . '" class="btn btn-sm btn-success"> Đã duyệt</a></th>
-                                                <th><a href="' . $giao_don . '" class="btn btn-sm btn-danger">Chưa giao</a></th>
-                                                <th><a href="' . $huy_don . '" class="btn btn-sm btn-danger">Hủy đơn</a></th>
-                                                <th><a href="' . $detai_bill . '" class="btn btn-sm btn-primary">Chi tiết</a></th>
-                                            </tr>
-                                                ';
+                                          
+                                            <tr>
+                                            <th>' . $bill_id . '</th>
+                                            <th>' . $customer_name . '</th>
+                                            
+                                            <th><a href="' . $duyet_don . '" class="btn btn-sm btn-success"> Đã duyệt</a></th>
+                                            <th><a href="' . $giao_don . '" class="btn btn-sm btn-danger">Chưa giao</a></th>
+                                            <th><a href="' . $huy_don . '" class="btn btn-sm btn-danger">Hủy đơn</a></th>
+                                            <th><a href="' . $detai_bill . '" class="btn btn-sm btn-primary">Chi tiết</a></th>
+                                        </tr>
+                                            ';
                                         } elseif ($status == 3) {
                                             echo '
-                                            <tr>
+                                         
                                             <tr>
                                                 <th>' . $bill_id . '</th>
                                                 <th>' . $customer_name . '</th>
@@ -100,9 +97,9 @@
                                             <th><a href="' . $detai_bill . '" class="btn btn-sm btn-primary">Chi tiết</a></th>
                                              </tr>
                                             ';
-                                        } else if( $status == 4) {
+                                        } else if ($status == 4) {
                                             echo '
-                                            <tr>
+                                           
                                             <tr>
                                                 <th>' . $bill_id . '</th>
                                                 <th>' . $customer_name . '</th>
@@ -114,9 +111,7 @@
                                              </tr>
                                             ';
                                         }
-
-                                    }}
-                                    // update trạng thái duyệt đã duyệt
+                                    } 
                                     if (isset($_GET['bill_id'])&& isset($_GET['status'])) {
                                         # code...
                                        
@@ -125,9 +120,8 @@
                                         
                                         exit;
               
-                                      }
-                                    
-                                    ?>
+                                      }?>
+
 
 
                                 </tbody>
@@ -138,21 +132,25 @@
                 <!-- DataTable with Hover -->
 
             </div>
-           
+
+
+        </div>
+
+        <!-- Footer -->
+
+
+    </div>
+    </div>
     </div>
 
-    <!-- Footer -->
-  
- 
-    </div>
-    </div>
 
+    <?php
+    include '../include/footer_admin.php';
+    ?>
+
+    </div>
     <!-- Scroll to top -->
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
-
-    <?php
-            include '../include/footer_admin.php';
-        ?>
 </body>

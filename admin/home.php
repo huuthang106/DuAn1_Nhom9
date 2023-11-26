@@ -27,9 +27,10 @@
                                     <div class="h5 mb-0 font-weight-bold text-gray-800"><?php
                                                                                         $monthly_revenue = new bill_details;
                                                                                         $item = $monthly_revenue->monthly_revenue();
+                                                                                        $format = number_format($item[0]['total_sum']);
                                                                                         if ($item) {
                                                                                             if($item[0]['total_sum']>0){
-                                                                                            echo '' . $item[0]['total_sum'] . '';
+                                                                                            echo '' .$format  . '';
                                                                                             }
                                                                                             else{
                                                                                                 echo '0';
@@ -137,7 +138,7 @@
                                                                                                         $AVG = new comments();
                                                                                                         foreach ($AVG->AVG_comment() as $key) {
                                                                                                             extract($key);
-                                                                                                            echo '' . $avg_comments . '';
+                                                                                                            echo '' . $avg_comments . '%';
                                                                                                         }
                                                                                                         ?></span>
                                         <span>Tháng vừa qua</span>

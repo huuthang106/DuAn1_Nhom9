@@ -81,7 +81,7 @@ class bill_details
             if ($pay == 1) {
                 return $result;
             } else {
-                // echo '<script>window.location.href = "index.php?act=pay";</script>';
+                echo '<script>window.location.href = "index.php?act=pay";</script>';
                 return $result;
             }
         } else {

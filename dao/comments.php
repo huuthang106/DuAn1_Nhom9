@@ -23,25 +23,21 @@ class comments
     {
         $db = new connect();
         $select = "SELECT 
-        YEAR(day) as year, 
-        MONTH(day) as month, 
-        AVG(comment_id) as avg_comments
-    FROM 
-        comments
-    WHERE 
-        YEAR(day) = YEAR(CURRENT_DATE())
-        AND MONTH(day) = MONTH(CURRENT_DATE())
-    GROUP BY 
-        YEAR(day), MONTH(day);
-    
-    ";
+            YEAR(day) as year, 
+            MONTH(day) as month, 
+            ROUND(AVG(comment_id), 2) as avg_comments
+        FROM 
+            comments
+        WHERE 
+            YEAR(day) = YEAR(CURRENT_DATE())
+            AND MONTH(day) = MONTH(CURRENT_DATE())
+        GROUP BY 
+            YEAR(day), MONTH(day)";
+        
         $result = $db->pdo_query($select);
-        if ($result) {
-            return $result;
-        } else {
-            return $result;
-        }
+        return $result;
     }
+    
     public function get_comment_product_id($product_id)
     {
         $db = new connect();
