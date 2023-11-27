@@ -73,8 +73,8 @@ session_start();
 	include("dao/bill_details.php");
 	include("dao/categories.php");
 	include("dao/evaluates.php");
-    include("dao/blogs.php");
-    include("dao/likes.php");
+	include("dao/blogs.php");
+	include("dao/likes.php");
 	include("global.php");
 	include("dao/vochers.php");
 	$action = "home";
@@ -119,9 +119,9 @@ session_start();
 		case 'register':
 			include 'site/register.php';
 			break;
-        case 'favourites':
-            include 'site/favourites.php';
-            break;
+		case 'favourites':
+			include 'site/favourites.php';
+			break;
 		case 'tracking':
 			include 'site/tracking.php';
 			break;
@@ -146,12 +146,15 @@ session_start();
 		case 'pay':
 			include 'site/pay.php';
 			break;
-        case 'order_status_detail':
-            include 'site/order_status_detail.php';
-            break;
+		case 'order_status_detail':
+			include 'site/order_status_detail.php';
+			break;
 		case "logout":
 			unset($_SESSION['user_id']);
 			header("location: index.php");
+			break;
+		case 'bill_detail_user':
+			include 'site/bill_detail_user.php';
 			break;
 	}
 	?>
@@ -161,7 +164,7 @@ session_start();
 	<!-- <a class="scroll-to-top rounded" href="#page-top">
 		<i class="fas fa-angle-up"></i>
 	</a> -->
-<!-- 
+	<!-- 
 	<script src="https://uhchat.net/code.php?f=3dca0b"></script> -->
 </body>
 <script src="content/js/add.js"></script>

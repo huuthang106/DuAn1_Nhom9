@@ -14,8 +14,8 @@
                 <div class="col-first">
                     <h1>Tài khoản</h1>
                     <nav class="d-flex align-items-center">
-                        <a href="index.html">Trang chủ<span class="lnr lnr-arrow-right"></span></a>
-                        <a href="category.html">Tài khoảng</a>
+                        <a href="index.php?act=home">Trang chủ<span class="lnr lnr-arrow-right"></span></a>
+                        <a href="#">Tài khoảng</a>
                     </nav>
                 </div>
             </div>
@@ -108,11 +108,12 @@
                                     foreach ($select as $key) {
                                         // Xử lý dữ liệu ở đây
                                         extract($key);
-                                        $bill_detail = 'index.php?act=';
+                                       
+                                        $bill_detail = 'index.php?act=bill_detail_user&bill_id='.$bill_id;
                                         echo '
                                         <tr>
                                         <td>' . $bill_id . '</td>
-                                        <td><a href="#">
+                                        <td><a href="'.$bill_detail.'">
                                         <button class="btn btn-primary">Xem</button></a></td>
 
                                         ';
