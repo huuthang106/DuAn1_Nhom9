@@ -68,27 +68,42 @@
 	}
 
 	?>
+    <?php
+		if (isset($_SESSION['user_id'])) { ?>
+
     <div class="product_count">
-        <label for="qty">Số lượng:</label>
-        <input type="text" name="qty" id="sst" maxlength="12" value="1" title="Quantity:" class="input-text qty">
-        <button
-            onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
-            class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
-        <button
-            onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
-            class="reduced items-count" type="button" name="like"><i class="lnr lnr-chevron-down"></i></button>
+        <form action="index.php?act=cart&product_id=<?php echo $_GET['product_id']; ?>" method="post">
+            <div class="product_count">
+                <label for="sst">Số lượng:</label>
+                <input type="number" name="quantity" id="sst" min="1" max="12" value="1" title="Quantity:"
+                    class="input-text qty">
+            </div>
     </div>
     <div class="card_area d-flex align-items-center">
-        <a class="primary-btn" href="#">Thêm vào giỏ hàng</a>
+        <button style="border: none" type="submit" class="primary-btn">Thêm vào giỏ hàng</button>
+        </form>
         <?php
-		if (isset($_SESSION['user_id'])) {
 			$favourite_link = "index.php?act=favourites&product_id=" . $product_id;
-			echo '<a class="icon_btn" href="' . $favourite_link . '"><i class="lnr lnr lnr-heart"></i></a>';
-		} else {
-			echo '<a class="icon_btn" href="index.php?act=login"><i class="lnr lnr lnr-heart"></i></a>';
-		}
+			
+        echo '<a class="icon_btn" href="'.$favourite_link.'"><i class="lnr lnr lnr-heart"></i></a>';
 		?>
-    </div>
+        <?php } else { ?>
+
+        <div class="product_count">
+            <form action="index.php?act=cart&product_id=<?php echo $_GET['product_id']; ?>" method="post">
+                <div class="product_count">
+                    <label for="sst">Số lượng:</label>
+                    <input type="number" name="quantity" id="sst" min="1" max="12" value="1" title="Quantity:"
+                        class="input-text qty">
+                </div>
+
+        </div>
+        <div class="card_area d-flex align-items-center">
+            <a href="index.php?act=login" class="primary-btn">Thêm vào giỏ hàng</a>
+            </form>
+            <a class="icon_btn" href="index.php?act=login"><i class="lnr lnr lnr-heart"></i></a>';
+            <?php } ?>
+        </div>
     </div>
     </div>
     </div>

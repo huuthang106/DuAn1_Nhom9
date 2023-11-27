@@ -5,44 +5,44 @@ session_start();
 <html lang="zxx" class="no-js">
 
 <head>
-	<!-- Mobile Specific Meta -->
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<!-- Favicon-->
-	<link rel="shortcut icon" href="./content/img/logo..png">
-	<!-- Author Meta -->
-	<meta name="author" content="CodePixar">
-	<!-- Meta Description -->
-	<meta name="description" content="">
-	<!-- Meta Keyword -->
-	<meta name="keywords" content="">
-	<!-- meta character set -->
-	<meta charset="UTF-8">
-	<!-- Site Title -->
-	<title>Secon hand</title>
-	<!--
+    <!-- Mobile Specific Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="./content/img/logo..png">
+    <!-- Author Meta -->
+    <meta name="author" content="CodePixar">
+    <!-- Meta Description -->
+    <meta name="description" content="">
+    <!-- Meta Keyword -->
+    <meta name="keywords" content="">
+    <!-- meta character set -->
+    <meta charset="UTF-8">
+    <!-- Site Title -->
+    <title>Secon hand</title>
+    <!--
 		CSS
 		============================================= -->
-	<link rel="stylesheet" href="./content/css/add.css">
-	<link rel="stylesheet" href="content/css/linearicons.css">
-	<link rel="stylesheet" href="content/css/font-awesome.min.css">
-	<link rel="stylesheet" href="content/css/themify-icons.css">
-	<link rel="stylesheet" href="content/css/bootstrap.css">
-	<link rel="stylesheet" href="content/css/owl.carousel.css">
-	<link rel="stylesheet" href="content/css/nice-select.css">
-	<link rel="stylesheet" href="content/css/nouislider.min.css">
-	<link rel="stylesheet" href="content/css/ion.rangeSlider.css" />
-	<link rel="stylesheet" href="content/css/ion.rangeSlider.skinFlat.css" />
-	<link rel="stylesheet" href="content/css/magnific-popup.css">
-	<link rel="stylesheet" href="content/css/main.css">
-	<link href="admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./content/css/add.css">
+    <link rel="stylesheet" href="content/css/linearicons.css">
+    <link rel="stylesheet" href="content/css/font-awesome.min.css">
+    <link rel="stylesheet" href="content/css/themify-icons.css">
+    <link rel="stylesheet" href="content/css/bootstrap.css">
+    <link rel="stylesheet" href="content/css/owl.carousel.css">
+    <link rel="stylesheet" href="content/css/nice-select.css">
+    <link rel="stylesheet" href="content/css/nouislider.min.css">
+    <link rel="stylesheet" href="content/css/ion.rangeSlider.css" />
+    <link rel="stylesheet" href="content/css/ion.rangeSlider.skinFlat.css" />
+    <link rel="stylesheet" href="content/css/magnific-popup.css">
+    <link rel="stylesheet" href="content/css/main.css">
+    <link href="admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 
 
 
-	<!--
+    <!--
 		CSS
 		============================================= -->
-	<!-- <link rel="stylesheet" href="content/css/add.css">
+    <!-- <link rel="stylesheet" href="content/css/add.css">
 	<link rel="stylesheet" href="content/css/linearicons.css">
 	<link rel="stylesheet" href="content/css/font-awesome.min.css">
 	<link rel="stylesheet" href="content/css/themify-icons.css">
@@ -54,15 +54,16 @@ session_start();
 	<link rel="stylesheet" href="content/css/ion.rangeSlider.skinFlat.css" />
 	<link rel="stylesheet" href="content/css/magnific-popup.css">
 	<link rel="stylesheet" href="content/css/main.css"> -->
-	<link rel="stylesheet" href="content/css/style.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
+    <link rel="stylesheet" href="content/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
 
 
 </head>
 
 <body>
-	<?php
+    <?php
 	include("dao/pdo.php");
 	include("dao/bill.php");
 	include("dao/products.php");
@@ -161,7 +162,7 @@ session_start();
 
 
 
-	<!-- <a class="scroll-to-top rounded" href="#page-top">
+    <!-- <a class="scroll-to-top rounded" href="#page-top">
 		<i class="fas fa-angle-up"></i>
 	</a> -->
 	<!-- 
@@ -169,7 +170,8 @@ session_start();
 </body>
 <script src="content/js/add.js"></script>
 <script src="./content/js/vendor/jquery-2.2.4.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
+    integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous">
 </script>
 <script src="./content/js/vendor/bootstrap.min.js"></script>
 <script src="./content/js/jquery.ajaxchimp.min.js"></script>
@@ -196,126 +198,126 @@ session_start();
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <!-- Page level custom scripts -->
 <script>
-	$(document).ready(function() {
-		$('#dataTable').DataTable({
-			language: {
-				"sEmptyTable": "Không có dữ liệu trong bảng",
-				"sInfo": "Hiển thị từ _START_ đến _END_ của _TOTAL_ dòng",
-				"sInfoEmpty": "Hiển thị 0 đến 0 của 0 dòng",
-				"sInfoFiltered": "(được lọc từ tổng số _MAX_ dòng)",
-				"sInfoPostFix": "",
-				"sInfoThousands": ",",
-				"sLengthMenu": "Hiển thị _MENU_ dòng",
-				"sLoadingRecords": "Đang tải...",
-				"sProcessing": "Đang xử lý...",
-				"sSearch": "Tìm kiếm:",
-				"sZeroRecords": "Không tìm thấy dòng nào phù hợp",
-				"oPaginate": {
-					"sFirst": "«",
-					"sLast": "»",
-					"sNext": "›",
-					"sPrevious": "‹"
-				},
-				"oAria": {
-					"sSortAscending": ": Sắp xếp tăng dần",
-					"sSortDescending": ": Sắp xếp giảm dần"
-				}
-			}
-		}); // ID From dataTable 
-		$('#dataTableHover').DataTable({
-			language: {
-				"sEmptyTable": "Không có dữ liệu trong bảng",
-				"sInfo": "Hiển thị từ _START_ đến _END_ của _TOTAL_ dòng",
-				"sInfoEmpty": "Hiển thị 0 đến 0 của 0 dòng",
-				"sInfoFiltered": "(được lọc từ tổng số _MAX_ dòng)",
-				"sInfoPostFix": "",
-				"sInfoThousands": ",",
-				"sLengthMenu": "Hiển thị _MENU_ dòng",
-				"sLoadingRecords": "Đang tải...",
-				"sProcessing": "Đang xử lý...",
-				"sSearch": "Tìm kiếm:",
-				"sZeroRecords": "Không tìm thấy dòng nào phù hợp",
-				"oPaginate": {
-					"sFirst": "«",
-					"sLast": "»",
-					"sNext": "›",
-					"sPrevious": "‹"
-				},
-				"oAria": {
-					"sSortAscending": ": Sắp xếp tăng dần",
-					"sSortDescending": ": Sắp xếp giảm dần"
-				}
-			}
-		}); // ID From dataTable with Hover
-	});
-	//hiển thị hình ảnh khi được up
-	function previewImage(input) {
-		var preview = document.getElementById('imagePreview');
-		var file = input.files[0];
-		var reader = new FileReader();
+$(document).ready(function() {
+    $('#dataTable').DataTable({
+        language: {
+            "sEmptyTable": "Không có dữ liệu trong bảng",
+            "sInfo": "Hiển thị từ _START_ đến _END_ của _TOTAL_ dòng",
+            "sInfoEmpty": "Hiển thị 0 đến 0 của 0 dòng",
+            "sInfoFiltered": "(được lọc từ tổng số _MAX_ dòng)",
+            "sInfoPostFix": "",
+            "sInfoThousands": ",",
+            "sLengthMenu": "Hiển thị _MENU_ dòng",
+            "sLoadingRecords": "Đang tải...",
+            "sProcessing": "Đang xử lý...",
+            "sSearch": "Tìm kiếm:",
+            "sZeroRecords": "Không tìm thấy dòng nào phù hợp",
+            "oPaginate": {
+                "sFirst": "«",
+                "sLast": "»",
+                "sNext": "›",
+                "sPrevious": "‹"
+            },
+            "oAria": {
+                "sSortAscending": ": Sắp xếp tăng dần",
+                "sSortDescending": ": Sắp xếp giảm dần"
+            }
+        }
+    }); // ID From dataTable 
+    $('#dataTableHover').DataTable({
+        language: {
+            "sEmptyTable": "Không có dữ liệu trong bảng",
+            "sInfo": "Hiển thị từ _START_ đến _END_ của _TOTAL_ dòng",
+            "sInfoEmpty": "Hiển thị 0 đến 0 của 0 dòng",
+            "sInfoFiltered": "(được lọc từ tổng số _MAX_ dòng)",
+            "sInfoPostFix": "",
+            "sInfoThousands": ",",
+            "sLengthMenu": "Hiển thị _MENU_ dòng",
+            "sLoadingRecords": "Đang tải...",
+            "sProcessing": "Đang xử lý...",
+            "sSearch": "Tìm kiếm:",
+            "sZeroRecords": "Không tìm thấy dòng nào phù hợp",
+            "oPaginate": {
+                "sFirst": "«",
+                "sLast": "»",
+                "sNext": "›",
+                "sPrevious": "‹"
+            },
+            "oAria": {
+                "sSortAscending": ": Sắp xếp tăng dần",
+                "sSortDescending": ": Sắp xếp giảm dần"
+            }
+        }
+    }); // ID From dataTable with Hover
+});
+//hiển thị hình ảnh khi được up
+function previewImage(input) {
+    var preview = document.getElementById('imagePreview');
+    var file = input.files[0];
+    var reader = new FileReader();
 
-		reader.onloadend = function() {
-			if (file) {
-				preview.src = reader.result;
-				preview.style.display = 'block'; // Hiển thị hình ảnh khi đã tải lên
-			} else {
-				preview.src = "";
-				preview.style.display = 'none'; // Ẩn hình ảnh khi không có file
-			}
-		}
+    reader.onloadend = function() {
+        if (file) {
+            preview.src = reader.result;
+            preview.style.display = 'block'; // Hiển thị hình ảnh khi đã tải lên
+        } else {
+            preview.src = "";
+            preview.style.display = 'none'; // Ẩn hình ảnh khi không có file
+        }
+    }
 
-		if (file) {
-			reader.readAsDataURL(file);
-		} else {
-			preview.src = "";
-			preview.style.display = 'none'; // Ẩn hình ảnh khi không có file
-		}
-	}
-	// sao chep thông tin thanh toán 
-	function copyPaymentInfo() {
-		var paymentInfoElement = document.getElementById('payment-info');
-		var tempTextArea = document.createElement('textarea');
-		tempTextArea.value = paymentInfoElement.innerText;
+    if (file) {
+        reader.readAsDataURL(file);
+    } else {
+        preview.src = "";
+        preview.style.display = 'none'; // Ẩn hình ảnh khi không có file
+    }
+}
+// sao chep thông tin thanh toán 
+function copyPaymentInfo() {
+    var paymentInfoElement = document.getElementById('payment-info');
+    var tempTextArea = document.createElement('textarea');
+    tempTextArea.value = paymentInfoElement.innerText;
 
-		document.body.appendChild(tempTextArea);
-		tempTextArea.select();
-		document.execCommand('copy');
-		document.body.removeChild(tempTextArea);
+    document.body.appendChild(tempTextArea);
+    tempTextArea.select();
+    document.execCommand('copy');
+    document.body.removeChild(tempTextArea);
 
-		// Sử dụng SweetAlert2 để hiển thị thông báo đẹp hơn
-		Swal.fire({
-			icon: 'success',
-			title: 'Đã sao chép thông tin thanh toán',
-			text: paymentInfoElement.innerText,
-			confirmButtonText: 'OK'
-		});
-	}
-	// lấy sự kiện click vào sao đánh giá
-	var selectedValue = 0;
+    // Sử dụng SweetAlert2 để hiển thị thông báo đẹp hơn
+    Swal.fire({
+        icon: 'success',
+        title: 'Đã sao chép thông tin thanh toán',
+        text: paymentInfoElement.innerText,
+        confirmButtonText: 'OK'
+    });
+}
+// lấy sự kiện click vào sao đánh giá
+var selectedValue = 0;
 
-	function handleClick(star) {
-		var value = star.getAttribute('data-value');
+function handleClick(star) {
+    var value = star.getAttribute('data-value');
 
-		// Xóa tất cả các class highlight và selected
-		var stars = document.querySelectorAll('.list button');
-		stars.forEach(function(star) {
-			star.classList.remove('highlight', 'selected');
-		});
+    // Xóa tất cả các class highlight và selected
+    var stars = document.querySelectorAll('.list button');
+    stars.forEach(function(star) {
+        star.classList.remove('highlight', 'selected');
+    });
 
-		// Thêm class highlight cho tất cả các ngôi sao trước giá trị đã chọn
-		for (var i = 1; i <= value; i++) {
-			stars[i - 1].classList.add('highlight');
-		}
+    // Thêm class highlight cho tất cả các ngôi sao trước giá trị đã chọn
+    for (var i = 1; i <= value; i++) {
+        stars[i - 1].classList.add('highlight');
+    }
 
-		// Thêm class selected cho ngôi sao được chọn
-		star.classList.add('selected');
+    // Thêm class selected cho ngôi sao được chọn
+    star.classList.add('selected');
 
-		// Cập nhật giá trị đã chọn
-		selectedValue = value;
+    // Cập nhật giá trị đã chọn
+    selectedValue = value;
 
-		// Gán giá trị vào trường ẩn
-		document.getElementById('starInput').value = selectedValue;
-	}
+    // Gán giá trị vào trường ẩn
+    document.getElementById('starInput').value = selectedValue;
+}
 </script>
 
 

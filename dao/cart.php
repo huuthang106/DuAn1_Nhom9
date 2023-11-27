@@ -127,3 +127,32 @@ class carts
         }
     }
 }
+function carts_insert($product_id, $user_id, $quantity, $status) {
+    $sql = "insert into carts(product_id, user_id, quantity, status) values (?, ?, ?, ?)";
+    pdo_execute($sql, $product_id, $user_id, $quantity, $status);
+}
+
+function carts_selectall()
+{
+    $sql =  "select * from carts order by cart_id DESC";
+    return pdo_query($sql);
+}
+function cart_delete($cart_id){
+    $sql = "delete from carts where cart_id = '".$cart_id."'";
+    $sp=pdo_query_one($sql);
+    return $sp;
+}
+function cart_all_delete(){
+    $sql = "DELETE FROM carts";
+    $sp = pdo_query_one($sql);
+    return $sp;
+}   
+function carts_update_quantity($cart_id, $quantity) {
+    $sql = "update carts set quantity = ? where cart_id = ?";
+    pdo_execute($sql, $quantity, $cart_id);
+}
+function carts_insert_into($product_id,$user_id,$status){
+    $sql = "insert into carts(product_id, user_id, status) values (?, ?, ?)";
+    pdo_execute($sql, $product_id, $user_id, $status);
+}
+?>

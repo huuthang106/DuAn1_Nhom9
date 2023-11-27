@@ -27,11 +27,6 @@
                 <div class="sidebar-categories">
                     <div class="head">Danh mục</div>
                     <ul class="main-categories">
-
-
-
-
-
                         <li class="main-nav-list"><a data-toggle="collapse" href="#officeProduct" aria-expanded="false"
                                 aria-controls="officeProduct">
                                 <span class="lnr lnr-arrow-right"></span>Danh mục<span class="number">
@@ -81,7 +76,77 @@
                     <div class="row">
 
                         <?php
-                        $items_per_page = 9;
+                        if(isset($_SESSION['user_id'])){
+                            $items_per_page = 9;
+
+                        // Lấy số trang hiện tại từ tham số truyền vào hoặc mặc định là trang 1
+                        $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
+
+                        // Tạo đối tượng sản phẩm
+                        $products = new products();
+                        if (isset($_GET['category_id'])) {
+                            $category_id = $_GET['category_id'];
+                            // Lấy danh sách sản phẩm cho trang hiện tại
+                            $product_list = $products->products_pagination_caterory($page, $items_per_page, $category_id);
+                            if ($product_list != null && isset($product_list['products']) && !empty($product_list['products'])) {
+                            foreach ($product_list['products'] as $product) {
+                                $product_id = $product['product_id'];
+                                $category_id = $product['category_id'];
+                                $name = $product['name'];
+                                $picture = $product['picture'];
+                                $color = $product['color'];
+                                $size = $product['size'];
+                                $price = $product['price'];
+                                $content = $product['content'];
+                                $single_product = "index.php?act=single-product&product_id=" . $product_id;
+                                $cart_link = "index.php?act=cart&product_id=".$product_id;
+                                $favourite_link = "index.php?act=favourites&product_id=" . $product_id;
+                                echo '
+								<div class="col-lg-4 col-md-6">
+								<div class="single-product">
+									<img class="img-fluid" src="./content/img/product/' . $picture . '" alt="">
+									<div class="product-details">
+										<h6>' . $name . '</h6>
+										<div class="price">
+											<h6>' . $price . '</h6>
+											
+										</div>
+										<div class="prd-bottom">
+	
+											<a href="'.$cart_link.'" class="social-info">
+												<span class="ti-bag"></span>
+												<p class="hover-text">Thêm vào giỏ hàng</p>
+											</a>
+											<a href="'.$favourite_link.'" class="social-info">
+												<span class="lnr lnr-heart"></span>
+												<p class="hover-text">Yêu thích</p>
+											</a>
+											
+											<a href="' . $single_product . '" class="social-info">
+												<span class="lnr lnr-move"></span>
+												<p class="hover-text">Chi tiết</p>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+								';
+                            }
+                        }else{
+                            echo '
+                            <div class="col-lg-4 col-md-6">
+                        <div class="single-product">
+                           
+                            <div class="product-details">
+                                <h6>   Không tìm thấy sản phẩm phù hợp</h6>
+                                
+                        </div>
+                    </div>
+                            ';
+                        }
+                        }
+                        }else{
+                            $items_per_page = 9;
 
                         // Lấy số trang hiện tại từ tham số truyền vào hoặc mặc định là trang 1
                         $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
@@ -116,11 +181,11 @@
 										</div>
 										<div class="prd-bottom">
 	
-											<a href="" class="social-info">
+											<a href="index.php?act=login" class="social-info">
 												<span class="ti-bag"></span>
 												<p class="hover-text">Thêm vào giỏ hàng</p>
 											</a>
-											<a href="" class="social-info">
+											<a href="index.php?act=login" class="social-info">
 												<span class="lnr lnr-heart"></span>
 												<p class="hover-text">Yêu thích</p>
 											</a>
@@ -148,6 +213,8 @@
                             ';
                         }
                         }
+                        }
+                        
 
 
                         ?>

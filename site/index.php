@@ -87,6 +87,7 @@
 							$format=number_format($price);
                             $favourite_link = "index.php?act=favourites&product_id=" . $product_id;
 							$single_product = "index.php?act=single-product&product_id=".$product_id;
+                            $cart_link = "index.php?act=cart&product_id=".$product_id;
 							echo '
 							<div class="col-lg-4 col-md-6">
 							<div class="single-product">
@@ -99,7 +100,7 @@
 									</div>
 									<div class="prd-bottom">
 
-										<a href="" class="social-info">
+										<a href="'.$cart_link.'" class="social-info">
 											<span class="ti-bag"></span>
 											<p class="hover-text">Thêm vào giỏ hàng</p>
 										</a>
