@@ -83,7 +83,7 @@
                                 extract($carts);
                                 $del_cart = "index.php?act=cart&cart_id=" .$cart_id;
                                 $product = favourite_selectall_products($product_id);
-                                $format = number_format($product[0]['price'], 3, ',', '');
+                                $format = number_format($product[0]['price']);
                                 $quantity = $carts['quantity'];
                                 // Thêm dòng này để lấy giá trị của quantity
                                 $total = $quantity * $product[0]['price']; // Tính giá trị tổng
@@ -122,7 +122,7 @@
                                     </td>
 
                                     <td>
-                                        <h5>' . number_format($total, 3, ',', '') . ' VNĐ</h5>
+                                        <h5>' . number_format($total) . ' VNĐ</h5>
                                     </td>
                                     <td>
                                         <a href="'.$del_cart.'" class="gray_btn">Xóa</a>
@@ -159,7 +159,7 @@
                                     <h5>Tổng</h5>
                                 </td>
                                 <td>
-                                    <h5>' . number_format($count, 3, ',', '') . ' VNĐ</h5>
+                                    <h5>' . number_format($count) . ' VNĐ</h5>
                                 </td>
                             </tr> ';
 
@@ -174,7 +174,7 @@
                                 </td>
                                 <td>
                                     <div class="shipping_box">
-                                        <h6>20.000 </h6>
+                                        <h6>20.000 VNĐ</h6>
                                     </div>
                                 </td>
                             </tr>

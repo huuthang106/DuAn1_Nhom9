@@ -1,6 +1,6 @@
 <?php
 if (isset($_SESSION['user_id'])) {
-    if ($_SESSION['user_id']['role'] == 0) {
+    if ($_SESSION['role'] == 0) {
         // Thực hiện mã HTML/CSS cho vai trò 0
 ?>
         <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
@@ -120,7 +120,7 @@ if (isset($_SESSION['user_id'])) {
                                 <img class="img-profile rounded-circle" src="img/boy.png" style="max-width: 60px">
                                 <span class="ml-2 d-none d-lg-inline text-white small"><?php
                                                                                         $fullname = new users();
-                                                                                        foreach ($fullname->get_user_id($_SESSION['user_id']['user_id']) as $key) {
+                                                                                        foreach ($fullname->get_user_id($_SESSION['user_id']) as $key) {
                                                                                             extract($key);
                                                                                             echo '' . $fullname . '';
                                                                                         }
@@ -205,7 +205,7 @@ if (isset($_SESSION['user_id'])) {
                                         <img class="img-profile rounded-circle" src="img/boy.png" style="max-width: 60px">
                                         <span class="ml-2 d-none d-lg-inline text-white small"><?php
                                                                                                 $fullname = new users();
-                                                                                                foreach ($fullname->get_user_id($_SESSION['user_id']['user_id']) as $key) {
+                                                                                                foreach ($fullname->get_user_id($_SESSION['user_id']) as $key) {
                                                                                                     extract($key);
                                                                                                     echo '' . $fullname . '';
                                                                                                 }

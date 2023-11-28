@@ -49,7 +49,7 @@
 
                         <?php
                         $fullname = new users();
-                        foreach ($fullname->get_user_id($_SESSION['user_id']['user_id']) as $key) {
+                        foreach ($fullname->get_user_id($_SESSION['user_id']) as $key) {
                             extract($key);
                             echo '
                            

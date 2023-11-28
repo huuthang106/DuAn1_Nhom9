@@ -29,7 +29,7 @@
       <?php
       if (isset($_SESSION['user_id'])) {
         $get_admin = new users();
-        foreach ($get_admin->get_user_id($_SESSION['user_id']['user_id']) as $key) {
+        foreach ($get_admin->get_user_id($_SESSION['user_id']) as $key) {
           extract($key);
 
 

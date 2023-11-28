@@ -7,7 +7,8 @@
     $password = trim($_POST['password']);
     $userInfo = get_user_info_by_username($username);
     if ($userInfo && password_verify($password, $userInfo['password'])) {
-      $_SESSION['user_id'] = $userInfo;
+      $_SESSION['user_id'] = $userInfo['user_id'];
+      $_SESSION['role']=$userInfo['role'];
       $role = $userInfo['role'];
       if ($role == "0" || $role == "2") {
         include 'home.php';

@@ -34,7 +34,7 @@
                                             <?php
 
                                             if (isset($_POST["submit"])) {
-                                                $user_id = trim($_SESSION["user_id"]['user_id']);
+                                                $user_id = trim($_SESSION["user_id"]);
                                                 $old_password = trim($_POST["password"]);
                                                 $new_password = trim($_POST["new_password"]);
                                                 $confirm_password = trim($_POST["confirm_password"]);

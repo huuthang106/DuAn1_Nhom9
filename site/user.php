@@ -1,3 +1,8 @@
+<?php
+    if(!isset($_SESSION['user_id'])){
+        echo '<script>window.location.href = "index.php?act=login";</script>';
+    }
+?>
 <body>
     <!-- Start Header Area -->
     <?php

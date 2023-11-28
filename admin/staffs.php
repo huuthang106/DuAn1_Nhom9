@@ -25,7 +25,7 @@
                             <h6 class="m-0 font-weight-bold text-primary">Bảng nhân viên</h6>
                         </div>
                         <?php
-                        if ($_SESSION['user_id']['role'] == 0) {
+                        if ($_SESSION['role'] == 0) {
                             echo '
                                       <div class="table-responsive p-3">
                                             <a href="index.php?act=add_staffs" class="btn btn-sm btn-success">Thêm nhân viên</a><br><br>
