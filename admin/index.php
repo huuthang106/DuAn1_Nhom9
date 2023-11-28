@@ -108,15 +108,15 @@ session_start();
 		case 'editvocher':
 			include 'edit_vocher.php';
 			break;
-		case "update";
-			include 'update.php';
+			// case "update";
+			// 	include 'update.php';
 		case "info_admin";
 			include 'info_admin.php';
 			break;
-			case "modals";
+		case "modals";
 			include 'modals.php';
 			break;
-			case "update";
+		case "update";
 			include 'update_admin.php';
 			break;
 	}

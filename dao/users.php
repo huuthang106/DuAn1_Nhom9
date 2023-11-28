@@ -119,7 +119,7 @@ class users
         $result = $db->pdo_execute($select, $fullname, $address, $phone, $email, $avarta, $user_id);
         if ($result) {
             # code...
-            echo '<script>window.location.href = "index.php?act=update";</script>';
+            echo '<script>window.location.href = "index.php?act=info_admin";</script>';
             return $result;
         } else {
             return false;

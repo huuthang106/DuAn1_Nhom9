@@ -40,14 +40,14 @@
 	<?php
 	if (isset($_GET["product_id"])) {
 		# code...
-	
+
 		$product = new products();
 		$product_id = $_GET['product_id'];
 		foreach ($product->get_product_id_site($product_id) as $key) {
 			# code...
-	
+
 			extract($key);
-			$format = number_format($price, 3, ',', '');
+			$format = number_format($price);
 			echo '<div class="product_image_area">
 			<div class="container">
 				<div class="row s_product_inner">
@@ -68,73 +68,69 @@
 	}
 
 	?>
-    <?php
-		if (isset($_SESSION['user_id'])) { ?>
+	<?php
+	if (isset($_SESSION['user_id'])) { ?>
 
-    <div class="product_count">
-        <form action="index.php?act=cart&product_id=<?php echo $_GET['product_id']; ?>" method="post">
-            <div class="product_count">
-                <label for="sst">Số lượng:</label>
-                <input type="number" name="quantity" id="sst" min="1" max="12" value="1" title="Quantity:"
-                    class="input-text qty">
-            </div>
-    </div>
-    <div class="card_area d-flex align-items-center">
-        <button style="border: none" type="submit" class="primary-btn">Thêm vào giỏ hàng</button>
-        </form>
-        <?php
+		<div class="product_count">
+			<form action="index.php?act=cart&product_id=<?php echo $_GET['product_id']; ?>" method="post">
+				<div class="product_count">
+					<label for="sst">Số lượng:</label>
+					<input type="number" name="quantity" id="sst" min="1" max="12" value="1" title="Quantity:" class="input-text qty">
+				</div>
+		</div>
+		<div class="card_area d-flex align-items-center">
+			<button style="border: none" type="submit" class="primary-btn">Thêm vào giỏ hàng</button>
+			</form>
+			<?php
 			$favourite_link = "index.php?act=favourites&product_id=" . $product_id;
-			
-        echo '<a class="icon_btn" href="'.$favourite_link.'"><i class="lnr lnr lnr-heart"></i></a>';
-		?>
-        <?php } else { ?>
 
-        <div class="product_count">
-            <form action="index.php?act=cart&product_id=<?php echo $_GET['product_id']; ?>" method="post">
-                <div class="product_count">
-                    <label for="sst">Số lượng:</label>
-                    <input type="number" name="quantity" id="sst" min="1" max="12" value="1" title="Quantity:"
-                        class="input-text qty">
-                </div>
+			echo '<a class="icon_btn" href="' . $favourite_link . '"><i class="lnr lnr lnr-heart"></i></a>';
+			?>
+		<?php } else { ?>
 
-        </div>
-        <div class="card_area d-flex align-items-center">
-            <a href="index.php?act=login" class="primary-btn">Thêm vào giỏ hàng</a>
-            </form>
-            <a class="icon_btn" href="index.php?act=login"><i class="lnr lnr lnr-heart"></i></a>';
-            <?php } ?>
-        </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
+			<div class="product_count">
+				<form action="index.php?act=cart&product_id=<?php echo $_GET['product_id']; ?>" method="post">
+					<div class="product_count">
+						<label for="sst">Số lượng:</label>
+						<input type="number" name="quantity" id="sst" min="1" max="12" value="1" title="Quantity:" class="input-text qty">
+					</div>
+
+			</div>
+			<div class="card_area d-flex align-items-center">
+				<a href="index.php?act=login" class="primary-btn">Thêm vào giỏ hàng</a>
+				</form>
+				<a class="icon_btn" href="index.php?act=login"><i class="lnr lnr lnr-heart"></i></a>';
+			<?php } ?>
+			</div>
+		</div>
+		</div>
+		</div>
+		</div>
+		</div>
 
 
-	<!--================End Single Product Area =================-->
+		<!--================End Single Product Area =================-->
 
-	<!--================Product Description Area =================-->
-	<section class="product_description_area">
-		<div class="container">
-			<ul class="nav nav-tabs" id="myTab" role="tablist">
-				<!-- <li class="nav-item">
+		<!--================Product Description Area =================-->
+		<section class="product_description_area">
+			<div class="container">
+				<ul class="nav nav-tabs" id="myTab" role="tablist">
+					<!-- <li class="nav-item">
 					<a class="nav-link" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Description</a>
 				</li> -->
-				<!-- <li class="nav-item">
+					<!-- <li class="nav-item">
 					<a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
 					 aria-selected="false">Specification</a>
 				</li> -->
-				<li class="nav-item">
-					<a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab"
-						aria-controls="contact" aria-selected="false">Bình luận</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link active" id="review-tab" data-toggle="tab" href="#review" role="tab"
-						aria-controls="review" aria-selected="false">Đánh giá</a>
-				</li>
-			</ul>
-			<div class="tab-content" id="myTabContent">
-				<!-- <div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
+					<li class="nav-item">
+						<a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Bình luận</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link active" id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review" aria-selected="false">Đánh giá</a>
+					</li>
+				</ul>
+				<div class="tab-content" id="myTabContent">
+					<!-- <div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
 					<p>Beryl Cook is one of Britain’s most talented and amusing artists .Beryl’s pictures feature women of all shapes
 						and sizes enjoying themselves .Born between the two world wars, Beryl Cook eventually left Kendrick School in
 						Reading at the age of 15, where she went to secretarial school and then into an insurance office. After moving to
@@ -151,8 +147,8 @@
 						more than one would suddenly need to learn how to adjust all the cooking practices utilized before into a
 						streamlined plan of cooking that is more efficient for one person creating less</p>
 				</div> -->
-				<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-					<!-- <div class="table-responsive">
+					<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+						<!-- <div class="table-responsive">
 						<table class="table">
 							<tbody>
 								<tr>
@@ -222,22 +218,22 @@
 							</tbody>
 						</table>
 					</div> -->
-				</div>
-				<div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-					<div class="row">
-						<div class="col-lg-6">
-							<div class="comment_list">
+					</div>
+					<div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+						<div class="row">
+							<div class="col-lg-6">
+								<div class="comment_list">
 
-								<?php
-								$list_comment = new comments();
-								$comments = $list_comment->get_comment_product_id($_GET['product_id']);
+									<?php
+									$list_comment = new comments();
+									$comments = $list_comment->get_comment_product_id($_GET['product_id']);
 
-								if ($comments != false && is_array($comments)) {
-									foreach ($comments as $key) {
-										extract($key);
-										$button_dell = 'index.php?act=single-product&product_id=' . $_GET['product_id'] . '&comment_id=' . $comment_id . '';
+									if ($comments != false && is_array($comments)) {
+										foreach ($comments as $key) {
+											extract($key);
+											$button_dell = 'index.php?act=single-product&product_id=' . $_GET['product_id'] . '&comment_id=' . $comment_id . '';
 
-										echo '
+											echo '
 										  <div class="review_item">
 											  <div class="media">
 												  <div class="d-flex">
@@ -247,13 +243,13 @@
 													  <h4 comment-id=' . $comment_id . ' user-id=' . $user_id . '>' . $fullname . '</h4>
 													  <h5>' . $day . '</h5>
 													  ';
-										if ($_SESSION['user_id'] == $user_id) {
-											echo '
+											if ($_SESSION['user_id'] == $user_id) {
+												echo '
 															
 															<a href= "' . $button_dell . '"class="dell_btn" >X</a>
 															';
-										}
-										echo '
+											}
+											echo '
 													<button  class="reply_btn"  onclick="prepareReplyForm(this)">Reply</button>
 													</div>	
 												</div>
@@ -262,14 +258,14 @@
 											
 										';
 
-										$list_reply_comment = new reply_comment();
-										$reply_comment = $list_reply_comment->get_reply_comment_id($comment_id);
+											$list_reply_comment = new reply_comment();
+											$reply_comment = $list_reply_comment->get_reply_comment_id($comment_id);
 
-										if ($reply_comment != false && is_array($reply_comment)) {
-											foreach ($reply_comment as $rl_cmnt) {
-												extract($rl_cmnt);
-												$dell_reply = 'index.php?act=single-product&product_id=' . $_GET['product_id'] . '&reply_id=' . $reply_id . '';
-												echo '
+											if ($reply_comment != false && is_array($reply_comment)) {
+												foreach ($reply_comment as $rl_cmnt) {
+													extract($rl_cmnt);
+													$dell_reply = 'index.php?act=single-product&product_id=' . $_GET['product_id'] . '&reply_id=' . $reply_id . '';
+													echo '
 													<div class="review_item reply">
 														<div class="media">
 															<div class="d-flex">
@@ -280,40 +276,40 @@
 																<h5>' . $day . '</h5>
 															
 													';
-												if ($_SESSION['user_id'] == $user_id) {
-													echo '
+													if ($_SESSION['user_id'] == $user_id) {
+														echo '
 														
 														<a href= "' . $dell_reply . '"class="dell_btn">X</a>
 														';
-												}
+													}
 
-												echo '
+													echo '
 												<button  data-comment-type="comment_two" class="reply_btn"  onclick="prepareReplyForm_two(this)">Reply</button>
 												</div>
 											</div>
 											<p>' . $content . '</p>
 										</div>
 												';
+												}
 											}
 										}
+									} else {
+										echo 'Chưa có bình luận nào';
 									}
-								} else {
-									echo 'Chưa có bình luận nào';
-								}
-								if (isset($_GET['comment_id'])) {
+									if (isset($_GET['comment_id'])) {
 
-									$dell_comment = new comments();
-									$dell_comment->dell_comment($_GET['comment_id'], $_GET['product_id']);
-								} elseif (isset($_GET['reply_id'])) {
-									$dell_reply = new reply_comment();
-									$dell_reply->dell_reply($_GET['reply_id'], $_GET['product_id']);
-								}
+										$dell_comment = new comments();
+										$dell_comment->dell_comment($_GET['comment_id'], $_GET['product_id']);
+									} elseif (isset($_GET['reply_id'])) {
+										$dell_reply = new reply_comment();
+										$dell_reply->dell_reply($_GET['reply_id'], $_GET['product_id']);
+									}
 
-								?>
+									?>
 
 
 
-								<!-- <div class="review_item">
+									<!-- <div class="review_item">
 									<div class="media">
 										<div class="d-flex">
 											<img src="./content/img/product/review-3.png" alt="">
@@ -329,14 +325,14 @@
 										nhưng đồng thời cũng sẽ có rất nhiều công việc và nỗi đau. Để đi đến từng chi tiết nhỏ nhất,
 										không ai nên thực hiện bất kỳ loại công việc nào ngoại trừ việc thu được lợi ích nào đó từ nó.</p>
 								</div> -->
+								</div>
 							</div>
-						</div>
-						<?php
-						if (isset($_SESSION['user_id'])) {
-							$fullname_user = new users();
-							foreach ($fullname_user->get_user_id($_SESSION['user_id']) as $key) {
-								extract($key);
-								echo '
+							<?php
+							if (isset($_SESSION['user_id'])) {
+								$fullname_user = new users();
+								foreach ($fullname_user->get_user_id($_SESSION['user_id']) as $key) {
+									extract($key);
+									echo '
 										<div class="col-lg-6">
 											<div class="review_box">
 												<h4>Đăng bình luận</h4>
@@ -365,9 +361,9 @@
 											</div>
 										</div>
 									';
-							}
-						} else {
-							echo '
+								}
+							} else {
+								echo '
 								<div class="col-lg-6">
 									<div class="review_box">
 										<h4>Đăng bình luận</h4>
@@ -378,176 +374,159 @@
 									</div>
 								</div>
 								';
-						}
-						if (isset($_POST['submit'])) {
-							$product_id = $_GET['product_id'];
-							$user_id = $_SESSION['user_id'];
-							$message = $_POST['message'];
-							$status = $_POST['status'];
-							$comment_id = $_POST['comment_id'];
-							$product_id = $_GET['product_id'];
-							// Lấy ngày hiện tại
-							date_default_timezone_set('Asia/Ho_Chi_Minh');
-							$day = date('Y-m-d H:i:s');
-							if (isset($_GET['product_id']) && is_numeric($_GET['product_id'])) {
-
-
-								if ($status == 3) {
-									$reply_comment = new reply_comment();
-									$insert = $reply_comment->insert_reply($comment_id, $message, $day, $user_id, $product_id);
-								} else {
-									$comment = new comments();
-									$insert = $comment->insert_comment($product_id, $user_id, $message, $day);
-								}
-							} else {
-								// Xử lý khi không có product_id hợp lệ
-								echo "Product ID không hợp lệ!";
 							}
-						}
-						?>
-
-					</div>
-				</div>
-				<div class="tab-pane fade show active" id="review" role="tabpanel" aria-labelledby="review-tab">
-					<div class="row">
-						<div class="col-lg-6">
-							<div class="row total_rate">
-								<div class="col-6">
-									<div class="box_total">
-										<h5>Đánh giá</h5>
-										<h4>4.0</h4>
-										<h6>(03 đánh giá)</h6>
-									</div>
-								</div>
-								<div class="col-6">
-									<div class="rating_list">
-										<h3>Dựa trên 3 đánh giá</h3>
-										<ul class="list">
-											<li><a href="#">5 Sao <i class="fa fa-star"></i><i class="fa fa-star"></i><i
-														class="fa fa-star"></i><i class="fa fa-star"></i><i
-														class="fa fa-star"></i> 01</a></li>
-											<li><a href="#">4 Sao <i class="fa fa-star"></i><i class="fa fa-star"></i><i
-														class="fa fa-star"></i><i class="fa fa-star"></i><i
-														class="fa fa-star"></i> 01</a></li>
-											<li><a href="#">3 Sao <i class="fa fa-star"></i><i class="fa fa-star"></i><i
-														class="fa fa-star"></i><i class="fa fa-star"></i><i
-														class="fa fa-star"></i> 01</a></li>
-											<li><a href="#">2 Sao <i class="fa fa-star"></i><i class="fa fa-star"></i><i
-														class="fa fa-star"></i><i class="fa fa-star"></i><i
-														class="fa fa-star"></i> 01</a></li>
-											<li><a href="#">1 Sao <i class="fa fa-star"></i><i class="fa fa-star"></i><i
-														class="fa fa-star"></i><i class="fa fa-star"></i><i
-														class="fa fa-star"></i> 01</a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-							<div class="review_list">
-								<?php
-								$select_evaluates = new Evaluates();
+							if (isset($_POST['submit'])) {
 								$product_id = $_GET['product_id'];
-								$item_evaluates = $select_evaluates->get_five_evaluates($product_id);
-								if ($item_evaluates) {
-									foreach ($item_evaluates as $key) {
-										extract($key);
-										$dell_evaluates = 'index.php?act=single-product&product_id=' . $_GET['product_id'] . '&evaluates=' . $evaluate_id . '';
-										echo '
+								$user_id = $_SESSION['user_id'];
+								$message = $_POST['message'];
+								$status = $_POST['status'];
+								$comment_id = $_POST['comment_id'];
+								$product_id = $_GET['product_id'];
+								// Lấy ngày hiện tại
+								date_default_timezone_set('Asia/Ho_Chi_Minh');
+								$day = date('Y-m-d H:i:s');
+								if (isset($_GET['product_id']) && is_numeric($_GET['product_id'])) {
+
+
+									if ($status == 3) {
+										$reply_comment = new reply_comment();
+										$insert = $reply_comment->insert_reply($comment_id, $message, $day, $user_id, $product_id);
+									} else {
+										$comment = new comments();
+										$insert = $comment->insert_comment($product_id, $user_id, $message, $day);
+									}
+								} else {
+									// Xử lý khi không có product_id hợp lệ
+									echo "Product ID không hợp lệ!";
+								}
+							}
+							?>
+
+						</div>
+					</div>
+					<div class="tab-pane fade show active" id="review" role="tabpanel" aria-labelledby="review-tab">
+						<div class="row">
+							<div class="col-lg-6">
+								<div class="row total_rate">
+									<div class="col-6">
+										<div class="box_total">
+											<h5>Đánh giá</h5>
+											<h4>4.0</h4>
+											<h6>(03 đánh giá)</h6>
+										</div>
+									</div>
+									<div class="col-6">
+										<div class="rating_list">
+											<h3>Dựa trên 3 đánh giá</h3>
+											<ul class="list">
+												<li><a href="#">5 Sao <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
+												<li><a href="#">4 Sao <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
+												<li><a href="#">3 Sao <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
+												<li><a href="#">2 Sao <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
+												<li><a href="#">1 Sao <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<div class="review_list">
+									<?php
+									$select_evaluates = new Evaluates();
+									$product_id = $_GET['product_id'];
+									$item_evaluates = $select_evaluates->get_five_evaluates($product_id);
+									if ($item_evaluates) {
+										foreach ($item_evaluates as $key) {
+											extract($key);
+											$dell_evaluates = 'index.php?act=single-product&product_id=' . $_GET['product_id'] . '&evaluates=' . $evaluate_id . '';
+											echo '
 										<div class="review_item">
 										<div class="media">
 											<div class="d-flex">
 												<img src="./content/img/product/' . $avarta . '" alt="">
 											</div>						
 										';
-										echo '
+											echo '
 										<div class="media-body">
 										<h4>' . $fullname . '</h4>
 										';
-										if ($star == 1) {
-											echo '<i class="fa fa-star"></i>';
-										} elseif ($star == 2) {
-											echo '<i class="fa fa-star"></i>
+											if ($star == 1) {
+												echo '<i class="fa fa-star"></i>';
+											} elseif ($star == 2) {
+												echo '<i class="fa fa-star"></i>
 												<i class="fa fa-star"></i>
 											';
-										} elseif ($star == 3) {
-											echo '<i class="fa fa-star"></i>
-												<i class="fa fa-star"></i>
-												<i class="fa fa-star"></i>
-											';
-										} elseif ($star == 4) {
-											echo '<i class="fa fa-star"></i>
-												<i class="fa fa-star"></i>
+											} elseif ($star == 3) {
+												echo '<i class="fa fa-star"></i>
 												<i class="fa fa-star"></i>
 												<i class="fa fa-star"></i>
 											';
-										} elseif ($star == 5) {
-											echo '<i class="fa fa-star"></i>
-												<i class="fa fa-star"></i>
+											} elseif ($star == 4) {
+												echo '<i class="fa fa-star"></i>
 												<i class="fa fa-star"></i>
 												<i class="fa fa-star"></i>
 												<i class="fa fa-star"></i>
 											';
-										}
-										echo '</div>
+											} elseif ($star == 5) {
+												echo '<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+											';
+											}
+											echo '</div>
 									<a href= "' . $dell_evaluates . '"class="dell_btn">X</a>
 										</div>
 										<p>' . $content . '</p>
 										</div>
 										';
+										}
 									}
-								}
-								if (isset($_GET['evaluates'])) {
-									$dell = new Evaluates();
-									$dell_evaluate_id = $dell->dell_evaluate($_GET['evaluates']);
-								}
-								?>
+									if (isset($_GET['evaluates'])) {
+										$dell = new Evaluates();
+										$dell_evaluate_id = $dell->dell_evaluate($_GET['evaluates']);
+									}
+									?>
+								</div>
 							</div>
-						</div>
-						<div class="col-lg-6">
-							<div class="review_box">
-								<h4>Đánh giá</h4>
-								<p>Số sao của bạn:</p>
+							<div class="col-lg-6">
+								<div class="review_box">
+									<h4>Đánh giá</h4>
+									<p>Số sao của bạn:</p>
 
-								<ul class="list">
-									<li><button class="star" data-value="1" onclick="handleClick(this)"><i
-												class="fa fa-star"></i></button></li>
-									<li><button class="star" data-value="2" onclick="handleClick(this)"><i
-												class="fa fa-star"></i></button></li>
-									<li><button class="star" data-value="3" onclick="handleClick(this)"><i
-												class="fa fa-star"></i></button></li>
-									<li><button class="star" data-value="4" onclick="handleClick(this)"><i
-												class="fa fa-star"></i></button></li>
-									<li><button class="star" data-value="5" onclick="handleClick(this)"><i
-												class="fa fa-star"></i></button></li>
-								</ul>
+									<ul class="list">
+										<li><button class="star" data-value="1" onclick="handleClick(this)"><i class="fa fa-star"></i></button></li>
+										<li><button class="star" data-value="2" onclick="handleClick(this)"><i class="fa fa-star"></i></button></li>
+										<li><button class="star" data-value="3" onclick="handleClick(this)"><i class="fa fa-star"></i></button></li>
+										<li><button class="star" data-value="4" onclick="handleClick(this)"><i class="fa fa-star"></i></button></li>
+										<li><button class="star" data-value="5" onclick="handleClick(this)"><i class="fa fa-star"></i></button></li>
+									</ul>
 
-								<p>Nổi bật</p>
-								<?php
-								if (isset($_SESSION['user_id'])) {
-									$fullname_user = new users();
-									foreach ($fullname_user->get_user_id($_SESSION['user_id']) as $key) {
-										extract($key);
-										echo '
+									<p>Nổi bật</p>
+									<?php
+									if (isset($_SESSION['user_id'])) {
+										$fullname_user = new users();
+										foreach ($fullname_user->get_user_id($_SESSION['user_id']) as $key) {
+											extract($key);
+											echo '
 								<form class="row contact_form" action="index.php?act=single-product&product_id=' . $_GET['product_id'] . '" method="post" id="contactForm" novalidate="novalidate">';
 
-										?>
-										<input type="hidden" name="star" id="starInput" value="">
-										<div class="col-md-12">
-											<div class="form-group">
-												<textarea class="form-control" name="content" id="message" rows="1"
-													placeholder="Đánh giá" onfocus="this.placeholder = ''"
-													onblur="this.placeholder = 'Đánh giá'"></textarea></textarea>
+									?>
+											<input type="hidden" name="star" id="starInput" value="">
+											<div class="col-md-12">
+												<div class="form-group">
+													<textarea class="form-control" name="content" id="message" rows="1" placeholder="Đánh giá" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Đánh giá'"></textarea></textarea>
+												</div>
 											</div>
-										</div>
-										<div class="col-md-12 text-right">
-											<button type="submit" value="submit" name="submit_evaluates" class="primary-btn">Gửi
-												ngay</button>
-										</div>
-										</form>
+											<div class="col-md-12 text-right">
+												<button type="submit" value="submit" name="submit_evaluates" class="primary-btn">Gửi
+													ngay</button>
+											</div>
+											</form>
 
-										<?php
-									}
-								} else {
-									echo '
+									<?php
+										}
+									} else {
+										echo '
 								<div class="col-lg-6">
 									<div class="review_box">
 										<h4>Đánh giá</h4>
@@ -558,51 +537,51 @@
 									</div>
 								</div>
 								';
-								}
-								if (isset($_POST['submit_evaluates'])) {
-									if (empty($_POST['content']) || empty($_POST['star'])) {
-										echo '<div class="col-md-12 form-group">
+									}
+									if (isset($_POST['submit_evaluates'])) {
+										if (empty($_POST['content']) || empty($_POST['star'])) {
+											echo '<div class="col-md-12 form-group">
 								<div class="error-message">
 									<i class="fa-solid fa-circle-exclamation"></i> bạn chưa nhập nội dung đánh  giá !
 								</div><br>
 							</div>';
-									} else {
-										$star = $_POST['star'];
-										$content = $_POST['content'];
-										$user_id = $_SESSION['user_id'];
-										$product_id = $_GET['product_id'];
-										$evaluates = new Evaluates();
-										$insert = $evaluates->insert_evaluates($product_id, $user_id, $star, $content);
+										} else {
+											$star = $_POST['star'];
+											$content = $_POST['content'];
+											$user_id = $_SESSION['user_id'];
+											$product_id = $_GET['product_id'];
+											$evaluates = new Evaluates();
+											$insert = $evaluates->insert_evaluates($product_id, $user_id, $star, $content);
+										}
 									}
-								}
-								?>
+									?>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-	</section>
-	<!--================End Product Description Area =================-->
+		</section>
+		<!--================End Product Description Area =================-->
 
-	<!-- Start related-product Area -->
-	<section class="related-product-area section_gap_bottom">
-		<div class="container">
-			<div class="row justify-content-center">
-				<div class="col-lg-6 text-center">
-					<div class="section-title">
-						<h1>Sản phẩm liên quan</h1>
-						<p>Có thể bạn sẽ quan tâm </p>
+		<!-- Start related-product Area -->
+		<section class="related-product-area section_gap_bottom">
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="col-lg-6 text-center">
+						<div class="section-title">
+							<h1>Sản phẩm liên quan</h1>
+							<p>Có thể bạn sẽ quan tâm </p>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="row">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="row">
 
-					<?php
+							<?php
 
-					/*	if (isset($_GET["category_id"])) {
+							/*	if (isset($_GET["category_id"])) {
 							# code...
 						
 							$product = new products();
@@ -610,20 +589,20 @@
 							foreach ($product->get_category_id_sites($category_id) as $key) {
 								# code...						
 								extract($key);*/
-								if(isset($_SESSION['user_id'])){
-									$product = new products();								
+							if (isset($_SESSION['user_id'])) {
+								$product = new products();
 								foreach ($product->get_nine_product_limit() as $key) {
 									extract($key);
-								$format = number_format($price, 3, ',', '');
-                                $single_product = "index.php?act=single-product&product_id=".$product_id;
-								echo '    
+									$format = number_format($price);
+									$single_product = "index.php?act=single-product&product_id=" . $product_id;
+									echo '    
                         <div class="col-lg-3 col-md-4 col-sm-6 mb-20">
                             <div class="single-related-product d-flex">
-                                <a href="'. $single_product.'"><img src="./content/img/' . $picture . '" alt="" width="100px"></a>
+                                <a href="' . $single_product . '"><img src="./content/img/' . $picture . '" alt="" width="100px"></a>
                                 <div class="desc">
-                                    <a href="#" class="title">' . $name . '</a>
+                                    <a href="' . $single_product . '" class="title">' . $name . '</a>
                                     <div class="price">
-                                        <h6>' . $format. '</h6>
+                                        <h6>' . $format . ' VNĐ</h6>
                                         <h6 class="l-through"></h6>
                                     </div>
                                 </div>
@@ -632,49 +611,48 @@
 
 
 			';
-							}
-						} else{
-                            $product = new products();
-						
-                            foreach ($product->get_nine_product_limit() as $key) {
-                                extract($key);
-                                $format=number_format($price,3,',','');
-								$single_product = "index.php?act=single-product&product_id=".$product_id;
-								echo '    
+								}
+							} else {
+								$product = new products();
+
+								foreach ($product->get_nine_product_limit() as $key) {
+									extract($key);
+									$format = number_format($price);
+									$single_product = "index.php?act=single-product&product_id=" . $product_id;
+									echo '    
 								<div class="col-lg-3 col-md-4 col-sm-6 mb-20">
 									<div class="single-related-product d-flex">
-										<a href="#"><img src="./content/img/' . $picture . '" alt="" width="100px"></a>
+										<a href="' . $single_product . '"><img src="./content/img/product/' . $picture . '" alt="" width="100px"></a>
 										<div class="desc">
-											<a href="'. $single_product.'" class="title">' . $name . '</a>
+											<a href="' . $single_product . '" class="title">' . $name . '</a>
 											<div class="price">
-												<h6>' . $format. '</h6>
+												<h6>' . $format . ' VNĐ</h6>
 												<h6 class="l-through"></h6>
 											</div>
 										</div>
 									</div>
 								</div>';
-                                    
-                        }
-                    }
-						?>
-						
+								}
+							}
+							?>
 
 
 
 
 
+
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-	</section>
-	<!-- End related-product Area -->
+		</section>
+		<!-- End related-product Area -->
 
-	<!-- start footer Area -->
-	<?php
-	include("./include/footer.php");
-	?>
-	<!-- End footer Area -->
+		<!-- start footer Area -->
+		<?php
+		include("./include/footer.php");
+		?>
+		<!-- End footer Area -->
 
 
 
