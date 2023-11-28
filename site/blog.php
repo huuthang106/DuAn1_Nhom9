@@ -166,50 +166,6 @@
                 <div class="col-lg-4">
                     <div class="blog_right_sidebar">
                         <aside class="single_sidebar_widget search_widget">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search Posts" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Posts'">
-                                <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button"><i class="lnr lnr-magnifier"></i></button>
-                                </span>
-                            </div><!-- /input-group -->
-                            <div class="br"></div>
-                        </aside>
-                        <aside class="single_sidebar_widget author_widget">
-                            <img class="author_img rounded-circle" src="content/img/blog/author.png" alt="">
-                            <h4>Charlie thợ cắt tóc</h4>
-                            <p>Người viết blog cao cấp</p>
-                            <div class="social_icon">
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-github"></i></a>
-                                <a href="#"><i class="fa fa-behance"></i></a>
-                            </div>
-                            <p>Chương trình đào tạo có những người ủng hộ và những người gièm pha. Một số người không
-                                hiểu tại sao bạn phải chi tiền cho chương trình đào tạo khi bạn có thể có được. Chương
-                                trình đào tạo có những người ủng hộ và những người gièm pha.</p>
-                            <div class="br"></div>
-                        </aside>
-                        <aside class="single_sidebar_widget popular_post_widget">
-                            <h3 class="widget_title">Bài viết phổ biến</h3>
-
-                            <?php
-                            $blog = blogs_selectalls();
-                            foreach ($blog as $blogs) {
-                                extract($blogs);
-                                $more_link = "index.php?act=single-blog&blog_id=" . $blog_id;
-                                $excerpt = substr($content, 0, 400);
-                                echo '
-                                    <div class="media post_item">                     
-                                        <div class="media-body">
-                                            <a href="blog-details.html">
-                                                <h3>' . $title . '</h3>
-                                            </a>
-                                            <p>' . $day . '</p>
-                                        </div>
-                                        </div>
-                                    ';
-                            }
-                            ?>
                     <form method="post">
                                 <div class="input-group">
                                     <input type="text" class="form-control" name="noidung"
