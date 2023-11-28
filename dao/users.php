@@ -124,6 +124,33 @@ class users
             return false;
         }
     }
+    public function fogot_password($email, $new_password)
+    {
+        $db = new connect();
+    
+        // Mã hóa mật khẩu mới
+        $hashed_new_password = password_hash($new_password, PASSWORD_DEFAULT);
+    
+        // Cập nhật mật khẩu mới vào cơ sở dữ liệu dựa trên email
+        $update_password = "UPDATE users SET password = ? WHERE email = ?";
+        $result = $db->pdo_execute($update_password, $hashed_new_password, $email);
+    
+        if ($result) {
+            echo '
+                </br><div class="success-message">
+                <i class="fa-solid fa-circle-check"></i> Thay đổi mật khẩu thành công
+                </div>
+            ';
+            return true;
+        } else {
+            echo '
+                <div class="error-message">
+                <i class="fa-solid fa-circle-exclamation"></i> Lỗi khi cập nhật mật khẩu mới
+                </div><br>
+            ';
+            return false;
+        }
+    }
 }
 function user_selectall()
 {
@@ -200,5 +227,16 @@ function users_selectall($user_id)
 {
     $sql = "select * from users where user_id = '" . $user_id . "'";
     $sp = pdo_query_one($sql);
+    return $sp;
+}
+function insert_token($new_token, $check_email)
+{
+    $sql = "UPDATE users SET token = ? WHERE email = ?";
+    pdo_execute($sql, $new_token,  $check_email);
+}
+function select_token($check_email)
+{
+    $sql = "select token from users where email = ?";
+    $sp = pdo_query_one($sql, $check_email);
     return $sp;
 }

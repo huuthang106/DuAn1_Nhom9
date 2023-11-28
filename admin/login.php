@@ -1,6 +1,6 @@
 <body class="bg-gradient-login">
-  <!-- Login Content -->
-  <?php
+    <!-- Login Content -->
+    <?php
   $us = user_selectall();
   if (isset($_POST['username']) && isset($_POST['password'])) {
     $username = trim($_POST['username']);
@@ -45,6 +45,9 @@
                              <div class="form-group">
                               <button type="submit" onclick="checkform()" value="submit" class="btn btn-primary">Đăng Nhập</button>
                              </div>
+                             <div class="form-group">
+                             <a href="../index.php?act=forgot_password">Quên mật khẩu</a>
+                           </div>
                              <hr>
                            </form>
                          </div>
@@ -92,6 +95,9 @@
                             <div class="form-group">
                               <button type="submit" value="submit" class="btn btn-primary">Đăng Nhập</button>
                             </div>
+                            <div class="form-group">
+                            <a href="../index.php?act=forgot_password">Quên mật khẩu</a>
+                          </div>
                            <hr>
                          </form>
                        </div>
@@ -136,6 +142,9 @@
                             <div class="form-group">
                               <button type="submit" value="submit" class="btn btn-primary">Đăng Nhập</button>
                             </div>
+                            <div class="form-group">
+                            <a href="../index.php?act=forgot_password">Quên mật khẩu</a>
+                          </div>
                             <hr>
                           </form>
                         </div>
@@ -150,6 +159,6 @@
   }
   ?>
 
-  <!-- Login Content -->
+    <!-- Login Content -->
 
 </body>

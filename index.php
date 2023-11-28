@@ -147,9 +147,15 @@ session_start();
 		case 'pay':
 			include 'site/pay.php';
 			break;
-		case 'order_status_detail':
-			include 'site/order_status_detail.php';
-			break;
+        case 'order_status_detail':
+            include 'site/order_status_detail.php';
+            break;
+        case 'forgot_password':
+            include 'site/forgot_password.php';
+            break;
+        case 'change_new_password':
+            include 'site/change_new_password.php';
+            break;
 		case "logout":
 			unset($_SESSION['user_id']);
 			header("location: index.php");
