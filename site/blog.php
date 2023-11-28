@@ -17,8 +17,8 @@ ob_start();
                 <div class="col-first">
                     <h1>Trang tin tức</h1>
                     <nav class="d-flex align-items-center">
-                        <a href="index.html">Trang chủ<span class="lnr lnr-arrow-right"></span></a>
-                        <a href="category.html">Tin tức</a>
+                        <a href="index.php?act=home">Trang chủ<span class="lnr lnr-arrow-right"></span></a>
+                        <a href="index.php?act=blog">Tin tức</a>
                     </nav>
                 </div>
             </div>

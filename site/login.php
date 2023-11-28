@@ -90,8 +90,8 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
                 <div class="col-first">
                     <h1>Login/Register</h1>
                     <nav class="d-flex align-items-center">
-                        <a href="index.html">Home<span class="lnr lnr-arrow-right"></span></a>
-                        <a href="category.html">Login/Register</a>
+                        <a href="index.php?act=home">Home<span class="lnr lnr-arrow-right"></span></a>
+                        <a href="index.php?act=login">Login/Register</a>
                     </nav>
                 </div>
             </div>

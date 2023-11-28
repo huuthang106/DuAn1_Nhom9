@@ -11,8 +11,8 @@ include("./include/nav.php");
                 <div class="col-first">
                     <h1>Theo dõi đơn hàng</h1>
                     <nav class="d-flex align-items-center">
-                        <a href="index.php?act=tracking">Trang chủ<span class="lnr lnr-arrow-right"></span></a>
-                        <a href="index.php?act=category">Danh mục</a>
+                        <a href="index.php?act=home">Trang chủ<span class="lnr lnr-arrow-right"></span></a>
+                        <a href="index.php?act=tracking">Danh mục</a>
                     </nav>
                 </div>
             </div>

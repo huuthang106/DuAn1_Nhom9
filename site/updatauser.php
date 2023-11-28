@@ -20,8 +20,8 @@
 				<div class="col-first">
 					<h1>Cập nhật thông tin </h1>
 					<nav class="d-flex align-items-center">
-						<a href="index.html">Tài khoảng<span class="lnr lnr-arrow-right"></span></a>
-						<a href="category.html">Cập nhật thông tin </a>
+						<a href="index.php?act=user">Tài khoảng<span class="lnr lnr-arrow-right"></span></a>
+						<a href="index.php?act=updata">Cập nhật thông tin </a>
 					</nav>
 				</div>
 			</div>
