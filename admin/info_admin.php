@@ -1,8 +1,12 @@
 <style>
     .avarta {
         width: 100%;
-        height: 300px;
+        height: 150px;
     }
+    .avarta img{
+        border-radius: 80px;
+    }
+
 
     .row {
         margin: 0 auto;
@@ -54,10 +58,10 @@
                             echo '
                            
                             <div class="card-body" >
-                            <div class="mb-3">
+                            <div class="mb-3" >
                                 <li class="main-nav-list"><a data-toggle="collapse" href="#officeProduct"
-                                        aria-expanded="false" aria-controls="officeProduct">
-                                        <div class="avarta"><img src="../content/img/product/'.$avarta.'" alt=""></div>
+                                        aria-expanded="false" aria-controls="officeProduct" >
+                                        <div class="avarta"><img src="../content/img/product/ao1.jpg" alt="" width="150px" height="150px" ></div>
                                     </a></li>
                             </div>
                             <div class="mb-3">
@@ -84,9 +88,10 @@
                                             class="lnr lnr-arrow-right"></span>Email: <span class="number"
                                             style="color: black; font-style: italic;">' . $email . '</span></a></li>
                             </div>
+                           
                            ';
-                           if($role == 0){
-                            echo '
+                            if ($role == 0) {
+                                echo '
                             <div class="mb-3">
                                 <li class="main-nav-list"><a data-toggle="collapse" href="#officeProduct"
                                     aria-expanded="false" aria-controls="officeProduct"><span
@@ -94,9 +99,8 @@
                                         style="color: black; font-style: italic;">Quản trị viên</span></a></li>
                              </div>
                             ';
-                           }
-                           elseif($role == 2){
-                            echo '
+                            } elseif ($role == 2) {
+                                echo '
                             <div class="mb-3">
                                 <li class="main-nav-list"><a data-toggle="collapse" href="#officeProduct"
                                     aria-expanded="false" aria-controls="officeProduct"><span
@@ -104,9 +108,9 @@
                                         style="color: black; font-style: italic;">Nhân viên</span></a></li>
                              </div>
                             ';
-                           }
+                            }
 
-                           echo'
+                            echo '
                             <div class="mb-3">
                                 <li class="main-nav-list" style="margin-bottom: 2%">
                                     <a href="index.php?act=update">

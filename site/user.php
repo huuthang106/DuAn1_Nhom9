@@ -4,16 +4,14 @@ if (!isset($_SESSION['user_id'])) {
 }
 ?>
 <style>
-    .avarta {
-        margin: 0 auto;
-        width: 20%;
+    .avarta{
+        width: 100%;
+        height: 150px;
     }
-
     .avarta img {
-        margin: 5%;
+        border-radius: 80px;
     }
 </style>
-
 <body>
     <!-- Start Header Area -->
     <?php
@@ -57,7 +55,7 @@ if (!isset($_SESSION['user_id'])) {
                         # code...
                         echo ' <div class="avarta"><img src="../content/img/product/review-1.png" alt=""></div>';
                     } else {
-                        echo '<div class="avarta"><img src="../content/img/product/' . $avarta . '" alt=""></div>';
+                        echo '<div class="avarta"><img src="../content/img/product/' . $avarta . '" alt="" width="150px" height="150px" ></div>';
                     }
                     echo '
                             </a></li>
