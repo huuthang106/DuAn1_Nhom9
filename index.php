@@ -139,7 +139,7 @@ session_start();
 			include 'site/updatauser.php';
 			break;
 		case 'category_search':
-			include	'site/category_search.php';
+			include 'site/category_search.php';
 			break;
 		case 'keyword_pagination':
 			include 'site/keyword_pagination.php';
@@ -156,6 +156,9 @@ session_start();
         case 'change_new_password':
             include 'site/change_new_password.php';
             break;
+		// case 'order_status_detail':
+		// 	include 'site/order_status_detail.php';
+		// 	break;
 		case "logout":
 			unset($_SESSION['user_id']);
 			header("location: index.php");
@@ -163,7 +166,12 @@ session_start();
 		case 'bill_detail_user':
 			include 'site/bill_detail_user.php';
 			break;
+		case "search_blog":
+			include 'site/search_blog.php';
+			break;
+
 	}
+
 	?>
 
 

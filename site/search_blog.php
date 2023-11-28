@@ -84,14 +84,15 @@
                 <div class="col-lg-8">
                     <div class="blog_left_sidebar">
                         <?php
-                        $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
-                        $postsPerPage = 5;
-                        $blog = blogs_selectall($currentPage, $postsPerPage);
-                        foreach ($blog as $blogs) {
-                            extract($blogs);
-                            $more_link = "index.php?act=single-blog&blog_id=" . $blog_id;
-                            $excerpt = substr($content, 0, 400);
-                            echo '                     
+                        if (isset($_GET["noidung"])) {
+                            $key = $_GET["noidung"];
+                            $blog = search_blog_selectalls($key);
+                            if ($blog) {
+                            foreach ($blog as $blogs) {
+                                extract($blogs);
+                                $more_link = "index.php?act=single-blog&blog_id=" . $blog_id;
+                                $excerpt = substr($content, 0, 400);
+                                echo '                     
                                 <article class="row blog_item">
                                 <div class="col-md-3">
                                     <div class="blog_info text-right">
@@ -119,25 +120,16 @@
                                 </div>
                             </article>
                                 ';
+                            }} else {
+                                echo'
+                                <div class="blog_details"> 
+                                                <h2>Bài viết '.$key.' không tìm thấy!</h2>
+                                                </div>';
+                            };
                         }
                         ?>
 
-                        <?php
-                        // Sử dụng hàm và hiển thị kết quả
-
-                        foreach ($blogs as $blog) {
-                            // Hiển thị thông tin bài viết
-                        }
-
-                        // Hiển thị HTML phân trang
-                        echo '<nav class="blog-pagination justify-content-center d-flex"><ul class="pagination">';
-                        for ($i = 1; $i <= ceil(count(blogs_selectall()) / $postsPerPage); $i++) {
-                            echo '<li class="page-item ' . ($i == $currentPage ? 'active' : '') . '"><a href="index.php?act=blog&page=' . $i . '" class="page-link">' . $i . '</a></li>';
-                        }
-                        echo '</ul></nav>';
-
-                        ?>
-                        <!-- <nav class="blog-pagination justify-content-center d-flex">
+                        <nav class="blog-pagination justify-content-center d-flex">
                             <ul class="pagination">
                                 <li class="page-item">
                                     <a href="#" class="page-link" aria-label="Previous">
@@ -159,23 +151,36 @@
                                     </a>
                                 </li>
                             </ul>
-                        </nav> -->
+                        </nav>
                     </div>
                 </div>
-        
                 <div class="col-lg-4">
                     <div class="blog_right_sidebar">
                         <aside class="single_sidebar_widget search_widget">
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search Posts" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Posts'">
+                                <input type="text" class="form-control" placeholder="Search Posts"
+                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Posts'">
                                 <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button"><i class="lnr lnr-magnifier"></i></button>
+                                    <button class="btn btn-default" type="button"><i
+                                            class="lnr lnr-magnifier"></i></button>
                                 </span>
                             </div><!-- /input-group -->
                             <div class="br"></div>
                         </aside>
+                        <?php
+                        if (isset($_POST['btn'])) {
+                            $noidung = $_POST['noidung'];
+                            $redirect_url = "index.php?act=search_blog&noidung=" . urlencode($noidung);
+
+                            // Sử dụng lệnh header để chuyển hướng
+                            header("Location: " . $redirect_url);
+                            exit(); // Đảm bảo dừng thực thi script sau lệnh header
+                        }
+
+                        ?>
+
                         <aside class="single_sidebar_widget author_widget">
-                            <img class="author_img rounded-circle" src="content/img/blog/author.png" alt="">
+                            <img class="author_img rounded-circle" src="img/blog/author.png" alt="">
                             <h4>Charlie thợ cắt tóc</h4>
                             <p>Người viết blog cao cấp</p>
                             <div class="social_icon">
@@ -193,6 +198,7 @@
                             <h3 class="widget_title">Bài viết phổ biến</h3>
 
                             <?php
+
                             $blog = blogs_selectalls();
                             foreach ($blog as $blogs) {
                                 extract($blogs);
@@ -210,31 +216,6 @@
                                     ';
                             }
                             ?>
-                    <form method="post">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" name="noidung"
-                                        placeholder="Tìm kiếm bài viết" onfocus="this.placeholder = ''"
-                                        onblur="this.placeholder = 'Tìm kiếm bài viết'">
-                                    <!--    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Tìm kiếm bài viết'"-->
-                                    <span class="input-group-btn">
-                                        <button class="btn btn-default" type="submit" name="btn"><i
-                                                class="lnr lnr-magnifier"></i></button>
-                                    </span>
-                            </form>
-                    </div>
-                    <div class="br"></div>
-                  
-                        <?php
-                        if (isset($_POST['btn'])) {
-                            $noidung = $_POST['noidung'];
-                            $redirect_url = "index.php?act=search_blog&noidung=" . urlencode($noidung);
-
-                            // Sử dụng lệnh header để chuyển hướng
-                            header("Location: " . $redirect_url);
-                            exit(); // Đảm bảo dừng thực thi script sau lệnh header
-                        }
-                
-                ?>
 
                             <div class="br"></div>
                         </aside>
@@ -299,7 +280,9 @@
                                         <div class="input-group-text"><i class="fa fa-envelope" aria-hidden="true"></i>
                                         </div>
                                     </div>
-                                    <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Enter email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email'">
+                                    <input type="text" class="form-control" id="inlineFormInputGroup"
+                                        placeholder="Enter email" onfocus="this.placeholder = ''"
+                                        onblur="this.placeholder = 'Enter email'">
                                 </div>
                                 <a href="#" class="bbtns">Đăng ký</a>
                             </div>
@@ -322,7 +305,7 @@
                                 <li><a href="#">Cách sống</a></li>
                                 <li><a href="#">Cuộc phiêu lưu</a></li>
                             </ul>
-                        </aside>
+                        </aside>-->
                     </div>
                 </div>
             </div>

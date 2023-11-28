@@ -12,6 +12,12 @@
         $sql =  "select * from blogs order by blog_id DESC limit 4";
         return pdo_query($sql);
     }
+    
+    function search_blog_selectalls($noidung){
+        $noidung= '%'.$noidung.'%';
+        $sql =  "select * from blogs where title like ? order by blog_id DESC ";
+        return pdo_query($sql,$noidung);
+    }
     function blogs_detail_selectalls($blog_id){
         $sql =  "select * from blogs where blog_id=?";
         return pdo_query($sql, $blog_id);
