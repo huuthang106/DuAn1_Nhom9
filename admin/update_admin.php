@@ -136,7 +136,7 @@
           </div>';
             } else {
               $avarta_file = save_file('img', $UPLOAD_URL);
-              // Số điện thoại không trùng, thực hiện các lệnh tiếp theo
+             
               $updata = new users();
               $insert = $updata->update_users($fullname, $address, $phone, $email, $avarta, $user_id);
             }

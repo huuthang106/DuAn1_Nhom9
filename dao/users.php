@@ -9,6 +9,7 @@ class users
     var $email = null;
     var $avarta = null;
     var $role = null;
+    var $token = null;
     public function get_user_id($user_id)
     {
         $db = new connect();
@@ -76,14 +77,7 @@ class users
                 ';
                 return false; // Mật khẩu cũ không đúng
             }
-        } else {
-            echo '
-                <div class="error-message">
-                <i class="fa-solid fa-circle-exclamation"></i> Không tìm thấy mật khẩu cho user_id
-                </div><br>
-            ';
-            return false; // Không tìm thấy mật khẩu cho user_id
-        }
+        } 
     }
 
 
@@ -164,6 +158,28 @@ class users
             return false;
         }
     }
+    public function change_new_password($password, $token,$email)
+    {
+        $db = new connect();
+    
+        // Mã hóa mật khẩu mới
+        $hashed_new_password = password_hash($password, PASSWORD_DEFAULT);
+    
+        $select = "UPDATE users SET password = ? WHERE token = ?";
+        $result = $db->pdo_execute($select, $hashed_new_password, $token);
+        $db = new connect();
+        $delete= "UPDATE users SET token =null WHERE email=?";
+        $start_delete=$db->pdo_execute($delete,$email);
+    
+        if ($start_delete) {
+            
+            echo '<script>window.location.href = "index.php?act=login";</script>';
+            return $result;
+        } else {
+            return false;
+        }
+    }
+    
 }
 function user_selectall()
 {

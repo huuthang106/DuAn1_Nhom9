@@ -66,6 +66,7 @@
                                     $new_token = rand(0000, 9999);
                                     insert_token($new_token, $check_email['email']);
                                     $token = select_token($check_email['email']);
+                                    
                                     // Gửi email chứa mật khẩu đến địa chỉ email từ form
                                     $mail = new PHPMailer(true);
                             
@@ -86,7 +87,7 @@
                                         // Thiết lập nội dung email
                                         $mail->isHTML(true);
                                         $mail->Subject = 'Please click on the link below to confirm to retrieve your new password:';
-                                        $mail->Body = 'Link: http://duan1/index.php?act=change_new_password&token=' .$token['token'];
+                                        $mail->Body = 'Link: http://duan1/index.php?act=change_new_password&token=' .$token['token'].'&email='.$check_email['email'];
                             
                                         // Gửi email
                                         $mail->send();

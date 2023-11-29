@@ -1,5 +1,6 @@
 <?php
 $UPLOAD_URL = "../content/img/product/";
+$UPLOAD_URL_USER = "./content/img/product/";
 function save_file($fielldname, $target_dir)
 {
     $file_uploaded = $_FILES[$fielldname];
@@ -143,4 +144,8 @@ function thanh_toan()
     }
     // vui lòng tham khảo thêm tại code demo
 
+}
+function check_image_size($file_tmp) {
+    list($width, $height) = getimagesize($file_tmp);
+    return ($width <= 512 && $height <= 512);
 }

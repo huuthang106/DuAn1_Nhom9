@@ -3,6 +3,18 @@
         echo '<script>window.location.href = "index.php?act=login";</script>';
     }
 ?>
+<style>
+.avarta {
+    margin:  0 auto;
+    width: 20%;
+}
+.avarta img {
+    margin:  5%;
+}
+
+
+
+</style>
 <body>
     <!-- Start Header Area -->
     <?php
@@ -53,18 +65,23 @@
                             <li class="main-nav-list"><a data-toggle="collapse" href="#officeProduct" aria-expanded="false" aria-controls="officeProduct"><span class="lnr lnr-arrow-right"></span>ID<span class="number" style="color: black; font-style: italic;">' . $user_id . '</span></a></li>
                             <li class="main-nav-list"><a data-toggle="collapse" href="#officeProduct" aria-expanded="false" aria-controls="officeProduct"><span class="lnr lnr-arrow-right"></span>Tên<span class="number" style="color: black; font-style: italic;">' . $username . '</span></a></li>
                             <li class="main-nav-list"><a data-toggle="collapse" href="#officeProduct" aria-expanded="false" aria-controls="officeProduct"><span class="lnr lnr-arrow-right"></span>Địa chỉ<span class="number" style="color: black; font-style: italic;">' . $address . '</span></a></li>
-                            <li class="main-nav-list"><a data-toggle="collapse" href="#officeProduct" aria-expanded="false" aria-controls="officeProduct"><span class="lnr lnr-arrow-right"></span>Điện thoại<span class="number" style="color: black; font-style: italic;">0' . $phone . '</span></a></li>
+                            <li class="main-nav-list"><a data-toggle="collapse" href="#officeProduct" aria-expanded="false" aria-controls="officeProduct"><span class="lnr lnr-arrow-right"></span>Điện thoại<span class="number" style="color: black; font-style: italic;">' . $phone . '</span></a></li>
                             <li class="main-nav-list"><a data-toggle="collapse" href="#officeProduct" aria-expanded="false" aria-controls="officeProduct"><span class="lnr lnr-arrow-right"></span>Gmail<span class="number" style="color: black; font-style: italic;">' . $email . '</span></a></li>
                             <!-- Nút Cập nhật sử dụng Bootstrap -->
                             <li class="main-nav-list" style="margin-bottom: 2%">
                             <a href="' . $updata . '">
-                                <button class="btn btn-primary">Cập nhật thông tin</button>
+                                <button class="btn btn-primary btn-block confirm-button">Cập nhật thông tin</button>
                                 </a>
                             </li>
                             <li class="main-nav-list">
-                                <a href="index.php?act=logout">
-                                <button class="btn btn-primary">Đăng xuất</button></a>
-                            </li>
+                            <a href="index.php?act=change_pasword_user&id='.$user_id.'">
+                            <button class="btn btn-primary btn-block confirm-button">Đổi mật khẩu</button></a>
+                        </li>
+                            <li class="main-nav-list">
+                            <a href="index.php?act=logout">
+                            <button class="btn btn-primary btn-block confirm-button">Đăng xuất</button></a>
+                        </li>
+                           
     
     
                         </ul>

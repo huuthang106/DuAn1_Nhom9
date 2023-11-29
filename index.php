@@ -158,9 +158,9 @@ session_start();
             // case 'order_status_detail':
             // 	include 'site/order_status_detail.php';
             // 	break;
-        // case 'order_status_detail':
-        //     include 'site/order_status_detail.php';
-        //     break;
+            // case 'order_status_detail':
+            //     include 'site/order_status_detail.php';
+            //     break;
         case "logout":
             unset($_SESSION['user_id']);
             header("location: index.php");
@@ -170,6 +170,9 @@ session_start();
             break;
         case "search_blog":
             include 'site/search_blog.php';
+            break;
+        case "change_pasword_user":
+            include 'site/change_pasword_user.php';
             break;
     }
 

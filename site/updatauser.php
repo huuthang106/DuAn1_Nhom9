@@ -56,7 +56,7 @@
 
 
 						?>
-								<form class="row login_form" action="index.php?act=updata&user_id=<?= $user_id ?>" method="POST" id="contactForm" novalidate="novalidate">
+								<form class="row login_form" action="index.php?act=updata&user_id=<?= $user_id ?>" method="POST" id="contactForm" novalidate="novalidate" enctype="multipart/form-data">
 
 									<div class="col-md-12 form-group">
 										<input type="text" class="form-control" id="name" name="fullname" value="<?= $fullname ?>" placeholder="Họ tên" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Họ tên' ">
@@ -102,47 +102,73 @@
 							$address = trim($_POST['address']);
 							$phone = trim($_POST['phone']);
 							$email = trim($_POST['email']);
-							$avarta = trim($_POST['img']);
+							$avarta = $_FILES['img']['name'];
 							$user_id = trim($_SESSION['user_id']);
 							$get_phone = new users();
 							$item_phone = $get_phone->get_phone();
-						
+
 							$phoneExists = false;
-						
-							foreach ($item_phone as $existing_phone) {
-								if ($phone == $existing_phone['phone']) {
-									// Số điện thoại đã tồn tại, đặt biến cờ và dừng vòng lặp
-									$phoneExists = true;
-									break;
-								}
-							}
-						
-							if ($phoneExists) {
-								// Số điện thoại đã tồn tại, thông báo lỗi
-								echo '<div class="col-md-12 form-group">
-									<div class="error-message">
-										<i class="fa-solid fa-circle-exclamation"></i> Số điện thoại đã được sử dụng !
-									</div><br>
-								</div>';
-							} elseif (empty($fullname) || empty($address) || empty($phone)) {
+							$uploadOk = 1;
+							// foreach ($item_phone as $existing_phone) {
+							// 	if ($phone == $existing_phone['phone']) {
+							// 		// Số điện thoại đã tồn tại, đặt biến cờ và dừng vòng lặp
+							// 		$phoneExists = true;
+							// 		break;
+							// 	}
+							// }
+
+							// if ($phoneExists) {
+							// 	// Số điện thoại đã tồn tại, thông báo lỗi
+							// 	echo '<div class="col-md-12 form-group">
+							// 		<div class="error-message">
+							// 			<i class="fa-solid fa-circle-exclamation"></i> Số điện thoại đã được sử dụng !
+							// 		</div><br>
+							// 	</div>';
+							// 	$uploadOk = 0;
+							// }
+							 if (empty($fullname) || empty($address) || empty($phone)) {
 								echo '<div class="col-md-12 form-group">
 									<div class="error-message">
 										<i class="fa-solid fa-circle-exclamation"></i> Địa chỉ tên và số điện thoại không được trống  !
 									</div><br>
 								</div>';
+								$uploadOk = 0;
 							} elseif (!preg_match('/^0\d{8,10}$/', $phone)) {
 								echo '<div class="col-md-12 form-group">
 									<div class="error-message">
 										<i class="fa-solid fa-circle-exclamation"></i> Số điện thoại không đúng !
 									</div><br>
 								</div>';
+								$uploadOk = 0;
+							} elseif (isset($avarta)) {
+								$file_name = $_FILES["img"]["name"];
+								$file_tmp = $_FILES["img"]["tmp_name"];
+								$file_size = $_FILES["img"]["size"];
+								$allowed_formats = ['png', 'jpg'];
+								$file_extension = strtolower(pathinfo($file_name, PATHINFO_EXTENSION));
+					
+								if (!in_array($file_extension, $allowed_formats)) {
+								  echo '</br><div  class="error-message">
+							  <i class="fa-solid fa-circle-exclamation"></i> Chỉ chấp nhận định dạng PNG và JPG.
+							  </div>';
+								}
+								 else if ($file_size > 1 * 1024 * 1024) { // Kiểm tra dung lượng file (5MB)
+								  echo '</br><div  class="error-message">
+							  <i class="fa-solid fa-circle-exclamation"></i> Kích thước file ảnh không được vượt quá 5MB.
+							  </div>';
+								}
+								else {
+									$avarta_file = save_file('img', $UPLOAD_URL_USER);
+									$updata = new users();
+								$insert = $updata->update_user($fullname, $address, $phone, $email, $avarta, $user_id);}
 							} else {
 								// Số điện thoại không trùng, thực hiện các lệnh tiếp theo
-								$updata = new users();
-								$insert = $updata->update_user($fullname, $address, $phone, $email, $avarta, $user_id);
+								// $updata = new users();
+								// $insert = $updata->update_user($fullname, $address, $phone, $email, $avarta, $user_id);
+								echo 'hello';
 							}
 						}
-						
+
 
 						?>
 					</div>
