@@ -8,7 +8,7 @@ session_start();
     <!-- Mobile Specific Meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Favicon-->
-    <link rel="shortcut icon" href="./content/img/logo..png">
+    <link rel="shortcut icon" href="./content/img/logo1.png">
     <!-- Author Meta -->
     <meta name="author" content="CodePixar">
     <!-- Meta Description -->

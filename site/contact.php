@@ -1,8 +1,8 @@
 <body>
 
 	<?php
-include("./include/nav.php");
-?>
+	include("./include/nav.php");
+	?>
 	<!-- End Header Area -->
 
 	<!-- Start Banner Area -->
@@ -24,9 +24,16 @@ include("./include/nav.php");
 	<!--================Contact Area =================-->
 	<section class="contact_area section_gap_bottom">
 		<div class="container">
-			<div id="mapBox" class="mapBox" data-lat="40.701083" data-lon="-74.1522848" data-zoom="13" data-info="PO Box CT16122 Collins Street West, Victoria 8007, Australia."
-			 data-mlat="40.701083" data-mlon="-74.1522848">
+			<br>
+			<br>			
+			<div  class="ggmap">
+				<iframe
+					src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3929.420430970235!2d105.75565247481016!3d9.98208677334313!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31a08906415c355f%3A0x416815a99ebd841e!2zVHLGsOG7nW5nIENhbyDEkeG6s25nIEZQVCBQb2x5dGVjaG5pYw!5e0!3m2!1svi!2s!4v1701257413546!5m2!1svi!2s"
+					width="1200" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+					referrerpolicy="no-referrer-when-downgrade"></iframe>
 			</div>
+			<br>
+			<br>
 			<div class="row">
 				<div class="col-lg-6">
 					<div class="contact_info">
@@ -52,24 +59,30 @@ include("./include/nav.php");
 
 
 				<div class="col-lg-6">
-					<form class="row contact_form" action="site/send.php" method="post" id="contactForm" novalidate="novalidate">
+					<form class="row contact_form" action="site/send.php" method="post" id="contactForm"
+						novalidate="novalidate">
 						<div class="col-md-12">
 							<div class="form-group">
-								<input type="text" class="form-control" id="name" name="name" placeholder="Nhập tên" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'">
+								<input type="text" class="form-control" id="name" name="name" placeholder="Nhập tên"
+									onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'">
 							</div>
 							<div class="form-group">
-								<input type="email" class="form-control" id="email" name="email" placeholder="Nhập Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'">
+								<input type="email" class="form-control" id="email" name="email"
+									placeholder="Nhập Email" onfocus="this.placeholder = ''"
+									onblur="this.placeholder = 'Enter email address'">
 							</div>
 							<div class="form-group">
-								<input type="text" class="form-control" id="subject" name="subject" placeholder="Nhập Chủ đề" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Subject'">
+								<input type="text" class="form-control" id="subject" name="subject"
+									placeholder="Nhập Chủ đề" onfocus="this.placeholder = ''"
+									onblur="this.placeholder = 'Enter Subject'">
 							</div>
-							
+
 						</div>
 						<div class="col-md-6">
-						
+
 						</div>
 						<div class="col-md-12 text-right">
-							<button type="submit" value="submit" name = "send" class="primary-btn">Gửi</button>
+							<button type="submit" value="submit" name="send" class="primary-btn">Gửi</button>
 						</div>
 					</form>
 				</div>
@@ -119,4 +132,3 @@ include("./include/nav.php");
 
 
 </body>
-
