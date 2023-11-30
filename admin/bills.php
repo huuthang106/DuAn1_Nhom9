@@ -34,6 +34,7 @@
                                         <th>Trạng thái</th>
                                         <th>Hủy đơn</th>
                                         <th>Chi tiết</th>
+                                        <th>Tổng tiền</th>
 
                                     </tr>
                                 </thead>
@@ -45,6 +46,7 @@
                                         <th>Trạng thái</th>
                                         <th>Hủy đơn</th>
                                         <th>Chi tiết</th>
+                                        <th>Tổng tiền</th>
                                     </tr>
                                 </tfoot>
                                 <tbody>
@@ -71,6 +73,7 @@
                                                 <th><a href="" class="btn btn-sm btn-danger">Chưa giao</a></th>
                                                 <th><a href="' . $huy_don . '" class="btn btn-sm btn-danger">Hủy đơn</a></th>
                                                 <th><a href="' . $detai_bill . '" class="btn btn-sm btn-primary">Chi tiết</a></th>
+                                                <th>' . number_format($total) . 'VNĐ</th>
                                                 </tr>
                                                 ';
                                             } elseif ($status == 2) {
@@ -84,6 +87,7 @@
                                             <th><a href="' . $giao_don . '" class="btn btn-sm btn-danger">Chưa giao</a></th>
                                             <th><a href="' . $huy_don . '" class="btn btn-sm btn-danger">Hủy đơn</a></th>
                                             <th><a href="' . $detai_bill . '" class="btn btn-sm btn-primary">Chi tiết</a></th>
+                                            <th>' . number_format($total) . 'VNĐ</th>
                                         </tr>
                                             ';
                                             } elseif ($status == 3) {
@@ -97,6 +101,7 @@
                                             <th><a href="' . $giao_don . '" class="btn btn-sm btn-success">Đã giao</a></th>
                                             <th><a href="' . $huy_don . '" class="btn btn-sm btn-danger">Hủy đơn</a></th>
                                             <th><a href="' . $detai_bill . '" class="btn btn-sm btn-primary">Chi tiết</a></th>
+                                            <th>' . number_format($total) . 'VNĐ</th>
                                              </tr>
                                             ';
                                             } else if ($status == 4) {
@@ -110,6 +115,7 @@
                                             <th><a href="#" class="btn btn-sm btn-danger">Đã hủy</a></th>
                                             <th><a href="' . $khoi_phuc . '" class="btn btn-sm btn-danger">Khôi phục</a></th>
                                             <th><a href="#" class="btn btn-sm btn-danger">Đã Hủy</a></th>
+                                            <th>' . number_format($total) . 'VNĐ</th>
                                              </tr>
                                             ';
                                             }

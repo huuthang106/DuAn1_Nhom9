@@ -18,7 +18,7 @@ session_start();
     <!-- meta character set -->
     <meta charset="UTF-8">
     <!-- Site Title -->
-    <title>Secon hand</title>
+    <title>Second hand</title>
     <!--
 		CSS
 		============================================= -->

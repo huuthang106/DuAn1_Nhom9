@@ -179,6 +179,17 @@ class users
             return false;
         }
     }
+    public function get_email_user($user_id){
+        $db = new connect();
+        $select ="SELECT email from users WHERE user_id=?";
+        $result = $db->pdo_query_one($select,$user_id);
+        if ($result) {
+            # code...
+            return $result;
+        }else{
+            return false;
+        }
+    }
     
 }
 function user_selectall()

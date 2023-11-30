@@ -71,7 +71,7 @@
 										<input type="text" class="form-control" id="email" name="email" value="<?= $email ?>" placeholder="email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'email'">
 									</div>
 									<div class="col-md-12 form-group">
-										<input type="file" class="form-control" id="img" name="img" value="<?= $avarta ?>" placeholder="avatar" onfocus="this.placeholder = ''" onblur="this.placeholder = 'avatar'" onchange="previewImage(this);">
+										<input type="file" class="form-control" id="img" name="img" value="" placeholder="avatar" onfocus="this.placeholder = ''" onblur="this.placeholder = 'avatar'" onchange="previewImage(this);">
 									</div>
 
 									<div class="col-md-8 form-group">
@@ -126,10 +126,10 @@
 							// 	</div>';
 							// 	$uploadOk = 0;
 							// }
-							 if (empty($fullname) || empty($address) || empty($phone)) {
+							if (empty($fullname) || empty($address) || empty($phone) || empty($email)) {
 								echo '<div class="col-md-12 form-group">
 									<div class="error-message">
-										<i class="fa-solid fa-circle-exclamation"></i> Địa chỉ tên và số điện thoại không được trống  !
+										<i class="fa-solid fa-circle-exclamation"></i> Địa chỉ tên số điện thoại và emai không được trống  !
 									</div><br>
 								</div>';
 								$uploadOk = 0;
@@ -140,32 +140,31 @@
 									</div><br>
 								</div>';
 								$uploadOk = 0;
-							} elseif (isset($avarta)) {
+							} elseif ($_FILES['img']['error'] !== UPLOAD_ERR_NO_FILE) {
 								$file_name = $_FILES["img"]["name"];
 								$file_tmp = $_FILES["img"]["tmp_name"];
 								$file_size = $_FILES["img"]["size"];
 								$allowed_formats = ['png', 'jpg'];
 								$file_extension = strtolower(pathinfo($file_name, PATHINFO_EXTENSION));
-					
+
 								if (!in_array($file_extension, $allowed_formats)) {
-								  echo '</br><div  class="error-message">
+									echo '</br><div  class="error-message">
 							  <i class="fa-solid fa-circle-exclamation"></i> Chỉ chấp nhận định dạng PNG và JPG.
 							  </div>';
-								}
-								 else if ($file_size > 1 * 1024 * 1024) { // Kiểm tra dung lượng file (5MB)
-								  echo '</br><div  class="error-message">
+								} else if ($file_size > 1 * 1024 * 1024) { // Kiểm tra dung lượng file (5MB)
+									echo '</br><div  class="error-message">
 							  <i class="fa-solid fa-circle-exclamation"></i> Kích thước file ảnh không được vượt quá 5MB.
 							  </div>';
-								}
-								else {
+								} else {
 									$avarta_file = save_file('img', $UPLOAD_URL_USER);
 									$updata = new users();
-								$insert = $updata->update_user($fullname, $address, $phone, $email, $avarta, $user_id);}
+									$insert = $updata->update_user($fullname, $address, $phone, $email, $avarta, $user_id);
+								}
 							} else {
 								// Số điện thoại không trùng, thực hiện các lệnh tiếp theo
-								// $updata = new users();
-								// $insert = $updata->update_user($fullname, $address, $phone, $email, $avarta, $user_id);
-								echo 'hello';
+								$updata = new users();
+								$insert = $updata->update_user($fullname, $address, $phone, $email, $avarta, $user_id);
+								
 							}
 						}
 

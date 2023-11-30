@@ -1,20 +1,19 @@
 <?php
-    if(!isset($_SESSION['user_id'])){
-        echo '<script>window.location.href = "index.php?act=login";</script>';
-    }
+if (!isset($_SESSION['user_id'])) {
+    echo '<script>window.location.href = "index.php?act=login";</script>';
+}
 ?>
 <style>
-.avarta {
-    margin:  0 auto;
-    width: 20%;
-}
-.avarta img {
-    margin:  5%;
-}
+    .avarta {
+        margin: 0 auto;
+        width: 20%;
+    }
 
-
-
+    .avarta img {
+        margin: 5%;
+    }
 </style>
+
 <body>
     <!-- Start Header Area -->
     <?php
@@ -74,7 +73,7 @@
                                 </a>
                             </li>
                             <li class="main-nav-list">
-                            <a href="index.php?act=change_pasword_user&id='.$user_id.'">
+                            <a href="index.php?act=change_pasword_user&id=' . $user_id . '">
                             <button class="btn btn-primary btn-block confirm-button">Đổi mật khẩu</button></a>
                         </li>
                             <li class="main-nav-list">
@@ -101,7 +100,7 @@
             <div class="col-lg-18">
                 <div class="card mb-4">
                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0 font-weight-bold text-primary">DataTables</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">Đơn hàng</h6>
                     </div>
                     <div class="table-responsive p-3">
                         <table class="table align-items-center table-flush" id="dataTable">
@@ -110,6 +109,7 @@
                                     <th>Mã đơn </th>
                                     <th>Chi tiết</th>
                                     <th>Trạng thái</th>
+                                    <th>Tổng tiền</th>
 
                                 </tr>
                             </thead>
@@ -118,6 +118,7 @@
                                     <th>Mã đơn </th>
                                     <th>Chi tiết</th>
                                     <th>Trạng thái</th>
+                                    <th>Tổng tiền</th>
                                 </tr>
                             </tfoot>
                             <tbody>
@@ -130,43 +131,44 @@
                                     foreach ($select as $key) {
                                         // Xử lý dữ liệu ở đây
                                         extract($key);
-                                       
-                                        $bill_detail = 'index.php?act=bill_detail_user&bill_id='.$bill_id;
+
+                                        $bill_detail = 'index.php?act=bill_detail_user&bill_id=' . $bill_id;
                                         echo '
                                         <tr>
                                         <td>' . $bill_id . '</td>
-                                        <td><a href="'.$bill_detail.'">
-                                        <button class="btn btn-primary">Xem</button></a></td>
+                                        
+                                        <td><a href="' . $bill_detail . '">  <button class="btn btn-primary">Xem</button></a></td>
+                                        
 
                                         ';
                                         if ($status == 1) {
                                             # code...
                                             echo '
                                             <td> Chưa duyệt </td>
-                                             </tr>
+                                          
                                     ';
                                         } elseif ($status == 2) {
                                             echo '
                                             <td> Đã duyệt </td>
-                                             </tr>
+                                            
                                              
                                     ';
-                                        }
-                                        elseif ($status == 3) {
+                                        } elseif ($status == 3) {
                                             echo '
                                             <td> Đã dao </td>
-                                             </tr>
+                                          
                                              
                                     ';
-                                        }
-                                        elseif ($status == 4) {
+                                        } elseif ($status == 4) {
                                             echo '
                                             <td> Đã hủy </td>
-                                             </tr>
+                                          
                                              
                                     ';
                                         }
-                                        
+                                        echo '
+                                     <td>' . number_format($total) . ' VNĐ</td>
+                                     </tr>';
                                     }
                                 }
 

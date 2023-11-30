@@ -92,6 +92,9 @@
 
                         $user_id = $_SESSION['user_id'];
 
+                        use PHPMailer\PHPMailer\PHPMailer;
+                        use PHPMailer\PHPMailer\Exception;
+
                         if (isset($_POST['submit'])) {
                             if (empty($_POST['fullname']) || empty($_POST['phone']) || empty($_POST['email']) || empty($_POST['address'])) {
                                 echo '
@@ -155,6 +158,38 @@
                                                 $update_total_bill = new bills();
                                                 $update_total_bill->update_total_bill($bill_id, $total_sale);
                                                 $dell_cart = new carts();
+                                                require 'phpmailer/src/Exception.php';
+                                                require 'phpmailer/src/PHPMailer.php';
+                                                require 'phpmailer/src/SMTP.php';
+
+
+                                                $email = $_POST['email'];
+                                                $mail = new PHPMailer(true);
+
+                                                try {
+                                                    $mail->isSMTP();
+                                                    $mail->Host       = 'smtp.gmail.com';
+                                                    $mail->SMTPAuth   = true;
+                                                    $mail->Username   = 'khuonghapc06329@fpt.edu.vn';
+                                                    $mail->Password   = 'rspctxfwuaypoyuk';
+
+                                                    $mail->Port       = 587;
+
+
+                                                    // Thiết lập thông tin người gửi và người nhận
+                                                    $mail->setFrom('khuonghapc06329@fpt.edu.vn', 'Second Hand');
+                                                    $mail->addAddress($email);
+
+                                                    // Thiết lập nội dung email
+                                                    $mail->isHTML(true);
+                                                    $mail->Subject = 'Second hand ';
+                                                    $mail->Body = 'Đơn hàng của bạn đã được đặt thành công mã đơn hàng: ' . $bill_id . '. Theo dõi đơn hàng của bạn tại đây: http://duan1/index.php?act=tracking';
+
+                                                    // Gửi email
+                                                    $mail->send();
+                                                } catch (Exception $e) {
+                                                    echo "Không thể gửi mail. Mailer Error: {$mail->ErrorInfo}";
+                                                }
                                                 // // sau khi thêm thành công sẽ xóa cart
                                                 $dell = $dell_cart->dell_cart_user_id($user_id);
                                             } else {
@@ -163,6 +198,38 @@
                                                 $update_total_bill->update_total_bill($bill_id, $total_price);
                                                 $dell_cart = new carts();
                                                 // // sau khi thêm thành công sẽ xóa cart
+                                                require 'phpmailer/src/Exception.php';
+                                                require 'phpmailer/src/PHPMailer.php';
+                                                require 'phpmailer/src/SMTP.php';
+
+
+                                                $email = $_POST['email'];
+                                                $mail = new PHPMailer(true);
+
+                                                try {
+                                                    $mail->isSMTP();
+                                                    $mail->Host       = 'smtp.gmail.com';
+                                                    $mail->SMTPAuth   = true;
+                                                    $mail->Username   = 'khuonghapc06329@fpt.edu.vn';
+                                                    $mail->Password   = 'rspctxfwuaypoyuk';
+
+                                                    $mail->Port       = 587;
+
+
+                                                    // Thiết lập thông tin người gửi và người nhận
+                                                    $mail->setFrom('khuonghapc06329@fpt.edu.vn', 'Second Hand');
+                                                    $mail->addAddress($email);
+
+                                                    // Thiết lập nội dung email
+                                                    $mail->isHTML(true);
+                                                    $mail->Subject = 'Second hand ';
+                                                    $mail->Body = 'Đơn hàng của bạn đã được đặt thành công mã đơn hàng: ' . $bill_id . '. Theo dõi đơn hàng của bạn tại đây: http://duan1/index.php?act=tracking';
+
+                                                    // Gửi email
+                                                    $mail->send();
+                                                } catch (Exception $e) {
+                                                    echo "Không thể gửi mail. Mailer Error: {$mail->ErrorInfo}";
+                                                }
                                                 $dell = $dell_cart->dell_cart_user_id($user_id);
                                             }
                                         }
@@ -190,7 +257,7 @@
                                                 $sale = new vochers();
                                                 $item_sale = $sale->get_sale_vocher($vocher_id);
                                                 // Chuyển đổi chuỗi thành số
-                                               
+
                                                 $item_sale_amount = (float) $item_sale[0]['sale'];
 
                                                 // Kiểm tra giá trị
@@ -206,12 +273,77 @@
                                                 // bắt dầu thêm dữ liệu vào chi tiết đơn 
                                                 // bắt dầu thêm dữ liệu vào chi tiết đơn 
                                                 $insert_bill_details->insert_bill_details($bill_id, $selector, $price, $day, $quantity, $product_id, $total_sale, $_POST['address'], $_POST['phone'], $_POST['note'], $_POST['fullname'], $vocher_id);
+                                                require 'phpmailer/src/Exception.php';
+                                                require 'phpmailer/src/PHPMailer.php';
+                                                require 'phpmailer/src/SMTP.php';
+
+
+                                                $email = $_POST['email'];
+                                                $mail = new PHPMailer(true);
+
+                                                try {
+                                                    $mail->isSMTP();
+                                                    $mail->Host       = 'smtp.gmail.com';
+                                                    $mail->SMTPAuth   = true;
+                                                    $mail->Username   = 'khuonghapc06329@fpt.edu.vn';
+                                                    $mail->Password   = 'rspctxfwuaypoyuk';
+
+                                                    $mail->Port       = 587;
+
+
+                                                    // Thiết lập thông tin người gửi và người nhận
+                                                    $mail->setFrom('khuonghapc06329@fpt.edu.vn', 'Second Hand');
+                                                    $mail->addAddress($email);
+
+                                                    // Thiết lập nội dung email
+                                                    $mail->isHTML(true);
+                                                    $mail->Subject = 'Second hand ';
+                                                    $mail->Body = 'Đơn hàng của bạn đã được đặt thành công mã đơn hàng: ' . $bill_id . '. Theo dõi đơn hàng của bạn tại đây: http://duan1/index.php?act=tracking';
+
+                                                    // Gửi email
+                                                    $mail->send();
+                                                } catch (Exception $e) {
+                                                    echo "Không thể gửi mail. Mailer Error: {$mail->ErrorInfo}";
+                                                }
                                                 // //sau khi chon thanh toán thẻ thì chuyển trang
                                                 // $dell_cart = new carts();
                                                 // // sau khi thêm thành công sẽ xóa cart
                                                 // $dell = $dell_cart->dell_cart_user_id($user_id);
                                             } else {
+
                                                 $insert_bill_details->insert_bill_details_no_vocher($bill_id, $selector, $price, $day, $quantity, $product_id, $total_price, $_POST['address'], $_POST['phone'], $_POST['note'], $_POST['fullname'], $vocher_id);
+                                                require 'phpmailer/src/Exception.php';
+                                                require 'phpmailer/src/PHPMailer.php';
+                                                require 'phpmailer/src/SMTP.php';
+
+
+                                                $email = $_POST['email'];
+                                                $mail = new PHPMailer(true);
+
+                                                try {
+                                                    $mail->isSMTP();
+                                                    $mail->Host       = 'smtp.gmail.com';
+                                                    $mail->SMTPAuth   = true;
+                                                    $mail->Username   = 'khuonghapc06329@fpt.edu.vn';
+                                                    $mail->Password   = 'rspctxfwuaypoyuk';
+
+                                                    $mail->Port       = 587;
+
+
+                                                    // Thiết lập thông tin người gửi và người nhận
+                                                    $mail->setFrom('khuonghapc06329@fpt.edu.vn', 'Second Hand');
+                                                    $mail->addAddress($email);
+
+                                                    // Thiết lập nội dung email
+                                                    $mail->isHTML(true);
+                                                    $mail->Subject = 'Second hand ';
+                                                    $mail->Body = 'Đơn hàng của bạn đã được đặt thành công mã đơn hàng: ' . $bill_id . '. Theo dõi đơn hàng của bạn tại đây: http://duan1/index.php?act=tracking';
+
+                                                    // Gửi email
+                                                    $mail->send();
+                                                } catch (Exception $e) {
+                                                    echo "Không thể gửi mail. Mailer Error: {$mail->ErrorInfo}";
+                                                }
                                                 // $dell_cart = new carts();
                                                 // // // sau khi thêm thành công sẽ xóa cart
                                                 // $dell = $dell_cart->dell_cart_user_id($user_id);
