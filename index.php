@@ -336,6 +336,46 @@ session_start();
         document.getElementById('starInput').value = selectedValue;
     }
 </script>
+<script>
+// Kiểm tra trạng thái lưu trong Local Storage khi trang tải lại
+window.onload = function() {
+    var selectedCarts = JSON.parse(localStorage.getItem('selectedCarts')) || [];
+    selectedCarts.forEach(function(cartId) {
+        var checkbox = document.querySelector('input[value="' + cartId + '"]');
+        if (checkbox) {
+            checkbox.checked = true;
+        }
+    });
+};
+
+// Xử lý sự kiện khi checkbox thay đổi
+document.addEventListener('change', function(event) {
+    if (event.target.type === 'checkbox' && event.target.name === 'selected_carts[]') {
+        var cartId = event.target.value;
+        var selectedCarts = JSON.parse(localStorage.getItem('selectedCarts')) || [];
+
+        if (event.target.checked) {
+            // Thêm cartId vào mảng nếu checkbox được chọn
+            if (!selectedCarts.includes(cartId)) {
+                selectedCarts.push(cartId);
+            }
+        } else {
+            // Xóa cartId khỏi mảng nếu checkbox bị bỏ chọn
+            selectedCarts = selectedCarts.filter(function(id) {
+                return id !== cartId;
+            });
+        }
+
+        // Lưu trạng thái vào Local Storage
+        localStorage.setItem('selectedCarts', JSON.stringify(selectedCarts));
+    }
+});
+function updateStatus(checkbox) {
+        var statusInput = document.querySelector('input[name="status_' + checkbox.value + '"]');
+        statusInput.value = checkbox.checked ? '2' : '1';
+    }
+
+</script>
 
 
 </html>

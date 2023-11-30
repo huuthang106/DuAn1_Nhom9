@@ -6,6 +6,8 @@ class carts
     var $quantity = null;
     var $status = null;
     var $product_id = null;
+    var $size = null;
+    var $color = null;
     public function cart_user_id($user_id)
     {
         $db = new connect();
@@ -126,16 +128,29 @@ class carts
             return false;
         }
     }
+    public function update_cart($cart_id,$quantity,$status,$size,$color,$user_id){
+        $db = new connect();
+        $select =" UPDATE carts SET quantity=?, status =?, size =?, color=? WHERE cart_id = ? and user_id=?  ";
+        $result = $db->pdo_execute($select,$quantity,$status,$size,$color,$cart_id,$user_id);
+        if($result){
+            echo '<script>window.location.href = "index.php?act=cart";</script>';
+            return $result;
+        }else{
+            return false;
+        }
+
+    }
 }
-function carts_insert($product_id, $user_id, $quantity, $status) {
-    $sql = "insert into carts(product_id, user_id, quantity, status) values (?, ?, ?, ?)";
-    pdo_execute($sql, $product_id, $user_id, $quantity, $status);
+function carts_insert($product_id, $user_id, $quantity) {
+    $sql = "insert into carts(product_id, user_id, quantity) values (?, ?, ?)";
+    pdo_execute($sql, $product_id, $user_id, $quantity);
+    return $sql;
 }
 
-function carts_selectall()
+function carts_selectall($user_id)
 {
-    $sql =  "select * from carts order by cart_id DESC";
-    return pdo_query($sql);
+    $sql =  "select * from carts WHERE user_id=? order by cart_id DESC";
+    return pdo_query($sql,$user_id);
 }
 function cart_delete($cart_id){
     $sql = "delete from carts where cart_id = '".$cart_id."'";
@@ -151,8 +166,9 @@ function carts_update_quantity($cart_id, $quantity) {
     $sql = "update carts set quantity = ? where cart_id = ?";
     pdo_execute($sql, $quantity, $cart_id);
 }
-function carts_insert_into($product_id,$user_id,$status){
-    $sql = "insert into carts(product_id, user_id, status) values (?, ?, ?)";
-    pdo_execute($sql, $product_id, $user_id, $status);
+function carts_insert_into($product_id,$user_id){
+    $sql = "insert into carts(product_id, user_id) values (?, ?)";
+    pdo_execute($sql, $product_id, $user_id);
+    return $sql;
 }
 ?>

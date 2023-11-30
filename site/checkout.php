@@ -71,7 +71,7 @@
                         
                         <div class="col-md-12 form-group">
                         <select class="form-control" id="vochers" name="vochers">
-                        <option value="">Mã giảm giá</option>';
+                        <option value="0">Mã giảm giá</option>';
                             $vocher = new vochers();
                             $item_vocher = $vocher->get_vochers();
                             if ($item_vocher) {
@@ -152,11 +152,15 @@
                                                 $total_sale = $total_price - $item_sale_amount;
                                                 // bắt dầu thêm dữ liệu vào chi tiết đơn 
                                                 $insert_bill_details->insert_bill_details($bill_id, $selector, $price, $day, $quantity, $product_id, $total_sale, $_POST['address'], $_POST['phone'], $_POST['note'], $_POST['fullname'], $vocher_id);
+                                                $update_total_bill = new bills();
+                                                $update_total_bill->update_total_bill($bill_id, $total_sale);
                                                 $dell_cart = new carts();
                                                 // // sau khi thêm thành công sẽ xóa cart
                                                 $dell = $dell_cart->dell_cart_user_id($user_id);
                                             } else {
-                                                $insert_bill_details->insert_bill_details($bill_id, $selector, $price, $day, $quantity, $product_id, $total_price, $_POST['address'], $_POST['phone'], $_POST['note'], $_POST['fullname'], $vocher_id);
+                                                $insert_bill_details->insert_bill_details($bill_id, $selector, $price, $day, $quantity, $product_id, $total_price, $_POST['address'], $_POST['phone'], $_POST['note'], $_POST['fullname'], null);
+                                                $update_total_bill = new bills();
+                                                $update_total_bill->update_total_bill($bill_id, $total_price);
                                                 $dell_cart = new carts();
                                                 // // sau khi thêm thành công sẽ xóa cart
                                                 $dell = $dell_cart->dell_cart_user_id($user_id);
@@ -181,11 +185,12 @@
                                         $bill_id = $newbill->new_bill($user_id);
                                         foreach ($cart_items as $key) {
                                             extract($key);
+                                            $total_price = (float) $total_price;
                                             if ($vocher_id > 0) {
                                                 $sale = new vochers();
                                                 $item_sale = $sale->get_sale_vocher($vocher_id);
                                                 // Chuyển đổi chuỗi thành số
-                                                $total_price = (float) $total_price;
+                                               
                                                 $item_sale_amount = (float) $item_sale[0]['sale'];
 
                                                 // Kiểm tra giá trị
@@ -206,7 +211,7 @@
                                                 // // sau khi thêm thành công sẽ xóa cart
                                                 // $dell = $dell_cart->dell_cart_user_id($user_id);
                                             } else {
-                                                $insert_bill_details->insert_bill_details($bill_id, $selector, $price, $day, $quantity, $product_id, $total_price, $_POST['address'], $_POST['phone'], $_POST['note'], $_POST['fullname'], $vocher_id);
+                                                $insert_bill_details->insert_bill_details_no_vocher($bill_id, $selector, $price, $day, $quantity, $product_id, $total_price, $_POST['address'], $_POST['phone'], $_POST['note'], $_POST['fullname'], $vocher_id);
                                                 // $dell_cart = new carts();
                                                 // // // sau khi thêm thành công sẽ xóa cart
                                                 // $dell = $dell_cart->dell_cart_user_id($user_id);
@@ -241,7 +246,7 @@
 
                                         extract($key);
                                         echo '
-                                        <li><a href="#">' . $short_product_name . ' <span class="middle">x ' . $quantity . '</span> <span class="last">' . $total_price . '</span></a></li>
+                                        <li><a href="#">' . $short_product_name . ' <span class="middle">x ' . $quantity . '</span> <span class="last">' . number_format($total_price) . 'VNĐ</span></a></li>
                                         ';
                                     }
                                 } else {
@@ -264,13 +269,13 @@
 
                                                                         extract($key);
 
-                                                                        echo '' . $total_price_all_products . '';
+                                                                        echo '' . number_format($total_price_all_products) . 'VNĐ';
                                                                     }
                                                                 } else {
                                                                     echo 'Không có sản phẩm';
                                                                 }
                                                                 ?></span></a></li>
-                                <li><a href="#">Giao hàng <span> 20000 VNĐ</span></a></li>
+                                <li><a href="#">Giao hàng <span> 20,000 VNĐ</span></a></li>
                                 <li><a href="#">tổng <span>
                                             <?php
                                             $sum_total_price = new carts();
@@ -280,7 +285,7 @@
                                                 foreach ($item_sum_total_price as $key) {
                                                     extract($key);
 
-                                                    echo '' . $total_price_all_products . '';
+                                                    echo '' . number_format($total_price_all_products) . 'VNĐ';
                                                 }
                                             } else {
                                                 echo ' Không có sản phẩm ';

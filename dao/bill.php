@@ -3,6 +3,7 @@
         var $bill_id = null;
         var $user_id = null;
         var $status = null;
+        var $total = null;
         public function get_bill_user_id($user_id){
             $db = new connect();
             $select = 'SELECT * FROM bills where user_id =?
@@ -92,16 +93,25 @@
         }
         public function new_bill($user_id){
             $db = new connect();
-            $select = "SELECT bill_id FROM bills WHERE user_id = ?
-            ORDER BY bill_id DESC LIMIT 1";
-            $result = $db->pdo_query_one($select,$user_id);
-            if ($result ) {
-                return  $result['bill_id'];
-            
-            }else { 
+            $select = "SELECT bill_id FROM bills WHERE user_id = ? ORDER BY bill_id DESC LIMIT 1";
+            $result = $db->pdo_query_one($select, $user_id); // Sử dụng pdo_query_one để trả về một bản ghi duy nhất
+            if ($result) {
+                return $result['bill_id'];
+            } else { 
                 return false;
             }
         }
+        public function get_total_bill($bill_id){
+            $db = new connect();
+            $select = "SELECT total FROM bills WHERE bill_id = ?";
+            $result = $db->pdo_query_one($select, $bill_id); // Sử dụng pdo_query_one để trả về một bản ghi duy nhất
+            if ($result) {
+                return $result;
+            } else { 
+                return false;
+            }
+        }
+        
 
         public function approve_the_transfer_application($bill_id ){
             $db = new connect();
@@ -111,6 +121,16 @@
                 // echo '<script>window.location.href = "index.php?act=user";</script>';
                 return $result;
             }else {
+                return false;
+            }
+        }
+        public function update_total_bill($bill_id,$total){
+            $db = new connect();
+            $select =" UPDATE bills set total =? where bill_id=?";
+            $result = $db->pdo_execute($select,$total,$bill_id);
+            if($result){
+                return $result;
+            }else{
                 return false;
             }
         }

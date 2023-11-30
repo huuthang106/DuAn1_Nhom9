@@ -39,16 +39,17 @@ function thanh_toan()
     $vnp_TxnRef = $item_bill; //Mã đơn hàng. Trong thực tế Merchant cần insert đơn hàng vào DB và gửi mã này sang VNPAY
     $vnp_OrderInfo = '2';
     $vnp_OrderType = 'billpayment';
-    $newbill = new bills();
-    $bill_id = $newbill->new_bill($_SESSION['user_id']);
-    $total = new bill_details();
-    $item_sale =  $total->get_new_bill_detai($bill_id);  
+   
+ 
+    
    
 
     // $format = number_format($key, 3, ',', '');
     // var_dump($key);
+    $get_total_bill = new bills();
+    $key= $get_total_bill->get_total_bill($item_bill);
 
-    $vnp_Amount = $item_sale[0]['total'] * 1000;
+    $vnp_Amount = $key['total'] * 100;
 
     $vnp_Locale = 'vn';
     $vnp_BankCode = 'NCB';
