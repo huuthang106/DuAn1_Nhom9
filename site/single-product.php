@@ -11,6 +11,12 @@
 		background-color: #0000;
 		border: none;
 	}
+	.review_item .media .d-flex{
+		width: 10%;
+	}
+	.avarta_user{
+		width: 100%;
+	}
 </style>
 
 <body>
@@ -237,7 +243,7 @@
 										  <div class="review_item">
 											  <div class="media">
 												  <div class="d-flex">
-													  <img src="./content/img/product/' . $avarta . '" alt="">
+													  <img class="avarta_user" src="./content/img/product/' . $avarta . '" alt="">
 												  </div>
 												  <div class="media-body">
 													  <h4 comment-id=' . $comment_id . ' user-id=' . $user_id . '>' . $fullname . '</h4>
@@ -269,7 +275,7 @@
 													<div class="review_item reply">
 														<div class="media">
 															<div class="d-flex">
-																<img src="./content/img/product/' . $avarta . '" alt="">
+																<img class="avarta_user" src="./content/img/product/' . $avarta . '" alt="">
 															</div>
 															<div class="media-body">
 																<h4 reply-id=' . $reply_id . ' user-id=' . $user_id . '>' . $fullname . '</h4>
@@ -411,20 +417,65 @@
 									<div class="col-6">
 										<div class="box_total">
 											<h5>Đánh giá</h5>
-											<h4>4.0</h4>
-											<h6>(03 đánh giá)</h6>
+											<h4>
+											<?php
+												$avg = new Evaluates();
+												$item_avg= $avg->medium($_GET['product_id']);
+												if ($item_avg && isset($item_avg['average_star'])) {
+													echo $item_avg['average_star'];
+												} else {
+													echo '0';
+													
+											
+													
+												}
+
+											?>
+											</h4>
+											<h6></h6>
 										</div>
 									</div>
 									<div class="col-6">
 										<div class="rating_list">
-											<h3>Dựa trên 3 đánh giá</h3>
-											<ul class="list">
-												<li><a href="#">5 Sao <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
-												<li><a href="#">4 Sao <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
-												<li><a href="#">3 Sao <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
-												<li><a href="#">2 Sao <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
-												<li><a href="#">1 Sao <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> 01</a></li>
-											</ul>
+											<h3>Đánh giá</h3>
+											<?php
+												$count_star = new Evaluates();
+												$star_counts = $count_star->count_star($_GET['product_id']);
+												if ($star_counts) {
+													echo '<ul class="list">';
+													
+													// Mảng để lưu số lượng đánh giá cho mỗi số sao
+													$star_count_array = array();
+													
+													// Lặp qua kết quả và lưu vào mảng
+													foreach ($star_counts as $row) {
+														$star = $row['star'];
+														$count = $row['star_count'];
+														$star_count_array[$star] = $count;
+													}
+												
+													// Hiển thị thông tin theo số lượng đánh giá
+													for ($i = 5; $i >= 1; $i--) {
+														$count = isset($star_count_array[$i]) ? $star_count_array[$i] : 0;
+														echo '<li><a href="#">' . $count . '  ';
+														for ($j = 0; $j < $i; $j++) {
+															echo '<i class="fa fa-star"></i>';
+														}
+														echo ' </a></li>';
+													}
+												
+													echo '</ul>';
+												} else {
+													echo 'Không có đánh giá';
+												}
+											?>
+											<!-- <ul class="list">
+												<li><a href="#"> 1<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> </a></li>
+												<li><a href="#"> 1<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> </a></li>
+												<li><a href="#"> 1<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> </a></li>
+												<li><a href="#"> 1<i class="fa fa-star"></i><i class="fa fa-star"></i> </a></li>
+												<li><a href="#"> 1<i class="fa fa-star"></i> 01</a></li>
+											</ul> -->
 										</div>
 									</div>
 								</div>
@@ -441,7 +492,7 @@
 										<div class="review_item">
 										<div class="media">
 											<div class="d-flex">
-												<img src="./content/img/product/' . $avarta . '" alt="">
+												<img class="avarta_user" src="./content/img/product/' . $avarta . '" alt="">
 											</div>						
 										';
 											echo '
@@ -511,16 +562,39 @@
 								<form class="row contact_form" action="index.php?act=single-product&product_id=' . $_GET['product_id'] . '" method="post" id="contactForm" novalidate="novalidate">';
 
 									?>
+									<?php
+										$check = new bill_details();
+										$start=$check->check_user_buy_prodcut($_SESSION['user_id']);
+										if($start){
+											echo '
 											<input type="hidden" name="star" id="starInput" value="">
 											<div class="col-md-12">
 												<div class="form-group">
-													<textarea class="form-control" name="content" id="message" rows="1" placeholder="Đánh giá" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Đánh giá'"></textarea></textarea>
+													<textarea class="form-control" name="content" id="message" rows="1" placeholder="Đánh giá" ></textarea></textarea>
 												</div>
 											</div>
 											<div class="col-md-12 text-right">
 												<button type="submit" value="submit" name="submit_evaluates" class="primary-btn">Gửi
 													ngay</button>
 											</div>
+											';
+										}
+										else {
+											
+											echo '
+											<input type="hidden" name="star" id="starInput" value="">
+											<div class="col-md-12">
+												<div class="form-group">
+													<textarea class="form-control" name="content" id="message" rows="1" placeholder="Bạn chưa mua loại hàng này nên không thể gửi đánh giá" ></textarea></textarea>
+												</div>
+											</div>
+											<div class="col-md-12 text-right">
+												
+											</div>
+											';
+										}
+									?>
+											
 											</form>
 
 									<?php

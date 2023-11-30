@@ -41,6 +41,31 @@
             return false;
         }
     }
+    public function count_star($product_id){
+        $db = new connect();
+        $select = "SELECT star, COUNT(*) as star_count FROM evaluates WHERE product_id = ? GROUP BY star";
+        $result = $db->pdo_query($select, $product_id);
+        
+        if ($result) {
+            return $result;
+        } else { 
+            return false;
+        }
+    }
+    public function medium($product_id) {
+        $db = new connect();
+    
+        $select = "SELECT AVG(star) as average_star FROM evaluates WHERE product_id = ?";
+        $result = $db->pdo_query_one($select, $product_id);  // Sử dụng pdo_query_one để chỉ lấy một bản ghi duy nhất
+    
+        if ($result && isset($result['average_star'])) {
+            return ['average_star' => $result['average_star']];
+        } else {
+            return ['average_star' => 0]; // hoặc giá trị mặc định nếu không có đánh giá
+        }
+    }
+    
+    
     
  }
 

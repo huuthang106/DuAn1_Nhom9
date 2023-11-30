@@ -50,17 +50,19 @@
                                 <tbody>
                                     <?php
                                     $get_bill = new bills();
-                                    foreach ($get_bill->get_bills() as $key) {
-                                        extract($key);
-                                        $khoi_phuc = 'index.php?act=bills&bill_id=' . $bill_id . '&status=1';
-                                        $duyet_don = 'index.php?act=bills&bill_id=' . $bill_id . '&status=2';
-                                        $giao_don = 'index.php?act=bills&bill_id=' . $bill_id . '&status=3';
-                                        $huy_don = 'index.php?act=bills&bill_id=' . $bill_id . '&status=4';
-                                        $detai_bill = 'index.php?act=bill_detail&bill_id=' . $bill_id;
+                                    $item_bill = $get_bill->get_bills();
+                                    if ($item_bill) {
+                                        foreach ($item_bill as $key) {
+                                            extract($key);
+                                            $khoi_phuc = 'index.php?act=bills&bill_id=' . $bill_id . '&status=1';
+                                            $duyet_don = 'index.php?act=bills&bill_id=' . $bill_id . '&status=2';
+                                            $giao_don = 'index.php?act=bills&bill_id=' . $bill_id . '&status=3';
+                                            $huy_don = 'index.php?act=bills&bill_id=' . $bill_id . '&status=4';
+                                            $detai_bill = 'index.php?act=bill_detail&bill_id=' . $bill_id;
 
-                                        if ($status == 1) {
-                                            # code...
-                                            echo '
+                                            if ($status == 1) {
+                                                # code...
+                                                echo '
                                                 <tr>
                                                 <th>' . $bill_id . '</th>
                                                 <th>' . $customer_name . '</th>
@@ -71,8 +73,8 @@
                                                 <th><a href="' . $detai_bill . '" class="btn btn-sm btn-primary">Chi tiết</a></th>
                                                 </tr>
                                                 ';
-                                        } elseif ($status == 2) {
-                                            echo '
+                                            } elseif ($status == 2) {
+                                                echo '
                                           
                                             <tr>
                                             <th>' . $bill_id . '</th>
@@ -84,8 +86,8 @@
                                             <th><a href="' . $detai_bill . '" class="btn btn-sm btn-primary">Chi tiết</a></th>
                                         </tr>
                                             ';
-                                        } elseif ($status == 3) {
-                                            echo '
+                                            } elseif ($status == 3) {
+                                                echo '
                                          
                                             <tr>
                                                 <th>' . $bill_id . '</th>
@@ -97,8 +99,8 @@
                                             <th><a href="' . $detai_bill . '" class="btn btn-sm btn-primary">Chi tiết</a></th>
                                              </tr>
                                             ';
-                                        } else if ($status == 4) {
-                                            echo '
+                                            } else if ($status == 4) {
+                                                echo '
                                            
                                             <tr>
                                                 <th>' . $bill_id . '</th>
@@ -110,17 +112,17 @@
                                             <th><a href="#" class="btn btn-sm btn-danger">Đã Hủy</a></th>
                                              </tr>
                                             ';
+                                            }
                                         }
-                                    } 
-                                    if (isset($_GET['bill_id'])&& isset($_GET['status'])) {
+                                    }
+                                    if (isset($_GET['bill_id']) && isset($_GET['status'])) {
                                         # code...
-                                       
+
                                         $status = new bills();
-                                        $status->update_status_bill($_GET['bill_id'],$_GET['status']);
-                                        
+                                        $status->update_status_bill($_GET['bill_id'], $_GET['status']);
+
                                         exit;
-              
-                                      }?>
+                                    } ?>
 
 
 
