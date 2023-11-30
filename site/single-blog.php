@@ -1,4 +1,9 @@
 <body>
+    <style>
+    .avartar {
+        width: 10%;
+    }
+    </style>
     <?php
     include("./include/nav.php");
     ?>
@@ -30,9 +35,15 @@
             <div class="row">
                 <div class="col-lg-8 posts-list">
                     <?php
+                         $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
+                         $postsPerPage = 5;
+                         $blog = blogs_selectall($currentPage, $postsPerPage);
+                         $count = 0;
+                         
                             $blog = blogs_detail_selectalls($_GET['blog_id']);
                             foreach ($blog as $blogs) {
                                 extract($blogs);
+                                $comment = comments_selectall($blog_id);
                                 $next = ($blog_id + 1);
                                 $after =  ($blog_id - 1);
                                 $more_link = "index.php?act=single-blog&blog_id=".$blog_id;
@@ -53,7 +64,7 @@
                                             <li><a href="#">'.$day.'<i class="lnr lnr-calendar-full"></i></a>
                                             </li>
                                             <li><a href="#">'.$views_count.' lượt xem<i class="lnr lnr-eye"></i></a></li>
-                                            <li><a href="#">06 Bình Luận<i class="lnr lnr-bubble"></i></a></li>
+                                            <li><a href="#">' . count($comment) . ' Bình Luận<i class="lnr lnr-bubble"></i></a></li>
                                         </ul>
                                         <ul class="social-links">
                                             <li><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -156,7 +167,9 @@
                                 </div>
                                 ';
                                 }
+                                $count++;
                             }
+                            
                         ?>
 
 
@@ -174,9 +187,9 @@
                                     echo '
                                     <div class="comment-list">
                                         <div class="single-comment justify-content-between d-flex">
-                                            <div class="user justify-content-between d-flex">
-                                                <div class="thumb">
-                                                    <img src="img/blog/c5.jpg" alt="">
+                                            <div class="user d-flex">
+                                                <div style="width: 9%" class="thumb">
+                                                    <img style="width:100%" src="../admin/img/'.$user['avarta'].'" alt="">
                                                 </div>
                                                 <div class="desc">
                                                     <h5><a href="#">'.$user['fullname'].'</a></h5>
@@ -185,9 +198,6 @@
                                                         '.$text.'
                                                     </p>
                                                 </div>
-                                            </div>
-                                            <div class="reply-btn">
-                                                <a href="" class="btn-reply text-uppercase">hồi đáp</a>
                                             </div>
                                         </div>
                                     </div>

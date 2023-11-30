@@ -88,40 +88,44 @@ ob_start();
                         $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
                         $postsPerPage = 5;
                         $blog = blogs_selectall($currentPage, $postsPerPage);
+                        $count = 0;
+
                         foreach ($blog as $blogs) {
                             extract($blogs);
                             $more_link = "index.php?act=single-blog&blog_id=" . $blog_id;
+                            $comment = comments_selectall($blog_id);
                             $excerpt = substr($content, 0, 400);
+
                             echo '                     
                                 <article class="row blog_item">
-                                <div class="col-md-3">
-                                    <div class="blog_info text-right">
-                                       
-                                        <ul class="blog_meta list">
-                                          
-                                            <li><a href="#">' . $day . '<i
-                                                        class="lnr lnr-calendar-full"></i></a></li>
-                                            <li><a href="#">' . $views_count . ' Lượt xem<i class="lnr lnr-eye"></i></a></li>
-                                            <li><a href="#">06 bình luận<i class="lnr lnr-bubble"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col-md-9">
-                                    <div class="blog_post">
-                                        <img src="img/blog/main-blog/m-blog-1.jpg" alt="">
-                                        <div class="blog_details">
-                                            <a href="' . $more_link . '">
-                                                <h2>' . $title . '</h2>
-                                            </a>
-                                            <p>' . $excerpt . '</p>
-                                            <a href="' . $more_link . '" class="white_bg_btn">Xem thêm</a>
+                                    <div class="col-md-3">
+                                        <div class="blog_info text-right">
+                                            <ul class="blog_meta list">
+                                                <li><a href="#">' . $day . '<i class="lnr lnr-calendar-full"></i></a></li>
+                                                <li><a href="#">' . $views_count . ' Lượt xem<i class="lnr lnr-eye"></i></a></li>
+                                                <li><a href="#">' . count($comment) . ' bình luận<i class="lnr lnr-bubble"></i></a></li>
+                                            </ul>
                                         </div>
                                     </div>
-                                </div>
-                            </article>
-                                ';
+                                    <div class="col-md-9">
+                                        <div class="blog_post">
+                                            <img src="img/blog/main-blog/m-blog-1.jpg" alt="">
+                                            <div class="blog_details">
+                                                <a href="' . $more_link . '">
+                                                    <h2>' . $title . '</h2>
+                                                </a>
+                                                <p>' . $excerpt . '...</p>
+                                                <a href="' . $more_link . '" class="white_bg_btn">Xem thêm</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </article>';
+
+                            $count++;
                         }
+
                         ?>
+
 
                         <?php
                         // Sử dụng hàm và hiển thị kết quả
@@ -138,7 +142,7 @@ ob_start();
                         echo '</ul></nav>';
 
                         ?>
-                        
+
                     </div>
                 </div>
 
@@ -147,10 +151,13 @@ ob_start();
                         <aside class="single_sidebar_widget search_widget">
                             <form method="post">
                                 <div class="input-group">
-                                    <input type="text" class="form-control" name="noidung" placeholder="Tìm kiếm bài viết" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Tìm kiếm bài viết'">
+                                    <input type="text" class="form-control" name="noidung"
+                                        placeholder="Tìm kiếm bài viết" onfocus="this.placeholder = ''"
+                                        onblur="this.placeholder = 'Tìm kiếm bài viết'">
                                     <!--    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Tìm kiếm bài viết'"-->
                                     <span class="input-group-btn">
-                                        <button class="btn btn-default" type="submit" name="btn"><i class="lnr lnr-magnifier"></i></button>
+                                        <button class="btn btn-default" type="submit" name="btn"><i
+                                                class="lnr lnr-magnifier"></i></button>
                                     </span>
                             </form>
                     </div>
@@ -191,9 +198,9 @@ ob_start();
                         <div class="br"></div>
                     </aside>
 
-                  
-                    
-                    
+
+
+
                 </div>
             </div>
         </div>
