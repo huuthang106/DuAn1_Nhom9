@@ -21,7 +21,7 @@ class users
             return false;
         }
     }
-    public function get_user_id_fullname($user_id)
+       public function get_user_id_fullname($user_id)
     {
         $db = new connect();
         $select = "SELECT fullname FROM users where user_id =?";

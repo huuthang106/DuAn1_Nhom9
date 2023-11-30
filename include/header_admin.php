@@ -96,7 +96,7 @@ if (isset($_SESSION['user_id'])) {
             </li>
             <li class="nav-item">
                 <a class="nav-link collapsed" href="index.php?act=vochers" data-target="#collapseBootstrap">
-                <i class="fa-solid fa-tag"></i>
+                    <i class="fa-solid fa-tag"></i>
                     <span>Mã giảm giá</span>
                 </a>
             </li>
@@ -117,14 +117,33 @@ if (isset($_SESSION['user_id'])) {
                         <div class="topbar-divider d-none d-sm-block"></div>
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img class="img-profile rounded-circle" src="img/boy.png" style="max-width: 60px">
-                                <span class="ml-2 d-none d-lg-inline text-white small"><?php
-                                                                                        $fullname = new users();
-                                                                                        foreach ($fullname->get_user_id($_SESSION['user_id']) as $key) {
-                                                                                            extract($key);
-                                                                                            echo '' . $fullname . '';
-                                                                                        }
-                                                                                        ?></span>
+                                <?php
+                                $fullname = new users();
+                                $item_avt = $fullname->get_user_id($_SESSION['user_id']);
+
+
+                                foreach ($item_avt  as $key) {
+
+                                    extract($key);
+                                    if ($avarta) {
+                                        echo ' <img class="img-profile rounded-circle" src="../content/img/product/' . $avarta . '" style="max-width: 60px">
+
+                                    ';
+                                    } else {
+                                        echo ' <img class="img-profile rounded-circle" src="img/boy.png" style="max-width: 60px">';
+                                    }
+                                }
+
+                                ?>
+
+                                <span class="ml-2 d-none d-lg-inline text-white small">
+                                    <?php
+                                    $fullname = new users();
+                                    foreach ($fullname->get_user_id($_SESSION['user_id']) as $key) {
+                                        extract($key);
+                                        echo '' . $fullname . '';
+                                    }
+                                    ?></span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="index.php?act=info_admin">
@@ -202,7 +221,24 @@ if (isset($_SESSION['user_id'])) {
                                 <div class="topbar-divider d-none d-sm-block"></div>
                                 <li class="nav-item dropdown no-arrow">
                                     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <img class="img-profile rounded-circle" src="img/boy.png" style="max-width: 60px">
+                                        <?php
+                                        $fullname = new users();
+                                        $item_avt = $fullname->get_user_id($_SESSION['user_id']);
+
+
+                                        foreach ($item_avt  as $key) {
+
+                                            extract($key);
+                                            if ($avarta) {
+                                                echo ' <img class="img-profile rounded-circle" src="../content/img/product/' . $avarta . '" style="max-width: 60px">
+
+                                    ';
+                                            } else {
+                                                echo ' <img class="img-profile rounded-circle" src="img/boy.png" style="max-width: 60px">';
+                                            }
+                                        }
+
+                                        ?>
                                         <span class="ml-2 d-none d-lg-inline text-white small"><?php
                                                                                                 $fullname = new users();
                                                                                                 foreach ($fullname->get_user_id($_SESSION['user_id']) as $key) {
@@ -212,10 +248,10 @@ if (isset($_SESSION['user_id'])) {
                                                                                                 ?></span>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                        <a class="dropdown-item" href="#">
+                                        <a class="dropdown-item" href="index.php?act=info_admin">
                                             <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i> Thông tin tài khoản
                                         </a>
-                                        <a class="dropdown-item" href="#">
+                                        <a class="dropdown-item" href="index.php?act=update">
                                             <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i> Cập nhật tài khoản
                                         </a>
                                         <a class="dropdown-item" href="index.php?act=change_password">
@@ -232,7 +268,7 @@ if (isset($_SESSION['user_id'])) {
                     <?php
                 }
             } else {
-               // include 'index.php?act=404';
+                // include 'index.php?act=404';
                     ?>
 
                 <?php

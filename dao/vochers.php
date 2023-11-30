@@ -81,5 +81,15 @@
         
 
     }
+    function select_all_vochers(){
+        $sql =  "select * from vochers order by vocher_id DESC";
+        return pdo_query($sql);
+    }
+    function ư($name,$sale){
+        $sql="insert into vochers (name,sale) value(?,?)";
+        pdo_execute($sql,$name,$sale);
+        
+        
+    }
 
 ?>

@@ -2,6 +2,7 @@
     .avarta {
         width: 100%;
         height: 150px;
+        text-align: center;
     }
     .avarta img{
         border-radius: 80px;
@@ -58,12 +59,28 @@
                             echo '
                            
                             <div class="card-body" >
-                            <div class="mb-3" >
+                            <div class="mb-3" >';
+                            if($avarta){
+                                echo '
                                 <li class="main-nav-list"><a data-toggle="collapse" href="#officeProduct"
-                                        aria-expanded="false" aria-controls="officeProduct" >
-                                        <div class="avarta"><img src="../content/img/product/ao1.jpg" alt="" width="150px" height="150px" ></div>
-                                    </a></li>
-                            </div>
+                                aria-expanded="false" aria-controls="officeProduct" >
+                                <div class="avarta"><img src="../content/img/product/'.$avarta.'" alt="" width="150px" height="150px" ></div>
+                            </a></li>
+                    </div>
+                                ';
+
+                            }
+                            else{
+                                echo '
+                                <li class="main-nav-list"><a data-toggle="collapse" href="#officeProduct"
+                                aria-expanded="false" aria-controls="officeProduct" >
+                                <div class="avarta"><img src="img/boy.png" alt="" width="150px" height="150px" ></div>
+                            </a></li>
+                    </div>
+                                ';
+                            }
+                               
+                           echo '
                             <div class="mb-3">
                                 <li class="main-nav-list"><a data-toggle="collapse" href="#officeProduct"
                                         aria-expanded="false" aria-controls="officeProduct"><span

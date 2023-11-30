@@ -153,6 +153,7 @@
                                             <td>
                                                 <a href="' . $del_cart . '" class="gray_btn">Xóa</a>
                                             </td>
+                                            <td></td>
                                         </tr>
                                     ';
                                     }
@@ -247,9 +248,11 @@
                                     <td></td>
                                     <td></td>
                                     <td></td>
+                                    
                                     <td>
                                         <h5>Tiền ship</h5>
                                     </td>
+                                    <td></td>
                                     <td>
                                         <div class="shipping_box">
                                             <h6>20.000 VNĐ</h6>
@@ -263,6 +266,7 @@
 
 
                                     </td>
+                                    <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
