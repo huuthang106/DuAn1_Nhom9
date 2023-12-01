@@ -106,9 +106,9 @@
                                     echo '
         <div class="col-lg-4 col-md-6">
             <div class="single-product">
-                <img class="img-fluid" src="./content/img/product/' . $picture . '" alt="">
+            <a href="' . $single_product . '" class="social-info">  <img class="img-fluid" src="./content/img/product/' . $picture . '" alt=""></a>
                 <div class="product-details">
-                    <h6>' . $name . '</h6>
+                <a href="' . $single_product . '" class="social-info">  <h6>' . $name . '</h6></a>
                     <div class="price">
                         <h6>' . $format . '</h6>
                     </div>
@@ -166,9 +166,9 @@
                                     echo '
         <div class="col-lg-4 col-md-6">
             <div class="single-product">
-                <img class="img-fluid" src="./content/img/product/' . $picture . '" alt="">
+            <a href="' . $single_product . '" class="social-info"> <img class="img-fluid" src="./content/img/product/' . $picture . '" alt=""> </a>
                 <div class="product-details">
-                    <h6>' . $name . '</h6>
+                <a href="' . $single_product . '" class="social-info">  <h6>' . $name . '</h6> </a>
                     <div class="price">
                         <h6>' . $price . '</h6>
                     </div>
