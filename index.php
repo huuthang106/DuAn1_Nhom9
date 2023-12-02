@@ -35,7 +35,8 @@ session_start();
     <link rel="stylesheet" href="content/css/magnific-popup.css">
     <link rel="stylesheet" href="content/css/main.css">
     <link href="admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-
+    <!-- capcha -->
+   <script src='https://www.google.com/recaptcha/api.js' async defer ></script>
 
 
 
@@ -214,6 +215,7 @@ session_start();
 <script src="admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <!-- Page level custom scripts -->
+
 <script>
     $(document).ready(function() {
         $('#dataTable').DataTable({

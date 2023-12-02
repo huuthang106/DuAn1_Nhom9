@@ -351,13 +351,14 @@
 								</div> -->
 								</div>
 							</div>
-							<?php
-							if (isset($_SESSION['user_id'])) {
-								$fullname_user = new users();
-								foreach ($fullname_user->get_user_id($_SESSION['user_id']) as $key) {
-									extract($key);
-									echo '
-										<div class="col-lg-6">
+							<div class="col-lg-6">
+								<?php
+								if (isset($_SESSION['user_id'])) {
+									$fullname_user = new users();
+									foreach ($fullname_user->get_user_id($_SESSION['user_id']) as $key) {
+										extract($key);
+										echo '
+										
 											<div class="review_box">
 												<h4>Đăng bình luận</h4>
 												
@@ -367,7 +368,7 @@
 														<input type="hidden" name="user-id" id="user-id">
 														<input type="hidden" name="status" id="status">
 														<div class="form-group">
-															<input type="text" class="form-control" id="name" name="name" placeholder="Tên đầy đủ của bạn" value="' . $fullname . '">
+															<input type="hidden" class="form-control" id="name" name="name" placeholder="Tên đầy đủ của bạn" value="' . $fullname . '">
 														</div>
 													</div>
 													
@@ -378,16 +379,18 @@
 													</div>
 													<div class="col-md-12 text-right">
 													<input type="hidden" id="current_date" name="current_date">
-
+													<div class="g-recaptcha" data-sitekey="6LeS-SMpAAAAALMBsG0wE-6kX2DLSh2QV3wXS4W_"></div>
 														<button type="submit" value="submit" class="btn primary-btn" name="submit">Gửi ngay</button>
 													</div>
+												
 												</form>
 											</div>
-										</div>
+											<br>
+										
 									';
-								}
-							} else {
-								echo '
+									}
+								} else {
+									echo '
 								<div class="col-lg-6">
 									<div class="review_box">
 										<h4>Đăng bình luận</h4>
@@ -398,34 +401,71 @@
 									</div>
 								</div>
 								';
-							}
-							if (isset($_POST['submit'])) {
-								$product_id = $_GET['product_id'];
-								$user_id = $_SESSION['user_id'];
-								$message = $_POST['message'];
-								$status = $_POST['status'];
-								$comment_id = $_POST['comment_id'];
-								$product_id = $_GET['product_id'];
-								// Lấy ngày hiện tại
-								date_default_timezone_set('Asia/Ho_Chi_Minh');
-								$day = date('Y-m-d H:i:s');
-								if (isset($_GET['product_id']) && is_numeric($_GET['product_id'])) {
-
-
-									if ($status == 3) {
-										$reply_comment = new reply_comment();
-										$insert = $reply_comment->insert_reply($comment_id, $message, $day, $user_id, $product_id);
-									} else {
-										$comment = new comments();
-										$insert = $comment->insert_comment($product_id, $user_id, $message, $day);
-									}
-								} else {
-									// Xử lý khi không có product_id hợp lệ
-									echo "Product ID không hợp lệ!";
 								}
-							}
-							?>
+								if (isset($_POST['submit'])) {
+									$product_id = $_GET['product_id'];
+									$user_id = $_SESSION['user_id'];
+									$message = $_POST['message'];
+									$status = $_POST['status'];
+									$comment_id = $_POST['comment_id'];
+									$product_id = $_GET['product_id'];
+									// Lấy ngày hiện tại
+									date_default_timezone_set('Asia/Ho_Chi_Minh');
+									$day = date('Y-m-d H:i:s');
+									$capcha = $_POST['g-recaptcha-response'];
+									if (empty($message)) {
+										echo '
+											<div class="error-message">
+												<i class="fa-solid fa-circle-exclamation"></i> Bạn chưa nhập nội dung !
+											</div><br>
+										';
+									} elseif (empty($capcha)) {
+										echo '
+											<div class="error-message">
+												<i class="fa-solid fa-circle-exclamation"></i>  Vui lòng xác nhận bạn không phải người máy !
+											</div><br>
+										';
+									} else {
+										if (isset($_GET['product_id']) && is_numeric($_GET['product_id'])) {
 
+
+											if ($status == 3) {
+												$secret = '6LeS-SMpAAAAADAfq_cjGUYmWaiHYRyxroANyV-r'; //Thay thế bằng mã Secret Key của bạn
+												$verify_response = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret=' . $secret . '&response=' . $capcha);
+												$response_data = json_decode($verify_response);
+												if ($response_data->success) {
+													$reply_comment = new reply_comment();
+													$insert = $reply_comment->insert_reply($comment_id, $message, $day, $user_id, $product_id);
+												} else {
+													echo '
+											<div class="error-message">
+												<i class="fa-solid fa-circle-exclamation"></i>  Vui lòng xác nhận lại !
+											</div><br>
+										';
+												}
+											} else {
+												$secret = '6LeS-SMpAAAAADAfq_cjGUYmWaiHYRyxroANyV-r'; //Thay thế bằng mã Secret Key của bạn
+												$verify_response = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret=' . $secret . '&response=' . $capcha);
+												$response_data = json_decode($verify_response);
+												if ($response_data->success) {
+													$comment = new comments();
+													$insert = $comment->insert_comment($product_id, $user_id, $message, $day);
+												} else {
+													echo '
+												<div class="error-message">
+													<i class="fa-solid fa-circle-exclamation"></i>  Vui lòng xác nhận lại !
+												</div><br>
+											';
+												}
+											}
+										} else {
+											// Xử lý khi không có product_id hợp lệ
+											echo "Product ID không hợp lệ!";
+										}
+									}
+								}
+								?>
+							</div>
 						</div>
 					</div>
 					<div class="tab-pane fade show active" id="review" role="tabpanel" aria-labelledby="review-tab">
@@ -440,7 +480,7 @@
 												$avg = new Evaluates();
 												$item_avg = $avg->medium($_GET['product_id']);
 												if ($item_avg && isset($item_avg['average_star'])) {
-													echo number_format($item_avg['average_star'],1,'.','.');
+													echo number_format($item_avg['average_star'], 1, '.', '.');
 												} else {
 													echo '0';
 												}
@@ -595,12 +635,22 @@
 											<div class="col-md-12">
 												<div class="form-group">
 													<textarea class="form-control" name="content" id="message" rows="1" placeholder="Đánh giá" ></textarea></textarea>
+													
 												</div>
+												
+												<div class="g-recaptcha" data-sitekey="6LeS-SMpAAAAALMBsG0wE-6kX2DLSh2QV3wXS4W_"></div>
+												
 											</div>
+										
 											<div class="col-md-12 text-right">
-												<button type="submit" value="submit" name="submit_evaluates" class="primary-btn">Gửi
-													ngay</button>
+											<button type="submit" value="submit" name="submit_evaluates" class="primary-btn">Gửi
+											ngay</button>
+												
 											</div>
+											
+										
+
+											
 											';
 											} else {
 
@@ -635,20 +685,40 @@
 								</div>
 								';
 									}
+
+									// bắt lỗi form đánh giá
 									if (isset($_POST['submit_evaluates'])) {
+										$capcha = $_POST['g-recaptcha-response'];
 										if (empty($_POST['content']) || empty($_POST['star'])) {
 											echo '<div class="col-md-12 form-group">
 								<div class="error-message">
 									<i class="fa-solid fa-circle-exclamation"></i> bạn chưa nhập nội dung đánh  giá !
 								</div><br>
 							</div>';
+										} elseif (empty($capcha)) {
+											echo '<div class="col-md-12 form-group">
+											<div class="error-message">
+												<i class="fa-solid fa-circle-exclamation"></i>  Vui lòng xác nhận bạn không phải người máy !
+											</div><br>
+										</div>';
 										} else {
-											$star = $_POST['star'];
-											$content = $_POST['content'];
-											$user_id = $_SESSION['user_id'];
-											$product_id = $_GET['product_id'];
-											$evaluates = new Evaluates();
-											$insert = $evaluates->insert_evaluates($product_id, $user_id, $star, $content);
+											$secret = '6LeS-SMpAAAAADAfq_cjGUYmWaiHYRyxroANyV-r'; //Thay thế bằng mã Secret Key của bạn
+											$verify_response = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret=' . $secret . '&response=' . $capcha);
+											$response_data = json_decode($verify_response);
+											if ($response_data->success) {
+												$star = $_POST['star'];
+												$content = $_POST['content'];
+												$user_id = $_SESSION['user_id'];
+												$product_id = $_GET['product_id'];
+												$evaluates = new Evaluates();
+												$insert = $evaluates->insert_evaluates($product_id, $user_id, $star, $content);
+											} else {
+												echo '<div class="col-md-12 form-group">
+											<div class="error-message">
+												<i class="fa-solid fa-circle-exclamation"></i> Vui lòng xác nhận lại  !
+											</div><br>
+										</div>';
+											}
 										}
 									}
 									?>

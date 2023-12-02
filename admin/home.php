@@ -109,7 +109,7 @@
                                                                                                 ?></div>
                                     <div class="mt-2 mb-0 text-muted text-xs">
                                         <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 20.4%</span>
-                                        <span>Since last month</span>
+                                        <span>Tháng vừa qua</span>
                                     </div>
                                 </div>
                                 <div class="col-auto">
