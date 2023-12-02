@@ -92,7 +92,15 @@
 											</div>
 											</div>
 										';
-                                    } else {
+                                    } 
+                                    elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                                        echo '<div class="col-md-12 form-group">
+                                            <div class="error-message">
+                                                <i class="fa-solid fa-circle-exclamation"></i> Email không đúng !
+                                            </div><br>
+                                        </div>';
+                                        $uploadOk = 0;
+                                    }else {
                                         $secret = '6LeS-SMpAAAAADAfq_cjGUYmWaiHYRyxroANyV-r'; //Thay thế bằng mã Secret Key của bạn
                                         $verify_response = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret=' . $secret . '&response=' . $capcha);
                                         $response_data = json_decode($verify_response);

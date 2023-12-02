@@ -36,7 +36,7 @@ session_start();
     <link rel="stylesheet" href="content/css/main.css">
     <link href="admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
     <!-- capcha -->
-   <script src='https://www.google.com/recaptcha/api.js' async defer ></script>
+    <script src='https://www.google.com/recaptcha/api.js' async defer></script>
 
 
 
@@ -175,6 +175,9 @@ session_start();
         case "change_pasword_user":
             include 'site/change_pasword_user.php';
             break;
+        case "send":
+            include 'site/send.php';
+            break;
     }
 
     ?>
@@ -186,6 +189,8 @@ session_start();
 	</a> -->
     <!-- 
 	<script src="https://uhchat.net/code.php?f=3dca0b"></script> -->
+    <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+    <df-messenger intent="WELCOME" chat-title="Senconhand" agent-id="6f269fb9-5a58-4015-b1d9-6512d19b05ea" language-code="en"></df-messenger>
 </body>
 <script src="content/js/add.js"></script>
 <script src="./content/js/vendor/jquery-2.2.4.min.js"></script>
@@ -339,44 +344,44 @@ session_start();
     }
 </script>
 <script>
-// Kiểm tra trạng thái lưu trong Local Storage khi trang tải lại
-window.onload = function() {
-    var selectedCarts = JSON.parse(localStorage.getItem('selectedCarts')) || [];
-    selectedCarts.forEach(function(cartId) {
-        var checkbox = document.querySelector('input[value="' + cartId + '"]');
-        if (checkbox) {
-            checkbox.checked = true;
+    // Kiểm tra trạng thái lưu trong Local Storage khi trang tải lại
+    window.onload = function() {
+        var selectedCarts = JSON.parse(localStorage.getItem('selectedCarts')) || [];
+        selectedCarts.forEach(function(cartId) {
+            var checkbox = document.querySelector('input[value="' + cartId + '"]');
+            if (checkbox) {
+                checkbox.checked = true;
+            }
+        });
+    };
+
+    // Xử lý sự kiện khi checkbox thay đổi
+    document.addEventListener('change', function(event) {
+        if (event.target.type === 'checkbox' && event.target.name === 'selected_carts[]') {
+            var cartId = event.target.value;
+            var selectedCarts = JSON.parse(localStorage.getItem('selectedCarts')) || [];
+
+            if (event.target.checked) {
+                // Thêm cartId vào mảng nếu checkbox được chọn
+                if (!selectedCarts.includes(cartId)) {
+                    selectedCarts.push(cartId);
+                }
+            } else {
+                // Xóa cartId khỏi mảng nếu checkbox bị bỏ chọn
+                selectedCarts = selectedCarts.filter(function(id) {
+                    return id !== cartId;
+                });
+            }
+
+            // Lưu trạng thái vào Local Storage
+            localStorage.setItem('selectedCarts', JSON.stringify(selectedCarts));
         }
     });
-};
 
-// Xử lý sự kiện khi checkbox thay đổi
-document.addEventListener('change', function(event) {
-    if (event.target.type === 'checkbox' && event.target.name === 'selected_carts[]') {
-        var cartId = event.target.value;
-        var selectedCarts = JSON.parse(localStorage.getItem('selectedCarts')) || [];
-
-        if (event.target.checked) {
-            // Thêm cartId vào mảng nếu checkbox được chọn
-            if (!selectedCarts.includes(cartId)) {
-                selectedCarts.push(cartId);
-            }
-        } else {
-            // Xóa cartId khỏi mảng nếu checkbox bị bỏ chọn
-            selectedCarts = selectedCarts.filter(function(id) {
-                return id !== cartId;
-            });
-        }
-
-        // Lưu trạng thái vào Local Storage
-        localStorage.setItem('selectedCarts', JSON.stringify(selectedCarts));
-    }
-});
-function updateStatus(checkbox) {
+    function updateStatus(checkbox) {
         var statusInput = document.querySelector('input[name="status_' + checkbox.value + '"]');
         statusInput.value = checkbox.checked ? '2' : '1';
     }
-
 </script>
 
 

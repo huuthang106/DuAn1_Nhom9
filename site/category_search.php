@@ -27,8 +27,7 @@
                 <div class="sidebar-categories">
                     <div class="head">Danh mục</div>
                     <ul class="main-categories">
-                        <li class="main-nav-list"><a data-toggle="collapse" href="#officeProduct" aria-expanded="false"
-                                aria-controls="officeProduct">
+                        <li class="main-nav-list"><a data-toggle="collapse" href="#officeProduct" aria-expanded="false" aria-controls="officeProduct">
                                 <span class="lnr lnr-arrow-right"></span>Danh mục<span class="number">
                                     <?php
                                     $count = new categories();
@@ -36,14 +35,13 @@
                                     echo '' . $start_count[0]['count_categories'] . ''
                                     // var_dump($start_count);
                                     ?></span></a>
-                            <ul class="collapse" id="officeProduct" data-toggle="collapse" aria-expanded="false"
-                                aria-controls="officeProduct">
+                            <ul class="collapse" id="officeProduct" data-toggle="collapse" aria-expanded="false" aria-controls="officeProduct">
                                 <?php
                                 $categories = new categories();
                                 foreach ($categories->get_all_categories() as $key) {
                                     extract($key);
                                     echo '
-										<li class="main-nav-list child"><a href="index.php?act=category_search&category_id='.$category_id.'">' . $name . '<span class="number"></span></a></li>
+										<li class="main-nav-list child"><a href="index.php?act=category_search&category_id=' . $category_id . '">' . $name . '<span class="number"></span></a></li>
 										';
                                 }
                                 ?>
@@ -58,66 +56,66 @@
             <div class="col-xl-9 col-lg-8 col-md-7">
                 <!-- Start Filter Bar -->
                 <?php
-				
-				// Hiển thị phân trang
-				echo '<div class="filter-bar d-flex flex-wrap align-items-center">
+
+                // Hiển thị phân trang
+                echo '<div class="filter-bar d-flex flex-wrap align-items-center">
 					<div class="sorting mr-auto">
 					<select>
 							<option value="1">10</option>
 							
 						</select>
 					</div>';
-				
-				echo '</div>';
-				?>
+
+                echo '</div>';
+                ?>
                 <!-- End Filter Bar -->
                 <!-- Start Best Seller -->
                 <section class="lattest-product-area pb-40 category-list">
                     <div class="row">
 
                         <?php
-                        if(isset($_SESSION['user_id'])){
+                        if (isset($_SESSION['user_id'])) {
                             $items_per_page = 9;
 
-                        // Lấy số trang hiện tại từ tham số truyền vào hoặc mặc định là trang 1
-                        $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
+                            // Lấy số trang hiện tại từ tham số truyền vào hoặc mặc định là trang 1
+                            $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
 
-                        // Tạo đối tượng sản phẩm
-                        $products = new products();
-                        if (isset($_GET['category_id'])) {
-                            $category_id = $_GET['category_id'];
-                            // Lấy danh sách sản phẩm cho trang hiện tại
-                            $product_list = $products->products_pagination_caterory($page, $items_per_page, $category_id);
-                            if ($product_list != null && isset($product_list['products']) && !empty($product_list['products'])) {
-                            foreach ($product_list['products'] as $product) {
-                                $product_id = $product['product_id'];
-                                $category_id = $product['category_id'];
-                                $name = $product['name'];
-                                $picture = $product['picture'];
-                                $color = $product['color'];
-                                $size = $product['size'];
-                                $price = $product['price'];
-                                $content = $product['content'];
-                                $single_product = "index.php?act=single-product&product_id=" . $product_id;
-                                $cart_link = "index.php?act=cart&product_id=".$product_id;
-                                $favourite_link = "index.php?act=favourites&product_id=" . $product_id;
-                                echo '
-								<div class="col-lg-4 col-md-6">
-								<div class="single-product">
-									<img class="img-fluid" src="./content/img/product/' . $picture . '" alt="">
-									<div class="product-details">
-										<h6>' . $name . '</h6>
+                            // Tạo đối tượng sản phẩm
+                            $products = new products();
+                            if (isset($_GET['category_id'])) {
+                                $category_id = $_GET['category_id'];
+                                // Lấy danh sách sản phẩm cho trang hiện tại
+                                $product_list = $products->products_pagination_caterory($page, $items_per_page, $category_id);
+                                if ($product_list != null && isset($product_list['products']) && !empty($product_list['products'])) {
+                                    foreach ($product_list['products'] as $product) {
+                                        $product_id = $product['product_id'];
+                                        $category_id = $product['category_id'];
+                                        $name = $product['name'];
+                                        $picture = $product['picture'];
+                                        $color = $product['color'];
+                                        $size = $product['size'];
+                                        $price = $product['price'];
+                                        $content = $product['content'];
+                                        $single_product = 'index.php?act=single-product&product_id=' . $product_id . '&category=' . $category_id;
+                                        $cart_link = "index.php?act=cart&product_id=" . $product_id;
+                                        $favourite_link = "index.php?act=favourites&product_id=" . $product_id;
+                                        echo '
+                                        <div class="col-lg-4 col-md-6">
+                                        <div class="single-product">
+                                        <a href="' . $single_product . '" class="social-info"><img class="img-fluid" src="./content/img/product/' . $picture . '" alt=""></a>
+                                        <div class="product-details">
+                                        <a href="' . $single_product . '" class="social-info">		<h6>' . $name . '</h6></a>
 										<div class="price">
 											<h6>' . $price . '</h6>
 											
 										</div>
 										<div class="prd-bottom">
 	
-											<a href="'.$cart_link.'" class="social-info">
+											<a href="' . $cart_link . '" class="social-info">
 												<span class="ti-bag"></span>
 												<p class="hover-text">Thêm vào giỏ hàng</p>
 											</a>
-											<a href="'.$favourite_link.'" class="social-info">
+											<a href="' . $favourite_link . '" class="social-info">
 												<span class="lnr lnr-heart"></span>
 												<p class="hover-text">Yêu thích</p>
 											</a>
@@ -131,9 +129,9 @@
 								</div>
 							</div>
 								';
-                            }
-                        }else{
-                            echo '
+                                    }
+                                } else {
+                                    echo '
                             <div class="col-lg-4 col-md-6">
                         <div class="single-product">
                            
@@ -143,38 +141,38 @@
                         </div>
                     </div>
                             ';
-                        }
-                        }
-                        }else{
+                                }
+                            }
+                        } else {
                             $items_per_page = 9;
 
-                        // Lấy số trang hiện tại từ tham số truyền vào hoặc mặc định là trang 1
-                        $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
+                            // Lấy số trang hiện tại từ tham số truyền vào hoặc mặc định là trang 1
+                            $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
 
-                        // Tạo đối tượng sản phẩm
-                        $products = new products();
-                        if (isset($_GET['category_id'])) {
-                            $category_id = $_GET['category_id'];
-                            // Lấy danh sách sản phẩm cho trang hiện tại
-                            $product_list = $products->products_pagination_caterory($page, $items_per_page, $category_id);
-                            if ($product_list != null && isset($product_list['products']) && !empty($product_list['products'])) {
-                            foreach ($product_list['products'] as $product) {
-                                $product_id = $product['product_id'];
-                                $category_id = $product['category_id'];
-                                $name = $product['name'];
-                                $picture = $product['picture'];
-                                $color = $product['color'];
-                                $size = $product['size'];
-                                $price = $product['price'];
-                                $content = $product['content'];
-                                $single_product = "index.php?act=single-product&product_id=" . $product_id;
-                              
-                                echo '
+                            // Tạo đối tượng sản phẩm
+                            $products = new products();
+                            if (isset($_GET['category_id'])) {
+                                $category_id = $_GET['category_id'];
+                                // Lấy danh sách sản phẩm cho trang hiện tại
+                                $product_list = $products->products_pagination_caterory($page, $items_per_page, $category_id);
+                                if ($product_list != null && isset($product_list['products']) && !empty($product_list['products'])) {
+                                    foreach ($product_list['products'] as $product) {
+                                        $product_id = $product['product_id'];
+                                        $category_id = $product['category_id'];
+                                        $name = $product['name'];
+                                        $picture = $product['picture'];
+                                        $color = $product['color'];
+                                        $size = $product['size'];
+                                        $price = $product['price'];
+                                        $content = $product['content'];
+                                        $single_product = "index.php?act=single-product&product_id=" . $product_id;
+
+                                        echo '
 								<div class="col-lg-4 col-md-6">
 								<div class="single-product">
-									<img class="img-fluid" src="./content/img/product/' . $picture . '" alt="">
-									<div class="product-details">
-										<h6>' . $name . '</h6>
+                                <a href="' . $single_product . '" class="social-info"><img class="img-fluid" src="./content/img/product/' . $picture . '" alt=""></a>
+                                <div class="product-details">
+                                <a href="' . $single_product . '" class="social-info">		<h6>' . $name . '</h6></a>
 										<div class="price">
 											<h6>' . $price . '</h6>
 											
@@ -199,9 +197,9 @@
 								</div>
 							</div>
 								';
-                            }
-                        }else{
-                            echo '
+                                    }
+                                } else {
+                                    echo '
                             <div class="col-lg-4 col-md-6">
                         <div class="single-product">
                            
@@ -211,10 +209,10 @@
                         </div>
                     </div>
                             ';
+                                }
+                            }
                         }
-                        }
-                        }
-                        
+
 
 
                         ?>
@@ -238,7 +236,7 @@
                     $active_class = ($i == $page) ? 'active' : '';
                     echo '<div class="pagination"' . $active_class . '">';
                     echo '<a href="index.php?act=category_search&page=' . $i . '&category_id=' . $category_id . '">' . $i . '</a>';
-                
+
 
                     echo '</div>';
                 }

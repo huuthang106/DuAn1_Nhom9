@@ -140,6 +140,14 @@
 									</div><br>
 								</div>';
 								$uploadOk = 0;
+							}
+							elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+								echo '<div class="col-md-12 form-group">
+									<div class="error-message">
+										<i class="fa-solid fa-circle-exclamation"></i> Email không đúng !
+									</div><br>
+								</div>';
+								$uploadOk = 0;
 							} elseif ($_FILES['img']['error'] !== UPLOAD_ERR_NO_FILE) {
 								$file_name = $_FILES["img"]["name"];
 								$file_tmp = $_FILES["img"]["tmp_name"];

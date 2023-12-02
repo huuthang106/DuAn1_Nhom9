@@ -12,7 +12,7 @@ include("./include/nav.php");
                     <h1>Theo dõi đơn hàng</h1>
                     <nav class="d-flex align-items-center">
                         <a href="index.php?act=home">Trang chủ<span class="lnr lnr-arrow-right"></span></a>
-                        <a href="index.php?act=tracking">Danh mục</a>
+                        <a href="index.php?act=tracking">Theo dõi đơn hàng</a>
                     </nav>
                 </div>
             </div>

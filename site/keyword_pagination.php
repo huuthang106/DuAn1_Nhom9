@@ -12,8 +12,8 @@
 				<div class="col-first">
 					<h1>Sản phẩm</h1>
 					<nav class="d-flex align-items-center">
-						<a href="index.html">Trang chủ<span class="lnr lnr-arrow-right"></span></a>
-						<a href="#">sản phẩm</a>
+						<a href="index.php?act=home">Trang chủ<span class="lnr lnr-arrow-right"></span></a>
+						<a href="">sản phẩm</a>
 
 					</nav>
 				</div>
@@ -95,7 +95,7 @@
 								$name = $product['name'];
 								$picture = $product['picture'];
 								$color = $product['color'];
-								$size = $product['size'];
+$size = $product['size'];
 								$price = $product['price'];
 								$content = $product['content'];
 								$single_product = "index.php?act=single-product&product_id=" . $product_id;
@@ -183,7 +183,7 @@
 						<a href="#">3</a>
 						<a href="#" class="dot-dot"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
 						<a href="#">6</a>
-						<a href="#" class="next-arrow"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+<a href="#" class="next-arrow"><i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
 					</div>
 				</div> -->
 				<!-- End Filter Bar -->
