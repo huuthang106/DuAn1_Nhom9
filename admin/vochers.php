@@ -21,12 +21,14 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="form-group">
-                            <input class="form-control" type="text" name="vocher" placeholder="Mã giảm giá">
+                            <input class="form-control" value="<?php echo $_POST['vocher'] ?? ''; ?>" type="text"
+                                name="vocher" placeholder="Mã giảm giá">
                         </div>
                     </div>
                     <div class="col-sm-12">
                         <div class="form-group">
-                            <input class="form-control" type="text" name="sale" placeholder="Giá trị">
+                            <input class="form-control" value="<?php echo $_POST['sale'] ?? ''; ?>" type="text"
+                                name="sale" placeholder="Giá trị">
                         </div>
                     </div>
                 </div>
@@ -37,12 +39,26 @@
                 if (isset($_POST['vocher'])) {
                     $name = $_POST['vocher'];
                     $sale = $_POST['sale'];
-                    if (empty($_POST['vocher'])) {
+                    if(empty($name) && empty($sale)){
                         $error = '
-                    <div class="error-message">
-                    <i class="fa-solid fa-circle-exclamation"></i> Vui lòng nhập đầy đủ thông tin !
-                    </div><br>
-                    ';
+                        <div class="error-message">
+                        <i class="fa-solid fa-circle-exclamation"></i> Vui lòng nhập đầy đủ thông tin !
+                        </div><br>
+                        ';
+                    }else{
+                        if (empty($_POST['vocher'])) {
+                            $error = '
+                        <div class="error-message">
+                        <i class="fa-solid fa-circle-exclamation"></i> Vui lòng nhập mã giảm giá !
+                        </div><br>
+                        ';
+                        }elseif(empty($_POST['sale'])) {
+                            $error = '
+                            <div class="error-message">
+                            <i class="fa-solid fa-circle-exclamation"></i> Vui lòng nhập giá trị !
+                            </div><br>
+                            ';
+                        }
                     }
                     if (isset($error)) {
                         echo $error;

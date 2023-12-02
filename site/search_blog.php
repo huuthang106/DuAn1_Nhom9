@@ -1,6 +1,7 @@
 <?php
   ob_start();
 ?>
+
 <body>
 
     <!-- Start Header Area -->
@@ -84,9 +85,11 @@
                 <div class="col-lg-8">
                     <div class="blog_left_sidebar">
                         <?php
-                           $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
-                           $postsPerPage = 5;
-                           $count = 0;
+                          $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
+                          $postsPerPage = 5;
+                          $blog = blogs_selectall($currentPage, $postsPerPage);
+                          $count = 0;
+                          
                         if (isset($_GET["noidung"])) {
                             $key = $_GET["noidung"];
                             $blog = search_blog_selectalls($key,$currentPage,$postsPerPage);
@@ -105,7 +108,7 @@
                                             <li><a href="#">' . $day . '<i
                                                         class="lnr lnr-calendar-full"></i></a></li>
                                             <li><a href="#">' . $views_count . ' Lượt xem<i class="lnr lnr-eye"></i></a></li>
-                                            <li><a href="#">06 bình luận<i class="lnr lnr-bubble"></i></a></li>
+                                            <li><a href="#">'.count($blog).' bình luận<i class="lnr lnr-bubble"></i></a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -168,10 +171,13 @@
                         <aside class="single_sidebar_widget search_widget">
                             <form method="post">
                                 <div class="input-group">
-                                    <input type="text" class="form-control" name="noidung" placeholder="Tìm kiếm bài viết" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Tìm kiếm bài viết'">
+                                    <input type="text" class="form-control" name="noidung"
+                                        placeholder="Tìm kiếm bài viết" onfocus="this.placeholder = ''"
+                                        onblur="this.placeholder = 'Tìm kiếm bài viết'">
                                     <!--    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Tìm kiếm bài viết'"-->
                                     <span class="input-group-btn">
-                                        <button class="btn btn-default" type="submit" name="btn"><i class="lnr lnr-magnifier"></i></button>
+                                        <button class="btn btn-default" type="submit" name="btn"><i
+                                                class="lnr lnr-magnifier"></i></button>
                                     </span>
                             </form>
                     </div>
@@ -212,9 +218,9 @@
                         <div class="br"></div>
                     </aside>
 
-                  
-                    
-                    
+
+
+
                 </div>
             </div>
         </div>

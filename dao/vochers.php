@@ -88,8 +88,6 @@
     function vocher_insert($name,$sale){
         $sql="insert into vochers (name,sale) value(?,?)";
         pdo_execute($sql,$name,$sale);
-        
-        
-    }
+   }
 
 ?>
