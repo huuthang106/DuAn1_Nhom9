@@ -27,15 +27,18 @@
 					<div class="head">Danh mục</div>
 					<ul class="main-categories">
 
-						<li class="main-nav-list"><a data-toggle="collapse" href="#officeProduct" aria-expanded="false" aria-controls="officeProduct">
+						<li class="main-nav-list"><a data-toggle="collapse" href="#officeProduct" aria-expanded="false"
+								aria-controls="officeProduct">
 								<span class="lnr lnr-arrow-right"></span>Danh mục<span class="number">
 									<?php
 									$count = new categories();
 									$start_count = $count->count_categories();
 									echo '' . $start_count[0]['count_categories'] . ''
-									// var_dump($start_count);
-									?></span></a>
-							<ul class="collapse" id="officeProduct" data-toggle="collapse" aria-expanded="false" aria-controls="officeProduct">
+										// var_dump($start_count);
+										?>
+								</span></a>
+							<ul class="collapse" id="officeProduct" data-toggle="collapse" aria-expanded="false"
+								aria-controls="officeProduct">
 								<?php
 								$categories = new categories();
 								foreach ($categories->get_all_categories() as $key) {
@@ -51,6 +54,9 @@
 
 					</ul>
 				</div>
+
+				<br />
+				<img class="img-fluid d-block mx-auto" src="./content/img/category/c10.png" alt="">
 
 			</div>
 			<div class="col-xl-9 col-lg-8 col-md-7">
@@ -154,9 +160,9 @@
 								echo '
 								<div class="col-lg-4 col-md-6">
 								<div class="single-product">
-								<a href="'.$single_product.'" class="social-info"><img class="img-fluid" src="./content/img/product/' . $picture . '" alt=""></a>
+								<a href="' . $single_product . '" class="social-info"><img class="img-fluid" src="./content/img/product/' . $picture . '" alt=""></a>
 									<div class="product-details">
-									<a href="'.$single_product.'" class="social-info">	<h6>' . $name . '</h6></a>
+									<a href="' . $single_product . '" class="social-info">	<h6>' . $name . '</h6></a>
 										<div class="price">
 											<h6>' . $format . 'VNĐ</h6>
 											

@@ -172,7 +172,7 @@
                 <div class="col-lg-3">
                     <div class="ctg-right">
                         <a href="#" target="_blank">
-                            <img class="img-fluid d-block mx-auto" src="./content/img/category/c7.png" alt="">
+                            <img class="img-fluid d-block mx-auto" src="./content/img/category/c9.png" alt="">
                         </a>
                     </div>
                 </div>
@@ -376,7 +376,7 @@
                 <div class="col-lg-3">
                     <div class="ctg-right">
                         <a href="#" target="_blank">
-                            <img class="img-fluid d-block mx-auto" src="./content/img/category/c5.jpg" alt="">
+                            <img class="img-fluid d-block mx-auto" src="./content/img/category/c7.png" alt="">
                         </a>
                     </div>
                 </div>
