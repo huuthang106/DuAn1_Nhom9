@@ -1,3 +1,8 @@
+<?php
+    if(!isset($_SESSION['user_id'])){
+        header ('location: index.php?act=login');
+    }
+?>
 <body>
 
     <!-- Start Header Area -->

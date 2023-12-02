@@ -13,7 +13,8 @@
         return pdo_query($sql);
     }
     
-    function search_blog_selectalls($noidung){
+    function search_blog_selectalls($noidung,$page = 1, $perPage = 10){
+        $start = ($page - 1) * $perPage;
         $noidung= '%'.$noidung.'%';
         $sql =  "select * from blogs where title like ? order by blog_id DESC ";
         return pdo_query($sql,$noidung);

@@ -84,9 +84,12 @@
                 <div class="col-lg-8">
                     <div class="blog_left_sidebar">
                         <?php
+                           $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
+                           $postsPerPage = 5;
+                           $count = 0;
                         if (isset($_GET["noidung"])) {
                             $key = $_GET["noidung"];
-                            $blog = search_blog_selectalls($key);
+                            $blog = search_blog_selectalls($key,$currentPage,$postsPerPage);
                             if ($blog) {
                             foreach ($blog as $blogs) {
                                 extract($blogs);
@@ -120,6 +123,7 @@
                                 </div>
                             </article>
                                 ';
+                                $count++;
                             }} else {
                                 echo'
                                 <div class="blog_details"> 
@@ -127,9 +131,14 @@
                                                 </div>';
                             };
                         }
+                        echo '<nav class="blog-pagination justify-content-center d-flex"><ul class="pagination">';
+                        for ($i = 1; $i <= ceil(count(blogs_selectall()) / $postsPerPage); $i++) {
+                            echo '<li class="page-item ' . ($i == $currentPage ? 'active' : '') . '"><a href="index.php?act=search_blog&page=' . $i . '&noidung='.$_GET["noidung"].'" class="page-link">' . $i . '</a></li>';
+                        }
+                        echo '</ul></nav>';
                         ?>
 
-                        <nav class="blog-pagination justify-content-center d-flex">
+                        <!-- <nav class="blog-pagination justify-content-center d-flex">
                             <ul class="pagination">
                                 <li class="page-item">
                                     <a href="#" class="page-link" aria-label="Previous">
@@ -151,7 +160,7 @@
                                     </a>
                                 </li>
                             </ul>
-                        </nav>
+                        </nav> -->
                     </div>
                 </div>
                 <div class="col-lg-4">
