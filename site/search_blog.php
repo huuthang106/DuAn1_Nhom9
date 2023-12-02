@@ -97,6 +97,7 @@
                             foreach ($blog as $blogs) {
                                 extract($blogs);
                                 $more_link = "index.php?act=single-blog&blog_id=" . $blog_id;
+                                $comment = comments_selectall($blog_id);
                                 $excerpt = substr($content, 0, 400);
                                 echo '                     
                                 <article class="row blog_item">
@@ -108,7 +109,7 @@
                                             <li><a href="#">' . $day . '<i
                                                         class="lnr lnr-calendar-full"></i></a></li>
                                             <li><a href="#">' . $views_count . ' Lượt xem<i class="lnr lnr-eye"></i></a></li>
-                                            <li><a href="#">'.count($blog).' bình luận<i class="lnr lnr-bubble"></i></a></li>
+                                            <li><a href="#">'.count($comment).' bình luận<i class="lnr lnr-bubble"></i></a></li>
                                         </ul>
                                     </div>
                                 </div>
