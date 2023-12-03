@@ -684,7 +684,7 @@
 										echo '
 								<div class="col-lg-6">
 									<div class="review_box">
-										<h4>Đánh giá</h4>
+									
 										
 										<div class="col-md-12 text-right">
 														<a type="submit" value="submit" href="index.php?act=login" class="btn primary-btn">Đăng nhập</a>

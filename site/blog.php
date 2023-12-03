@@ -191,7 +191,7 @@ ob_start();
                             echo '
                                     <div class="media post_item">                     
                                         <div class="media-body">
-                                            <a href="blog-details.html">
+                                            <a href="'.$more_link.'">
                                                 <h3>' . $title . '</h3>
                                             </a>
                                             <p>' . $day . '</p>
