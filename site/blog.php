@@ -81,6 +81,13 @@ ob_start();
 
     <section class="blog_area">
         <div class="container">
+        <br>
+			<br>			
+			<div  class="ggmap">
+				<img src="./content/img/category/blog.png" alt="">
+			</div>
+			<br>
+			<br>
             <div class="row">
                 <div class="col-lg-8">
                     <div class="blog_left_sidebar">

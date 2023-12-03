@@ -10,7 +10,6 @@
     <section class="banner-area">
         <div class="container">
             <div class="row fullscreen align-items-center justify-content-start">
-
             </div>
         </div>
     </section>
@@ -376,7 +375,11 @@
                 <div class="col-lg-3">
                     <div class="ctg-right">
                         <a href="#" target="_blank">
-                            <img class="img-fluid d-block mx-auto" src="./content/img/category/c7.png" alt="">
+                            <img class="img-fluid d-block mx-auto" src="./content/img/category/c14.png" alt="">
+                        </a>
+                        <br/>
+                        <a href="#" target="_blank">
+                            <img class="img-fluid d-block mx-auto" src="./content/img/category/c13.png" alt="">
                         </a>
                     </div>
                 </div>
