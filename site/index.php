@@ -21,21 +21,23 @@
     <section class="features-area section_gap">
         <div class="container">
             <div class="row features-inner">
-                <!-- single features -->
+               <!-- single features -->
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="single-features">
-                        <div class="f-icon">
+                    <a href="index.php?act=ship"> <div class="f-icon">
                             <img src="./content/img/features/f-icon1.png" alt="">
                         </div>
+                        </a>
                         <h6>Giao hàng nhanh </h6>
                         <p>Giao hàng hỏa tốc đến khách hàng</p>
                     </div>
                 </div>
+            
                 <!-- single features -->
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="single-features">
-                        <div class="f-icon">
-                            <img src="./content/img/features/f-icon2.png" alt="">
+                        <div class="f-icon">  <a href="index.php?act=lie">
+                            <img src="./content/img/features/f-icon2.png" alt=""></a>
                         </div>
                         <h6>Chính sách hoàn trả</h6>
                         <p>Hỗ trợ đổi trả trong 7 ngày</p>
@@ -44,9 +46,11 @@
                 <!-- single features -->
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="single-features">
+                        <a href="index.php?act=support">
                         <div class="f-icon">
                             <img src="./content/img/features/f-icon3.png" alt="">
                         </div>
+                        </a>
                         <h6>Hỗ trợ 24/7</h6>
                         <p>Nhân viên hỗ trợ tận tâm</p>
                     </div>
@@ -54,9 +58,10 @@
                 <!-- single features -->
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="single-features">
+                    <a href="index.php?act=payment">
                         <div class="f-icon">
                             <img src="./content/img/features/f-icon4.png" alt="">
-                        </div>
+                        </div></a>
                         <h6>Thanh toán nhanh </h6>
                         <p>Không phức tạp  </p>
                     </div>
@@ -258,21 +263,8 @@
     <section class="brand-area section_gap">
         <div class="container">
             <div class="row">
-                <a class="col single-img" href="#">
-                    <img class="img-fluid d-block mx-auto" src="./content/img/brand/1.png" alt="">
-                </a>
-                <a class="col single-img" href="#">
-                    <img class="img-fluid d-block mx-auto" src="./content/img/brand/2.png" alt="">
-                </a>
-                <a class="col single-img" href="#">
-                    <img class="img-fluid d-block mx-auto" src="./content/img/brand/3.png" alt="">
-                </a>
-                <a class="col single-img" href="#">
-                    <img class="img-fluid d-block mx-auto" src="./content/img/brand/4.png" alt="">
-                </a>
-                <a class="col single-img" href="#">
-                    <img class="img-fluid d-block mx-auto" src="./content/img/brand/5.png" alt="">
-                </a>
+            <img class="img-fluid d-block mx-auto" src="./content/img/brand/banner.png" alt="">
+              
             </div>
         </div>
     </section>

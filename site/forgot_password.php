@@ -102,7 +102,7 @@
                                             // Thiết lập nội dung email
                                             $mail->isHTML(true);
                                             $mail->Subject = 'Please click on the link below to confirm to retrieve your new password:';
-                                            $mail->Body = 'Link: http://duan1/index.php?act=change_new_password&token=' . $token['token'] . '&email=' . $check_email['email'];
+                                            $mail->Body = 'Link: http://wd18304nhom9.demowebcantho.online/index.php?act=change_new_password&token=' . $token['token'] . '&email=' . $check_email['email'];
 
                                             // Gửi email
                                             $mail->send();

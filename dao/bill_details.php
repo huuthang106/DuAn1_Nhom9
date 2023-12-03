@@ -168,7 +168,7 @@ class bill_details
                    JOIN bills b ON bd.bill_id = b.bill_id
                    WHERE b.user_id = ? AND bd.product_id = ?";
         $result = $db->pdo_query($select, $user_id, $product_id);
-    
+        
         if($result){
             return TRUE;
         }else{

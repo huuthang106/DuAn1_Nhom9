@@ -178,6 +178,18 @@ session_start();
         case "send":
             include 'site/send.php';
             break;
+        case "ship":
+            include 'site/thongtin_ship.php';
+            break;
+        case "lie":
+            include 'site/lie.php';
+            break;
+        case "support":
+            include 'site/support.php';
+            break;
+        case "payment":
+            include 'site/payment_methods.php';
+            break;
     }
 
     ?>

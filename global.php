@@ -15,7 +15,7 @@ function thanh_toan()
     date_default_timezone_set('Asia/Ho_Chi_Minh');
 
     $vnp_Url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
-    $vnp_Returnurl = "http://duan1/index.php?act=user";
+    $vnp_Returnurl = "http://wd18304nhom9.demowebcantho.online/index.php?act=user";
     // $ch = curl_init($vnp_Returnurl);
 
     // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
