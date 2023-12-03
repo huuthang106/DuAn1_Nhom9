@@ -135,6 +135,11 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
                             </div>
                             <div class="col-md-12 form-group">
                                 <button type="submit" value="submit" class="primary-btn">Đăng nhập</button>
+                                <?php if(isset($authUrl)){ ?>
+                                <a style="color: white;" class="primary-btn" href="<?= $authUrl ?>"><img
+                                        style="width:8%" src="../content/img/google.png" alt="">
+                                    Đăng nhập với tài khoản Google</a>
+                                <?php } ?>
                                 <a href="index.php?act=forgot_password">Quên mật khẩu?</a>
                             </div>
                         </form>

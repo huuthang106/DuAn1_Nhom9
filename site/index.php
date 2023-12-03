@@ -62,7 +62,7 @@
                             <img src="./content/img/features/f-icon4.png" alt="">
                         </div></a>
                         <h6>Thanh toán nhanh </h6>
-                        <p>Không phức tạp  </p>
+                        <p>Không phức tạp </p>
                     </div>
                 </div>
             </div>

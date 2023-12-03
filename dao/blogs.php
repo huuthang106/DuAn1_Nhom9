@@ -7,6 +7,11 @@
     $sql = "SELECT * FROM blogs ORDER BY blog_id DESC LIMIT $start, $perPage";
     return pdo_query($sql);
 }
+function blog_selectall() {
+    // Tính toán offset để truy vấn cơ sở dữ liệu
+    $sql =  "select * from blogs order by blog_id DESC ";
+    return pdo_query($sql);
+}
     
     function blogs_selectalls(){
         $sql =  "select * from blogs order by blog_id DESC limit 4";

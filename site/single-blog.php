@@ -189,7 +189,15 @@
                                         <div class="single-comment justify-content-between d-flex">
                                             <div class="user d-flex">
                                                 <div style="width: 9%" class="thumb">
-                                                    <img style="width:100%" src="../admin/img/'.$user['avarta'].'" alt="">
+                                                ';
+                                                if (filter_var($user['avarta'], FILTER_VALIDATE_URL)) {
+                                                    // Nếu $avarta là một đường liên kết URL hợp lệ, thì hiển thị hình ảnh
+                                                    echo '<img style="width:100%" src="'.$user['avarta'].'" alt="">';
+                                                } else {
+                                                    // Nếu $avarta không phải là đường liên kết URL hợp lệ, có thể là đường dẫn file local
+                                                    echo '<img style="width:100%" src="../admin/img/'.$user['avarta'].'" alt="">';
+                                                }
+                                                echo'   
                                                 </div>
                                                 <div class="desc">
                                                     <h5><a href="#">'.$user['fullname'].'</a></h5>

@@ -4,14 +4,16 @@ if (!isset($_SESSION['user_id'])) {
 }
 ?>
 <style>
-    .avarta{
-        width: 100%;
-        height: 150px;
-    }
-    .avarta img {
-        border-radius: 80px;
-    }
+.avarta {
+    width: 100%;
+    height: 150px;
+}
+
+.avarta img {
+    border-radius: 80px;
+}
 </style>
+
 <body>
     <!-- Start Header Area -->
     <?php
@@ -55,7 +57,13 @@ if (!isset($_SESSION['user_id'])) {
                         # code...
                         echo ' <div class="avarta"><img src="../content/img/product/review-1.png" alt=""></div>';
                     } else {
-                        echo '<div class="avarta"><img src="../content/img/product/' . $avarta . '" alt="" width="150px" height="150px" ></div>';
+                        if (filter_var($avarta, FILTER_VALIDATE_URL)) {
+                            // Nếu $avarta là một đường liên kết URL hợp lệ, thì hiển thị hình ảnh
+                            echo '<div class="avarta"><img src="' . $avarta . '" alt="" width="50px" height="150px" ></div>';
+                        } else {
+                            // Nếu $avarta không phải là đường liên kết URL hợp lệ, có thể là đường dẫn file local
+                            echo '<div class="avarta"><img src="../content/img/product/' . $avarta . '" alt="" width="50px" height="150px" ></div>';
+                        }
                     }
                     echo '
                             </a></li>
