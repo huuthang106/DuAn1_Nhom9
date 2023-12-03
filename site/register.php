@@ -150,7 +150,7 @@
 
                                 <br>
                                 <button type="submit" value="submit" class="primary-btn">Đăng ký</button>
-                                <a href="#">Quên mật khẩu?</a>
+                                <a href="index.php?act=forgot_password">Quên mật khẩu?</a>
                             </div>
                         </form>
                     </div>

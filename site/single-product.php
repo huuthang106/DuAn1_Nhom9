@@ -258,12 +258,15 @@
 													  <h4 comment-id=' . $comment_id . ' user-id=' . $user_id . '>' . $fullname . '</h4>
 													  <h5>' . $day . '</h5>
 													  ';
-											if ($_SESSION['user_id'] == $user_id) {
-												echo '
-															
-															<a href= "' . $button_dell . '"class="dell_btn" >X</a>
-															';
+											if(isset($_SESSION['user_id'])){
+												if ($_SESSION['user_id'] == $user_id) {
+													echo '
+																
+																<a href= "' . $button_dell . '"class="dell_btn" >X</a>
+																';
+												}
 											}
+											
 											echo '
 													<button  class="reply_btn"  onclick="prepareReplyForm(this)">Reply</button>
 													</div>	
@@ -355,7 +358,8 @@
 								<?php
 								if (isset($_SESSION['user_id'])) {
 									$fullname_user = new users();
-									foreach ($fullname_user->get_user_id($_SESSION['user_id']) as $key) {
+									$item_name = $fullname_user->get_user_id($_SESSION['user_id']);
+							 			foreach ($item_name as $key) {
 										extract($key);
 										echo '
 										
@@ -618,6 +622,7 @@
 
 									<p>Nổi bật</p>
 									<?php
+
 									if (isset($_SESSION['user_id'])) {
 										$fullname_user = new users();
 										foreach ($fullname_user->get_user_id($_SESSION['user_id']) as $key) {
@@ -628,8 +633,8 @@
 									?>
 											<?php
 											$check = new bill_details();
-											$start = $check->check_user_buy_prodcut($_SESSION['user_id']);
-											if ($start) {
+											$start = $check->check_user_buy_product($_SESSION['user_id'],$_GET['product_id']);
+											if ($start== TRUE) {
 												echo '
 											<input type="hidden" name="star" id="starInput" value="">
 											<div class="col-md-12">
@@ -647,10 +652,6 @@
 											ngay</button>
 												
 											</div>
-											
-										
-
-											
 											';
 											} else {
 

@@ -161,19 +161,20 @@ class bill_details
             return false;
         }
     }
-    public function check_user_buy_prodcut($user_id){
+    public function check_user_buy_product($user_id, $product_id) {
         $db = new connect();
-        $select ="SELECT product_id FROM bill_details bd
-        Join bills b ON bd.bill_id = b.bill_id
-         WHERE b.user_id =? ";
-         $result = $db->pdo_query($select,$user_id);
-         if ($result) {
-            # code...
-            return $result;
-         }
-         else{
+        $select = "SELECT bd.product_id 
+                   FROM bill_details bd
+                   JOIN bills b ON bd.bill_id = b.bill_id
+                   WHERE b.user_id = ? AND bd.product_id = ?";
+        $result = $db->pdo_query($select, $user_id, $product_id);
+    
+        if($result){
+            return TRUE;
+        }else{
             return false;
-         }
+        }
     }
+    
     
 }
