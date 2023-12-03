@@ -1,3 +1,6 @@
+<?php
+ob_start();
+?>
 <body>
     <style>
     .avartar {
@@ -272,20 +275,48 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="blog_right_sidebar">
-                        <aside class="single_sidebar_widget search_widget">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search Posts"
-                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Posts'">
-                                <span class="input-group-btn">
-                                    <button class="btn btn-default" type="button"><i
-                                            class="lnr lnr-magnifier"></i></button>
-                                </span>
-                            </div><!-- /input-group -->
+                    <aside class="single_sidebar_widget search_widget">
+                            <form method="post">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" name="noidung" placeholder="Tìm kiếm bài viết" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Tìm kiếm bài viết'">
+                                    <!--    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Tìm kiếm bài viết'"-->
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" type="submit" name="btn"><i class="lnr lnr-magnifier"></i></button>
+                                    </span>
+                            </form>
                             <div class="br"></div>
                         </aside>
                         <aside class="single_sidebar_widget author_widget">
-                            <img class="author_img rounded-circle" src="content/img/blog/author.png" alt="">
-                            <h4>Charlie Barber</h4>
+                            <img class="author_img rounded-circle" src="./content/img/blog/khuong.png" alt="">
+                            <h4>Huỳnh An Khương</h4>
+                            <p>Sinh viên năm hai</p>
+                            <div class="social_icon">
+                                <a href="https://www.facebook.com/khuong.huynhan.7"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-github"></i></a>
+                                <a href="#"><i class="fa fa-behance"></i></a>
+                            </div>
+                            <p>Hiện tại đang học chuyên ngành lập trình website và chuyên ngành hẹp backend, đang tham
+                                gia làm dự án với môn dự án 1</p>
+                            <div class="br"></div>
+                        </aside>
+                        <aside class="single_sidebar_widget author_widget">
+                            <img class="author_img rounded-circle" src="content/img/blog/Mil.png" alt="">
+                            <h4>Châu Chi Mil</h4>
+                            <p>Sinh viên năm hai</p>
+                            <div class="social_icon">
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-github"></i></a>
+                                <a href="#"><i class="fa fa-behance"></i></a>
+                            </div>
+                            <p>Hiện tại đang học chuyên ngành lập trình website và chuyên ngành hẹp fontend, đang tham
+                                gia làm dự án với môn dự án 1</p>
+                            <div class="br"></div>
+                        </aside>
+                        <aside class="single_sidebar_widget author_widget">
+                            <img class="author_img rounded-circle" src="content/img/blog/Thang.png" alt="">
+                            <h4>Sinh viên năm hai</h4>
                             <p>Người viết blog cao cấp</p>
                             <div class="social_icon">
                                 <a href="#"><i class="fa fa-facebook"></i></a>
@@ -293,11 +324,22 @@
                                 <a href="#"><i class="fa fa-github"></i></a>
                                 <a href="#"><i class="fa fa-behance"></i></a>
                             </div>
-                            <p>Chương trình đào tạo có những người ủng hộ và những người gièm pha. Một số người không
-                                hiểu tại sao bạn phải chi tiền cho chương trình đào tạo khi bạn có thể có được. Chương
-                                trình đào tạo có những người ủng hộ và những người gièm pha.</p>
+                            <p>Hiện tại đang học chuyên ngành lập trình website và chuyên ngành hẹp backend, đang tham
+                                gia làm dự án với môn dự án 1
+                            </p>
                             <div class="br"></div>
                         </aside>
+                        <?php
+                    if (isset($_POST['btn'])) {
+                        $noidung = $_POST['noidung'];
+                        $redirect_url = "index.php?act=search_blog&noidung=" . urlencode($noidung);
+
+                        // Sử dụng lệnh header để chuyển hướng
+                        header("Location: " . $redirect_url);
+                        exit(); // Đảm bảo dừng thực thi script sau lệnh header
+                    }
+
+                    ?>
                         <aside class="single_sidebar_widget popular_post_widget">
                             <h3 class="widget_title">Bài viết mới nhất</h3>
                             <?php
@@ -320,7 +362,8 @@
                             ?>
                             <div class="br"></div>
                         </aside>
-
+                        <br />
+                        <img class="img-fluid d-block mx-auto" src="./content/img/category/c12.png" alt="">
                         <!--  <aside class="single_sidebar_widget post_category_widget">
                             <h4 class="widget_title">Danh mục bài đăng</h4>
                             <ul class="list cat-list">
@@ -420,4 +463,6 @@
     ?>
     <!-- End footer Area -->
 
-</body>
+</body><?php
+ob_end_flush();
+?>

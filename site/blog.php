@@ -81,13 +81,13 @@ ob_start();
 
     <section class="blog_area">
         <div class="container">
-        <br>
-			<br>			
-			<div  class="ggmap">
-				<img src="./content/img/category/blog.png" alt="">
-			</div>
-			<br>
-			<br>
+            <br>
+            <br>
+            <div class="ggmap">
+                <img src="./content/img/category/blog.png" alt="">
+            </div>
+            <br>
+            <br>
             <div class="row">
                 <div class="col-lg-8">
                     <div class="blog_left_sidebar">
@@ -158,15 +158,13 @@ ob_start();
                         <aside class="single_sidebar_widget search_widget">
                             <form method="post">
                                 <div class="input-group">
-                                    <input type="text" class="form-control" name="noidung"
-                                        placeholder="Tìm kiếm bài viết" onfocus="this.placeholder = ''"
-                                        onblur="this.placeholder = 'Tìm kiếm bài viết'">
+                                    <input type="text" class="form-control" name="noidung" placeholder="Tìm kiếm bài viết" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Tìm kiếm bài viết'">
                                     <!--    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Tìm kiếm bài viết'"-->
                                     <span class="input-group-btn">
-                                        <button class="btn btn-default" type="submit" name="btn"><i
-                                                class="lnr lnr-magnifier"></i></button>
+                                        <button class="btn btn-default" type="submit" name="btn"><i class="lnr lnr-magnifier"></i></button>
                                     </span>
                             </form>
+                        
                     </div>
                     <div class="br"></div>
 

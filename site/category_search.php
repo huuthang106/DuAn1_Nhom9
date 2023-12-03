@@ -51,7 +51,12 @@
 
                     </ul>
                 </div>
-
+                <br />
+				<br />
+				<img class="img-fluid d-block mx-auto" src="./content/img/category/c12.png" alt="">
+				<br />
+				<br />
+				<img class="img-fluid d-block mx-auto" src="./content/img/category/c10.png" alt="">
             </div>
             <div class="col-xl-9 col-lg-8 col-md-7">
                 <!-- Start Filter Bar -->

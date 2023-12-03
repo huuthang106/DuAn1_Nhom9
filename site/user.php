@@ -4,14 +4,15 @@ if (!isset($_SESSION['user_id'])) {
 }
 ?>
 <style>
-.avarta {
-    width: 100%;
-    height: 150px;
-}
+    .avarta {
+        min-width:100%;
+        height: 150px;
+    }
 
-.avarta img {
-    border-radius: 80px;
-}
+    .avarta img {
+        border-radius: 80px;
+        
+    }
 </style>
 
 <body>
@@ -55,14 +56,14 @@ if (!isset($_SESSION['user_id'])) {
                             <li class="main-nav-list"><a data-toggle="collapse" href="#officeProduct" aria-expanded="false" aria-controls="officeProduct">';
                     if ($avarta == null) {
                         # code...
-                        echo ' <div class="avarta"><img src="../content/img/product/review-1.png" alt=""></div>';
+                        echo '<div class="avarta"><img src="../content/img/product/man.png" alt="" width="50px" height="150px" ></div>';
                     } else {
                         if (filter_var($avarta, FILTER_VALIDATE_URL)) {
                             // Nếu $avarta là một đường liên kết URL hợp lệ, thì hiển thị hình ảnh
                             echo '<div class="avarta"><img src="' . $avarta . '" alt="" width="50px" height="150px" ></div>';
                         } else {
                             // Nếu $avarta không phải là đường liên kết URL hợp lệ, có thể là đường dẫn file local
-                            echo '<div class="avarta"><img src="../content/img/product/' . $avarta . '" alt="" width="50px" height="150px" ></div>';
+                            echo '<div class="avarta"><img src="../content/img/product/'.$avarta.'" alt="" width="50px" height="150px" ></div>';
                         }
                     }
                     echo '
@@ -77,15 +78,21 @@ if (!isset($_SESSION['user_id'])) {
                             <a href="' . $updata . '">
                                 <button class="btn btn-primary btn-block confirm-button">Cập nhật thông tin</button>
                                 </a>
-                            </li>
+                            </li>';
+                            if($password ==null){
+
+                            }else{
+                                echo'
                             <li class="main-nav-list">
                             <a href="index.php?act=change_pasword_user&id=' . $user_id . '">
                             <button class="btn btn-primary btn-block confirm-button">Đổi mật khẩu</button></a>
-                        </li>
+                            </li>';
+                            }
+                            echo'
                             <li class="main-nav-list">
                             <a href="index.php?act=logout">
                             <button class="btn btn-primary btn-block confirm-button">Đăng xuất</button></a>
-                        </li>
+                            </li>
                            
     
     

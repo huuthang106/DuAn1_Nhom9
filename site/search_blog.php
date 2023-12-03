@@ -1,5 +1,5 @@
 <?php
-  ob_start();
+ob_start();
 ?>
 
 <body>
@@ -85,21 +85,21 @@
                 <div class="col-lg-8">
                     <div class="blog_left_sidebar">
                         <?php
-                          $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
-                          $postsPerPage = 5;
-                          $blog = blogs_selectall($currentPage, $postsPerPage);
-                          $count = 0;
-                          
+                        $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
+                        $postsPerPage = 5;
+                        $blog = blogs_selectall($currentPage, $postsPerPage);
+                        $count = 0;
+
                         if (isset($_GET["noidung"])) {
                             $key = $_GET["noidung"];
-                            $blog = search_blog_selectalls($key,$currentPage,$postsPerPage);
+                            $blog = search_blog_selectalls($key, $currentPage, $postsPerPage);
                             if ($blog) {
-                            foreach ($blog as $blogs) {
-                                extract($blogs);
-                                $more_link = "index.php?act=single-blog&blog_id=" . $blog_id;
-                                $comment = comments_selectall($blog_id);
-                                $excerpt = substr($content, 0, 400);
-                                echo '                     
+                                foreach ($blog as $blogs) {
+                                    extract($blogs);
+                                    $more_link = "index.php?act=single-blog&blog_id=" . $blog_id;
+                                    $comment = comments_selectall($blog_id);
+                                    $excerpt = substr($content, 0, 400);
+                                    echo '                     
                                 <article class="row blog_item">
                                 <div class="col-md-3">
                                     <div class="blog_info text-right">
@@ -109,7 +109,7 @@
                                             <li><a href="#">' . $day . '<i
                                                         class="lnr lnr-calendar-full"></i></a></li>
                                             <li><a href="#">' . $views_count . ' Lượt xem<i class="lnr lnr-eye"></i></a></li>
-                                            <li><a href="#">'.count($comment).' bình luận<i class="lnr lnr-bubble"></i></a></li>
+                                            <li><a href="#">' . count($comment) . ' bình luận<i class="lnr lnr-bubble"></i></a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -127,17 +127,18 @@
                                 </div>
                             </article>
                                 ';
-                                $count++;
-                            }} else {
-                                echo'
+                                    $count++;
+                                }
+                            } else {
+                                echo '
                                 <div class="blog_details"> 
-                                                <h2>Bài viết '.$key.' không tìm thấy!</h2>
+                                                <h2>Bài viết ' . $key . ' không tìm thấy!</h2>
                                                 </div>';
                             };
                         }
                         echo '<nav class="blog-pagination justify-content-center d-flex"><ul class="pagination">';
-                        for ($i = 1; $i <= ceil(count(blogs_selectall()) / $postsPerPage); $i++) {
-                            echo '<li class="page-item ' . ($i == $currentPage ? 'active' : '') . '"><a href="index.php?act=search_blog&page=' . $i . '&noidung='.$_GET["noidung"].'" class="page-link">' . $i . '</a></li>';
+                        for ($i = 1; $i <= ceil(count(search_blog_selectalls($key, $currentPage, $postsPerPage)) / $postsPerPage); $i++) {
+                            echo '<li class="page-item ' . ($i == $currentPage ? 'active' : '') . '"><a href="index.php?act=search_blog&page=' . $i . '&noidung=' . $_GET["noidung"] . '" class="page-link">' . $i . '</a></li>';
                         }
                         echo '</ul></nav>';
                         ?>
@@ -172,13 +173,10 @@
                         <aside class="single_sidebar_widget search_widget">
                             <form method="post">
                                 <div class="input-group">
-                                    <input type="text" class="form-control" name="noidung"
-                                        placeholder="Tìm kiếm bài viết" onfocus="this.placeholder = ''"
-                                        onblur="this.placeholder = 'Tìm kiếm bài viết'">
+                                    <input type="text" class="form-control" name="noidung" placeholder="Tìm kiếm bài viết" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Tìm kiếm bài viết'">
                                     <!--    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Tìm kiếm bài viết'"-->
                                     <span class="input-group-btn">
-                                        <button class="btn btn-default" type="submit" name="btn"><i
-                                                class="lnr lnr-magnifier"></i></button>
+                                        <button class="btn btn-default" type="submit" name="btn"><i class="lnr lnr-magnifier"></i></button>
                                     </span>
                             </form>
                     </div>
@@ -237,5 +235,5 @@
 
 </body>
 <?php
- ob_end_flush();
+ob_end_flush();
 ?>

@@ -553,8 +553,15 @@
 											<div class="d-flex">';
 											if ($avarta) {
 												echo '
-													  <img class="avarta_user" src="./content/img/product/' . $avarta . '" alt="">
+													
 													  ';
+													  if (filter_var($avarta, FILTER_VALIDATE_URL)) {
+														// Nếu $avarta là một đường liên kết URL hợp lệ, thì hiển thị hình ảnh
+														echo '<img class="avarta_user" src="' . $avarta . '" alt="" >';
+													} else {
+														// Nếu $avarta không phải là đường liên kết URL hợp lệ, có thể là đường dẫn file local
+														echo '  <img class="avarta_user" src="./content/img/product/' . $avarta . '" alt="">';
+													}
 											} else {
 												echo '
 													  <img class="avarta_user" src="./content/img/product/review-1.png" alt="">
