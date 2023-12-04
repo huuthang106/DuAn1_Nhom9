@@ -173,10 +173,13 @@ ob_start();
                         <aside class="single_sidebar_widget search_widget">
                             <form method="post">
                                 <div class="input-group">
-                                    <input type="text" class="form-control" name="noidung" placeholder="Tìm kiếm bài viết" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Tìm kiếm bài viết'">
+                                    <input type="text" class="form-control" name="noidung"
+                                        placeholder="Tìm kiếm bài viết" onfocus="this.placeholder = ''"
+                                        onblur="this.placeholder = 'Tìm kiếm bài viết'">
                                     <!--    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Tìm kiếm bài viết'"-->
                                     <span class="input-group-btn">
-                                        <button class="btn btn-default" type="submit" name="btn"><i class="lnr lnr-magnifier"></i></button>
+                                        <button class="btn btn-default" type="submit" name="btn"><i
+                                                class="lnr lnr-magnifier"></i></button>
                                     </span>
                             </form>
                     </div>
@@ -205,7 +208,7 @@ ob_start();
                             echo '
                                     <div class="media post_item">                     
                                         <div class="media-body">
-                                            <a href="blog-details.html">
+                                            <a href="'.$more_link.'">
                                                 <h3>' . $title . '</h3>
                                             </a>
                                             <p>' . $day . '</p>
