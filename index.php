@@ -59,7 +59,22 @@ session_start();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
+    <style>
+    .fb_dialog_content iframe {
+        margin: 80px 6px !important;
+        position: none;
 
+    }
+
+    .b_dialog_content iframe[name="unread_fb7684efc49938"] {
+        right: 10px;
+    }
+
+    button#widgetIcon {
+        border-radius: 0%;
+
+    }
+    </style>
 
 </head>
 
@@ -206,7 +221,39 @@ session_start();
     <!-- 
 	<script src="https://uhchat.net/code.php?f=3dca0b"></script> -->
     <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
-    <df-messenger intent="WELCOME" chat-title="Senconhand" agent-id="6f269fb9-5a58-4015-b1d9-6512d19b05ea" language-code="en"></df-messenger>
+    <df-messenger intent="WELCOME" chat-title="Senconhand" agent-id="6f269fb9-5a58-4015-b1d9-6512d19b05ea"
+        language-code="en"></df-messenger>
+    <!-- Messenger Plugin chat Code -->
+    <div id="fb-root"></div>
+
+    <!-- Your Plugin chat code -->
+    <div id="fb-customer-chat" class="fb-customerchat">
+    </div>
+
+    <script>
+    var chatbox = document.getElementById('fb-customer-chat');
+    chatbox.setAttribute("page_id", "111806455333961");
+    chatbox.setAttribute("attribution", "biz_inbox");
+    </script>
+
+    <!-- Your SDK code -->
+    <script>
+    window.fbAsyncInit = function() {
+        FB.init({
+            xfbml: true,
+            version: 'v18.0'
+        });
+    };
+
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+    </script>
 </body>
 <script src="content/js/add.js"></script>
 <script src="./content/js/vendor/jquery-2.2.4.min.js"></script>
@@ -361,44 +408,44 @@ function handleClick(star) {
 }
 </script>
 <script>
-    // Kiểm tra trạng thái lưu trong Local Storage khi trang tải lại
-    window.onload = function() {
-        var selectedCarts = JSON.parse(localStorage.getItem('selectedCarts')) || [];
-        selectedCarts.forEach(function(cartId) {
-            var checkbox = document.querySelector('input[value="' + cartId + '"]');
-            if (checkbox) {
-                checkbox.checked = true;
-            }
-        });
-    };
-
-    // Xử lý sự kiện khi checkbox thay đổi
-    document.addEventListener('change', function(event) {
-        if (event.target.type === 'checkbox' && event.target.name === 'selected_carts[]') {
-            var cartId = event.target.value;
-            var selectedCarts = JSON.parse(localStorage.getItem('selectedCarts')) || [];
-
-            if (event.target.checked) {
-                // Thêm cartId vào mảng nếu checkbox được chọn
-                if (!selectedCarts.includes(cartId)) {
-                    selectedCarts.push(cartId);
-                }
-            } else {
-                // Xóa cartId khỏi mảng nếu checkbox bị bỏ chọn
-                selectedCarts = selectedCarts.filter(function(id) {
-                    return id !== cartId;
-                });
-            }
-
-            // Lưu trạng thái vào Local Storage
-            localStorage.setItem('selectedCarts', JSON.stringify(selectedCarts));
+// Kiểm tra trạng thái lưu trong Local Storage khi trang tải lại
+window.onload = function() {
+    var selectedCarts = JSON.parse(localStorage.getItem('selectedCarts')) || [];
+    selectedCarts.forEach(function(cartId) {
+        var checkbox = document.querySelector('input[value="' + cartId + '"]');
+        if (checkbox) {
+            checkbox.checked = true;
         }
     });
+};
 
-    function updateStatus(checkbox) {
-        var statusInput = document.querySelector('input[name="status_' + checkbox.value + '"]');
-        statusInput.value = checkbox.checked ? '2' : '1';
+// Xử lý sự kiện khi checkbox thay đổi
+document.addEventListener('change', function(event) {
+    if (event.target.type === 'checkbox' && event.target.name === 'selected_carts[]') {
+        var cartId = event.target.value;
+        var selectedCarts = JSON.parse(localStorage.getItem('selectedCarts')) || [];
+
+        if (event.target.checked) {
+            // Thêm cartId vào mảng nếu checkbox được chọn
+            if (!selectedCarts.includes(cartId)) {
+                selectedCarts.push(cartId);
+            }
+        } else {
+            // Xóa cartId khỏi mảng nếu checkbox bị bỏ chọn
+            selectedCarts = selectedCarts.filter(function(id) {
+                return id !== cartId;
+            });
+        }
+
+        // Lưu trạng thái vào Local Storage
+        localStorage.setItem('selectedCarts', JSON.stringify(selectedCarts));
     }
+});
+
+function updateStatus(checkbox) {
+    var statusInput = document.querySelector('input[name="status_' + checkbox.value + '"]');
+    statusInput.value = checkbox.checked ? '2' : '1';
+}
 // Xử lý sự kiện khi checkbox thay đổi
 document.addEventListener('change', function(event) {
     if (event.target.type === 'checkbox' && event.target.name === 'selected_carts[]') {
