@@ -105,7 +105,7 @@
 			<div class="card_area d-flex align-items-center">
 				<a href="index.php?act=login" class="primary-btn">Thêm vào giỏ hàng</a>
 				</form>
-				<a class="icon_btn" href="index.php?act=login"><i class="lnr lnr lnr-heart"></i></a>';
+				<a class="icon_btn" href="index.php?act=login"><i class="lnr lnr lnr-heart"></i></a>
 			<?php } ?>
 			</div>
 		</div>
