@@ -66,7 +66,7 @@
 			<div class="col-xl-9 col-lg-8 col-md-7">
 				<!-- Start Filter Bar -->
 				<?php
-				
+
 				// Hiển thị phân trang
 				echo '<div class="filter-bar d-flex flex-wrap align-items-center">
 					<div class="sorting mr-auto">
@@ -75,51 +75,53 @@
 							
 						</select>
 					</div>';
-				
+
 				echo '</div>';
 				?>
 				<!-- End Filter Bar -->
 				<!-- Start Best Seller -->
 				<section class="lattest-product-area pb-40 category-list">
-					<div class="row">
+                    <div class="row">
 
-						<?php
-						$items_per_page = 9;
+                        <?php
+                        if (isset($_SESSION['user_id'])) {
+                            $items_per_page = 9;
 
-						// Lấy số trang hiện tại từ tham số truyền vào hoặc mặc định là trang 1
-						$page = isset($_GET['page']) ? intval($_GET['page']) : 1;
-						$name = isset($_GET['timkiem']) ? $_GET['timkiem'] : '';
-						$products = new products();
-						$product_list = $products->seach_product($name, $page, $items_per_page);
+                            // Lấy số trang hiện tại từ tham số truyền vào hoặc mặc định là trang 1
+                            $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
+                            $name = isset($_POST['key']) ? $_POST['key'] : '';
+                            $products = new products();
+                            $product_list = $products->seach_product($name, $page, $items_per_page);
 
-						// Kiểm tra xem có dữ liệu trả về hay không
-						if (!empty($product_list['products'])) {
-							foreach ($product_list['products'] as $product) {
-								$product_id = $product['product_id'];
-								$category_id = $product['category_id'];
-								$name = $product['name'];
-								$picture = $product['picture'];
-								$color = $product['color'];
-$size = $product['size'];
-								$price = $product['price'];
-								$content = $product['content'];
-								$single_product = "index.php?act=single-product&product_id=" . $product_id;
-
-								echo '
+                            // Kiểm tra xem có dữ liệu trả về hay không
+                            if (!empty($product_list['products'])) {
+                                foreach ($product_list['products'] as $product) {
+                                    $product_id = $product['product_id'];
+                                    $category_id = $product['category_id'];
+                                    $name = $product['name'];
+                                    $picture = $product['picture'];
+                                    $color = $product['color'];
+                                    $size = $product['size'];
+                                    $format = number_format($product['price']);
+                                    $content = $product['content'];
+                                    $single_product = "index.php?act=single-product&product_id=" . $product_id;
+                                    $cart_link = "index.php?act=cart&product_id=".$product_id;
+                                    $favourite_link = "index.php?act=favourites&product_id=" . $product_id;
+                                    echo '
         <div class="col-lg-4 col-md-6">
             <div class="single-product">
-			<a href="' . $single_product . '" class="social-info">  <img class="img-fluid" src="./content/img/product/' . $picture . '" alt="">  </a>
+            <a href="' . $single_product . '" class="social-info">  <img class="img-fluid" src="./content/img/product/' . $picture . '" alt=""></a>
                 <div class="product-details">
-				<a href="' . $single_product . '" class="social-info">   <h6>' . $name . '</h6>  </a>
+                <a href="' . $single_product . '" class="social-info">  <h6>' . $name . '</h6></a>
                     <div class="price">
-                        <h6>' . $price . '</h6>
+                        <h6>' . $format . 'VNĐ</h6>
                     </div>
                     <div class="prd-bottom">
-                        <a href="" class="social-info">
+                        <a href="' . $cart_link . '" class="social-info">
                             <span class="ti-bag"></span>
                             <p class="hover-text">Thêm vào giỏ hàng</p>
                         </a>
-                        <a href="" class="social-info">
+                        <a href="' . $favourite_link . '" class="social-info">
                             <span class="lnr lnr-heart"></span>
                             <p class="hover-text">Yêu thích</p>
                         </a>
@@ -132,9 +134,9 @@ $size = $product['size'];
             </div>
         </div>
         ';
-							}
-						} else {
-							echo '   <div class="col-lg-4 col-md-6">
+                                }
+                            } else {
+                                echo '   <div class="col-lg-4 col-md-6">
 							<div class="single-product">
 							   
 								<div class="product-details">
@@ -142,16 +144,78 @@ $size = $product['size'];
 									
 							</div>
 						</div>';
-						}
+                            }
+                        } else {
+                            $items_per_page = 9;
+
+                            // Lấy số trang hiện tại từ tham số truyền vào hoặc mặc định là trang 1
+                            $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
+                            $name = isset($_POST['key']) ? $_POST['key'] : '';
+                            $products = new products();
+                            $product_list = $products->seach_product($name, $page, $items_per_page);
+
+                            // Kiểm tra xem có dữ liệu trả về hay không
+                            if (!empty($product_list['products'])) {
+                                foreach ($product_list['products'] as $product) {
+                                    $product_id = $product['product_id'];
+                                    $category_id = $product['category_id'];
+                                    $name = $product['name'];
+                                    $picture = $product['picture'];
+                                    $color = $product['color'];
+                                    $size = $product['size'];
+                                    $format = number_format($product['price']);
+                                    $content = $product['content'];
+                                    $single_product = "index.php?act=single-product&product_id=" . $product_id;
+
+                                    echo '
+        <div class="col-lg-4 col-md-6">
+            <div class="single-product">
+            <a href="' . $single_product . '" class="social-info"> <img class="img-fluid" src="./content/img/product/' . $picture . '" alt=""> </a>
+                <div class="product-details">
+                <a href="' . $single_product . '" class="social-info">  <h6>' . $name . '</h6> </a>
+                    <div class="price">
+                        <h6>' . $format . 'VNĐ</h6>
+                    </div>
+                    <div class="prd-bottom">
+                        <a href="index.php?act=login" class="social-info">
+                            <span class="ti-bag"></span>
+                            <p class="hover-text">Thêm vào giỏ hàng</p>
+                        </a>
+                        <a href="index.php?act=login" class="social-info">
+                            <span class="lnr lnr-heart"></span>
+                            <p class="hover-text">Yêu thích</p>
+                        </a>
+                        <a href="' . $single_product . '" class="social-info">
+                            <span class="lnr lnr-move"></span>
+                            <p class="hover-text">Chi tiết</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        ';
+                                }
+                            } else {
+                                echo '   <div class="col-lg-4 col-md-6">
+							<div class="single-product">
+							   
+								<div class="product-details">
+									<h6>   Không tìm thấy sản phẩm phù hợp</h6>
+									
+							</div>
+						</div>';
+                            }
+                        }
 
 
 
-						?>
-						<!-- single product -->
+
+                        ?>
+                        <!-- single product -->
 
 
-					</div>
-				</section>
+                    </div>
+                </section>
 				<?php
 				$total_pages = ceil($product_list['total_products'][0]['total'] / $items_per_page);
 
@@ -166,7 +230,7 @@ $size = $product['size'];
 				for ($i = 1; $i <= $total_pages; $i++) {
 					$active_class = ($i == $page) ? 'active' : '';
 					echo '<div class="pagination"' . $active_class . '">';
-					echo '<a href="index.php?act=keyword_pagination&page=' . $i . '&timkiem='.$_GET['timkiem'].'">' . $i . '</a>';
+					echo '<a href="index.php?act=keyword_pagination&page=' . $i . '&timkiem=' . $_GET['timkiem'] . '">' . $i . '</a>';
 
 					echo '</div>';
 				}
@@ -195,70 +259,10 @@ $size = $product['size'];
 			</div>
 		</div>
 	</div>
+	<br>
 
 	<!-- Start related-product Area -->
-	<section class="related-product-area section_gap">
-		<div class="container">
-			<div class="row justify-content-center">
-				<div class="col-lg-6 text-center">
-					<div class="section-title">
-						<h1>Ưu đãi trong tuần</h1>
-						<p>Những ưu đãi này chắc chắn sẽ mang đến trải nghiệm tuyệt vời để cho khách hàng có thể sở hữu</p>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-lg-9">
-					<div class="row">
-						<div class="col-lg-4 col-md-4 col-sm-6 mb-20">
-							<div class="single-related-product d-flex">
-								<a href="#"><img src="./content/img/r1.jpg" alt=""></a>
-								<div class="desc">
-									<a href="#" class="title">GIÀY CAO GÓT REN ĐEN</a>
-									<div class="price">
-										<h6>$189.00</h6>
-										<h6 class="l-through">$210.00</h6>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-4 col-sm-6 mb-20">
-							<div class="single-related-product d-flex">
-								<a href="#"><img src="./content/img/r2.jpg" alt=""></a>
-								<div class="desc">
-									<a href="#" class="title">GIÀY CAO GÓT REN ĐEN</a>
-									<div class="price">
-										<h6>$189.00</h6>
-										<h6 class="l-through">$210.00</h6>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-4 col-sm-6 mb-20">
-							<div class="single-related-product d-flex">
-								<a href="#"><img src="./content/img/r3.jpg" alt=""></a>
-								<div class="desc">
-									<a href="#" class="title">GIÀY CAO GÓT REN ĐEN</a>
-									<div class="price">
-										<h6>$189.00</h6>
-										<h6 class="l-through">$210.00</h6>
-									</div>
-								</div>
-							</div>
-						</div>
-
-					</div>
-				</div>
-				<div class="col-lg-3">
-					<div class="ctg-right">
-						<a href="#" target="_blank">
-							<img class="img-fluid d-block mx-auto" src="img/category/c5.jpg" alt="">
-						</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+	
 	<!-- End related-product Area -->
 
 	<!-- start footer Area -->
