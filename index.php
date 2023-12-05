@@ -56,24 +56,23 @@ session_start();
 	<link rel="stylesheet" href="content/css/magnific-popup.css">
 	<link rel="stylesheet" href="content/css/main.css"> -->
     <link rel="stylesheet" href="content/css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
     <style>
-    .fb_dialog_content iframe {
-        margin: 80px 6px !important;
-        position: none;
+        .fb_dialog_content iframe {
+            margin: 80px 6px !important;
+            position: none;
 
-    }
+        }
 
-    .b_dialog_content iframe[name="unread_fb7684efc49938"] {
-        right: 10px;
-    }
+        .b_dialog_content iframe[name="unread_fb7684efc49938"] {
+            right: 10px;
+        }
 
-    button#widgetIcon {
-        border-radius: 0%;
+        button#widgetIcon {
+            border-radius: 0%;
 
-    }
+        }
     </style>
 
 </head>
@@ -96,6 +95,7 @@ session_start();
     include("dao/vochers.php");
     include("dao/function.php");
     include("google_source.php");
+    include("dao/contacts.php");
     $action = "home";
     if (isset($_GET['act']))
         $action = $_GET['act'];
@@ -209,6 +209,9 @@ session_start();
         case "payment":
             include 'site/payment_methods.php';
             break;
+        case "thongke":
+            include 'site/send_daily_emails.php';
+            break;
     }
 
     ?>
@@ -221,8 +224,7 @@ session_start();
     <!-- 
 	<script src="https://uhchat.net/code.php?f=3dca0b"></script> -->
     <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
-    <df-messenger intent="WELCOME" chat-title="Senconhand" agent-id="6f269fb9-5a58-4015-b1d9-6512d19b05ea"
-        language-code="en"></df-messenger>
+    <df-messenger intent="WELCOME" chat-title="Senconhand" agent-id="6f269fb9-5a58-4015-b1d9-6512d19b05ea" language-code="en"></df-messenger>
     <!-- Messenger Plugin chat Code -->
     <div id="fb-root"></div>
 
@@ -231,34 +233,33 @@ session_start();
     </div>
 
     <script>
-    var chatbox = document.getElementById('fb-customer-chat');
-    chatbox.setAttribute("page_id", "111806455333961");
-    chatbox.setAttribute("attribution", "biz_inbox");
+        var chatbox = document.getElementById('fb-customer-chat');
+        chatbox.setAttribute("page_id", "111806455333961");
+        chatbox.setAttribute("attribution", "biz_inbox");
     </script>
 
     <!-- Your SDK code -->
     <script>
-    window.fbAsyncInit = function() {
-        FB.init({
-            xfbml: true,
-            version: 'v18.0'
-        });
-    };
+        window.fbAsyncInit = function() {
+            FB.init({
+                xfbml: true,
+                version: 'v18.0'
+            });
+        };
 
-    (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s);
-        js.id = id;
-        js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
     </script>
 </body>
 <script src="content/js/add.js"></script>
 <script src="./content/js/vendor/jquery-2.2.4.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
-    integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous">
 </script>
 <script src="./content/js/vendor/bootstrap.min.js"></script>
 <script src="./content/js/jquery.ajaxchimp.min.js"></script>
@@ -286,193 +287,193 @@ session_start();
 <!-- Page level custom scripts -->
 
 <script>
-$(document).ready(function() {
-    $('#dataTable').DataTable({
-        language: {
-            "sEmptyTable": "Không có dữ liệu trong bảng",
-            "sInfo": "Hiển thị từ _START_ đến _END_ của _TOTAL_ dòng",
-            "sInfoEmpty": "Hiển thị 0 đến 0 của 0 dòng",
-            "sInfoFiltered": "(được lọc từ tổng số _MAX_ dòng)",
-            "sInfoPostFix": "",
-            "sInfoThousands": ",",
-            "sLengthMenu": "Hiển thị _MENU_ dòng",
-            "sLoadingRecords": "Đang tải...",
-            "sProcessing": "Đang xử lý...",
-            "sSearch": "Tìm kiếm:",
-            "sZeroRecords": "Không tìm thấy dòng nào phù hợp",
-            "oPaginate": {
-                "sFirst": "«",
-                "sLast": "»",
-                "sNext": "›",
-                "sPrevious": "‹"
-            },
-            "oAria": {
-                "sSortAscending": ": Sắp xếp tăng dần",
-                "sSortDescending": ": Sắp xếp giảm dần"
+    $(document).ready(function() {
+        $('#dataTable').DataTable({
+            language: {
+                "sEmptyTable": "Không có dữ liệu trong bảng",
+                "sInfo": "Hiển thị từ _START_ đến _END_ của _TOTAL_ dòng",
+                "sInfoEmpty": "Hiển thị 0 đến 0 của 0 dòng",
+                "sInfoFiltered": "(được lọc từ tổng số _MAX_ dòng)",
+                "sInfoPostFix": "",
+                "sInfoThousands": ",",
+                "sLengthMenu": "Hiển thị _MENU_ dòng",
+                "sLoadingRecords": "Đang tải...",
+                "sProcessing": "Đang xử lý...",
+                "sSearch": "Tìm kiếm:",
+                "sZeroRecords": "Không tìm thấy dòng nào phù hợp",
+                "oPaginate": {
+                    "sFirst": "«",
+                    "sLast": "»",
+                    "sNext": "›",
+                    "sPrevious": "‹"
+                },
+                "oAria": {
+                    "sSortAscending": ": Sắp xếp tăng dần",
+                    "sSortDescending": ": Sắp xếp giảm dần"
+                }
             }
-        }
-    }); // ID From dataTable 
-    $('#dataTableHover').DataTable({
-        language: {
-            "sEmptyTable": "Không có dữ liệu trong bảng",
-            "sInfo": "Hiển thị từ _START_ đến _END_ của _TOTAL_ dòng",
-            "sInfoEmpty": "Hiển thị 0 đến 0 của 0 dòng",
-            "sInfoFiltered": "(được lọc từ tổng số _MAX_ dòng)",
-            "sInfoPostFix": "",
-            "sInfoThousands": ",",
-            "sLengthMenu": "Hiển thị _MENU_ dòng",
-            "sLoadingRecords": "Đang tải...",
-            "sProcessing": "Đang xử lý...",
-            "sSearch": "Tìm kiếm:",
-            "sZeroRecords": "Không tìm thấy dòng nào phù hợp",
-            "oPaginate": {
-                "sFirst": "«",
-                "sLast": "»",
-                "sNext": "›",
-                "sPrevious": "‹"
-            },
-            "oAria": {
-                "sSortAscending": ": Sắp xếp tăng dần",
-                "sSortDescending": ": Sắp xếp giảm dần"
+        }); // ID From dataTable 
+        $('#dataTableHover').DataTable({
+            language: {
+                "sEmptyTable": "Không có dữ liệu trong bảng",
+                "sInfo": "Hiển thị từ _START_ đến _END_ của _TOTAL_ dòng",
+                "sInfoEmpty": "Hiển thị 0 đến 0 của 0 dòng",
+                "sInfoFiltered": "(được lọc từ tổng số _MAX_ dòng)",
+                "sInfoPostFix": "",
+                "sInfoThousands": ",",
+                "sLengthMenu": "Hiển thị _MENU_ dòng",
+                "sLoadingRecords": "Đang tải...",
+                "sProcessing": "Đang xử lý...",
+                "sSearch": "Tìm kiếm:",
+                "sZeroRecords": "Không tìm thấy dòng nào phù hợp",
+                "oPaginate": {
+                    "sFirst": "«",
+                    "sLast": "»",
+                    "sNext": "›",
+                    "sPrevious": "‹"
+                },
+                "oAria": {
+                    "sSortAscending": ": Sắp xếp tăng dần",
+                    "sSortDescending": ": Sắp xếp giảm dần"
+                }
             }
-        }
-    }); // ID From dataTable with Hover
-});
-//hiển thị hình ảnh khi được up
-function previewImage(input) {
-    var preview = document.getElementById('imagePreview');
-    var file = input.files[0];
-    var reader = new FileReader();
+        }); // ID From dataTable with Hover
+    });
+    //hiển thị hình ảnh khi được up
+    function previewImage(input) {
+        var preview = document.getElementById('imagePreview');
+        var file = input.files[0];
+        var reader = new FileReader();
 
-    reader.onloadend = function() {
+        reader.onloadend = function() {
+            if (file) {
+                preview.src = reader.result;
+                preview.style.display = 'block'; // Hiển thị hình ảnh khi đã tải lên
+            } else {
+                preview.src = "";
+                preview.style.display = 'none'; // Ẩn hình ảnh khi không có file
+            }
+        }
+
         if (file) {
-            preview.src = reader.result;
-            preview.style.display = 'block'; // Hiển thị hình ảnh khi đã tải lên
+            reader.readAsDataURL(file);
         } else {
             preview.src = "";
             preview.style.display = 'none'; // Ẩn hình ảnh khi không có file
         }
     }
+    // sao chep thông tin thanh toán 
+    function copyPaymentInfo() {
+        var paymentInfoElement = document.getElementById('payment-info');
+        var tempTextArea = document.createElement('textarea');
+        tempTextArea.value = paymentInfoElement.innerText;
 
-    if (file) {
-        reader.readAsDataURL(file);
-    } else {
-        preview.src = "";
-        preview.style.display = 'none'; // Ẩn hình ảnh khi không có file
+        document.body.appendChild(tempTextArea);
+        tempTextArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(tempTextArea);
+
+        // Sử dụng SweetAlert2 để hiển thị thông báo đẹp hơn
+        Swal.fire({
+            icon: 'success',
+            title: 'Đã sao chép thông tin thanh toán',
+            text: paymentInfoElement.innerText,
+            confirmButtonText: 'OK'
+        });
     }
-}
-// sao chep thông tin thanh toán 
-function copyPaymentInfo() {
-    var paymentInfoElement = document.getElementById('payment-info');
-    var tempTextArea = document.createElement('textarea');
-    tempTextArea.value = paymentInfoElement.innerText;
+    // lấy sự kiện click vào sao đánh giá
+    var selectedValue = 0;
 
-    document.body.appendChild(tempTextArea);
-    tempTextArea.select();
-    document.execCommand('copy');
-    document.body.removeChild(tempTextArea);
+    function handleClick(star) {
+        var value = star.getAttribute('data-value');
 
-    // Sử dụng SweetAlert2 để hiển thị thông báo đẹp hơn
-    Swal.fire({
-        icon: 'success',
-        title: 'Đã sao chép thông tin thanh toán',
-        text: paymentInfoElement.innerText,
-        confirmButtonText: 'OK'
-    });
-}
-// lấy sự kiện click vào sao đánh giá
-var selectedValue = 0;
+        // Xóa tất cả các class highlight và selected
+        var stars = document.querySelectorAll('.list button');
+        stars.forEach(function(star) {
+            star.classList.remove('highlight', 'selected');
+        });
 
-function handleClick(star) {
-    var value = star.getAttribute('data-value');
+        // Thêm class highlight cho tất cả các ngôi sao trước giá trị đã chọn
+        for (var i = 1; i <= value; i++) {
+            stars[i - 1].classList.add('highlight');
+        }
 
-    // Xóa tất cả các class highlight và selected
-    var stars = document.querySelectorAll('.list button');
-    stars.forEach(function(star) {
-        star.classList.remove('highlight', 'selected');
-    });
+        // Thêm class selected cho ngôi sao được chọn
+        star.classList.add('selected');
 
-    // Thêm class highlight cho tất cả các ngôi sao trước giá trị đã chọn
-    for (var i = 1; i <= value; i++) {
-        stars[i - 1].classList.add('highlight');
+        // Cập nhật giá trị đã chọn
+        selectedValue = value;
+
+        // Gán giá trị vào trường ẩn
+        document.getElementById('starInput').value = selectedValue;
     }
-
-    // Thêm class selected cho ngôi sao được chọn
-    star.classList.add('selected');
-
-    // Cập nhật giá trị đã chọn
-    selectedValue = value;
-
-    // Gán giá trị vào trường ẩn
-    document.getElementById('starInput').value = selectedValue;
-}
 </script>
 <script>
-// Kiểm tra trạng thái lưu trong Local Storage khi trang tải lại
-window.onload = function() {
-    var selectedCarts = JSON.parse(localStorage.getItem('selectedCarts')) || [];
-    selectedCarts.forEach(function(cartId) {
-        var checkbox = document.querySelector('input[value="' + cartId + '"]');
-        if (checkbox) {
-            checkbox.checked = true;
+    // Kiểm tra trạng thái lưu trong Local Storage khi trang tải lại
+    window.onload = function() {
+        var selectedCarts = JSON.parse(localStorage.getItem('selectedCarts')) || [];
+        selectedCarts.forEach(function(cartId) {
+            var checkbox = document.querySelector('input[value="' + cartId + '"]');
+            if (checkbox) {
+                checkbox.checked = true;
+            }
+        });
+    };
+
+    // Xử lý sự kiện khi checkbox thay đổi
+    document.addEventListener('change', function(event) {
+        if (event.target.type === 'checkbox' && event.target.name === 'selected_carts[]') {
+            var cartId = event.target.value;
+            var selectedCarts = JSON.parse(localStorage.getItem('selectedCarts')) || [];
+
+            if (event.target.checked) {
+                // Thêm cartId vào mảng nếu checkbox được chọn
+                if (!selectedCarts.includes(cartId)) {
+                    selectedCarts.push(cartId);
+                }
+            } else {
+                // Xóa cartId khỏi mảng nếu checkbox bị bỏ chọn
+                selectedCarts = selectedCarts.filter(function(id) {
+                    return id !== cartId;
+                });
+            }
+
+            // Lưu trạng thái vào Local Storage
+            localStorage.setItem('selectedCarts', JSON.stringify(selectedCarts));
         }
     });
-};
 
-// Xử lý sự kiện khi checkbox thay đổi
-document.addEventListener('change', function(event) {
-    if (event.target.type === 'checkbox' && event.target.name === 'selected_carts[]') {
-        var cartId = event.target.value;
-        var selectedCarts = JSON.parse(localStorage.getItem('selectedCarts')) || [];
-
-        if (event.target.checked) {
-            // Thêm cartId vào mảng nếu checkbox được chọn
-            if (!selectedCarts.includes(cartId)) {
-                selectedCarts.push(cartId);
-            }
-        } else {
-            // Xóa cartId khỏi mảng nếu checkbox bị bỏ chọn
-            selectedCarts = selectedCarts.filter(function(id) {
-                return id !== cartId;
-            });
-        }
-
-        // Lưu trạng thái vào Local Storage
-        localStorage.setItem('selectedCarts', JSON.stringify(selectedCarts));
+    function updateStatus(checkbox) {
+        var statusInput = document.querySelector('input[name="status_' + checkbox.value + '"]');
+        statusInput.value = checkbox.checked ? '2' : '1';
     }
-});
+    // Xử lý sự kiện khi checkbox thay đổi
+    document.addEventListener('change', function(event) {
+        if (event.target.type === 'checkbox' && event.target.name === 'selected_carts[]') {
+            var cartId = event.target.value;
+            var selectedCarts = JSON.parse(localStorage.getItem('selectedCarts')) || [];
 
-function updateStatus(checkbox) {
-    var statusInput = document.querySelector('input[name="status_' + checkbox.value + '"]');
-    statusInput.value = checkbox.checked ? '2' : '1';
-}
-// Xử lý sự kiện khi checkbox thay đổi
-document.addEventListener('change', function(event) {
-    if (event.target.type === 'checkbox' && event.target.name === 'selected_carts[]') {
-        var cartId = event.target.value;
-        var selectedCarts = JSON.parse(localStorage.getItem('selectedCarts')) || [];
-
-        if (event.target.checked) {
-            // Thêm cartId vào mảng nếu checkbox được chọn
-            if (!selectedCarts.includes(cartId)) {
-                selectedCarts.push(cartId);
+            if (event.target.checked) {
+                // Thêm cartId vào mảng nếu checkbox được chọn
+                if (!selectedCarts.includes(cartId)) {
+                    selectedCarts.push(cartId);
+                }
+            } else {
+                // Xóa cartId khỏi mảng nếu checkbox bị bỏ chọn
+                selectedCarts = selectedCarts.filter(function(id) {
+                    return id !== cartId;
+                });
             }
-        } else {
-            // Xóa cartId khỏi mảng nếu checkbox bị bỏ chọn
-            selectedCarts = selectedCarts.filter(function(id) {
-                return id !== cartId;
-            });
+
+            // Lưu trạng thái vào Local Storage
+            localStorage.setItem('selectedCarts', JSON.stringify(selectedCarts));
         }
+    });
 
-        // Lưu trạng thái vào Local Storage
-        localStorage.setItem('selectedCarts', JSON.stringify(selectedCarts));
+    function updateStatus(checkbox) {
+        var statusInput = document.querySelector('input[name="status_' + checkbox.value + '"]');
+        statusInput.value = checkbox.checked ? '2' : '1';
     }
-});
-
-function updateStatus(checkbox) {
-    var statusInput = document.querySelector('input[name="status_' + checkbox.value + '"]');
-    statusInput.value = checkbox.checked ? '2' : '1';
-}
 </script>
 
 
