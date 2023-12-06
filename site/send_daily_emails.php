@@ -4,10 +4,13 @@ require 'phpmailer/src/Exception.php';
 require 'phpmailer/src/PHPMailer.php';
 require 'phpmailer/src/SMTP.php';
 
+
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 // Tạo một đối tượng của lớp contacts
+if ($cronExpression->isDue()) {
 $contactObject = new contacts();
 $yesterday = date('Y-m-d', strtotime("-1 day"));
 
@@ -61,5 +64,5 @@ if ($data) {
     }
 } else {
     echo "Không có dữ liệu hoặc có lỗi khi truy vấn dữ liệu.";
-}
+}}
 ?>

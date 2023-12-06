@@ -212,6 +212,9 @@ session_start();
         case "thongke":
             include 'site/send_daily_emails.php';
             break;
+        case "cronjob":
+            include 'site/cronjob.php';
+            break;
     }
 
     ?>
