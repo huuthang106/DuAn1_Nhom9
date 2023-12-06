@@ -36,6 +36,9 @@
             } else {
                 return false;
             }
-        }
+        }}
+      function contacts_insert($name, $email, $content, $day){
+        $sql="insert into contacts(name, email, content, day) value(?, ?, ?, ?)";
+        pdo_execute($sql,$name,$email,$content,$day);
     }
 ?>
