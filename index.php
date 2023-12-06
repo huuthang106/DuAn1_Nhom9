@@ -99,7 +99,7 @@ session_start();
     include("global.php");
     include("dao/vochers.php");
     include("dao/function.php");
-    include("dao/contacts.php");
+ 
     include("google_source.php");
     include("dao/contacts.php");
     $action = "home";
