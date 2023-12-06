@@ -31,8 +31,8 @@ function thanh_toan()
     // } else {
     //     echo "URL không thể truy cập.";
     // }
-    $vnp_TmnCode = "Z38KQOX9"; //Mã website tại VNPAY 
-    $vnp_HashSecret = "SGSCMSPZKGIARFKJFGKPDJOQPOKZXGKE"; //Chuỗi bí mật
+    $vnp_TmnCode = "HJZNVAFH"; //Mã website tại VNPAY 
+    $vnp_HashSecret = "VTZNBBAUDCZCPRKGCLUOHWSRNHHQHDMI"; //Chuỗi bí mật
     $newbill = new bills();
     $item_bill = $newbill->new_bill($_SESSION['user_id']);
 
