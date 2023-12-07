@@ -79,7 +79,7 @@
                                           
                                             <td>' . $name . '</td>
                                             <td>' . $quantity . '</td>
-                                            <td>' . $total . '</td>
+                                            <td>' . number_format($total)    . ' VNĐ</td>
                                             <td>' . $sdt . '</td>
                                             <td>' . $address . '</td>
                                             <td>' . $day . '</td>

@@ -123,6 +123,7 @@ if (!isset($_SESSION['user_id'])) {
                                     <th>Chi tiết</th>
                                     <th>Trạng thái</th>
                                     <th>Tổng tiền</th>
+                                    <th>Hủy</th>
 
                                 </tr>
                             </thead>
@@ -132,6 +133,7 @@ if (!isset($_SESSION['user_id'])) {
                                     <th>Chi tiết</th>
                                     <th>Trạng thái</th>
                                     <th>Tổng tiền</th>
+                                    <th>Hủy</th>xx
                                 </tr>
                             </tfoot>
                             <tbody>
@@ -144,7 +146,7 @@ if (!isset($_SESSION['user_id'])) {
                                     foreach ($select as $key) {
                                         // Xử lý dữ liệu ở đây
                                         extract($key);
-
+                                        $huy_don = 'index.php?act=user&bill_id=' . $bill_id . '&status=4';
                                         $bill_detail = 'index.php?act=bill_detail_user&bill_id=' . $bill_id;
                                         echo '
                                         <tr>
@@ -179,10 +181,35 @@ if (!isset($_SESSION['user_id'])) {
                                              
                                     ';
                                         }
+                                        if($status==4){
                                         echo '
                                      <td>' . number_format($total) . ' VNĐ</td>
-                                     </tr>';
+                                     <th><a href="#" class="btn btn-sm btn-danger">Đã hủy</a></th>
+                                     </tr>';}
+                                     elseif($status== 1){
+                                        echo '
+                                        <td>' . number_format($total) . ' VNĐ</td>
+                                        <th><a href="' . $huy_don . '" class="btn btn-sm btn-danger">Hủy đơn</a></th>
+                                        </tr>';
+                                     }
+                                     else{
+                                        echo '
+                                        <td>' . number_format($total) . ' VNĐ</td>
+                                        <th><a href="#" class="btn btn-sm btn-danger">Không thể hủy</a></th>
+                                        </tr>';
+                                     }
+                                   
+                                     
                                     }
+
+                                }
+                                if (isset($_GET['bill_id']) && isset($_GET['status'])) {
+                                    # code...
+
+                                    $status = new bills();
+                                    $status->update_status_bill_user($_GET['bill_id'], $_GET['status']);
+
+                                    exit;
                                 }
 
                                 ?>
