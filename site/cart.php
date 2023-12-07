@@ -1,8 +1,9 @@
 <?php
-    if(!isset($_SESSION['user_id'])){
-        header ('location: index.php?act=login');
-    }
+if (!isset($_SESSION['user_id'])) {
+    header('location: index.php?act=login');
+}
 ?>
+
 <body>
 
     <!-- Start Header Area -->
@@ -57,7 +58,7 @@
                                     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                         if (isset($_POST['quantity'])) {
                                             $product_id = $_GET['product_id'];
-                                            $quantity = intval($_POST['quantity']);
+                                            // $quantity = intval($_POST['quantity']);
                                             $user_id = $_SESSION['user_id'];
                                             // Lưu ý: Cần xác định user_id từ session hoặc nguồn khác
 
@@ -72,11 +73,11 @@
 
                                 ?>
                                 <?php
-                                if (isset($_GET['product_id']) && !isset($_POST['quantity'])) {
-                                    $product_id = $_GET['product_id'];
-                                    $user_id = $_SESSION['user_id'];
-                                    carts_insert_into($_GET['product_id'], $user_id);
-                                }
+                                // if (isset($_GET['product_id']) && !isset($_POST['quantity'])) {
+                                //     $product_id = $_GET['product_id'];
+                                //     $user_id = $_SESSION['user_id'];
+                                //     carts_insert_into($_GET['product_id'], $user_id);
+                                // }
                                 ?>
                                 <?php
                                 if (isset($_GET['cart_id']) && isset($_POST['quantity'])) {
@@ -92,8 +93,10 @@
                                 if ($cart) {
                                     foreach ($cart as $carts) {
                                         extract($carts);
+                                        // echo $product_id;
                                         $del_cart = "index.php?act=cart&cart_id=" . $cart_id;
                                         $product = favourite_selectall_products($product_id);
+
                                         $format = number_format($product[0]['price']);
                                         $quantity = $carts['quantity'];
                                         $total = $quantity * $product[0]['price']; // Calculate total
@@ -131,7 +134,7 @@
                                             <td>
                                                 <div class="product_count">
                                                     <select class="form-control" name="size[' . $cart_id . ']">
-                                                    <option value="'.$size.'">'.$size.'</option>
+                                                    <option value="' . $size . '">' . $size . '</option>
                                                         <option value="S">S</option>
                                                         <option value="M">M</option>
                                                         <option value="XL">XL</option>
@@ -142,7 +145,7 @@
                                             <td>
                                                 <div class="product_count">
                                                     <select class="form-control" name="color[' . $cart_id . ']">
-                                                    <option value="'.$color.'">'.$color.'</option>
+                                                    <option value="' . $color . '">' . $color . '</option>
                                                         <option value="Xanh">Xanh</option>
                                                         <option value="ĐỎ">Đỏ</option>
                                                         <option value="Trắng">Trắng</option>
@@ -253,7 +256,7 @@
                                     <td></td>
                                     <td></td>
                                     <td></td>
-                                    
+
                                     <td>
                                         <h5>Tiền ship</h5>
                                     </td>
@@ -289,39 +292,39 @@
                         </form>
                     </table>
                     <?php
-                 if (isset($_POST['update_cart'])) {
-                    $selected_carts = isset($_POST['selected_carts']) ? $_POST['selected_carts'] : [];
-                
-                    $colors = $_POST['color'];
-                    $sizes = $_POST['size'];
-                    $quantities = $_POST['quantity'];
-                
-                    // Kiểm tra xem có tất cả sản phẩm được chọn hay không
-                    $all_selected = count($selected_carts) == count($_POST['cart_ids']);
-                
-                    // Cập nhật trạng thái theo từng sản phẩm
-                    foreach ($_POST['cart_ids'] as $cart_id) {
-                        $color = $colors[$cart_id];
-                        $size = $sizes[$cart_id];
-                        $quantity = $quantities[$cart_id];
-                
-                        $add_cart = new carts();
-                
-                        // Nếu tất cả sản phẩm được chọn hoặc sản phẩm hiện tại được chọn
-                        if ($all_selected || in_array($cart_id, $selected_carts)) {
-                            // Đặt status = 2
-                            $status = 2;
-                        } else {
-                            // Đặt status = 1
-                            $status = 1;
+                    if (isset($_POST['update_cart'])) {
+                        $selected_carts = isset($_POST['selected_carts']) ? $_POST['selected_carts'] : [];
+
+                        $colors = $_POST['color'];
+                        $sizes = $_POST['size'];
+                        $quantities = $_POST['quantity'];
+
+                        // Kiểm tra xem có tất cả sản phẩm được chọn hay không
+                        $all_selected = count($selected_carts) == count($_POST['cart_ids']);
+
+                        // Cập nhật trạng thái theo từng sản phẩm
+                        foreach ($_POST['cart_ids'] as $cart_id) {
+                            $color = $colors[$cart_id];
+                            $size = $sizes[$cart_id];
+                            $quantity = $quantities[$cart_id];
+
+                            $add_cart = new carts();
+
+                            // Nếu tất cả sản phẩm được chọn hoặc sản phẩm hiện tại được chọn
+                            if ($all_selected || in_array($cart_id, $selected_carts)) {
+                                // Đặt status = 2
+                                $status = 2;
+                            } else {
+                                // Đặt status = 1
+                                $status = 1;
+                            }
+
+                            $start = $add_cart->update_cart($cart_id, $quantity, $status, $size, $color, $_SESSION['user_id']);
                         }
-                
-                        $start = $add_cart->update_cart($cart_id, $quantity, $status, $size, $color, $_SESSION['user_id']);
                     }
-                }
-                
-                
-                
+
+
+
 
 
 

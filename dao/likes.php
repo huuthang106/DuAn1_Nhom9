@@ -8,7 +8,7 @@
         return pdo_query($sql);
     }
     function favourite_selectall_products($product_id){
-        $sql =  "select * from products where product_id='" . $product_id . "'";
+        $sql =  "select * from products where product_id=?";
         return pdo_query($sql, $product_id);
     }
     function favourite_delete($favourite_id)
