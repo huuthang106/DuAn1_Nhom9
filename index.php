@@ -487,3 +487,6 @@ session_start();
 
 
 </html>
+<?php
+ ob_end_flush();
+?>
